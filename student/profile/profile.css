@@ -1,0 +1,29 @@
+
+            .profile-form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                text-align: left;
+            }
+            .filter-btn {
+                border: 1px solid var(--border-color);
+                background: var(--bg-tertiary);
+                color: var(--text-secondary);
+                transition: all 0.3s ease;
+            }
+            .filter-btn.active {
+                background: var(--primary) !important;
+                color: #fff !important;
+                border-color: var(--primary) !important;
+            }
+            .id-card-front label, .id-card-back label {
+                color: #fcd34d !important;
+                font-weight: 600;
+            }
+            .id-card-front span, .id-card-back span {
+                color: #ffffff !important;
+            }
+            .id-card-back p {
+                color: #ffffff !important;
+            }
+        

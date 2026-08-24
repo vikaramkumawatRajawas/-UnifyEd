@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Fees & Finance Executive Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../fees-sidebar.css">
+    <link rel="stylesheet" href="dashboard-fees.css">
+  </head>
+  <body class="fees-portal-body">
+
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Control</div>
+          <a href="../dashboard-fees/dashboard-fees.html" class="sidebar-item active"><i class="fa-solid fa-chart-pie"></i><span>Finance Dashboard</span></a>
+          <a href="../fees-student-fees/fees-student-fees.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Student Fees</span></a>
+          <a href="../fees-payments/fees-payments.html" class="sidebar-item"><i class="fa-solid fa-credit-card"></i><span>Payments Log</span></a>
+          <a href="../fees-receipts/fees-receipts.html" class="sidebar-item"><i class="fa-solid fa-receipt"></i><span>Receipts Registry</span></a>
+          <a href="../fees-defaulters/fees-defaulters.html" class="sidebar-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Defaulters Roster</span></a>
+
+          <div class="nav-section-title">Analytics & Reports</div>
+          <a href="../fees-revenue/fees-revenue.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Revenue Stream</span></a>
+          <a href="../fees-analytics/fees-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Financial Analytics</span></a>
+          <a href="../fees-reports/fees-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i><span>Audit Reports</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../fees-messages/fees-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+          <a href="../fees-send-reminders/fees-send-reminders.html" class="sidebar-item"><i class="fa-solid fa-paper-plane"></i><span>Send Reminders</span></a>
+          <a href="../fees-due-dates/fees-due-dates.html" class="sidebar-item"><i class="fa-solid fa-calendar-check"></i><span>Fee Schedules</span></a>
+
+          <div class="nav-section-title">Portal Settings</div>
+          <a href="../fees-profile/fees-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>Finance Profile</span></a>
+          <a href="../fees-settings/fees-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="feesSearchInput" placeholder="Search student name, roll no, receipt..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../fees-notifications/fees-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">6</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrFeesManagerName">Vikram Kumawat</strong><span id="hdrFeesCode">FIN-EMP-108</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar-mini" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../fees-profile/fees-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../fees-settings/fees-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <div class="page-header" style="margin-bottom:24px;">
+            <h1 style="font-size:28px; font-weight:800; color:var(--text-primary);">Fees & Finance Executive Dashboard 💳</h1>
+            <span style="color:var(--text-secondary); font-size:13px;">UnifyEd • Finance Portal • Campus Revenue & Fee Governance</span>
+          </div>
+
+          <!-- Hero Card Banner -->
+          <div class="fees-hero-card">
+            <div class="fees-hero-info">
+              <div class="health-badge"><i class="fa-solid fa-shield-check"></i> Financial Audit Passed • Autumn Semester 2026</div>
+              <h2>Welcome back, <span id="welcome-name">Finance Manager</span>! 👋</h2>
+              <p>Monitor real-time fee collections, pending balances, defaulter notices, and financial audits.</p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; z-index:2;">
+              <button type="button" class="btn btn-primary" id="btnOpenGenerateModal"><i class="fa-solid fa-plus"></i> Generate Receipt</button>
+              <button type="button" class="btn btn-secondary" id="btnOpenReminderModal"><i class="fa-solid fa-paper-plane"></i> Broadcast Reminders</button>
+            </div>
+          </div>
+
+          <!-- KPI Cards Grid -->
+          <div class="fees-kpi-grid">
+            <div class="fees-kpi-card">
+              <i class="fa-solid fa-vault kpi-icon" style="color:var(--primary);"></i>
+              <div class="fees-kpi-lbl">Total Annual Revenue</div>
+              <div class="fees-kpi-val" style="color:var(--primary);">₹2.85 Cr</div>
+              <div class="fees-kpi-sub" style="color:var(--success);"><i class="fa-solid fa-arrow-trend-up"></i> ↑ 14% vs last month</div>
+            </div>
+
+            <div class="fees-kpi-card">
+              <i class="fa-solid fa-circle-check kpi-icon" style="color:var(--success);"></i>
+              <div class="fees-kpi-lbl">Fees Collected</div>
+              <div class="fees-kpi-val" style="color:var(--success);">2,250</div>
+              <div class="fees-kpi-sub" style="color:var(--success);"><i class="fa-solid fa-circle-check"></i> 92.5% Total Students</div>
+            </div>
+
+            <div class="fees-kpi-card">
+              <i class="fa-solid fa-hourglass-half kpi-icon" style="color:var(--warning);"></i>
+              <div class="fees-kpi-lbl">Pending Dues</div>
+              <div class="fees-kpi-val" style="color:var(--warning);">185</div>
+              <div class="fees-kpi-sub" style="color:var(--warning);"><i class="fa-solid fa-clock"></i> ₹42.5 L Outstanding</div>
+            </div>
+
+            <div class="fees-kpi-card">
+              <i class="fa-solid fa-triangle-exclamation kpi-icon" style="color:var(--danger);"></i>
+              <div class="fees-kpi-lbl">Defaulters Count</div>
+              <div class="fees-kpi-val" style="color:var(--danger);">45</div>
+              <div class="fees-kpi-sub" style="color:var(--danger);"><i class="fa-solid fa-circle-exclamation"></i> Action Required</div>
+            </div>
+          </div>
+
+          <!-- Section Grid: Recent Payments & Fee Breakdown -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:24px; margin-bottom:28px;">
+            
+            <!-- Recent Payments Card -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-receipt" style="color:var(--primary);"></i> Recent Student Payments</h3>
+                <a href="../fees-payments/fees-payments.html" style="color:var(--primary); font-size:13px; font-weight:700; text-decoration:none;">View All →</a>
+              </div>
+              <table class="fees-table" id="recentPaymentsTable">
+                <thead>
+                  <tr>
+                    <th>Student Name</th>
+                    <th>Category</th>
+                    <th>Amount Paid</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Vikram Kumawat</strong><br><small style="color:var(--text-tertiary);">BCA • Sem 3</small></td>
+                    <td>Tuition Fee</td>
+                    <td>₹75,000</td>
+                    <td><span class="status-pill status-paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rohit Sharma</strong><br><small style="color:var(--text-tertiary);">B.Tech CSE • Sem 5</small></td>
+                    <td>Hostel Fee</td>
+                    <td>₹65,000</td>
+                    <td><span class="status-pill status-paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Michael Johnson</strong><br><small style="color:var(--text-tertiary);">ECE • Sem 4</small></td>
+                    <td>Tuition Fee</td>
+                    <td>₹50,000</td>
+                    <td><span class="status-pill status-partial">Partial</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ananya Verma</strong><br><small style="color:var(--text-tertiary);">MBA • Sem 2</small></td>
+                    <td>Exam Fee</td>
+                    <td>₹12,500</td>
+                    <td><span class="status-pill status-paid">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Fee Collection Breakdown -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-chart-pie" style="color:var(--accent);"></i> Category Fee Collection Meters</h3>
+              </div>
+              
+              <div style="display:flex; flex-direction:column; gap:18px;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:var(--text-primary); font-weight:700; font-size:13px;">Tuition Fees Collection</span>
+                    <span style="color:var(--primary); font-weight:800; font-size:13px;">95% (₹1.95 Cr)</span>
+                  </div>
+                  <div style="width:100%; height:8px; background:var(--bg-tertiary); border-radius:4px; overflow:hidden;">
+                    <div style="width:95%; height:100%; background:linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:var(--text-primary); font-weight:700; font-size:13px;">Hostel & Mess Fees</span>
+                    <span style="color:var(--success); font-weight:800; font-size:13px;">88% (₹48 L)</span>
+                  </div>
+                  <div style="width:100%; height:8px; background:var(--bg-tertiary); border-radius:4px; overflow:hidden;">
+                    <div style="width:88%; height:100%; background:linear-gradient(90deg, var(--success), var(--info));"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:var(--text-primary); font-weight:700; font-size:13px;">Transport Services Fees</span>
+                    <span style="color:var(--warning); font-weight:800; font-size:13px;">92% (₹24 L)</span>
+                  </div>
+                  <div style="width:100%; height:8px; background:var(--bg-tertiary); border-radius:4px; overflow:hidden;">
+                    <div style="width:92%; height:100%; background:linear-gradient(90deg, var(--warning), #f97316);"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:var(--text-primary); font-weight:700; font-size:13px;">Examination & Library Fees</span>
+                    <span style="color:var(--info); font-weight:800; font-size:13px;">100% (₹18 L)</span>
+                  </div>
+                  <div style="width:100%; height:8px; background:var(--bg-tertiary); border-radius:4px; overflow:hidden;">
+                    <div style="width:100%; height:100%; background:linear-gradient(90deg, var(--info), var(--primary));"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Section Grid: Overdue Defaulters & Finance Actions -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;">
+            
+            <!-- Overdue Defaulters Table -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-triangle-exclamation" style="color:var(--danger);"></i> Urgent Overdue Defaulters</h3>
+                <a href="../fees-defaulters/fees-defaulters.html" style="color:var(--danger); font-size:13px; font-weight:700; text-decoration:none;">Defaulter Roster →</a>
+              </div>
+              <table class="fees-table" id="defaultersTable">
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Due Amount</th>
+                    <th>Days Overdue</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>David Brown</strong><br><small style="color:var(--text-tertiary);">CSE • Roll #45</small></td>
+                    <td>₹25,000</td>
+                    <td><span class="status-pill status-overdue">45 Days</span></td>
+                    <td><button type="button" class="btn btn-secondary btn-remind-single" data-student="David Brown" style="padding:4px 10px; font-size:11px;">Remind</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Jessica White</strong><br><small style="color:var(--text-tertiary);">ECE • Roll #12</small></td>
+                    <td>₹50,000</td>
+                    <td><span class="status-pill status-overdue">60 Days</span></td>
+                    <td><button type="button" class="btn btn-secondary btn-remind-single" data-student="Jessica White" style="padding:4px 10px; font-size:11px;">Remind</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>James Miller</strong><br><small style="color:var(--text-tertiary);">ME • Roll #88</small></td>
+                    <td>₹75,000</td>
+                    <td><span class="status-pill status-overdue">30 Days</span></td>
+                    <td><button type="button" class="btn btn-secondary btn-remind-single" data-student="James Miller" style="padding:4px 10px; font-size:11px;">Remind</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Finance Quick Actions Card -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-sliders" style="color:var(--primary);"></i> Executive Operations</h3>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:12px;">
+                <button type="button" class="btn btn-primary" id="btnQuickGenerate" style="justify-content:center; padding:12px;"><i class="fa-solid fa-receipt"></i> Generate Digital Receipt</button>
+                <button type="button" class="btn btn-secondary" id="btnQuickBroadcast" style="justify-content:center; padding:12px;"><i class="fa-solid fa-bell"></i> Broadcast Payment Reminders</button>
+                <a href="../fees-reports/fees-reports.html" class="btn btn-secondary" style="justify-content:center; padding:12px;"><i class="fa-solid fa-file-invoice-dollar"></i> Generate Financial Audit Report</a>
+                <a href="../fees-defaulters/fees-defaulters.html" class="btn btn-secondary" style="justify-content:center; padding:12px; background:rgba(239,68,68,0.12); color:var(--danger); border-color:rgba(239,68,68,0.3);"><i class="fa-solid fa-triangle-exclamation"></i> Manage Defaulter Roster</a>
+              </div>
+            </div>
+
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Generate Receipt Modal -->
+    <div class="modal-backdrop" id="generateReceiptModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-receipt" style="color:var(--primary);"></i> Generate Digital Receipt</h3>
+          <button type="button" class="modal-close-btn" class="closeModalBtn">&times;</button>
+        </div>
+        <form id="generateReceiptForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Student Name</label>
+              <input type="text" class="form-input" id="rcptStudentName" placeholder="e.g. Vikram Kumawat" required>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+              <div class="form-group">
+                <label class="form-label">Roll Number</label>
+                <input type="text" class="form-input" id="rcptRollNo" placeholder="STU-2026-101" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Department</label>
+                <select class="form-select" id="rcptDept">
+                  <option value="BCA">BCA</option>
+                  <option value="CSE">CSE</option>
+                  <option value="ECE">ECE</option>
+                  <option value="MBA">MBA</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+              <div class="form-group">
+                <label class="form-label">Fee Category</label>
+                <select class="form-select" id="rcptCategory">
+                  <option value="Tuition Fee">Tuition Fee</option>
+                  <option value="Hostel Fee">Hostel Fee</option>
+                  <option value="Transport Fee">Transport Fee</option>
+                  <option value="Exam Fee">Exam Fee</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Amount Paid (₹)</label>
+                <input type="number" class="form-input" id="rcptAmount" placeholder="75000" required>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Generate & Save Receipt</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Broadcast Reminder Modal -->
+    <div class="modal-backdrop" id="sendReminderModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-paper-plane" style="color:var(--warning);"></i> Broadcast Payment Reminder</h3>
+          <button type="button" class="modal-close-btn" class="closeModalBtn">&times;</button>
+        </div>
+        <form id="broadcastReminderForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Recipient Group</label>
+              <select class="form-select" id="remRecipientGroup">
+                <option value="All Overdue Defaulters (45)">All Overdue Defaulters (45 Students)</option>
+                <option value="Partial Payment Students (185)">Partial Payment Students (185 Students)</option>
+                <option value="Entire Campus Unpaid">Entire Campus Unpaid Roster</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Reminder Priority</label>
+              <select class="form-select" id="remPriority">
+                <option value="High Priority Alert">High Priority Alert 🔴</option>
+                <option value="Standard Payment Reminder">Standard Payment Reminder 🟡</option>
+                <option value="Final Overdue Legal Notice">Final Overdue Legal Notice ⛔</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Reminder Message Body</label>
+              <textarea class="form-input" id="remMessageBody" rows="3" placeholder="Dear Student, your semester fee payment of ₹... is overdue. Please settle your dues immediately to avoid late fee penalty."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" style="background:var(--warning); border:none;"><i class="fa-solid fa-paper-plane"></i> Send Broadcast Alerts</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="dashboard-fees.js"></script>
+  </body>
+</html>

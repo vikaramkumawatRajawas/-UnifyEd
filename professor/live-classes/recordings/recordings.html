@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Lecture Recordings</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="recordings.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="recordings.html" class="sidebar-item active">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Lecture Recordings</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Live Classes • Lecture Recordings</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+             <!-- Top Metrics Row -->
+             <div class="stats-row" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:20px; margin-bottom:25px;">
+                 <div class="stats-card glassmorphism">
+                     <div class="stats-icon" style="background:rgba(99,102,241,0.15); color:var(--primary);"><i class="fa-solid fa-film"></i></div>
+                     <div class="stats-info">
+                         <span class="stats-label">Total Recordings</span>
+                         <h2 class="stats-number" id="statsTotal">14 Lectures</h2>
+                     </div>
+                 </div>
+                 <div class="stats-card glassmorphism">
+                     <div class="stats-icon" style="background:rgba(168,85,247,0.15); color:var(--accent);"><i class="fa-solid fa-hard-drive"></i></div>
+                     <div class="stats-info">
+                         <span class="stats-label">Cloud Storage</span>
+                         <h2 class="stats-number">18.4 / 50 GB</h2>
+                     </div>
+                 </div>
+                 <div class="stats-card glassmorphism">
+                     <div class="stats-icon" style="background:rgba(16,185,129,0.15); color:#10b981;"><i class="fa-solid fa-eye"></i></div>
+                     <div class="stats-info">
+                         <span class="stats-label">Total Views</span>
+                         <h2 class="stats-number">1,420 Views</h2>
+                     </div>
+                 </div>
+                 <div class="stats-card glassmorphism">
+                     <div class="stats-icon" style="background:rgba(245,158,11,0.15); color:#f59e0b;"><i class="fa-solid fa-file-lines"></i></div>
+                     <div class="stats-info">
+                         <span class="stats-label">Transcripts Synced</span>
+                         <h2 class="stats-number">12 Files</h2>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Main Repository Area -->
+             <div class="dashboard-card glassmorphism" style="border:1px solid rgba(255,255,255,0.03); height:auto; padding:22px;">
+                 <!-- Controls & Filters -->
+                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:15px; flex-wrap:wrap; gap:12px;">
+                     <div style="display:flex; gap:8px;" id="recordingsFilters">
+                         <button class="filter-tab active" data-filter="all">All Batches</button>
+                         <button class="filter-tab" data-filter="BCA-A">BCA Sec A</button>
+                         <button class="filter-tab" data-filter="BCA-B">BCA Sec B</button>
+                         <button class="filter-tab" data-filter="CSE-5">B.Tech CSE</button>
+                     </div>
+                     <div style="position:relative; width:220px;">
+                         <input type="text" id="recSearch" class="form-input" style="height:32px; font-size:11px; padding-left:30px; border-radius:20px;" placeholder="Search topic...">
+                         <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:11px; color:var(--text-tertiary);"></i>
+                     </div>
+                 </div>
+
+                 <!-- Grid of Video items -->
+                 <div id="recordingsGrid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:20px;">
+                     <!-- Dynamic video items go here -->
+                 </div>
+             </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="recordings.js?v=1786808057739"></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Classroom Grades</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="grades.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../../academics/exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../../academics/progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="grades.html" class="sidebar-item active">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../../services/fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../../services/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../../services/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../../services/transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../../services/library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Classroom Grades</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Classroom • Classroom Grades</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="grades-container">
+                <!-- Header Stats Cards -->
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px; margin-bottom:25px;">
+                    <div class="glassmorphism" style="padding:20px; border-radius:10px; border-left:4px solid var(--accent);">
+                        <span style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; font-weight:700;">Overall Internal Percentage</span>
+                        <h3 style="margin:8px 0 0 0; font-size:24px; font-weight:800; color:var(--text-primary);" id="internalPercentText">92.4%</h3>
+                        <p style="margin:4px 0 0 0; font-size:11px; color:#10b981;"><i class="fa-solid fa-circle-up"></i> Top 5% of Classroom Batch</p>
+                    </div>
+
+                    <div class="glassmorphism" style="padding:20px; border-radius:10px; border-left:4px solid var(--primary);">
+                        <span style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; font-weight:700;">CIE Points Accumulated</span>
+                        <h3 style="margin:8px 0 0 0; font-size:24px; font-weight:800; color:var(--text-primary);" id="internalPointsText">231 / 250</h3>
+                        <p style="margin:4px 0 0 0; font-size:11px; color:var(--text-secondary);">Weightage accounted: 60%</p>
+                    </div>
+
+                    <div class="glassmorphism" style="padding:20px; border-radius:10px; border-left:4px solid #10b981;">
+                        <span style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; font-weight:700;">Class Grade Projection</span>
+                        <h3 style="margin:8px 0 0 0; font-size:24px; font-weight:800; color:var(--text-primary);">A+ Outstanding</h3>
+                        <p style="margin:4px 0 0 0; font-size:11px; color:var(--text-secondary);">Continuous Evaluation</p>
+                    </div>
+                </div>
+
+                <!-- Main Evaluation Board -->
+                <div class="grades-card glassmorphism">
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:15px; margin-bottom:20px; flex-wrap:wrap; gap:15px;">
+                        <div>
+                            <h3 style="margin:0; font-size:16px; font-weight:700; color:var(--accent);"><i class="fa-solid fa-graduation-cap"></i> Continuous Internal Evaluation (CIE) Breakdown</h3>
+                            <p style="margin:4px 0 0 0; font-size:11px; color:var(--text-secondary);">Showing teacher-released evaluation marks for the semester.</p>
+                        </div>
+                        
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <select id="courseGradesFilter" class="form-input" onchange="filterGradesByCourse()" style="height:36px; padding:0 12px; font-size:12px; border-radius:6px; background:var(--bg-secondary); cursor:pointer;">
+                                <option value="nn">Neural Networks & Deep Learning</option>
+                                <option value="vlsi">Embedded VLSI Design</option>
+                            </select>
+                            <button class="btn btn-secondary btn-sm" onclick="downloadGradesReport()" style="height:36px; gap:6px;"><i class="fa-solid fa-file-pdf"></i> Download Report</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="custom-table" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>Evaluation Item</th>
+                                    <th>Score Obtained</th>
+                                    <th>Max Points</th>
+                                    <th>Weightage Factor</th>
+                                    <th>Status / Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="gradesTableBody">
+                                <!-- Dynamic grades list loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Dynamic Grade Simulator -->
+                <div class="glassmorphism" style="padding:25px; border-radius:10px; margin-top:25px;">
+                    <h4 style="margin:0 0 10px 0; font-size:14px; font-weight:700; color:var(--accent);"><i class="fa-solid fa-sliders"></i> Dynamic Final Internal Simulator</h4>
+                    <p style="margin:0 0 20px 0; font-size:12px; color:var(--text-secondary);">Estimate your target internal score for upcoming evaluation tasks (e.g. End-Sem Internals).</p>
+                    
+                    <div class="simulator-layout">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                                <span style="font-size:12px; color:var(--text-primary); font-weight:600;">Expected Score in upcoming Internal Assessment (Max 50):</span>
+                                <strong style="font-size:14px; color:var(--primary);" id="simulatorScoreLabel">45 / 50</strong>
+                            </div>
+                            <input type="range" min="0" max="50" value="45" id="simulatorRangeInput" oninput="updateGradesSimulation(this.value)" style="width:100%; cursor:pointer;">
+                        </div>
+                        <div style="text-align:center; padding:15px; border-radius:8px; background:rgba(255,255,255,0.01); border:1px solid var(--border-color); margin-top: 15px;">
+                            <span style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700;">Simulated Total</span>
+                            <h4 style="font-size:24px; font-weight:800; color:var(--primary); margin:5px 0 0 0;" id="simulatedPercentLabel">93.2%</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="grades.js"></script>
+</body>
+</html>

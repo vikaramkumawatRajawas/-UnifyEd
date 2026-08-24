@@ -1,0 +1,20 @@
+
+            .disc-item-card {
+                padding: 12px 18px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.01);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: border-color 0.2s ease;
+            }
+            .disc-item-card:hover {
+                border-color: rgba(99, 102, 241, 0.2);
+            }
+            .reply-message-item {
+                display: flex;
+                gap: 12px;
+                align-items: start;
+            }
+        

@@ -1,0 +1,26 @@
+
+            .stream-grid {
+                display: grid;
+                grid-template-columns: 280px 1fr;
+                gap: 25px;
+                align-items: start;
+            }
+            @media (max-width: 768px) {
+                .stream-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .stream-card {
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .announcement-composer {
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+            .stream-post {
+                padding: 20px;
+                border-radius: 10px;
+            }
+        

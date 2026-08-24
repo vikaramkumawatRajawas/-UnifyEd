@@ -1,0 +1,20 @@
+
+            .excel-table th {
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                padding: 12px 15px;
+                font-weight: 700;
+                border-bottom: 1px solid var(--border-color);
+                box-sizing: border-box;
+            }
+            .excel-table td {
+                padding: 12px 15px;
+                border-bottom: 1px solid var(--border-color);
+                vertical-align: middle;
+                color: var(--text-secondary);
+                box-sizing: border-box;
+            }
+            .excel-table tr:hover td {
+                background: rgba(255, 255, 255, 0.02);
+            }
+        

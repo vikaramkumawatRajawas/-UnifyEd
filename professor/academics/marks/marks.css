@@ -1,0 +1,53 @@
+
+            .excel-table th {
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                padding: 10px 12px;
+                font-weight: 700;
+                border-bottom: 1px solid var(--border-color);
+                box-sizing: border-box;
+            }
+            .excel-table td {
+                padding: 8px 12px;
+                border-bottom: 1px solid var(--border-color);
+                vertical-align: middle;
+                color: var(--text-secondary);
+                box-sizing: border-box;
+            }
+            .excel-table tr:hover td {
+                background: rgba(255, 255, 255, 0.01);
+            }
+            .excel-input {
+                width: 100%;
+                height: 30px;
+                border: 1px solid var(--border-color);
+                border-radius: 4px;
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                text-align: center;
+                font-family: monospace;
+                font-size: 13px;
+                box-sizing: border-box;
+                transition: border-color 0.2s ease;
+            }
+            .excel-input:focus {
+                border-color: var(--primary);
+                outline: none;
+                background: var(--bg-tertiary);
+            }
+            .badge-grade {
+                padding: 3px 8px;
+                border-radius: 4px;
+                font-weight: 700;
+                font-size: 11px;
+                display: inline-block;
+                text-align: center;
+                min-width: 25px;
+            }
+            .grade-O { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+            .grade-A { background: rgba(99, 102, 241, 0.15); color: var(--primary); }
+            .grade-B { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+            .grade-C { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+            .grade-D { background: rgba(100, 116, 139, 0.15); color: #64748b; }
+            .grade-F { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        

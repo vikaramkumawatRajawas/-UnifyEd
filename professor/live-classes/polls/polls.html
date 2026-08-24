@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Lecture Polls</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="polls.css?v=1786815000000">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+                <a href="../schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+                <a href="../start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+                <a href="../recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+                <a href="../live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+                <a href="polls.html" class="sidebar-item active">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Lecture Polls & Live Quizzes</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Live Classes • Lecture Polls</span>
+                </div>
+
+                <!-- Session Control & Action Header -->
+                <div class="dashboard-card glassmorphism" style="padding: 22px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(99, 102, 241, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 20px; border: 1px solid rgba(99, 102, 241, 0.3);">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+                        <div>
+                            <h3 id="activePollSubjectTitle" style="font-size: 17px; font-weight: 800; color: var(--text-primary); margin: 0;">DBMS Lecture — Section A & B</h3>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Real-time classroom polling, instant comprehension check & vote telemetry</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                        <div class="form-group" style="margin: 0; min-width: 170px;">
+                            <select id="pollClassSelect" class="form-input" style="height: 38px; font-size: 12px; background: var(--bg-secondary);">
+                                <option value="dbms" selected>DBMS (BCA Sem 3)</option>
+                                <option value="webtech">Web Technology (CSE Sem 5)</option>
+                                <option value="ds">Data Structures (CSE Sem 3)</option>
+                                <option value="nn">Neural Networks (M.Tech Sem 1)</option>
+                            </select>
+                        </div>
+                        <button onclick="openCreatePollModal()" class="btn btn-primary btn-sm">
+                            <i class="fa-solid fa-plus"></i> Create New Poll
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Telemetry KPI Overview Grid -->
+                <div class="polls-kpi-grid">
+                    <div class="polls-kpi-card">
+                        <div class="polls-kpi-icon primary">
+                            <i class="fa-solid fa-chart-bar"></i>
+                        </div>
+                        <div class="polls-kpi-info">
+                            <span class="polls-kpi-label">Total Polls Run</span>
+                            <span class="polls-kpi-value" id="kpiTotalPolls">24</span>
+                            <span class="polls-kpi-subtext"><i class="fa-solid fa-fire" style="color:var(--accent);"></i> 6 active today</span>
+                        </div>
+                    </div>
+
+                    <div class="polls-kpi-card">
+                        <div class="polls-kpi-icon success">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="polls-kpi-info">
+                            <span class="polls-kpi-label">Avg Response Rate</span>
+                            <span class="polls-kpi-value" id="kpiResponseRate">94.2%</span>
+                            <span class="polls-kpi-subtext text-success"><i class="fa-solid fa-arrow-trend-up"></i> High Engagement</span>
+                        </div>
+                    </div>
+
+                    <div class="polls-kpi-card">
+                        <div class="polls-kpi-icon warning">
+                            <i class="fa-solid fa-stopwatch"></i>
+                        </div>
+                        <div class="polls-kpi-info">
+                            <span class="polls-kpi-label">Avg Answer Speed</span>
+                            <span class="polls-kpi-value" id="kpiAvgSpeed">16.4s</span>
+                            <span class="polls-kpi-subtext"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Fast Responses</span>
+                        </div>
+                    </div>
+
+                    <div class="polls-kpi-card">
+                        <div class="polls-kpi-icon accent">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="polls-kpi-info">
+                            <span class="polls-kpi-label">Accuracy Rate</span>
+                            <span class="polls-kpi-value" id="kpiAccuracyRate">78.5%</span>
+                            <span class="polls-kpi-subtext" style="color:#ec4899;"><i class="fa-solid fa-bullseye"></i> Concept Understood</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Layout Grid: Active Live Poll & History Bank -->
+                <div class="polls-layout-grid">
+                    
+                    <!-- Left Column: Active Poll & History -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Active Live Poll Widget -->
+                        <div class="active-poll-card">
+                            <div class="poll-header-row">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span class="poll-badge-live">
+                                        <span class="poll-pulse-dot"></span> LIVE POLL #4
+                                    </span>
+                                    <span style="font-size: 12px; color: var(--text-tertiary);"><i class="fa-solid fa-clock"></i> Started 1 min ago</span>
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <button onclick="simulateLiveVotes(true)" class="btn btn-secondary btn-sm" style="color:#10b981; border-color:rgba(16,185,129,0.3);" title="Simulate Student Votes">
+                                        <i class="fa-solid fa-bolt"></i> Sim Live Votes
+                                    </button>
+                                    <button onclick="endActivePoll()" class="btn btn-secondary btn-sm" style="color:#ef4444;" title="Close Poll Immediately">
+                                        <i class="fa-solid fa-flag-checkered"></i> End Poll
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="poll-question-title" id="activeQuestionText">
+                                Q4: Which Normal Form (NF) specifically eliminates Transitive Functional Dependency?
+                            </div>
+
+                            <!-- Options List with Live Response Bars -->
+                            <div class="poll-options-list" id="activePollOptionsContainer">
+                                
+                                <div class="poll-option-item" onclick="selectOption(0)">
+                                    <div class="poll-option-fill" id="optFill-0" style="width: 8%;"></div>
+                                    <div class="poll-option-content">
+                                        <div class="poll-option-left">
+                                            <div class="option-letter-badge">A</div>
+                                            <span class="option-text">1NF (First Normal Form)</span>
+                                        </div>
+                                        <div class="poll-option-right">
+                                            <span class="vote-count-label" id="optVotes-0">5 votes</span>
+                                            <span class="vote-percent-badge" id="optPct-0">8%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="poll-option-item" onclick="selectOption(1)">
+                                    <div class="poll-option-fill" id="optFill-1" style="width: 14%;"></div>
+                                    <div class="poll-option-content">
+                                        <div class="poll-option-left">
+                                            <div class="option-letter-badge">B</div>
+                                            <span class="option-text">2NF (Second Normal Form)</span>
+                                        </div>
+                                        <div class="poll-option-right">
+                                            <span class="vote-count-label" id="optVotes-1">9 votes</span>
+                                            <span class="vote-percent-badge" id="optPct-1">14%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="poll-option-item correct-answer" onclick="selectOption(2)">
+                                    <div class="poll-option-fill" id="optFill-2" style="width: 72%;"></div>
+                                    <div class="poll-option-content">
+                                        <div class="poll-option-left">
+                                            <div class="option-letter-badge" style="background:#10b981; color:#fff;">C</div>
+                                            <span class="option-text">3NF (Third Normal Form)</span>
+                                            <span class="correct-badge"><i class="fa-solid fa-check"></i> Correct</span>
+                                        </div>
+                                        <div class="poll-option-right">
+                                            <span class="vote-count-label" id="optVotes-2">46 votes</span>
+                                            <span class="vote-percent-badge" id="optPct-2" style="color:#10b981;">72%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="poll-option-item" onclick="selectOption(3)">
+                                    <div class="poll-option-fill" id="optFill-3" style="width: 6%;"></div>
+                                    <div class="poll-option-content">
+                                        <div class="poll-option-left">
+                                            <div class="option-letter-badge">D</div>
+                                            <span class="option-text">BCNF (Boyce-Codd Normal Form)</span>
+                                        </div>
+                                        <div class="poll-option-right">
+                                            <span class="vote-count-label" id="optVotes-3">4 votes</span>
+                                            <span class="vote-percent-badge" id="optPct-3">6%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-tertiary);">
+                                <span><i class="fa-solid fa-user-check" style="color:#10b981;"></i> Total Responses: <strong id="activeTotalVotes" style="color:var(--text-primary);">64 / 64 Students</strong></span>
+                                <button onclick="extendTimer()" class="btn btn-secondary btn-sm" style="padding: 2px 8px; font-size: 11px;">
+                                    <i class="fa-solid fa-plus"></i> Extend +30s
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Poll History Archive & Analytics Section -->
+                        <div class="dashboard-card glassmorphism" style="padding: 22px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px;">
+                                <h3 style="font-size: 15px; font-weight: 700;"><i class="fa-solid fa-box-archive" style="color: var(--primary); margin-right: 6px;"></i> Poll History & Bank</h3>
+                                
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="text" id="pollSearchInput" placeholder="Search questions..." class="form-input" style="height: 32px; font-size: 11px; width: 180px;">
+                                </div>
+                            </div>
+
+                            <!-- History Items Bank -->
+                            <div id="pollHistoryList">
+                                <!-- Loaded dynamically via polls.js -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Timer Ring & Quick Presets & Live Feed -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Circular Live Countdown Timer Widget -->
+                        <div class="dashboard-card glassmorphism timer-widget-card">
+                            <h3 style="font-size: 14px; font-weight: 700;"><i class="fa-solid fa-hourglass-half" style="color: var(--accent); margin-right: 6px;"></i> Live Poll Countdown</h3>
+                            
+                            <div class="timer-circle-container">
+                                <svg class="timer-svg">
+                                    <circle class="timer-bg-circle" cx="70" cy="70" r="60"></circle>
+                                    <circle class="timer-progress-circle" id="timerRing" cx="70" cy="70" r="60"></circle>
+                                </svg>
+                                <div class="timer-text-overlay">
+                                    <span class="timer-number" id="pollTimerDisplay">00:45</span>
+                                    <span class="timer-unit">Seconds Left</span>
+                                </div>
+                            </div>
+
+                            <p style="font-size: 11px; color: var(--text-tertiary); margin: 0;">
+                                Auto closes when timer expires.
+                            </p>
+                        </div>
+
+                        <!-- 1-Click Quick Classroom Presets -->
+                        <div class="dashboard-card glassmorphism" style="padding: 20px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 14px;">
+                                <i class="fa-solid fa-wand-magic-sparkles" style="color: #10b981; margin-right: 6px;"></i> 1-Click Quick Presets
+                            </h3>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <button onclick="launchPresetPoll('understanding')" class="btn btn-secondary btn-sm" style="justify-content: flex-start; text-align: left; width: 100%;">
+                                    <i class="fa-solid fa-thumbs-up" style="color: var(--primary);"></i> Comprehension Level (1-5 Scale)
+                                </button>
+                                <button onclick="launchPresetPoll('pace')" class="btn btn-secondary btn-sm" style="justify-content: flex-start; text-align: left; width: 100%;">
+                                    <i class="fa-solid fa-gauge-high" style="color: #f59e0b;"></i> Pace Check (Too Fast / Perfect / Slow)
+                                </button>
+                                <button onclick="launchPresetPoll('truefalse')" class="btn btn-secondary btn-sm" style="justify-content: flex-start; text-align: left; width: 100%;">
+                                    <i class="fa-solid fa-toggle-on" style="color: #ec4899;"></i> Quick True / False Concept Check
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Live Student Voting Stream Ticker -->
+                        <div class="dashboard-card glassmorphism" style="padding: 20px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">
+                                <i class="fa-solid fa-stream" style="color: var(--primary); margin-right: 6px;"></i> Live Response Ticker
+                            </h3>
+                            <div id="liveVoteTicker" style="display: flex; flex-direction: column; gap: 8px; max-height: 220px; overflow-y: auto;">
+                                <!-- Live votes stream -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Modals Section -->
+                
+                <!-- Create New Poll Modal -->
+                <div class="custom-modal-backdrop" id="createPollModal">
+                    <div class="custom-modal-card">
+                        <div class="modal-header">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-square-poll-vertical" style="color: var(--primary);"></i> Create & Launch Lecture Poll
+                            </h3>
+                            <button onclick="closeCreatePollModal()" class="modal-close-btn" title="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label style="font-weight:700;">Poll Question</label>
+                                <input type="text" id="newPollQuestion" class="form-input" placeholder="e.g. What is the main purpose of 3NF in DBMS?" autocomplete="off">
+                            </div>
+
+                            <div class="form-group">
+                                <label style="font-weight:700;">Poll Category / Type</label>
+                                <select id="newPollType" class="form-input">
+                                    <option value="mcq">Multiple Choice (MCQ)</option>
+                                    <option value="truefalse">True / False</option>
+                                    <option value="rating">Rating Scale (1-5 Stars)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                    <label style="margin:0; font-weight:700;">Poll Options</label>
+                                    <button type="button" onclick="addPollOptionInput()" class="btn btn-secondary btn-sm" style="padding:4px 10px; font-size:11px;">
+                                        <i class="fa-solid fa-plus"></i> Add Option
+                                    </button>
+                                </div>
+                                <div id="optionsInputsList" style="display: flex; flex-direction: column; gap: 10px;">
+                                    <div class="poll-opt-row">
+                                        <div class="option-letter-badge">A</div>
+                                        <input type="text" class="form-input poll-opt-input" placeholder="Option A" value="First Normal Form (1NF)">
+                                        <button type="button" onclick="removeOptionRow(this)" class="btn-remove-opt" title="Remove Option"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                    <div class="poll-opt-row">
+                                        <div class="option-letter-badge">B</div>
+                                        <input type="text" class="form-input poll-opt-input" placeholder="Option B" value="Second Normal Form (2NF)">
+                                        <button type="button" onclick="removeOptionRow(this)" class="btn-remove-opt" title="Remove Option"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                    <div class="poll-opt-row">
+                                        <div class="option-letter-badge">C</div>
+                                        <input type="text" class="form-input poll-opt-input" placeholder="Option C" value="Third Normal Form (3NF)">
+                                        <button type="button" onclick="removeOptionRow(this)" class="btn-remove-opt" title="Remove Option"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                    <div class="poll-opt-row">
+                                        <div class="option-letter-badge">D</div>
+                                        <input type="text" class="form-input poll-opt-input" placeholder="Option D" value="Boyce-Codd Normal Form (BCNF)">
+                                        <button type="button" onclick="removeOptionRow(this)" class="btn-remove-opt" title="Remove Option"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="font-weight:700;">Timer Duration</label>
+                                <select id="newPollTimer" class="form-input">
+                                    <option value="30">30 Seconds</option>
+                                    <option value="45" selected>45 Seconds</option>
+                                    <option value="60">60 Seconds (1 Min)</option>
+                                    <option value="120">2 Minutes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="closeCreatePollModal()" class="btn btn-secondary btn-sm" style="color:var(--text-secondary);">
+                                <i class="fa-solid fa-xmark"></i> Close Form
+                            </button>
+                            <button type="button" onclick="submitNewPoll()" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-paper-plane"></i> Launch Poll Live
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Custom Content Block -->
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="polls.js?v=1786833333333"></script>
+</body>
+</html>

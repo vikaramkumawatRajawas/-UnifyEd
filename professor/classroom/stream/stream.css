@@ -1,0 +1,23 @@
+
+            .feed-card {
+                padding: 20px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.01);
+                transition: transform 0.2s ease, border-color 0.2s ease;
+            }
+            .feed-card:hover {
+                border-color: rgba(99, 102, 241, 0.25);
+            }
+            .comment-box {
+                margin-top: 15px;
+                border-top: 1px solid var(--border-color);
+                padding-top: 15px;
+            }
+            .comment-item {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 10px;
+                align-items: start;
+            }
+        

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - HOD Executive Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hod-profile.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+  </head>
+  <body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item active"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search HOD profile or credentials..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrHodName">Dr. Rajesh Kumar</strong><span id="hdrHodCode">CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar-mini" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content profile-content">
+          <div class="page-header">
+            <h1>HOD Executive Identity 👨‍🏫</h1>
+            <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Identity & Governance</span>
+          </div>
+
+          <!-- Profile Card with Cover Banner & Avatar Upload -->
+          <div class="profile-identity-card">
+            <!-- Cover Photo Banner -->
+            <div class="profile-cover-banner" id="profCoverBanner">
+              <button type="button" class="cover-upload-btn" id="btnUploadCover">
+                <i class="fa-solid fa-camera"></i> Change Cover Photo
+              </button>
+              <input type="file" id="coverFileInput" accept="image/*" style="display:none;">
+            </div>
+
+            <!-- Profile Body -->
+            <div class="profile-identity-body">
+              <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+                <div style="display:flex; gap:20px; align-items:flex-end; flex-wrap:wrap;">
+                  <!-- Avatar Container with Camera Badge -->
+                  <div class="profile-avatar-wrapper">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="HOD Profile Photo" class="profile-avatar-img" id="profHodAvatarImg">
+                    <button type="button" class="avatar-upload-badge" id="btnUploadAvatar" title="Upload Profile Photo">
+                      <i class="fa-solid fa-camera"></i>
+                    </button>
+                    <input type="file" id="avatarFileInput" accept="image/*" style="display:none;">
+                  </div>
+
+                  <div style="margin-bottom:8px;">
+                    <h2 style="margin:0 0 4px 0; color:var(--text-primary); font-size:26px; font-weight:800;" id="profHodName">Dr. Rajesh Kumar</h2>
+                    <p style="margin:0; color:var(--primary); font-size:15px; font-weight:700;" id="profHodTitle">Head of Department - Computer Science & Engineering</p>
+                  </div>
+                </div>
+
+                <div style="margin-bottom:8px;">
+                  <button type="button" class="btn btn-primary profile-edit-button" id="btnEditProfile">
+                    <i class="fas fa-user-gear"></i> Edit Profile Details
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick Meta Stats Row -->
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:18px; margin-top:20px; padding-top:20px; border-top:1px solid var(--border-color);">
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Department</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;" id="profDeptName">Computer Science & Engineering</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Academic Experience</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;" id="profHodExp">18 Years in Academia</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Office Hours</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;" id="profHodHours">Mon - Fri: 10:00 AM - 05:00 PM</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Portal Governance</p>
+                  <p style="margin:0; color:var(--success); font-size:14px; font-weight:700;"><i class="fa-solid fa-shield-check"></i> Identity Verified</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detail Cards Grid -->
+          <div class="profile-detail-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-bottom:24px;">
+            
+            <!-- Contact Information -->
+            <div class="profile-detail-card">
+              <h3 style="margin:0 0 20px 0; color:var(--text-primary); font-size:17px; font-weight:800; display:flex; align-items:center; gap:10px;">
+                <i class="fas fa-envelope-open-text" style="color:var(--info);"></i> Contact Information
+              </h3>
+              <div style="display:flex; flex-direction:column; gap:14px;">
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Official Email</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;" id="profHodEmail">rajesh.kumar@unifyed.edu</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Phone Number</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;" id="profHodPhone">+91 98765 43210</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Office Location</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;" id="profHodOffice">Block A - Room 201 (HOD Office)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Educational Qualifications -->
+            <div class="profile-detail-card">
+              <h3 style="margin:0 0 20px 0; color:var(--text-primary); font-size:17px; font-weight:800; display:flex; align-items:center; gap:10px;">
+                <i class="fas fa-graduation-cap" style="color:var(--success);"></i> Academic Qualifications
+              </h3>
+              <div style="display:flex; flex-direction:column; gap:14px;">
+                <div style="border-left:3px solid var(--success); padding-left:12px;">
+                  <p style="margin:0 0 2px; color:var(--text-primary); font-weight:700; font-size:14px;">Ph.D. in Computer Science & AI</p>
+                  <p style="margin:0; color:var(--text-secondary); font-size:12px;">IIT Bombay | 2008</p>
+                </div>
+                <div style="border-left:3px solid var(--info); padding-left:12px;">
+                  <p style="margin:0 0 2px; color:var(--text-primary); font-weight:700; font-size:14px;">M.Tech in Computer Engineering</p>
+                  <p style="margin:0; color:var(--text-secondary); font-size:12px;">Delhi University | 2004</p>
+                </div>
+                <div style="border-left:3px solid var(--warning); padding-left:12px;">
+                  <p style="margin:0 0 2px; color:var(--text-primary); font-weight:700; font-size:14px;">B.Tech in Computer Science</p>
+                  <p style="margin:0; color:var(--text-secondary); font-size:12px;">Delhi University | 2002</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Professional Info -->
+            <div class="profile-detail-card">
+              <h3 style="margin:0 0 20px 0; color:var(--text-primary); font-size:17px; font-weight:800; display:flex; align-items:center; gap:10px;">
+                <i class="fas fa-briefcase" style="color:var(--accent);"></i> Professional Track
+              </h3>
+              <div style="display:flex; flex-direction:column; gap:14px;">
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Designation</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;">Professor & Head of Department</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Specialization</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;">Artificial Intelligence & Neural Networks</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; color:var(--text-tertiary); font-size:11px; font-weight:800; text-transform:uppercase;">Research Publications</p>
+                  <p style="margin:0; color:var(--text-primary); font-size:14px; font-weight:600;">45+ IEEE / Springer International Papers</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Account & Security Card -->
+          <div class="profile-security-card" style="margin-bottom:24px;">
+            <h3 style="margin:0 0 20px 0; color:var(--text-primary); font-size:17px; font-weight:800; display:flex; align-items:center; gap:10px;">
+              <i class="fas fa-shield-halved" style="color:var(--danger);"></i> Account Governance & Security
+            </h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px;">
+              <div style="padding:16px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm); border:1px solid var(--border-color);">
+                <p style="margin:0 0 6px; color:var(--text-primary); font-weight:700; font-size:14px;">Password Authentication</p>
+                <p style="margin:0 0 12px; color:var(--text-secondary); font-size:12px;">Last updated 3 months ago</p>
+                <button type="button" class="btn btn-primary" id="btnChangePassword" style="padding:6px 14px; font-size:12px;">Change Password</button>
+              </div>
+
+              <div style="padding:16px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm); border:1px solid var(--border-color);">
+                <p style="margin:0 0 6px; color:var(--text-primary); font-weight:700; font-size:14px;">Two-Factor Verification (2FA)</p>
+                <p style="margin:0 0 12px; color:var(--success); font-size:12px; font-weight:700;"><i class="fas fa-check-circle"></i> Active & Protected</p>
+                <button type="button" class="btn btn-secondary" onclick="showToast('2FA settings configured', 'info')" style="padding:6px 14px; font-size:12px;">Manage 2FA</button>
+              </div>
+
+              <div style="padding:16px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm); border:1px solid var(--border-color);">
+                <p style="margin:0 0 6px; color:var(--text-primary); font-weight:700; font-size:14px;">Portal Session Logs</p>
+                <p style="margin:0 0 12px; color:var(--text-secondary); font-size:12px;">Active session: 192.168.1.45</p>
+                <button type="button" class="btn btn-secondary" onclick="showToast('Audit log session verified clean', 'info')" style="padding:6px 14px; font-size:12px;">Session Audit</button>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+
+    <!-- Enhanced Edit Profile Modal -->
+    <div class="hod-modal-overlay" id="editProfileModal">
+        <div class="hod-modal-dialog" style="max-width:620px;">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-user-gear" style="color:var(--primary);"></i> Edit HOD Executive Profile</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="editProfileModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="editProfileForm">
+                <div class="hod-modal-body">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                        <div class="hod-form-group">
+                            <label for="inputHodName">Full Name</label>
+                            <input type="text" id="inputHodName" class="hod-form-input" placeholder="e.g. Dr. Rajesh Kumar" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputHodTitle">Executive Title</label>
+                            <input type="text" id="inputHodTitle" class="hod-form-input" placeholder="Head of Department" required>
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                        <div class="hod-form-group">
+                            <label for="inputHodDept">Department Name</label>
+                            <input type="text" id="inputHodDept" class="hod-form-input" placeholder="Computer Science & Engineering" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputHodExp">Academic Experience</label>
+                            <input type="text" id="inputHodExp" class="hod-form-input" placeholder="e.g. 18 Years in Academia" required>
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                        <div class="hod-form-group">
+                            <label for="inputHodEmail">Official Email</label>
+                            <input type="email" id="inputHodEmail" class="hod-form-input" placeholder="rajesh.kumar@unifyed.edu" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputHodPhone">Contact Phone</label>
+                            <input type="text" id="inputHodPhone" class="hod-form-input" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                        <div class="hod-form-group">
+                            <label for="inputHodOffice">Office Location / Room</label>
+                            <input type="text" id="inputHodOffice" class="hod-form-input" placeholder="Block A - Room 201 (HOD Office)" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputHodHours">Office Hours</label>
+                            <input type="text" id="inputHodHours" class="hod-form-input" placeholder="Mon - Fri: 10:00 AM - 05:00 PM" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="editProfileModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> Save Profile Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="hod-modal-overlay" id="changePasswordModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-key" style="color:var(--primary);"></i> Change Account Password</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="changePasswordModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="changePasswordForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputCurrentPass">Current Password</label>
+                        <input type="password" id="inputCurrentPass" class="hod-form-input" placeholder="••••••••" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputNewPass">New Password</label>
+                        <input type="password" id="inputNewPass" class="hod-form-input" placeholder="••••••••" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputConfirmPass">Confirm New Password</label>
+                        <input type="password" id="inputConfirmPass" class="hod-form-input" placeholder="••••••••" required>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="changePasswordModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-lock"></i> Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-profile.js"></script>
+  </body>
+</html>

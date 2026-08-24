@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Academic Performance</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="hod-performance.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+</head>
+<body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item active"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search HOD portal..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>              <div class="profile-menu" id="profileMenu">
+                <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+                <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+              </div>
+          </div>
+        </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                    <div>
+                        <h1>Academic Performance & Audit 📊</h1>
+                        <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Academic Performance</span>
+                    </div>
+                    <div style="display:flex; gap:12px;">
+                        <select id="termSelect" class="btn btn-secondary" style="height:36px; font-size:12px;">
+                            <option value="autumn2025">Autumn Semester 2025-26</option>
+                            <option value="spring2025">Spring Semester 2024-25</option>
+                        </select>
+                        <button type="button" class="btn btn-primary" id="btnExportAuditPdf"><i class="fa-solid fa-file-pdf"></i> Export Audit PDF</button>
+                    </div>
+                </div>
+
+                <!-- KPI Overview Bar -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon success">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiPassRate">94.2%</div>
+                            <div class="kpi-lbl">Overall Dept Pass Rate</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +2.4% vs last sem</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon primary">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiAvgGpa">8.6 / 10</div>
+                            <div class="kpi-lbl">Average Dept GPA</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +0.3 vs last yr</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon warning">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiResearchPapers">38 Papers</div>
+                            <div class="kpi-lbl">Research Submissions</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +6 new papers</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon accent">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiSyllabusCompletion">92.4%</div>
+                            <div class="kpi-lbl">Syllabus Completion</div>
+                            <span class="trend-badge neutral"><i class="fa-solid fa-clock-check"></i> On Schedule</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class Batch Performance Table -->
+                <div class="glass-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                        <h3 style="font-size:17px; font-weight:800; color:var(--text-primary);">
+                            <i class="fa-solid fa-chalkboard-user" style="color:var(--primary); margin-right:8px;"></i> Batch-wise Academic Performance Matrix
+                        </h3>
+                        <span class="badge badge-primary">5 Active Batches</span>
+                    </div>
+
+                    <div style="overflow-x:auto;">
+                        <table class="hod-table">
+                            <thead>
+                                <tr>
+                                    <th>Class Batch & Faculty Lead</th>
+                                    <th>Enrolled Students</th>
+                                    <th>Pass Rate</th>
+                                    <th>Class Avg Marks</th>
+                                    <th>Attendance</th>
+                                    <th>Performance Rating</th>
+                                    <th style="text-align:center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="batchPerfTableBody">
+                                <!-- Dynamic Batch Table Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Subject Mastery & Grade Distribution Row -->
+                <div class="dashboard-grid-2">
+                    <!-- Subject Mastery Card -->
+                    <div class="glass-card">
+                        <h3 style="font-size:17px; font-weight:800; color:var(--text-primary); margin-bottom:16px;">
+                            <i class="fa-solid fa-book-open" style="color:var(--accent); margin-right:8px;"></i> Subject Mastery & Benchmark Gauges
+                        </h3>
+
+                        <div style="display:flex; flex-direction:column; gap:16px;" id="subjectMasteryContainer">
+                            <!-- Dynamic Subject Mastery Bars -->
+                        </div>
+                    </div>
+
+                    <!-- Grade Distribution Card -->
+                    <div class="glass-card">
+                        <h3 style="font-size:17px; font-weight:800; color:var(--text-primary); margin-bottom:16px;">
+                            <i class="fa-solid fa-chart-pie" style="color:var(--primary); margin-right:8px;"></i> Grade Distribution Breakdown
+                        </h3>
+
+                        <div style="display:flex; flex-direction:column; gap:12px;" id="gradeDistContainer">
+                            <!-- Dynamic Grade Distribution Cards -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Batch Audit Details Modal -->
+    <div class="hod-modal-overlay" id="batchAuditModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-chart-pie" style="color:var(--primary);"></i> Batch Audit Breakdown</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="batchAuditModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="hod-modal-body">
+                <div style="background:var(--bg-tertiary); padding:16px; border-radius:var(--border-radius-md); margin-bottom:18px;">
+                    <strong style="font-size:16px; color:var(--text-primary);" id="auditBatchName">BCA 3rd Semester (BCA-3A)</strong>
+                    <div style="font-size:12px; color:var(--primary); font-weight:700;" id="auditFacultyLead">Faculty Lead: Dr. Rajesh Kumar</div>
+                    <div style="font-size:11px; color:var(--text-tertiary);" id="auditStudentCount">52 Enrolled Students</div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
+                    <div style="padding:12px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm);">
+                        <span style="font-size:10px; color:var(--text-tertiary); text-transform:uppercase;">Overall Pass Rate</span>
+                        <strong style="display:block; font-size:16px; color:var(--success);" id="auditPassRate">96.2%</strong>
+                    </div>
+                    <div style="padding:12px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm);">
+                        <span style="font-size:10px; color:var(--text-tertiary); text-transform:uppercase;">Class Average Marks</span>
+                        <strong style="display:block; font-size:16px; color:var(--primary);" id="auditAvgMarks">88.5 / 100</strong>
+                    </div>
+                </div>
+                <div style="background:var(--bg-tertiary); padding:14px; border-radius:var(--border-radius-sm);">
+                    <strong style="font-size:12px; color:var(--text-secondary); text-transform:uppercase; display:block; margin-bottom:6px;">Faculty Audit Summary Notes</strong>
+                    <p style="font-size:13px; color:var(--text-primary); line-height:1.5;" id="auditSummaryNotes">
+                        High academic engagement observed across lab assignments and midterm examinations. Recommended for advanced elective certifications.
+                    </p>
+                </div>
+            </div>
+            <div class="hod-modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal="batchAuditModal">Close Audit</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Downloading Batch Audit Report PDF...');"><i class="fa-solid fa-download"></i> Download Audit PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-performance.js"></script>
+  </body>
+</html>>
+</html>
+
+
+
+
+
+
+
+
+
+
+

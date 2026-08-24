@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Forgot Username</title>
+    <meta name="description" content="Retrieve your UnifyEd ERP username. Enter your registered email ID, Student ID, and role.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="auth-page-body">
+
+    <!-- Auth Page Background Layer -->
+    <div class="auth-bg-glows">
+        <div class="glow-sphere g-1"></div>
+        <div class="glow-sphere g-2"></div>
+    </div>
+
+    <!-- Theme toggle floating header -->
+    <header class="auth-floating-header">
+        <a href="login.html" class="back-home-link">
+            <i class="fa-solid fa-arrow-left-long"></i> Back to Login
+        </a>
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card glassmorphism">
+            <!-- Brand Head -->
+            <div class="auth-brand">
+                <i class="fa-solid fa-user-lock auth-logo-icon"></i>
+                <h2>UnifyEd</h2>
+                <span class="auth-subtitle">RETRIEVE USERNAME</span>
+            </div>
+
+            <!-- Form -->
+            <form id="forgotUsernameForm" onsubmit="handleRetrieveSubmit(event)">
+                
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="recoveryEmail">Registered Email ID</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" id="recoveryEmail" class="form-input" placeholder="Enter registered email address" required>
+                    </div>
+                </div>
+
+                <!-- Student ID / Faculty ID -->
+                <div class="form-group">
+                    <label for="recoveryStudentId">Student ID / Employee ID</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-id-card input-icon"></i>
+                        <input type="text" id="recoveryStudentId" class="form-input" placeholder="e.g. UEMJ-2026-1024" required>
+                    </div>
+                </div>
+
+                <!-- Role Selection -->
+                <div class="form-group">
+                    <label for="recoveryRole">Select Role</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-circle-user input-icon"></i>
+                        <select id="recoveryRole" class="form-input select-input" required>
+                            <option value="" disabled selected>Select Role</option>
+                            <option value="student">Student</option>
+                            <option value="professor">Professor</option>
+                            <option value="hod">HOD</option>
+                            <option value="vc">VC</option>
+                            <option value="admin">Admin</option>
+                            <option value="fees-manager">Fees Manager</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary btn-full btn-large" id="retrieveSubmitBtn">
+                    <i class="fa-solid fa-magnifying-glass"></i> Retrieve Username
+                </button>
+
+                <!-- Feedback -->
+                <div id="retrieveFeedback" class="form-feedback"></div>
+            </form>
+
+            <div class="auth-divider">
+                <div class="line"></div>
+                <span>Need support?</span>
+                <div class="line"></div>
+            </div>
+
+            <!-- Redirect link -->
+            <div class="auth-redirect">
+                <p>Contact the UEM IT Helpdesk if you have lost access to your registered details.</p>
+                <a href="../index.html#contact" class="btn btn-secondary btn-full">
+                    <i class="fa-solid fa-envelope"></i> Contact IT Helpdesk
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS Helper for Theme & retrieval -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Theme Toggle Logic
+            const themeToggleBtn = document.getElementById("themeToggleBtn");
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+
+            themeToggleBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme");
+                const newTheme = activeTheme === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+            });
+        });
+
+        // Form Submit Simulation
+        function handleRetrieveSubmit(event) {
+            event.preventDefault();
+            const feedback = document.getElementById("retrieveFeedback");
+            const submitBtn = document.getElementById("retrieveSubmitBtn");
+
+            const email = document.getElementById("recoveryEmail").value;
+            const studentId = document.getElementById("recoveryStudentId").value;
+            const role = document.getElementById("recoveryRole").value;
+
+            if (!email || !studentId || !role) {
+                feedback.style.color = "#ef4444";
+                feedback.textContent = "Please fill in all recovery details.";
+                return;
+            }
+
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Searching database...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                feedback.style.color = "#10b981";
+                // Generate a mockup username based on credentials
+                const mockUsername = `${role}_uemj_${studentId.split('-').pop()}`.toLowerCase();
+                
+                feedback.innerHTML = `
+                    <div style="background-color: rgba(16, 185, 129, 0.15); border: 1px solid var(--primary); padding: 16px; border-radius: var(--border-radius-sm); margin-top: 15px; text-align: left;">
+                        <strong style="display:block; margin-bottom: 4px; color:#10b981;">User Profile Found!</strong>
+                        <span style="font-size: 13px; color: var(--text-secondary);">Your retrieved username is:</span>
+                        <code style="display: block; padding: 8px; background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; font-weight: 700; margin-top: 8px; color: var(--accent); font-family: monospace; font-size:14px; text-align:center;">${mockUsername}</code>
+                        <a href="login.html" class="btn btn-primary btn-full" style="margin-top: 15px; font-size: 13px; padding: 8px 12px; height: auto;">Back to Login</a>
+                    </div>
+                `;
+                submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Username Retrieved';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

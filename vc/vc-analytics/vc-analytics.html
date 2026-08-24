@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Institutional Data Analytics</title>
+    <meta name="description" content="Vice Chancellor Institutional Data Analytics - Platform Adoption, Research Output Trends, & Academic Performance Intelligence">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-analytics.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item active">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="analyticsSearchInput" placeholder="Search analytics metrics, platform adoption, or research grants...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- Analytics Hero Banner -->
+                <section class="analytics-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-chart-line"></i> INSTITUTIONAL DATA INTELLIGENCE
+                        </div>
+                        <h1>Institutional Analytics & Performance Intelligence</h1>
+                        <p>University-wide data metrics, digital portal adoption, research publication impact, and academic growth trends across all faculties.</p>
+                    </div>
+                </section>
+
+                <!-- KPI Cards Grid (4 Columns) -->
+                <section class="analytics-kpi-grid">
+                    <div class="analytics-kpi-card">
+                        <div class="analytics-kpi-top">
+                            <div>
+                                <div class="analytics-kpi-lbl">TOTAL PLATFORM USERS</div>
+                                <div class="analytics-kpi-val" style="color:var(--primary);">3,100 Users</div>
+                            </div>
+                            <div class="kpi-icon icon-purple">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change purple">
+                            <i class="fa-solid fa-circle-check"></i> Active Registered Users
+                        </div>
+                    </div>
+
+                    <div class="analytics-kpi-card">
+                        <div class="analytics-kpi-top">
+                            <div>
+                                <div class="analytics-kpi-lbl">PLATFORM ADOPTION</div>
+                                <div class="analytics-kpi-val" style="color:var(--info);">92.0%</div>
+                            </div>
+                            <div class="kpi-icon icon-cyan">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change info">
+                            <i class="fa-solid fa-arrow-trend-up"></i> Daily Active Usage
+                        </div>
+                    </div>
+
+                    <div class="analytics-kpi-card">
+                        <div class="analytics-kpi-top">
+                            <div>
+                                <div class="analytics-kpi-lbl">ACADEMIC PASS RATE</div>
+                                <div class="analytics-kpi-val" style="color:var(--success);">95.2%</div>
+                            </div>
+                            <div class="kpi-icon icon-emerald">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change success">
+                            <i class="fa-solid fa-award"></i> University Distinction
+                        </div>
+                    </div>
+
+                    <div class="analytics-kpi-card">
+                        <div class="analytics-kpi-top">
+                            <div>
+                                <div class="analytics-kpi-lbl">PLACEMENT RATIO</div>
+                                <div class="analytics-kpi-val" style="color:var(--warning);">85.0%</div>
+                            </div>
+                            <div class="kpi-icon icon-amber">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change warning">
+                            <i class="fa-solid fa-briefcase"></i> Corporate Drives
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics Modules Grid -->
+                <div class="analytics-grid-2">
+                    <!-- Module 1: ERP Platform Adoption Progress Meters -->
+                    <div class="analytics-glass-card">
+                        <div class="analytics-card-head">
+                            <h2><i class="fa-solid fa-laptop-code" style="color:var(--primary);"></i> Campus ERP Digital Adoption</h2>
+                        </div>
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Student Portal Engagement</span><span>94%</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:94%; background:var(--primary);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Faculty Attendance & Grading Submission</span><span>96%</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:96%; background:var(--success);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>HOD Approval Clearance Speed</span><span>91%</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:91%; background:var(--info);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Digital Library Usage & Archives</span><span>88%</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:88%; background:var(--warning);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 2: Research & Grant Distribution -->
+                    <div class="analytics-glass-card">
+                        <div class="analytics-card-head">
+                            <h2><i class="fa-solid fa-sack-dollar" style="color:var(--success);"></i> Research Funding & Impact Share</h2>
+                        </div>
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Computer Science Research Share</span><span>₹2.4 Cr (41%)</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:41%; background:var(--primary);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Mechanical & Robotics Grants</span><span>₹1.8 Cr (31%)</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:31%; background:var(--accent);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Electronics & VLSI Research</span><span>₹1.1 Cr (19%)</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:19%; background:var(--info);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Management & Commerce Grants</span><span>₹0.5 Cr (9%)</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:9%; background:var(--warning);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Header Live Search Filtering
+        const searchInput = document.getElementById("analyticsSearchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const bars = document.querySelectorAll(".analytics-bar-item");
+                bars.forEach(bar => {
+                    const text = bar.textContent.toLowerCase();
+                    bar.style.display = !query || text.includes(query) ? "" : "none";
+                });
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

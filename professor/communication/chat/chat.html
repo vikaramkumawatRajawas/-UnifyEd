@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Messenger Chat</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="chat.html" class="sidebar-item active">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content" style="padding-bottom:0;">
+                <div class="page-header" style="margin-bottom:15px;">
+                    <h1>Messenger Chat</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Communication • Messenger Chat</span>
+                </div>
+
+                <!-- Chat Application Container -->
+                <div class="chat-container-wrapper">
+                    <!-- Left Sidebar: Conversations & Channels -->
+                    <aside class="chat-sidebar">
+                        <div class="chat-sidebar-header">
+                            <div class="chat-sidebar-title">
+                                <h3><i class="fa-solid fa-comments" style="color:var(--primary);"></i> Messages</h3>
+                                <button class="new-chat-btn" id="startNewChatBtn" title="Start New Chat">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="chat-search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="searchChatContacts" placeholder="Search students, faculty, groups...">
+                            </div>
+                        </div>
+
+                        <div class="chat-filter-tabs">
+                            <button class="chat-filter-tab active" data-filter="all">All</button>
+                            <button class="chat-filter-tab" data-filter="direct">Direct</button>
+                            <button class="chat-filter-tab" data-filter="groups">Groups</button>
+                            <button class="chat-filter-tab" data-filter="unread">Unread</button>
+                        </div>
+
+                        <div class="chat-list" id="chatContactsList">
+                            <!-- Chat Item 1: Active -->
+                            <div class="chat-item active" data-chat-id="rahul_sharma" data-category="direct">
+                                <div class="avatar-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" alt="Rahul Sharma">
+                                    <span class="status-dot online"></span>
+                                </div>
+                                <div class="chat-item-info">
+                                    <div class="chat-item-top">
+                                        <span class="chat-item-name">Rahul Sharma</span>
+                                        <span class="chat-item-time">10:42 AM</span>
+                                    </div>
+                                    <div class="chat-item-bottom">
+                                        <span class="chat-item-preview">Great work Rahul! I'll review it...</span>
+                                        <span class="unread-badge">2</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chat Item 2 -->
+                            <div class="chat-item" data-chat-id="bca_3a_group" data-category="groups">
+                                <div class="avatar-wrapper">
+                                    <div class="avatar-icon" style="background:rgba(168, 85, 247, 0.2); color:var(--secondary);">
+                                        <i class="fa-solid fa-users"></i>
+                                    </div>
+                                    <span class="status-dot online"></span>
+                                </div>
+                                <div class="chat-item-info">
+                                    <div class="chat-item-top">
+                                        <span class="chat-item-name">BCA 3A Official Group</span>
+                                        <span class="chat-item-time">09:15 AM</span>
+                                    </div>
+                                    <div class="chat-item-bottom">
+                                        <span class="chat-item-preview">Prof. Vikram: Mid-term schedule uploaded.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chat Item 3 -->
+                            <div class="chat-item" data-chat-id="ananya_sen" data-category="direct">
+                                <div class="avatar-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150" alt="Dr. Ananya Sen">
+                                    <span class="status-dot offline"></span>
+                                </div>
+                                <div class="chat-item-info">
+                                    <div class="chat-item-top">
+                                        <span class="chat-item-name">Dr. Ananya Sen (HOD)</span>
+                                        <span class="chat-item-time">Yesterday</span>
+                                    </div>
+                                    <div class="chat-item-bottom">
+                                        <span class="chat-item-preview">Faculty meeting at 11 AM in Conference Room B.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chat Item 4 -->
+                            <div class="chat-item" data-chat-id="vikram_mehta" data-category="direct">
+                                <div class="avatar-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Prof. Vikram Mehta">
+                                    <span class="status-dot away"></span>
+                                </div>
+                                <div class="chat-item-info">
+                                    <div class="chat-item-top">
+                                        <span class="chat-item-name">Prof. Vikram Mehta</span>
+                                        <span class="chat-item-time">Aug 17</span>
+                                    </div>
+                                    <div class="chat-item-bottom">
+                                        <span class="chat-item-preview">Please share the lab experiment manuals.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chat Item 5 -->
+                            <div class="chat-item" data-chat-id="priya_verma" data-category="direct">
+                                <div class="avatar-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Priya Verma">
+                                    <span class="status-dot offline"></span>
+                                </div>
+                                <div class="chat-item-info">
+                                    <div class="chat-item-top">
+                                        <span class="chat-item-name">Priya Verma</span>
+                                        <span class="chat-item-time">Aug 16</span>
+                                    </div>
+                                    <div class="chat-item-bottom">
+                                        <span class="chat-item-preview">Thank you sir for approving my leave application!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Main Chat Conversation Window -->
+                    <main class="chat-main-area">
+                        <!-- Top Header -->
+                        <header class="chat-main-header">
+                            <div class="active-chat-info">
+                                <div class="avatar-wrapper" style="width:40px; height:40px;">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" id="activeChatAvatar" alt="Active Chat Avatar">
+                                    <span class="status-dot online" id="activeChatStatusDot"></span>
+                                </div>
+                                <div class="active-chat-details">
+                                    <h4 id="activeChatName">Rahul Sharma</h4>
+                                    <span id="activeChatRole"><i class="fa-solid fa-graduation-cap" style="color:var(--primary);"></i> Student Rep • BCA 3rd Sem</span>
+                                </div>
+                            </div>
+
+                            <div class="chat-header-actions">
+                                <button class="chat-action-btn" id="voiceCallBtn" title="Start Voice Call"><i class="fa-solid fa-phone"></i></button>
+                                <button class="chat-action-btn" id="videoCallBtn" title="Start Video Call"><i class="fa-solid fa-video"></i></button>
+                                <button class="chat-action-btn" id="searchInChatBtn" title="Search in Chat"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <button class="chat-action-btn" id="toggleDrawerBtn" title="Contact Details"><i class="fa-solid fa-circle-info"></i></button>
+                            </div>
+                        </header>
+
+                        <!-- In-Chat Search Bar Overlay -->
+                        <div class="in-chat-search-bar" id="inChatSearchBar" style="display:none; padding:10px 24px; background:var(--bg-tertiary); border-bottom:1px solid var(--border-color); align-items:center; gap:10px;">
+                            <i class="fa-solid fa-magnifying-glass" style="color:var(--text-tertiary);"></i>
+                            <input type="text" id="inChatSearchInput" placeholder="Search in this conversation..." style="flex:1; background:transparent; border:none; outline:none; color:var(--text-primary); font-size:13px;">
+                            <button id="closeInChatSearchBtn" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:14px;"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <!-- Messages Feed -->
+                        <div class="chat-messages-container" id="chatMessagesList">
+                            <div class="date-divider">
+                                <span>Today, August 19</span>
+                            </div>
+
+                            <!-- Message 1 -->
+                            <div class="message-row incoming">
+                                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" class="message-avatar">
+                                <div class="message-bubble">
+                                    <span class="message-sender-name">Rahul Sharma</span>
+                                    Good morning Dr. Rajesh Sir! Hope you are doing well.
+                                    <div class="message-meta">10:30 AM</div>
+                                </div>
+                            </div>
+
+                            <!-- Message 2 -->
+                            <div class="message-row outgoing">
+                                <div class="message-bubble">
+                                    Good morning Rahul! How is the web development project progress coming along with your team?
+                                    <div class="message-meta">10:35 AM <i class="fa-solid fa-check-double" style="color:#60a5fa;"></i></div>
+                                </div>
+                            </div>
+
+                            <!-- Message 3 -->
+                            <div class="message-row incoming">
+                                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" class="message-avatar">
+                                <div class="message-bubble">
+                                    <span class="message-sender-name">Rahul Sharma</span>
+                                    We have finalized the front-end UI components and updated all project documentation. Here is the draft PDF report for your review:
+                                    <div class="message-file-attachment">
+                                        <i class="fa-solid fa-file-pdf"></i>
+                                        <div class="file-attachment-info">
+                                            <strong>BCA_WebDev_Project_Report_v2.pdf</strong>
+                                            <span>2.4 MB • PDF Document</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-meta">10:40 AM</div>
+                                </div>
+                            </div>
+
+                            <!-- Message 4 -->
+                            <div class="message-row outgoing">
+                                <div class="message-bubble">
+                                    Great work Rahul! I'll review it and get back to you shortly during office hours.
+                                    <div class="message-meta">10:42 AM <i class="fa-solid fa-check-double" style="color:#60a5fa;"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Typing Indicator -->
+                        <div class="typing-indicator-wrapper" id="typingIndicator" style="display:none;">
+                            <div class="typing-dots">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                            <span id="typingUserName">Rahul Sharma is typing...</span>
+                        </div>
+
+                        <!-- Hidden File & Image Inputs -->
+                        <input type="file" id="fileAttachmentInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.zip" style="display:none;">
+                        <input type="file" id="imageAttachmentInput" accept="image/*" style="display:none;">
+
+                        <!-- Emoji Picker Popover -->
+                        <div class="emoji-picker-popover glassmorphism" id="emojiPickerPopover" style="display:none; position:absolute; bottom:70px; right:70px; padding:12px; border-radius:12px; z-index:100; grid-template-columns:repeat(6, 1fr); gap:8px; background:var(--bg-tertiary); border:1px solid var(--border-color); box-shadow:0 8px 24px rgba(0,0,0,0.3);">
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">👍</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">😊</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">🎉</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">🔥</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">❤️</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">🚀</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">💻</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">📚</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">🎓</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">✅</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">📁</span>
+                            <span class="emoji-item" style="cursor:pointer; font-size:20px; text-align:center;">✨</span>
+                        </div>
+
+                        <!-- Input Bar -->
+                        <div class="chat-input-area">
+                            <div class="chat-input-actions">
+                                <button class="chat-input-action-btn" id="attachFileBtn" title="Attach File"><i class="fa-solid fa-paperclip"></i></button>
+                                <button class="chat-input-action-btn" id="attachImageBtn" title="Attach Image"><i class="fa-solid fa-image"></i></button>
+                            </div>
+                            <div class="chat-input-box">
+                                <input type="text" class="chat-input-field" id="chatInputField" placeholder="Type a message or press '/' for commands..." autocomplete="off">
+                                <button class="chat-input-action-btn" id="emojiPickerBtn" title="Add Emoji"><i class="fa-regular fa-face-smile"></i></button>
+                            </div>
+                            <button class="send-msg-btn" id="sendMessageBtn" title="Send Message">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </main>
+
+                    <!-- Right Side Drawer: Details & Shared Files -->
+                    <aside class="chat-details-drawer" id="chatDetailsDrawer">
+                        <div class="drawer-profile">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" class="drawer-avatar" id="drawerAvatar">
+                            <h4 id="drawerName">Rahul Sharma</h4>
+                            <p id="drawerSub">Student Representative • BCA-3A</p>
+                            <span class="badge badge-success" style="margin-top:8px; display:inline-block; font-size:10px;">Roll: 2024-BCA-08</span>
+                        </div>
+
+                        <div class="drawer-section">
+                            <div class="drawer-section-title">Contact Info</div>
+                            <div style="font-size:13px; color:var(--text-secondary); display:flex; flex-direction:column; gap:8px;">
+                                <div><i class="fa-solid fa-envelope" style="width:18px; color:var(--primary);"></i> rahul.s@unifyed.edu</div>
+                                <div><i class="fa-solid fa-building-columns" style="width:18px; color:var(--secondary);"></i> Computer Applications</div>
+                                <div><i class="fa-solid fa-phone" style="width:18px; color:#10b981;"></i> +91 98765 43210</div>
+                            </div>
+                        </div>
+
+                        <div class="drawer-section">
+                            <div class="drawer-section-title">Shared Media & Files</div>
+                            <div class="drawer-media-grid">
+                                <div class="drawer-media-item"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=150" alt="Media"></div>
+                                <div class="drawer-media-item"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=150" alt="Media"></div>
+                                <div class="drawer-media-item"><img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=150" alt="Media"></div>
+                            </div>
+                        </div>
+
+                        <div class="drawer-section">
+                            <div class="drawer-section-title">Settings & Privacy</div>
+                            <div style="display:flex; flex-direction:column; gap:10px;">
+                                <label style="display:flex; align-items:center; justify-content:space-between; font-size:13px; color:var(--text-primary); cursor:pointer;">
+                                    <span>Mute Notifications</span>
+                                    <input type="checkbox" id="muteChatToggle" style="accent-color:var(--primary);">
+                                </label>
+                                <label style="display:flex; align-items:center; justify-content:space-between; font-size:13px; color:var(--text-primary); cursor:pointer;">
+                                    <span>Pin Conversation</span>
+                                    <input type="checkbox" id="pinChatToggle" checked style="accent-color:var(--primary);">
+                                </label>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Voice Call Modal -->
+    <div class="call-modal-overlay" id="audioCallModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(11,15,25,0.85); backdrop-filter:blur(16px); justify-content:center; align-items:center;">
+        <div class="call-card glassmorphism" style="width:360px; padding:35px 25px; text-align:center; position:relative; border:1px solid var(--border-glass);">
+            <div class="call-avatar-glow" style="width:110px; height:110px; border-radius:50%; margin:0 auto 20px auto; position:relative; padding:4px; background:linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow:0 0 30px var(--primary-glow);">
+                <img src="" id="audioCallAvatar" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+            </div>
+            <h3 id="audioCallName" style="font-size:20px; font-weight:700; color:var(--text-primary); margin-bottom:4px;">Rahul Sharma</h3>
+            <p id="audioCallStatus" style="font-size:13px; color:#10b981; margin-bottom:30px;"><i class="fa-solid fa-circle-pulse"></i> Voice Call Connected • <span id="audioCallTimer">00:05</span></p>
+
+            <div class="call-controls" style="display:flex; justify-content:center; gap:20px;">
+                <button class="call-control-btn" id="audioMuteBtn" style="width:50px; height:50px; border-radius:50%; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); cursor:pointer; font-size:18px;"><i class="fa-solid fa-microphone"></i></button>
+                <button class="call-control-btn" id="audioSpeakerBtn" style="width:50px; height:50px; border-radius:50%; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); cursor:pointer; font-size:18px;"><i class="fa-solid fa-volume-high"></i></button>
+                <button class="call-control-btn end-call" id="endAudioCallBtn" style="width:50px; height:50px; border-radius:50%; background:#ef4444; color:#fff; border:none; cursor:pointer; font-size:18px; box-shadow:0 4px 15px rgba(239,68,68,0.4);"><i class="fa-solid fa-phone-slash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Call Modal -->
+    <div class="call-modal-overlay" id="videoCallModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(11,15,25,0.92); backdrop-filter:blur(20px); justify-content:center; align-items:center;">
+        <div class="video-call-container" style="width:90%; max-width:900px; height:80vh; background:#000; border-radius:20px; overflow:hidden; position:relative; display:flex; flex-direction:column; border:1px solid var(--border-glass); box-shadow:0 20px 50px rgba(0,0,0,0.5);">
+            <!-- Main Recipient Feed -->
+            <div style="flex:1; position:relative; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1000" id="videoCallMainStream" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.9);">
+                <div style="position:absolute; top:20px; left:20px; background:rgba(0,0,0,0.6); padding:8px 16px; border-radius:30px; font-size:13px; color:#fff; display:flex; align-items:center; gap:8px; backdrop-filter:blur(8px);">
+                    <span style="width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+                    <strong id="videoCallRecipientName">Rahul Sharma</strong> • HD 1080p
+                </div>
+
+                <!-- Small Self Video Preview -->
+                <div style="position:absolute; bottom:20px; right:20px; width:180px; height:120px; border-radius:12px; overflow:hidden; border:2px solid rgba(255,255,255,0.2); box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" style="width:100%; height:100%; object-fit:cover;">
+                    <div style="position:absolute; bottom:6px; left:8px; font-size:10px; color:#fff; background:rgba(0,0,0,0.5); padding:1px 6px; border-radius:4px;">You</div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar Controls -->
+            <div style="height:75px; background:rgba(15,23,42,0.9); display:flex; justify-content:center; align-items:center; gap:20px; backdrop-filter:blur(10px);">
+                <button class="call-control-btn" id="videoMicBtn" style="width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.1); color:#fff; border:none; cursor:pointer; font-size:16px;"><i class="fa-solid fa-microphone"></i></button>
+                <button class="call-control-btn" id="videoCamBtn" style="width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.1); color:#fff; border:none; cursor:pointer; font-size:16px;"><i class="fa-solid fa-video"></i></button>
+                <button class="call-control-btn" id="videoScreenShareBtn" style="width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.1); color:#fff; border:none; cursor:pointer; font-size:16px;"><i class="fa-solid fa-desktop"></i></button>
+                <button class="call-control-btn end-call" id="endVideoCallBtn" style="width:50px; height:50px; border-radius:50%; background:#ef4444; color:#fff; border:none; cursor:pointer; font-size:18px; box-shadow:0 4px 15px rgba(239,68,68,0.4);"><i class="fa-solid fa-phone-slash"></i></button>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="chat.js?v=1786808057777"></script>
+</body>
+</html>

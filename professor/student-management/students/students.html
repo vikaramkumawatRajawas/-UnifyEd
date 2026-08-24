@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Students Registry</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="students.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="students.html" class="sidebar-item active">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header" style="margin-bottom: 20px;">
+                    <div class="breadcrumb-trail">
+                        <a href="../../dashboard/dashboard.html"><i class="fa-solid fa-house"></i> Home</a>
+                        <i class="fa-solid fa-chevron-right separator"></i>
+                        <a href="students.html">Student Management</a>
+                        <i class="fa-solid fa-chevron-right separator"></i>
+                        <span class="active">Students Registry</span>
+                    </div>
+                    <h1 style="font-size: 24px; font-weight: 800; margin: 0;">Students Registry</h1>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+             <!-- Add/Edit Student Form Panel -->
+             <div id="studentFormContainer" class="dashboard-card glassmorphism" style="display:none; margin-bottom:25px; border:1px solid var(--primary); padding:20px; height:auto;">
+                 <h4 style="margin:0 0 15px 0; font-size:14px; font-weight:800; color:var(--primary);" id="formTitleText">Add New Student / Mentee</h4>
+                 <input type="hidden" id="editOriginalId">
+                 <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-bottom:15px;">
+                     <div>
+                         <label style="font-size:10px; color:var(--text-secondary); display:block; margin-bottom:4px; font-weight:600;">Full Name</label>
+                         <input type="text" id="studName" class="form-input" style="height:32px; font-size:11px;" placeholder="e.g. Rahul Sen">
+                     </div>
+                     <div>
+                         <label style="font-size:10px; color:var(--text-secondary); display:block; margin-bottom:4px; font-weight:600;">Enrollment ID / Roll No</label>
+                         <input type="text" id="studEnroll" class="form-input" style="height:32px; font-size:11px;" placeholder="e.g. BCA23095">
+                     </div>
+                     <div>
+                         <label style="font-size:10px; color:var(--text-secondary); display:block; margin-bottom:4px; font-weight:600;">Course / Branch</label>
+                         <input type="text" id="studCourse" class="form-input" style="height:32px; font-size:11px;" value="BCA 2nd Year">
+                     </div>
+                     <div>
+                         <label style="font-size:10px; color:var(--text-secondary); display:block; margin-bottom:4px; font-weight:600;">CGPA</label>
+                         <input type="number" step="0.1" id="studCgpa" class="form-input" style="height:32px; font-size:11px;" value="8.0">
+                     </div>
+                     <div>
+                         <label style="font-size:10px; color:var(--text-secondary); display:block; margin-bottom:4px; font-weight:600;">Attendance %</label>
+                         <input type="text" id="studAtt" class="form-input" style="height:32px; font-size:11px;" value="85%">
+                     </div>
+                     <div>
+                         <label style="font-size:10px; color:var(--text-secondary); display:block; margin-bottom:4px; font-weight:600;">Mentorship Assignment</label>
+                         <select id="studIsMentee" class="form-input" style="height:32px; font-size:11px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                             <option value="yes">Yes (Assign as my Mentee)</option>
+                             <option value="no">No (Regular Class Student only)</option>
+                         </select>
+                     </div>
+                 </div>
+                 <div style="display:flex; justify-content:flex-end; gap:10px;">
+                     <button type="button" class="btn" onclick="toggleStudentForm(false)" style="font-size:11px; padding:6px 12px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); color:var(--text-secondary);">Cancel</button>
+                     <button type="button" class="btn btn-primary" id="saveStudentBtn" style="background-image:linear-gradient(135deg, var(--primary), var(--accent)); font-size:11px; padding:6px 16px;">Save Student</button>
+                 </div>
+             </div>
+
+             <!-- Statistics Panel -->
+             <div class="stats-row" style="margin-bottom:25px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px;">
+                 <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:15px; border:1px solid rgba(99, 102, 241, 0.1); border-radius:8px;">
+                     <i class="fa-solid fa-user-graduate" style="font-size:26px; color:var(--primary);"></i>
+                     <div>
+                         <h3 style="font-size:18px; font-weight:800; margin:0;" id="menteesCount">4</h3>
+                         <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">My Mentees</p>
+                     </div>
+                 </div>
+                 <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:15px; border:1px solid rgba(16, 185, 129, 0.1); border-radius:8px;">
+                     <i class="fa-solid fa-users" style="font-size:26px; color:#10b981;"></i>
+                     <div>
+                         <h3 style="font-size:18px; font-weight:800; margin:0;" id="allStudentsCount">8</h3>
+                         <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Total Class Students</p>
+                     </div>
+                 </div>
+                 <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:15px; border:1px solid rgba(239, 68, 68, 0.1); border-radius:8px;">
+                     <i class="fa-solid fa-triangle-exclamation" style="font-size:26px; color:#ef4444;"></i>
+                     <div>
+                         <h3 style="font-size:18px; font-weight:800; margin:0;">1</h3>
+                         <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Academic Alerts</p>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- Grid Layout: Mentees & All Students -->
+             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:25px; align-items:start;" class="students-container-grid">
+                 
+                 <!-- Column 1: Assigned Mentees -->
+                 <div class="dashboard-card glassmorphism" style="border:1px solid rgba(99, 102, 241, 0.15); height:auto; padding:22px;">
+                     <div style="border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
+                         <h3 style="font-size:14px; font-weight:800; color:var(--primary); margin:0;"><i class="fa-solid fa-id-card-clip"></i> My Mentees</h3>
+                         <button type="button" class="btn btn-primary" onclick="openAddForm()" style="background-image:linear-gradient(135deg, var(--primary), var(--accent)); font-size:10px; padding:4px 10px; border-radius:4px; font-weight:600; border:none; gap:4px;"><i class="fa-solid fa-user-plus"></i> Add Mentee</button>
+                     </div>
+                     <div style="display:flex; flex-direction:column; gap:12px;" id="menteesRosterList">
+                         <!-- Loaded dynamically -->
+                     </div>
+                 </div>
+
+                 <!-- Column 2: All Classroom Students -->
+                 <div class="dashboard-card glassmorphism" style="border:1px solid rgba(255, 255, 255, 0.03); height:auto; padding:22px;">
+                     <div style="border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:15px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                         <h3 style="font-size:14px; font-weight:800; color:var(--text-primary); margin:0;"><i class="fa-solid fa-users"></i> All Students Directory</h3>
+                         <input type="text" id="allStudSearch" class="form-input" style="height:28px; width:160px; font-size:10px; border-radius:4px;" placeholder="Search student name...">
+                     </div>
+                     <div style="display:flex; flex-direction:column; gap:12px;" id="allStudentsRosterList">
+                         <!-- Loaded dynamically -->
+                     </div>
+                 </div>
+
+             </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="students.js?v=1786808057748"></script>
+</body>
+</html>

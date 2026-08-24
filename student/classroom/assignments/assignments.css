@@ -1,0 +1,18 @@
+
+            .assignments-card {
+                padding: 30px;
+            }
+            .tab-btn {
+                transition: color 0.3s, border-bottom-color 0.3s;
+            }
+            .tab-btn:hover {
+                color: var(--primary) !important;
+            }
+            .assign-card-item {
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .assign-card-item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+        

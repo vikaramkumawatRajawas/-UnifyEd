@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Backup & Disaster Recovery Vault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-backup.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item active"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search backup archives, recovery points..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-box-archive"></i> DISASTER RECOVERY VAULT</span>
+                <h1>Database Backup & Disaster Recovery Vault 📦</h1>
+              </div>
+              <p>Configure automated cloud backups, trigger instant database snapshots, verify SHA-256 integrity, and manage point-in-time recovery points.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Total Vault Capacity</span>
+                  <strong class="val">24.8 GB Stored</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Recovery Points</span>
+                  <strong class="val" style="color:var(--primary);">14 Snapshots</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Cloud Sync Status</span>
+                  <strong class="val" style="color:var(--success);">🟢 Synced (AWS S3)</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnTakeSnapshot"><i class="fa-solid fa-bolt"></i> Take Instant Snapshot</button>
+              <button class="btn btn-secondary" id="btnSyncCloud"><i class="fa-solid fa-cloud-arrow-up"></i> Sync Cloud Vault</button>
+              <button class="btn btn-secondary" id="btnVerifyAudit"><i class="fa-solid fa-check-double"></i> Verify Checksums</button>
+            </div>
+          </div>
+
+          <!-- Recovery KPI Cards Grid (Equal 4 Columns) -->
+          <div class="kpi-grid" style="margin-bottom:28px;">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Vault Storage Used</span>
+                  <div class="kpi-val">24.8 GB</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-database"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-hard-drive"></i> 25% of 100 GB Vault Target</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:25%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Stored Snapshots</span>
+                  <div class="kpi-val">14 Full</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-box-archive"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-clock-rotate-left"></i> Daily Auto Retention (30 days)</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:70%; background:var(--info);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Backup Schedule SLA</span>
+                  <div class="kpi-val">02:00 AM</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-calendar-check"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-circle-check"></i> Next Schedule: Tonight</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--success);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">SHA-256 Checksum SLA</span>
+                  <div class="kpi-val">100% Valid</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-shield-check"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-check-double"></i> 0 Integrity Corruption Faults</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backup Operations Grid (2x2 Glass Cards) -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;">
+            <!-- Instant Snapshot Module -->
+            <div class="admin-glass-card backup-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-purple"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                  <h3>Instant Database Snapshot Trigger</h3>
+                  <span>Take a point-in-time state backup of live campus database</span>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:16px;">
+                <label class="form-label">Backup Target Scope</label>
+                <select class="form-input" id="snapshotScopeSelect">
+                  <option value="full">Full Campus Database Dump (.SQL.GZ)</option>
+                  <option value="users">User Accounts & Access Policies (.SQL.GZ)</option>
+                  <option value="fees">Financial Fee Ledgers & Receipts (.SQL.GZ)</option>
+                </select>
+              </div>
+              <div class="op-footer">
+                <span style="font-size:11px; color:var(--text-tertiary);"><i class="fa-solid fa-lock"></i> Encrypted AES-256 Storage</span>
+                <button class="btn btn-primary" id="btnCreateInstantBackup"><i class="fa-solid fa-camera"></i> Create Snapshot</button>
+              </div>
+            </div>
+
+            <!-- Automated Scheduler Config Card -->
+            <div class="admin-glass-card backup-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-emerald"><i class="fa-solid fa-calendar-days"></i></div>
+                <div>
+                  <h3>Automated Backup Cron Scheduler</h3>
+                  <span>Configure daily/weekly automated cloud vault schedules</span>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Execution Frequency</label>
+                  <select class="form-input" id="scheduleFreqSelect">
+                    <option value="daily">Daily at 02:00 AM UTC</option>
+                    <option value="weekly">Weekly (Sundays 03:00 AM)</option>
+                    <option value="monthly">Monthly (1st Day 04:00 AM)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Vault Retention Period</label>
+                  <select class="form-input" id="retentionPeriodSelect">
+                    <option value="30">30 Days Auto-Purge</option>
+                    <option value="90">90 Days Fiscal Quarter</option>
+                    <option value="365">365 Days Full Year</option>
+                  </select>
+                </div>
+              </div>
+              <div class="op-footer">
+                <span class="status-pill status-active"><span class="status-dot"></span> Cron Daemon Enabled</span>
+                <button class="btn btn-secondary" id="btnSaveSchedule"><i class="fa-solid fa-floppy-disk"></i> Save Schedule</button>
+              </div>
+            </div>
+
+            <!-- AWS S3 Cloud Storage Vault Card -->
+            <div class="admin-glass-card backup-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-cyan"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <div>
+                  <h3>AWS S3 Cloud Storage Vault Sync</h3>
+                  <span>Manage remote cloud bucket synchronization targets</span>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:14px;">
+                <label class="form-label">S3 Bucket Name & URI</label>
+                <input type="text" class="form-input" id="s3BucketInput" value="s3://unifyed-backup-vault-asia-south1" placeholder="s3://bucket-name">
+              </div>
+              <div class="op-footer">
+                <span style="font-size:11px; color:var(--text-tertiary);"><i class="fa-solid fa-server"></i> AWS Asia Pacific (Mumbai)</span>
+                <button class="btn btn-secondary" id="btnTestCloud"><i class="fa-solid fa-network-wired"></i> Test Connection</button>
+              </div>
+            </div>
+
+            <!-- Point-In-Time Disaster Restore Engine -->
+            <div class="admin-glass-card backup-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-amber"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+                <div>
+                  <h3>Point-In-Time Disaster Restore Engine</h3>
+                  <span>Rollback system state to a previous verified snapshot</span>
+                </div>
+              </div>
+              <p style="font-size:12px; color:var(--text-secondary); line-height:1.5; margin-bottom:16px;">Restoring a snapshot will overwrite current database state with selected historical backup. System enters maintenance mode during restore.</p>
+              <div class="op-footer">
+                <span style="font-size:11px; color:var(--warning); font-weight:700;"><i class="fa-solid fa-triangle-exclamation"></i> Requires Admin Approval</span>
+                <button class="btn btn-secondary" id="btnOpenRestoreModal"><i class="fa-solid fa-rotate-left"></i> Open Restore Wizard</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Available Recovery Snapshots Directory Table Card -->
+          <div class="admin-glass-card snapshots-table-card" style="margin-top:32px; padding:28px;">
+            <div class="card-header-bar" style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid var(--border-color);">
+              <div class="dir-title-group">
+                <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:10px;"><i class="fa-solid fa-vault" style="color:var(--primary);"></i> Available Recovery Snapshots Vault</h3>
+                <span class="live-status-chip"><span class="pulse-dot"></span> 14 Verified Snapshots</span>
+              </div>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="admin-table backup-table" id="snapshotsTable">
+                <thead>
+                  <tr>
+                    <th>Snapshot Title & Filename</th>
+                    <th>Backup Size & Type</th>
+                    <th>Vault Location</th>
+                    <th>Created Timestamp</th>
+                    <th>SHA-256 Checksum</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="snapshot-title-cell">
+                        <i class="fa-solid fa-box-archive" style="color:var(--primary);"></i>
+                        <div>
+                          <strong class="snap-name">Daily Automated Full System Snapshot</strong>
+                          <span class="snap-filename">unifyed_full_backup_2026_08_20.sql.gz</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="size-type-group">
+                        <span class="size-badge"><i class="fa-solid fa-hard-drive"></i> 1.42 GB</span>
+                        <span class="type-badge type-full"><i class="fa-solid fa-database"></i> Full DB</span>
+                      </div>
+                    </td>
+                    <td><span class="location-chip"><i class="fa-solid fa-cloud"></i> AWS S3 Vault</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Today, 02:00</span></td>
+                    <td><span class="checksum-tag"><i class="fa-solid fa-check-double"></i> 8a9f...c24e</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-dl-snap" title="Download Snapshot Archive"><i class="fa-solid fa-download"></i></button>
+                        <button class="act-btn btn-restore-snap" data-name="unifyed_full_backup_2026_08_20.sql.gz" title="Restore Point"><i class="fa-solid fa-arrow-rotate-left"></i> Restore</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="snapshot-title-cell">
+                        <i class="fa-solid fa-camera" style="color:var(--accent);"></i>
+                        <div>
+                          <strong class="snap-name">Pre-Migration Manual System Snapshot</strong>
+                          <span class="snap-filename">pre_migration_backup_2026_08_18.sql.gz</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="size-type-group">
+                        <span class="size-badge"><i class="fa-solid fa-hard-drive"></i> 1.38 GB</span>
+                        <span class="type-badge type-manual"><i class="fa-solid fa-hand"></i> Manual</span>
+                      </div>
+                    </td>
+                    <td><span class="location-chip"><i class="fa-solid fa-hard-drive"></i> Local + S3</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 2 days ago</span></td>
+                    <td><span class="checksum-tag"><i class="fa-solid fa-check-double"></i> e71b...89f4</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-dl-snap" title="Download Snapshot Archive"><i class="fa-solid fa-download"></i></button>
+                        <button class="act-btn btn-restore-snap" data-name="pre_migration_backup_2026_08_18.sql.gz" title="Restore Point"><i class="fa-solid fa-arrow-rotate-left"></i> Restore</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="snapshot-title-cell">
+                        <i class="fa-solid fa-vault" style="color:var(--success);"></i>
+                        <div>
+                          <strong class="snap-name">Weekly Vault Archive Snapshot</strong>
+                          <span class="snap-filename">weekly_archive_2026_w33.sql.gz</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="size-type-group">
+                        <span class="size-badge"><i class="fa-solid fa-hard-drive"></i> 1.35 GB</span>
+                        <span class="type-badge type-full"><i class="fa-solid fa-database"></i> Full DB</span>
+                      </div>
+                    </td>
+                    <td><span class="location-chip"><i class="fa-solid fa-cloud"></i> AWS Glacier</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 3 days ago</span></td>
+                    <td><span class="checksum-tag"><i class="fa-solid fa-check-double"></i> 3c4d...110a</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-dl-snap" title="Download Snapshot Archive"><i class="fa-solid fa-download"></i></button>
+                        <button class="act-btn btn-restore-snap" data-name="weekly_archive_2026_w33.sql.gz" title="Restore Point"><i class="fa-solid fa-arrow-rotate-left"></i> Restore</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="snapshot-title-cell">
+                        <i class="fa-solid fa-file-invoice-dollar" style="color:var(--warning);"></i>
+                        <div>
+                          <strong class="snap-name">Monthly Fiscal Fee Ledgers Snapshot</strong>
+                          <span class="snap-filename">fees_ledger_snapshot_2026_07.sql.gz</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="size-type-group">
+                        <span class="size-badge"><i class="fa-solid fa-hard-drive"></i> 420 MB</span>
+                        <span class="type-badge type-subset"><i class="fa-solid fa-filter"></i> Fees Subset</span>
+                      </div>
+                    </td>
+                    <td><span class="location-chip"><i class="fa-solid fa-cloud"></i> AWS S3 Vault</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Aug 1, 2026</span></td>
+                    <td><span class="checksum-tag"><i class="fa-solid fa-check-double"></i> 99ff...712b</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-dl-snap" title="Download Snapshot Archive"><i class="fa-solid fa-download"></i></button>
+                        <button class="act-btn btn-restore-snap" data-name="fees_ledger_snapshot_2026_07.sql.gz" title="Restore Point"><i class="fa-solid fa-arrow-rotate-left"></i> Restore</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Restore Confirmation Modal -->
+    <div class="modal-backdrop" id="restoreModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-triangle-exclamation" style="color:var(--warning);"></i> Confirm Disaster System Restore</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:13px; color:var(--text-secondary); line-height:1.5; margin-bottom:14px;">
+            Are you sure you want to restore the system state from snapshot: <strong id="restoreTargetFilename" style="color:var(--text-primary);">unifyed_full_backup_2026_08_20.sql.gz</strong>?
+          </p>
+          <div style="padding:12px; border-radius:8px; background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); font-size:12px; color:var(--danger); font-weight:700;">
+            <i class="fa-solid fa-triangle-exclamation"></i> Warning: Live active transactions recorded after this snapshot will be overwritten!
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+          <button type="button" class="btn btn-primary" id="btnConfirmRestore" style="background:var(--danger); border-color:var(--danger);"><i class="fa-solid fa-rotate-left"></i> Confirm System Restore</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-backup.js"></script>
+  </body>
+</html>

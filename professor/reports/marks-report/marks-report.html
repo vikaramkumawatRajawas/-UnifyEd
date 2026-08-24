@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Marks Reports</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="marks-report.css?v=1787050000000">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+                <a href="../../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+                <a href="../../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+                <a href="../../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+                <a href="../../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+                <a href="../../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+                <a href="../attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+                <a href="marks-report.html" class="sidebar-item active">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+                <a href="../assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+                <a href="../analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Academic Marks Reports & Broadsheet Analytics</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Reports • Marks Reports</span>
+                </div>
+
+                <!-- Session Control Banner -->
+                <div class="dashboard-card glassmorphism" style="padding: 22px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(99, 102, 241, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 20px; border: 1px solid rgba(99, 102, 241, 0.3);">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                        <div>
+                            <h3 id="activeClassMarksTitle" style="font-size: 17px; font-weight: 800; color: var(--text-primary); margin: 0;">DBMS (BCA Sem 3) Marks Analytics</h3>
+                            <span style="font-size: 12px; color: var(--text-secondary);">End-term scorecards, internal assessment broadsheet, & PDF exports</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                        <div class="form-group" style="margin: 0; min-width: 170px;">
+                            <select id="marksClassSelect" class="form-input" style="height: 38px; font-size: 12px; background: var(--bg-secondary);">
+                                <option value="bca" selected>DBMS (BCA Sem 3)</option>
+                                <option value="cse">Web Tech (CSE Sem 5)</option>
+                                <option value="ds">Data Structures (CSE Sem 3)</option>
+                            </select>
+                        </div>
+                        <button onclick="exportPdfMarksheet()" class="btn btn-secondary btn-sm" style="white-space:nowrap;">
+                            <i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i> Export PDF Marksheets
+                        </button>
+                        <button onclick="exportExcelBroadsheet()" class="btn btn-primary btn-sm" style="white-space:nowrap;">
+                            <i class="fa-solid fa-file-excel"></i> Export Broadsheet (Excel)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Telemetry KPI Overview Grid -->
+                <div class="marks-kpi-grid">
+                    <div class="marks-kpi-card">
+                        <div class="marks-kpi-icon primary">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="marks-kpi-info">
+                            <span class="marks-kpi-label">Class Average Score</span>
+                            <span class="marks-kpi-value" id="kpiClassAvgScore">78.5 / 100</span>
+                            <span class="marks-kpi-subtext text-success"><i class="fa-solid fa-arrow-trend-up"></i> B+ Grade Average</span>
+                        </div>
+                    </div>
+
+                    <div class="marks-kpi-card">
+                        <div class="marks-kpi-icon success">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="marks-kpi-info">
+                            <span class="marks-kpi-label">Highest Score</span>
+                            <span class="marks-kpi-value" id="kpiHighestScore">96 / 100</span>
+                            <span class="marks-kpi-subtext"><i class="fa-solid fa-star" style="color:#f59e0b;"></i> Ananya Deshmukh</span>
+                        </div>
+                    </div>
+
+                    <div class="marks-kpi-card">
+                        <div class="marks-kpi-icon warning">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="marks-kpi-info">
+                            <span class="marks-kpi-label">Pass Percentage</span>
+                            <span class="marks-kpi-value" id="kpiPassPct">94.2%</span>
+                            <span class="marks-kpi-subtext text-success"><i class="fa-solid fa-check-double"></i> 33 / 35 Passed</span>
+                        </div>
+                    </div>
+
+                    <div class="marks-kpi-card">
+                        <div class="marks-kpi-icon accent">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="marks-kpi-info">
+                            <span class="marks-kpi-label">Remedial Backlog Alert</span>
+                            <span class="marks-kpi-value" id="kpiBacklogCount">2</span>
+                            <span class="marks-kpi-subtext" style="color:#ef4444;"><i class="fa-solid fa-bell"></i> Support Needed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Layout Grid: Master Broadsheet Table & Sidebar -->
+                <div class="marks-report-layout-grid">
+                    
+                    <!-- Left Column: Search & Marks Broadsheet -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Search & Filter Chips Toolbar -->
+                        <div class="dashboard-card glassmorphism" style="padding: 18px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 240px;">
+                                    <i class="fa-solid fa-magnifying-glass" style="color: var(--text-tertiary);"></i>
+                                    <input type="text" id="marksSearchInput" placeholder="Search student name, roll number, or grade..." class="form-input" style="height: 36px; font-size: 12px;" autocomplete="off">
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                    <button class="chip-btn active" data-filter="all">All Students</button>
+                                    <button class="chip-btn" data-filter="top">Top Rankers (O/A+)</button>
+                                    <button class="chip-btn" data-filter="passed">Good Standing (A/B+)</button>
+                                    <button class="chip-btn" data-filter="backlog">Backlog Risk (F)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Master Marks Broadsheet Table Card -->
+                        <div class="marks-table-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+                                <h3 style="font-size:15px; font-weight:800; color:var(--text-primary); margin:0;">
+                                    <i class="fa-solid fa-file-signature" style="color:var(--primary); margin-right:6px;"></i> Student Marks Master Broadsheet
+                                </h3>
+                                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                                    <div style="display:flex; gap:4px; background:var(--bg-tertiary); padding:3px; border-radius:6px; border:1px solid var(--border-color); flex-shrink:0;">
+                                        <button id="marksViewTableBtn" onclick="switchMarksRosterView('table')" class="btn btn-secondary btn-sm active" style="height:28px; font-size:11px; padding:0 10px; white-space:nowrap;">
+                                            <i class="fa-solid fa-table-list"></i> Table
+                                        </button>
+                                        <button id="marksViewGridBtn" onclick="switchMarksRosterView('grid')" class="btn btn-secondary btn-sm" style="height:28px; font-size:11px; padding:0 10px; white-space:nowrap;">
+                                            <i class="fa-solid fa-grip-vertical"></i> Cards
+                                        </button>
+                                    </div>
+                                    <button onclick="sendBulkRemedialNotices()" class="btn btn-secondary btn-sm" style="color:#ef4444; font-size:11px; height:32px; white-space:nowrap; flex-shrink:0;">
+                                        <i class="fa-solid fa-paper-plane"></i> Send Remedial Alerts
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Table View Container -->
+                            <div id="marksTableView">
+                                <table class="marks-custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Student Details</th>
+                                            <th>Mid-Term (30)</th>
+                                            <th>End-Term (70)</th>
+                                            <th>Total (100)</th>
+                                            <th>Grade Badge</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="marksReportTableBody">
+                                        <!-- Loaded dynamically via marks-report.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Grid View Container -->
+                            <div id="marksGridView" class="marks-grid-container" style="display:none;">
+                                <!-- Loaded dynamically via marks-report.js -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Grade Distribution Sidebar & Rules -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Grade Distribution Card -->
+                        <div class="dashboard-card glassmorphism" style="padding: 22px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--text-primary);">
+                                <i class="fa-solid fa-chart-pie" style="color: var(--primary); margin-right: 6px;"></i> Grade Curve Distribution
+                            </h3>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 14px;">
+                                <div>
+                                    <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+                                        <span style="color:var(--text-secondary);">O Grade (Outstanding 90-100%)</span>
+                                        <strong style="color:#10b981;">8 Students</strong>
+                                    </div>
+                                    <div class="attendance-progress-track">
+                                        <div class="attendance-progress-fill high" style="width: 40%;"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+                                        <span style="color:var(--text-secondary);">A+ / A Grade (75-89%)</span>
+                                        <strong style="color:var(--primary);">18 Students</strong>
+                                    </div>
+                                    <div class="attendance-progress-track">
+                                        <div class="attendance-progress-fill high" style="width: 55%; background:var(--primary);"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+                                        <span style="color:var(--text-secondary);">B+ / B Grade (50-74%)</span>
+                                        <strong style="color:#f59e0b;">7 Students</strong>
+                                    </div>
+                                    <div class="attendance-progress-track">
+                                        <div class="attendance-progress-fill medium" style="width: 25%;"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+                                        <span style="color:var(--text-secondary);">F Grade (Backlog Risk <50%)</span>
+                                        <strong style="color:#ef4444;">2 Students</strong>
+                                    </div>
+                                    <div class="attendance-progress-track">
+                                        <div class="attendance-progress-fill low" style="width: 8%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- University Grading Criteria Reference Card -->
+                        <div class="dashboard-card glassmorphism" style="padding: 22px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">
+                                <i class="fa-solid fa-building-columns" style="color: var(--primary); margin-right: 6px;"></i> Grading Regulations
+                            </h3>
+                            <ul style="font-size: 12px; color: var(--text-secondary); line-height: 1.6; padding-left: 18px; margin: 0;">
+                                <li>Minimum <strong>50% passing aggregate</strong> in theory + internal assignments.</li>
+                                <li>Students scoring below <strong>40% in End-Term</strong> must register for Supplementary Exams.</li>
+                                <li>Remedial tutorial sessions are mandatory for F Grade students.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Modals Section -->
+                
+                <!-- Student Official Marksheet Modal -->
+                <div class="custom-modal-backdrop" id="studentMarksheetModal">
+                    <div class="custom-modal-card">
+                        <div class="modal-header">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-file-invoice" style="color: var(--primary);"></i> Student Official Marksheet Scorecard
+                            </h3>
+                            <button onclick="closeMarksheetModal()" class="modal-close-btn" title="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <strong id="modalMarksheetStudentName" style="font-size: 16px; color: var(--text-primary); display: block;">Student Name</strong>
+                                <span id="modalMarksheetStudentRoll" style="font-size: 12px; color: var(--text-tertiary);">Roll No & Class</span>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: center;">
+                                <div style="padding: 12px; background: var(--bg-tertiary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                    <span style="font-size: 10px; text-transform: uppercase; color: var(--text-tertiary); font-weight: 700;">Mid-Term (30)</span>
+                                    <strong id="modalMidTermVal" style="display: block; font-size: 18px; color: var(--text-primary);">28</strong>
+                                </div>
+                                <div style="padding: 12px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                                    <span style="font-size: 10px; text-transform: uppercase; color: #10b981; font-weight: 700;">End-Term (70)</span>
+                                    <strong id="modalEndTermVal" style="display: block; font-size: 18px; color: #10b981;">62</strong>
+                                </div>
+                                <div style="padding: 12px; background: rgba(99, 102, 241, 0.1); border-radius: 8px; border: 1px solid rgba(99, 102, 241, 0.3);">
+                                    <span style="font-size: 10px; text-transform: uppercase; color: var(--primary); font-weight: 700;">Total Score</span>
+                                    <strong id="modalTotalScoreVal" style="display: block; font-size: 18px; color: var(--primary);">90 / 100</strong>
+                                </div>
+                            </div>
+
+                            <div>
+                                <strong style="font-size: 13px; color: var(--text-primary); display: block; margin-bottom: 8px;">Detailed Evaluation Breakdown:</strong>
+                                <div id="modalMarksheetBreakdown" style="display: flex; flex-direction: column; gap: 8px;">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="closeMarksheetModal()" class="btn btn-secondary btn-sm">
+                                <i class="fa-solid fa-xmark"></i> Close Scorecard
+                            </button>
+                            <button type="button" onclick="printMarksheetPdf()" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-print"></i> Generate Official PDF Marksheet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Custom Content Block -->
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="marks-report.js?v=1787050000000"></script>
+</body>
+</html>

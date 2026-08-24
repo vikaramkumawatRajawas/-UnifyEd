@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - System Configuration & Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-settings.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item active"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search system settings, SMTP, API keys..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-gears"></i> SYSTEM GOVERNANCE</span>
+                <h1>Enterprise System Configuration & Control ⚙️</h1>
+              </div>
+              <p>Configure core institution metadata, SMTP mailer gateways, payment APIs, and portal maintenance mode controls.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Platform Core Engine</span>
+                  <strong class="val">UnifyEd v4.2 Pro</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">SMTP Mailer Gateway</span>
+                  <strong class="val" style="color:var(--success);">🟢 Online Relay</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Payment Gateway API</span>
+                  <strong class="val" style="color:var(--primary);">🟢 Razorpay Live</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnSaveAllSettings"><i class="fa-solid fa-floppy-disk"></i> Save Configurations</button>
+              <button class="btn btn-secondary" id="btnTestSmtp"><i class="fa-solid fa-paper-plane"></i> Test SMTP Mailer</button>
+            </div>
+          </div>
+
+          <!-- System Health KPI Grid (Equal 4 Columns) -->
+          <div class="kpi-grid" style="margin-bottom:28px;">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Core Engine Version</span>
+                  <div class="kpi-val">v4.2 Pro</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-code-branch"></i> Build 2026.08.20</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">SMTP Mail Relay</span>
+                  <div class="kpi-val">Online</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-envelope-circle-check"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-circle-check"></i> 99.9% Delivery SLA</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:99%; background:var(--success);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Payment API Gateway</span>
+                  <div class="kpi-val">Encrypted</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-credit-card"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-lock"></i> Razorpay & Paytm Active</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--info);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Maintenance Mode</span>
+                  <div class="kpi-val">Normal</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-power-off"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-globe"></i> Portal Publicly Active</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:0%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Configuration Cards Grid (2x2 Glass Cards) -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;">
+            <!-- General Institution Metadata Card -->
+            <div class="admin-glass-card setting-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-building-columns" style="color:var(--primary);"></i> General Institution Metadata</h3>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Institution Legal Name</label>
+                <input type="text" class="form-input" id="instNameInput" value="UnifyEd University & Technology Institute">
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                <div class="form-group">
+                  <label class="form-label">Official Campus Domain</label>
+                  <input type="text" class="form-input" id="instDomainInput" value="unifyed.edu">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Support Email</label>
+                  <input type="email" class="form-input" id="instEmailInput" value="support@unifyed.edu">
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:0;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">System Timezone</label>
+                  <select class="form-input" id="instTimezoneSelect">
+                    <option value="Asia/Kolkata">Asia/Kolkata (IST +5:30)</option>
+                    <option value="UTC">UTC Universal Time</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Base Currency</label>
+                  <select class="form-input" id="instCurrencySelect">
+                    <option value="INR">Indian Rupee (₹ INR)</option>
+                    <option value="USD">US Dollar ($ USD)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- SMTP Email Dispatcher Gateway Card -->
+            <div class="admin-glass-card setting-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-paper-plane" style="color:var(--accent);"></i> SMTP Email Dispatcher Gateway</h3>
+              </div>
+              <div style="display:grid; grid-template-columns:1.6fr 1fr; gap:14px;">
+                <div class="form-group">
+                  <label class="form-label">SMTP Server Host</label>
+                  <input type="text" class="form-input" id="smtpHostInput" value="smtp.sendgrid.net">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">SMTP Port</label>
+                  <input type="text" class="form-input" id="smtpPortInput" value="587">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Sender Email Address</label>
+                <input type="email" class="form-input" id="smtpSenderInput" value="no-reply@unifyed.edu">
+              </div>
+              <div class="setting-toggle-item" style="margin-bottom:0;">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Enforce TLS/SSL Email Encryption</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Secure outbound email notifications with TLS v1.3 encryption</p>
+                </div>
+                <label class="switch"><input type="checkbox" checked id="toggleSmtpTls"><span class="slider"></span></label>
+              </div>
+            </div>
+
+            <!-- Payment Gateway Integration Card -->
+            <div class="admin-glass-card setting-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-credit-card" style="color:var(--success);"></i> Payment Gateway API Integration</h3>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Razorpay Merchant API Key</label>
+                <input type="text" class="form-input" id="rzpKeyInput" value="rzp_live_89a3f76100ba">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Razorpay Secret Key</label>
+                <input type="password" class="form-input" id="rzpSecretInput" value="secret_live_xxxxxxxxxxxx">
+              </div>
+              <div class="setting-toggle-item" style="margin-bottom:0;">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Enable Live Gateway Mode</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Switch gateway from sandbox test mode to live production payments</p>
+                </div>
+                <label class="switch"><input type="checkbox" checked id="toggleLivePay"><span class="slider"></span></label>
+              </div>
+            </div>
+
+            <!-- Maintenance Mode & Emergency Notice Card -->
+            <div class="admin-glass-card setting-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-power-off" style="color:var(--danger);"></i> Maintenance Mode & Emergency Governance</h3>
+              </div>
+              <div class="setting-toggle-item" style="margin-bottom:16px;">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Enable System Maintenance Mode</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Lock student and faculty portals during major system upgrades</p>
+                </div>
+                <label class="switch"><input type="checkbox" id="toggleMaintMode"><span class="slider"></span></label>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Maintenance Notice Banner Message</label>
+                <input type="text" class="form-input" id="maintNoticeInput" value="System is undergoing scheduled maintenance. Services will resume shortly.">
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-settings.js"></script>
+  </body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Settings</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../academics/exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../academics/progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../services/fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../services/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../services/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../services/transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../services/library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="settings.html" class="sidebar-item active">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Settings</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Overview • Settings</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="settings-container" style="display:flex; flex-direction:column; gap:25px;">
+                <!-- System Configuration -->
+                <div class="settings-card glassmorphism" style="padding:30px; border-radius:12px; border:1px solid var(--border-color);">
+                    <h3 style="margin:0 0 5px 0; font-size:16px; font-weight:800; color:var(--accent);"><i class="fa-solid fa-sliders"></i> Portal Preference Configurations</h3>
+                    <p style="margin:0 0 20px 0; font-size:11px; color:var(--text-secondary);">Toggle feature visibility and toggle theme settings.</p>
+
+                    <div style="display:flex; flex-direction:column; gap:15px;">
+                        <!-- Toggle 1: Transport -->
+                        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:15px;">
+                            <div>
+                                <strong style="font-size:13px; color:var(--text-primary); display:block; margin-bottom:2px;">Bus Transport Subscription Link</strong>
+                                <p style="font-size:11px; color:var(--text-secondary); margin:0;">Enabling this adds the Transport routes and tracking widget to your navigation menu.</p>
+                            </div>
+                            <input type="checkbox" id="settingsTransportToggle" style="width:20px; height:20px; cursor:pointer;">
+                        </div>
+
+                        <!-- Toggle 2: Two Factor -->
+                        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:15px;">
+                            <div>
+                                <strong style="font-size:13px; color:var(--text-primary); display:block; margin-bottom:2px;">Login Verification Alerts</strong>
+                                <p style="font-size:11px; color:var(--text-secondary); margin:0;">Send instant email notifications to student account on every login session launch.</p>
+                            </div>
+                            <input type="checkbox" checked style="width:20px; height:20px; cursor:pointer;">
+                        </div>
+
+                        <!-- Toggle 3: Sound alerts -->
+                        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:5px;">
+                            <div>
+                                <strong style="font-size:13px; color:var(--text-primary); display:block; margin-bottom:2px;">Audible Notification Alerts</strong>
+                                <p style="font-size:11px; color:var(--text-secondary); margin:0;">Play soft notification bells on receiving messages inside ERP Messenger.</p>
+                            </div>
+                            <input type="checkbox" style="width:20px; height:20px; cursor:pointer;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Update Card -->
+                <div class="settings-card glassmorphism" style="padding:30px; border-radius:12px; border:1px solid var(--border-color);">
+                    <h3 style="margin:0 0 5px 0; font-size:16px; font-weight:800; color:var(--accent);"><i class="fa-solid fa-lock"></i> Update Account Password</h3>
+                    <p style="margin:0 0 20px 0; font-size:11px; color:var(--text-secondary);">Keep your ERP secure by regular security updates.</p>
+
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:20px;">
+                        <div>
+                            <label style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700; display:block; margin-bottom:5px;">Current Password</label>
+                            <input type="password" id="oldPasswordInput" class="form-input" style="height:38px; font-size:12px;">
+                        </div>
+                        <div>
+                            <label style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700; display:block; margin-bottom:5px;">New Password</label>
+                            <input type="password" id="newPasswordInput" class="form-input" style="height:38px; font-size:12px;">
+                        </div>
+                        <div>
+                            <label style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700; display:block; margin-bottom:5px;">Confirm New Password</label>
+                            <input type="password" id="confirmNewPasswordInput" class="form-input" style="height:38px; font-size:12px;">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="updatePasswordBtn" onclick="submitPasswordChange()" style="height:38px; font-weight:700; gap:8px;"><i class="fa-solid fa-key"></i> Update Security Credentials</button>
+                </div>
+
+                <!-- Local Storage & Performance Cache -->
+                <div class="settings-card glassmorphism" style="padding:30px; border-radius:12px; border:1px solid var(--border-color);">
+                    <h3 style="margin:0 0 5px 0; font-size:16px; font-weight:800; color:var(--accent);"><i class="fa-solid fa-database"></i> Database Cache & Portal Storage</h3>
+                    <p style="margin:0 0 20px 0; font-size:11px; color:var(--text-secondary);">Manage local browser cache stored on this device by the ERP system.</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; background:rgba(255,255,255,0.02); padding:15px; border-radius:8px; border:1px solid var(--border-color);">
+                        <div style="font-size:12px; color:var(--text-primary);">
+                            <span>Stored Size: <strong id="cacheSizeDisplay">0.00 KB</strong></span> • 
+                            <span>Registered Items: <strong id="cacheItemsCount">0</strong></span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" onclick="clearLocalStorageCache()" style="background:#ef4444; border-color:#ef4444; color:#fff; height:32px; font-size:11px;"><i class="fa-solid fa-trash-can"></i> Reset & Clear Local Storage Cache</button>
+                    </div>
+                </div>
+
+                <!-- Active Login Sessions -->
+                <div class="settings-card glassmorphism" style="padding:30px; border-radius:12px; border:1px solid var(--border-color);">
+                    <h3 style="margin:0 0 5px 0; font-size:16px; font-weight:800; color:var(--accent);"><i class="fa-solid fa-shield-halved"></i> Active Authorized Sessions</h3>
+                    <p style="margin:0 0 20px 0; font-size:11px; color:var(--text-secondary);">Manage active devices currently signed into this ERP account.</p>
+                    <div class="table-responsive">
+                        <table class="custom-table" style="font-size:12px; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Device / Browser</th>
+                                    <th>IP Address</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sessionLogsBody">
+                                <tr>
+                                    <td><strong>Windows Desktop • Google Chrome</strong></td>
+                                    <td><code>192.168.1.45</code></td>
+                                    <td>Jaipur, India</td>
+                                    <td><span class="badge badge-success">Active Now</span></td>
+                                    <td><button class="btn btn-secondary btn-sm" disabled style="height:26px; font-size:10px; padding:0 8px;">Current Device</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Samsung Galaxy S24 • Edge Mobile</strong></td>
+                                    <td><code>103.24.120.12</code></td>
+                                    <td>Delhi, India</td>
+                                    <td><span class="badge badge-secondary">2 hours ago</span></td>
+                                    <td><button class="btn btn-secondary btn-sm" onclick="revokeSession(this)" style="height:26px; font-size:10px; padding:0 8px; color:#ef4444; border-color:rgba(239, 68, 68, 0.2); background:none;">Revoke Session</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Diagnostic System metadata info -->
+                <div class="settings-card glassmorphism" style="padding:20px; border-radius:12px; border:1px dashed var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
+                    <div style="font-size:11px; color:var(--text-secondary);">
+                        <span>UnifyEd ERP System Version: <strong>v4.8.2-stable</strong></span> • 
+                        <span>Integrity Hash: <strong>SHA-E8B8F9A4</strong></span> • 
+                        <span>Server Connection: <strong>Secure Websockets (SSL)</strong></span>
+                    </div>
+                    <span class="badge badge-success" style="font-size:9px;">All Systems Operational</span>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="settings.js"></script>
+</body>
+</html>

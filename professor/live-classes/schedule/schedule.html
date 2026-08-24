@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Schedule Lecture</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="schedule.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="schedule.html" class="sidebar-item active">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Schedule Lecture</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Live Classes • Schedule Lecture</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+             <div style="display:grid; grid-template-columns: 340px 1fr; gap:25px; align-items:start;">
+                 <!-- Schedule Form Card -->
+                 <div class="dashboard-card glassmorphism" style="padding:22px; border:1px solid rgba(99, 102, 241, 0.15); box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.05); height:auto;">
+                     <h3 style="font-size:15px; font-weight:800; color:var(--primary); margin-bottom:15px;"><i class="fa-solid fa-calendar-plus"></i> Schedule Live Class</h3>
+                     
+                     <div style="display:flex; flex-direction:column; gap:12px;">
+                         <div>
+                             <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Lecture Topic</label>
+                             <input type="text" id="lectureTopic" class="form-input" style="height:36px; font-size:12px; border-radius:6px;" placeholder="e.g. DBMS Normalization (3NF & BCNF)">
+                         </div>
+                         <div>
+                             <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Target Course/Batch</label>
+                             <select id="lectureBatch" class="form-input" style="height:36px; font-size:12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                                 <option value="BCA-A">BCA Sem 3 (Sec A)</option>
+                                 <option value="BCA-B">BCA Sem 3 (Sec B)</option>
+                                 <option value="CSE-5">B.Tech CSE Sem 5</option>
+                             </select>
+                         </div>
+                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                             <div>
+                                 <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Date</label>
+                                 <input type="date" id="lectureDate" class="form-input" style="height:36px; font-size:11px; border-radius:6px;">
+                             </div>
+                             <div>
+                                 <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Start Time</label>
+                                 <input type="time" id="lectureTime" class="form-input" style="height:36px; font-size:11px; border-radius:6px;">
+                             </div>
+                         </div>
+                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                             <div>
+                                 <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Duration</label>
+                                 <select id="lectureDuration" class="form-input" style="height:36px; font-size:12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                                     <option value="45 Min">45 Min</option>
+                                     <option value="1 Hour">1 Hour</option>
+                                     <option value="1.5 Hours" selected>1.5 Hours</option>
+                                     <option value="2 Hours">2 Hours</option>
+                                 </select>
+                             </div>
+                             <div>
+                                 <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Platform</label>
+                                 <select id="lecturePlatform" class="form-input" style="height:36px; font-size:12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                                     <option value="UnifyEd Live">UnifyEd Live</option>
+                                     <option value="Google Meet">Google Meet</option>
+                                     <option value="Zoom Link">Zoom</option>
+                                 </select>
+                             </div>
+                         </div>
+                         <button type="button" class="btn btn-primary" id="scheduleBtn" style="background-image:linear-gradient(135deg, var(--primary), var(--accent)); padding:10px; border-radius:6px; font-weight:600; font-size:12px; gap:6px; margin-top:10px; justify-content:center;">
+                             <i class="fa-solid fa-calendar-plus"></i> Schedule Lecture
+                         </button>
+                     </div>
+                 </div>
+
+                 <!-- Upcoming Scheduled Lectures -->
+                 <div class="dashboard-card glassmorphism" style="border:1px solid rgba(255,255,255,0.03); height:auto; padding: 22px;">
+                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:15px;">
+                         <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text-primary);"><i class="fa-solid fa-list-check"></i> Upcoming Live Lectures</h3>
+                         <span style="font-size:11px; color:var(--text-tertiary);" id="lectureCountLabel">3 lectures scheduled</span>
+                     </div>
+
+                     <!-- Lectures List -->
+                     <div id="lecturesList" style="display:flex; flex-direction:column; gap:15px;">
+                         <!-- Dynamic Schedule items go here -->
+                     </div>
+                 </div>
+             </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="schedule.js?v=1786808057732"></script>
+</body>
+</html>

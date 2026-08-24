@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Master Timetable</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hod-timetable.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+  </head>
+  <body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item active"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search class, teacher, or subject..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content timetable-content">
+          <div class="page-header">
+            <h1>Master Timetable Operations 🗓️</h1>
+            <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Schedule Operations</span>
+          </div>
+
+          <div class="hod-hero-card timetable-hero">
+            <div class="hod-hero-info">
+              <h2>Keep every class in perfect rhythm.</h2>
+              <p>Coordinate teaching slots, room capacity, and faculty availability from one department-wide view.</p>
+            </div>
+            <div class="timetable-week">
+              <span>LIVE WEEK</span>
+              <strong>Jan 6 - Jan 12</strong>
+              <small>Autumn semester 2025-26</small>
+            </div>
+          </div>
+
+          <div class="kpi-grid timetable-kpis">
+            <div class="kpi-card"><div class="kpi-icon primary"><i class="fa-solid fa-chalkboard"></i></div><div><div class="kpi-val" id="kpiActiveClasses">18</div><div class="kpi-lbl">Active Classes</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon success"><i class="fa-solid fa-calendar-check"></i></div><div><div class="kpi-val" id="kpiTotalCourses">104</div><div class="kpi-lbl">Scheduled Courses</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon warning"><i class="fa-solid fa-door-open"></i></div><div><div class="kpi-val">22</div><div class="kpi-lbl">Rooms & Labs</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon accent"><i class="fa-solid fa-user-tie"></i></div><div><div class="kpi-val">32</div><div class="kpi-lbl">Active Faculty</div></div></div>
+          </div>
+
+          <!-- Action Buttons & Filters -->
+          <div class="timetable-filters" style="display:flex; gap:14px; margin-bottom:24px; flex-wrap:wrap; align-items:center;">
+            <select id="semFilterSelect" class="btn btn-secondary" style="height:38px; font-size:12px;">
+              <option value="all">All Semesters</option>
+              <option value="sem1">Semester 1</option>
+              <option value="sem3" selected>Semester 3 (CSE-3A)</option>
+              <option value="sem5">Semester 5 (CSE-5B)</option>
+              <option value="sem7">Semester 7 (CSE-7A)</option>
+            </select>
+            <button type="button" class="btn btn-primary" id="btnCreateSlot">
+              <i class="fas fa-plus"></i> Create New Slot
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnExportTimetable">
+              <i class="fas fa-file-excel"></i> Export Schedule CSV
+            </button>
+          </div>
+
+          <!-- Weekly Timetable -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#6366f1; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-calendar-days"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);" id="timetableHeading">Weekly Timetable - CSE Semester 3 (Class 3A)</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">Week of Jan 6 - Jan 12, 2026 • Live Department Schedule</p>
+              </div>
+            </div>
+            <div style="padding:15px; overflow-x:auto;">
+              <table class="hod-table">
+                <thead>
+                  <tr>
+                    <th style="width:110px;">Time Slot</th>
+                    <th style="text-align:center;">Monday</th>
+                    <th style="text-align:center;">Tuesday</th>
+                    <th style="text-align:center;">Wednesday</th>
+                    <th style="text-align:center;">Thursday</th>
+                    <th style="text-align:center;">Friday</th>
+                  </tr>
+                </thead>
+                <tbody id="timetableGridBody">
+                  <!-- Dynamic Timetable Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Class Schedule Summary -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#10b981; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-th-list"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">All Departmental Classes Summary</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">Quick access to class-wise timetable allocations</p>
+              </div>
+            </div>
+            <div style="padding:15px; overflow-x:auto;">
+              <table class="hod-table">
+                <thead>
+                  <tr>
+                    <th>Class Identifier</th>
+                    <th>Department</th>
+                    <th style="text-align:center;">Semester</th>
+                    <th style="text-align:center;">Courses Count</th>
+                    <th style="text-align:center;">Free Slots</th>
+                    <th style="text-align:center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="classSummaryBody">
+                  <!-- Dynamic Summary Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Create Slot Modal -->
+    <div class="hod-modal-overlay" id="createSlotModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-calendar-plus" style="color:var(--primary);"></i> Create New Timetable Slot</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="createSlotModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="createSlotForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputSlotSubject">Subject Name</label>
+                        <input type="text" id="inputSlotSubject" class="hod-form-input" placeholder="e.g. Data Structures" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputSlotTeacher">Assigned Instructor</label>
+                        <input type="text" id="inputSlotTeacher" class="hod-form-input" placeholder="e.g. Dr. Robert Hayes" required>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="hod-form-group">
+                            <label for="inputSlotRoom">Room / Lab</label>
+                            <input type="text" id="inputSlotRoom" class="hod-form-input" placeholder="e.g. Room A-101" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputSlotDay">Day</label>
+                            <select id="inputSlotDay" class="hod-form-select">
+                                <option value="mon">Monday</option>
+                                <option value="tue">Tuesday</option>
+                                <option value="wed">Wednesday</option>
+                                <option value="thu">Thursday</option>
+                                <option value="fri">Friday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputSlotTime">Time Period</label>
+                        <select id="inputSlotTime" class="hod-form-select">
+                            <option value="09:00-10:00">09:00 AM - 10:00 AM</option>
+                            <option value="10:15-11:15">10:15 AM - 11:15 AM</option>
+                            <option value="11:30-12:30">11:30 AM - 12:30 PM</option>
+                            <option value="14:30-15:30">02:30 PM - 03:30 PM</option>
+                            <option value="15:45-16:45">03:45 PM - 04:45 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="createSlotModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Assign Slot</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Slot Detail View Modal -->
+    <div class="hod-modal-overlay" id="slotDetailModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--info);"></i> Timetable Slot Detail</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="slotDetailModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="hod-modal-body">
+                <div style="background:var(--bg-tertiary); padding:16px; border-radius:var(--border-radius-md); margin-bottom:16px;">
+                    <strong style="font-size:18px; color:var(--text-primary);" id="detailSlotSubject">Data Structures</strong>
+                    <div style="font-size:13px; color:var(--primary); font-weight:700;" id="detailSlotTeacher">Instructor: Dr. Robert Hayes</div>
+                    <div style="font-size:11px; color:var(--text-tertiary);" id="detailSlotLocation">Room A-101 • 09:00 AM - 10:00 AM</div>
+                </div>
+            </div>
+            <div class="hod-modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal="slotDetailModal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Modifying slot details...');"><i class="fa-solid fa-pen-to-square"></i> Modify Slot</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-timetable.js"></script>
+  </body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Create ERP Account</title>
+    <meta name="description"
+        content="Register your student or faculty profile to get started with the UnifyEd ERP Portal. Access classes, grades, fees, and more.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="auth-page-body">
+
+    <!-- Auth Page Background Layer -->
+    <div class="auth-bg-glows">
+        <div class="glow-sphere g-1"></div>
+        <div class="glow-sphere g-2"></div>
+    </div>
+
+    <!-- Theme toggle floating header -->
+    <header class="auth-floating-header">
+        <a href="../index.html" class="back-home-link">
+            <i class="fa-solid fa-arrow-left-long"></i> Back to Home
+        </a>
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card register-card glassmorphism">
+            <!-- Brand Head -->
+            <div class="auth-brand">
+                <i class="fa-solid fa-user-plus auth-logo-icon"></i>
+                <h2>UnifyEd</h2>
+                <span class="auth-subtitle">CREATE NEW ACCOUNT</span>
+            </div>
+
+            <!-- Form -->
+            <form id="registerForm" onsubmit="handleRegisterSubmit(event)">
+
+                <!-- First Name & Last Name (Side by Side) -->
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="regFirstName">First Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-signature input-icon"></i>
+                            <input type="text" id="regFirstName" class="form-input" placeholder="First name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regLastName">Last Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-signature input-icon"></i>
+                            <input type="text" id="regLastName" class="form-input" placeholder="Last name" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Username & Email -->
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="regUsername">Username</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user-tag input-icon"></i>
+                            <input type="text" id="regUsername" class="form-input" placeholder="Choose username"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email ID</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope input-icon"></i>
+                            <input type="email" id="regEmail" class="form-input" placeholder="Enter email address"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student ID / Employee ID -->
+                <div class="form-group">
+                    <label for="regStudentId">Student ID / Employee ID</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-id-card input-icon"></i>
+                        <input type="text" id="regStudentId" class="form-input" placeholder="e.g. EMP-2026-1024"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Department & Role (Side by Side) -->
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="regDept">Select Department</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-building-user input-icon"></i>
+                            <select id="regDept" class="form-input select-input" required>
+                                <option value="" disabled selected>Choose Department</option>
+                                <option value="cs">Computer Science (CSE)</option>
+                                <option value="ece">Electronics & Comm. (ECE)</option>
+                                <option value="mech">Mechanical Eng.</option>
+                                <option value="civil">Civil Eng.</option>
+                                <option value="electrical">Electrical & Electronics</option>
+                                <option value="bba">BBA Department</option>
+                                <option value="bpt">Physiotherapy (BPT)</option>
+                                <option value="management">Management Studies</option>
+                                <option value="basic">Basic Sciences</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regRole">Select Role</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-circle-user input-icon"></i>
+                            <select id="regRole" class="form-input select-input" required>
+                                <option value="" disabled selected>Select Role</option>
+                                <option value="student">Student</option>
+                                <option value="professor">Professor</option>
+                                <option value="hod">HOD</option>
+                                <option value="vc">VC (Vice Chancellor)</option>
+                                <option value="admin">Admin</option>
+                                <option value="fees-manager">Fees Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password & Confirm Password (Side by Side) -->
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" id="regPassword" class="form-input" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" id="regConfirmPassword" class="form-input"
+                                placeholder="Retype password" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="auth-options">
+                    <label class="remember-me-checkbox">
+                        <input type="checkbox" id="regTerms" required>
+                        <span>I accept the UnifyEd ERP Terms of Service & Privacy Policy</span>
+                    </label>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary btn-full btn-large" id="registerSubmitBtn">
+                    <i class="fa-solid fa-user-plus"></i> Create ERP Account
+                </button>
+
+                <!-- Feedback -->
+                <div id="registerFeedback" class="form-feedback"></div>
+            </form>
+
+            <div class="auth-divider">
+                <div class="line"></div>
+                <span>Already registered?</span>
+                <div class="line"></div>
+            </div>
+
+            <!-- Redirect link -->
+            <div class="auth-redirect">
+                <a href="login.html" class="btn btn-secondary btn-full" id="goToLoginBtn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In Instead
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS Helper for Theme & Matching Passwords -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Theme Toggle Logic
+            const themeToggleBtn = document.getElementById("themeToggleBtn");
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+
+            themeToggleBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme");
+                const newTheme = activeTheme === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+            });
+        });
+
+        // Form Submit Validation & Simulation
+        function handleRegisterSubmit(event) {
+            event.preventDefault();
+            const feedback = document.getElementById("registerFeedback");
+            const submitBtn = document.getElementById("registerSubmitBtn");
+
+            const firstName = document.getElementById("regFirstName").value;
+            const lastName = document.getElementById("regLastName").value;
+            const username = document.getElementById("regUsername").value;
+            const email = document.getElementById("regEmail").value;
+            const studentId = document.getElementById("regStudentId").value;
+            const dept = document.getElementById("regDept").value;
+            const role = document.getElementById("regRole").value;
+            const password = document.getElementById("regPassword").value;
+            const confirmPassword = document.getElementById("regConfirmPassword").value;
+            const termsChecked = document.getElementById("regTerms").checked;
+
+            // Password confirmation check
+            if (password !== confirmPassword) {
+                feedback.style.color = "#ef4444";
+                feedback.textContent = "Passwords do not match. Please recheck.";
+                return;
+            }
+
+            // Min strength check
+            if (password.length < 6) {
+                feedback.style.color = "#ef4444";
+                feedback.textContent = "Password must be at least 6 characters long.";
+                return;
+            }
+
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Registering Account...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                feedback.style.color = "#10b981";
+                feedback.textContent = `Welcome ${firstName}! Your ERP account for the ${dept.toUpperCase()} department (${role.toUpperCase()}) has been successfully created. Redirecting to Login...`;
+
+                // Store registered user details so login can mock it
+                localStorage.setItem("registeredFirstName", firstName);
+                localStorage.setItem("registeredLastName", lastName);
+                localStorage.setItem("registeredUsername", username);
+                localStorage.setItem("registeredEmail", email);
+                localStorage.setItem("registeredStudentId", studentId);
+                localStorage.setItem("registeredRole", role);
+                localStorage.setItem("registeredDept", dept);
+
+                // Persist user record in registeredUsersDatabase array
+                let usersDb = [];
+                try {
+                    usersDb = JSON.parse(localStorage.getItem("registeredUsersDatabase")) || [];
+                } catch(e) {}
+
+                const userObj = {
+                    firstName,
+                    lastName,
+                    username,
+                    email,
+                    studentId,
+                    dept,
+                    role
+                };
+
+                const existingIdx = usersDb.findIndex(u => 
+                    (u.username && u.username.toLowerCase() === username.toLowerCase()) || 
+                    (u.email && u.email.toLowerCase() === email.toLowerCase())
+                );
+                
+                if (existingIdx >= 0) {
+                    usersDb[existingIdx] = userObj;
+                } else {
+                    usersDb.push(userObj);
+                }
+                localStorage.setItem("registeredUsersDatabase", JSON.stringify(usersDb));
+
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1800);
+            }, 1200);
+        }
+    </script>
+</body>
+
+</html>
+
+</html>

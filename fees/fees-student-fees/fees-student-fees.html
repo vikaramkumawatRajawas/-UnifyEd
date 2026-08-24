@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Student Fees Registry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../fees-sidebar.css">
+    <link rel="stylesheet" href="fees-student-fees.css">
+  </head>
+  <body class="fees-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Control</div>
+          <a href="../dashboard-fees/dashboard-fees.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Finance Dashboard</span></a>
+          <a href="../fees-student-fees/fees-student-fees.html" class="sidebar-item active"><i class="fa-solid fa-user-graduate"></i><span>Student Fees</span></a>
+          <a href="../fees-payments/fees-payments.html" class="sidebar-item"><i class="fa-solid fa-credit-card"></i><span>Payments Log</span></a>
+          <a href="../fees-receipts/fees-receipts.html" class="sidebar-item"><i class="fa-solid fa-receipt"></i><span>Receipts Registry</span></a>
+          <a href="../fees-defaulters/fees-defaulters.html" class="sidebar-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Defaulters Roster</span></a>
+
+          <div class="nav-section-title">Analytics & Reports</div>
+          <a href="../fees-revenue/fees-revenue.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Revenue Stream</span></a>
+          <a href="../fees-analytics/fees-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Financial Analytics</span></a>
+          <a href="../fees-reports/fees-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i><span>Audit Reports</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../fees-messages/fees-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+          <a href="../fees-send-reminders/fees-send-reminders.html" class="sidebar-item"><i class="fa-solid fa-paper-plane"></i><span>Send Reminders</span></a>
+          <a href="../fees-due-dates/fees-due-dates.html" class="sidebar-item"><i class="fa-solid fa-calendar-check"></i><span>Fee Schedules</span></a>
+
+          <div class="nav-section-title">Portal Settings</div>
+          <a href="../fees-profile/fees-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>Finance Profile</span></a>
+          <a href="../fees-settings/fees-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="feesSearchInput" placeholder="Search student name, roll ID, department..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../fees-notifications/fees-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">6</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrFeesManagerName">Vikram Kumawat</strong><span id="hdrFeesCode">FIN-EMP-108</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar-mini" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../fees-profile/fees-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../fees-settings/fees-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <div class="page-header" style="margin-bottom:24px;">
+            <h1 style="font-size:26px; font-weight:800; color:var(--text-primary);">Student Fees Registry 🎓</h1>
+            <span style="color:var(--text-secondary); font-size:13px;">UnifyEd • Finance Portal • Student Balance & Payment Status</span>
+          </div>
+
+          <!-- Hero Banner Card -->
+          <div class="fees-hero-card">
+            <div class="fees-hero-info">
+              <h2>Enrolled Student Fee Governance 💳</h2>
+              <p>Total Campus Allocation: <strong style="color:var(--text-primary);">₹18.2 Cr</strong> • Total Collected: <strong style="color:var(--success);">₹16.8 Cr (92.5%)</strong> • Pending Dues: <strong style="color:var(--warning);">₹1.4 Cr</strong></p>
+            </div>
+            <div style="display:flex; gap:12px;">
+              <button type="button" class="btn btn-primary" id="btnOpenRecordPayment"><i class="fa-solid fa-plus"></i> Record Payment</button>
+              <a href="../fees-reports/fees-reports.html" class="btn btn-secondary"><i class="fa-solid fa-file-export"></i> Export Ledger</a>
+            </div>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="filter-toolbar">
+            <div class="search-box-wrap">
+              <i class="fa-solid fa-magnifying-glass" style="color:var(--text-tertiary);"></i>
+              <input type="text" id="studentFeeSearchInput" placeholder="Filter student name or roll ID...">
+            </div>
+
+            <div class="filter-pills">
+              <button type="button" class="filter-pill-btn active" data-filter="all">All Statuses</button>
+              <button type="button" class="filter-pill-btn" data-filter="paid">Fully Paid</button>
+              <button type="button" class="filter-pill-btn" data-filter="partial">Partial Payment</button>
+              <button type="button" class="filter-pill-btn" data-filter="overdue">Overdue Defaulter</button>
+            </div>
+
+            <select class="form-select" id="deptFilterSelect" style="width:160px; padding:7px 14px; border-radius:20px;">
+              <option value="all">All Departments</option>
+              <option value="BCA">BCA</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="MBA">MBA</option>
+            </select>
+          </div>
+
+          <!-- Student Fee Roster Glass Card -->
+          <div class="fees-glass-card">
+            <div class="fees-card-header">
+              <h3><i class="fa-solid fa-user-graduate" style="color:var(--primary);"></i> Enrolled Students Fee Ledger Roster</h3>
+              <span style="font-size:12px; color:var(--text-tertiary); font-weight:600;"><i class="fa-solid fa-circle-info"></i> Showing 4 Enrolled Records</span>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="fees-table" id="studentFeeTable">
+                <thead>
+                  <tr>
+                    <th>Roll ID</th>
+                    <th>Student Info</th>
+                    <th>Department</th>
+                    <th>Total Allocated Fee</th>
+                    <th>Paid Amount</th>
+                    <th>Pending Dues</th>
+                    <th>Status</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-dept="CSE" data-status="paid">
+                    <td><span class="roll-badge"><i class="fa-solid fa-id-card"></i> STU-2026-101</span></td>
+                    <td>
+                      <div class="student-avatar-cell">
+                        <div class="avatar-badge">AC</div>
+                        <div>
+                          <strong style="color:var(--text-primary); font-size:14px;">Alex Carter</strong>
+                          <div style="color:var(--text-tertiary); font-size:11px;">alex.carter@unifyed.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><strong style="color:var(--text-secondary);">Computer Science (CSE)</strong><br><small style="color:var(--text-tertiary);">Semester 3</small></td>
+                    <td><span class="amt-total">₹75,000</span></td>
+                    <td><span class="amt-paid">₹75,000</span></td>
+                    <td><span class="amt-zero">₹0</span></td>
+                    <td><span class="status-pill status-paid"><span class="status-dot"></span> Fully Paid</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn act-btn-pay btn-action-pay" data-student="Alex Carter" data-roll="STU-2026-101" data-dues="0"><i class="fa-solid fa-credit-card"></i> Record Fee</button>
+                        <button class="act-btn act-btn-ledger btn-action-ledger" data-student="Alex Carter"><i class="fa-solid fa-file-invoice"></i> Ledger</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-dept="ECE" data-status="paid">
+                    <td><span class="roll-badge"><i class="fa-solid fa-id-card"></i> STU-2026-102</span></td>
+                    <td>
+                      <div class="student-avatar-cell">
+                        <div class="avatar-badge" style="background:linear-gradient(135deg, #10b981, #06b6d4);">RS</div>
+                        <div>
+                          <strong style="color:var(--text-primary); font-size:14px;">Rohit Sharma</strong>
+                          <div style="color:var(--text-tertiary); font-size:11px;">rohit.sharma@unifyed.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><strong style="color:var(--text-secondary);">Electronics (ECE)</strong><br><small style="color:var(--text-tertiary);">Semester 5</small></td>
+                    <td><span class="amt-total">₹65,000</span></td>
+                    <td><span class="amt-paid">₹65,000</span></td>
+                    <td><span class="amt-zero">₹0</span></td>
+                    <td><span class="status-pill status-paid"><span class="status-dot"></span> Fully Paid</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn act-btn-pay btn-action-pay" data-student="Rohit Sharma" data-roll="STU-2026-102" data-dues="0"><i class="fa-solid fa-credit-card"></i> Record Fee</button>
+                        <button class="act-btn act-btn-ledger btn-action-ledger" data-student="Rohit Sharma"><i class="fa-solid fa-file-invoice"></i> Ledger</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-dept="BCA" data-status="partial">
+                    <td><span class="roll-badge"><i class="fa-solid fa-id-card"></i> STU-2026-103</span></td>
+                    <td>
+                      <div class="student-avatar-cell">
+                        <div class="avatar-badge" style="background:linear-gradient(135deg, #f59e0b, #ef4444);">MJ</div>
+                        <div>
+                          <strong style="color:var(--text-primary); font-size:14px;">Michael Johnson</strong>
+                          <div style="color:var(--text-tertiary); font-size:11px;">michael.j@unifyed.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><strong style="color:var(--text-secondary);">Computer Apps (BCA)</strong><br><small style="color:var(--text-tertiary);">Semester 3</small></td>
+                    <td><span class="amt-total">₹50,000</span></td>
+                    <td><span class="amt-paid">₹30,000</span></td>
+                    <td><span class="amt-pending">₹20,000</span></td>
+                    <td><span class="status-pill status-partial"><span class="status-dot"></span> Partial Payment</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn act-btn-pay btn-action-pay" data-student="Michael Johnson" data-roll="STU-2026-103" data-dues="20000"><i class="fa-solid fa-credit-card"></i> Pay Dues</button>
+                        <button class="act-btn act-btn-ledger btn-action-ledger" data-student="Michael Johnson"><i class="fa-solid fa-file-invoice"></i> Ledger</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-dept="MBA" data-status="overdue">
+                    <td><span class="roll-badge"><i class="fa-solid fa-id-card"></i> STU-2026-104</span></td>
+                    <td>
+                      <div class="student-avatar-cell">
+                        <div class="avatar-badge" style="background:linear-gradient(135deg, #a855f7, #ec4899);">AV</div>
+                        <div>
+                          <strong style="color:var(--text-primary); font-size:14px;">Ananya Verma</strong>
+                          <div style="color:var(--text-tertiary); font-size:11px;">ananya.v@unifyed.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><strong style="color:var(--text-secondary);">Management (MBA)</strong><br><small style="color:var(--text-tertiary);">Semester 2</small></td>
+                    <td><span class="amt-total">₹85,000</span></td>
+                    <td><span class="amt-paid">₹35,000</span></td>
+                    <td><span class="amt-pending">₹50,000</span></td>
+                    <td><span class="status-pill status-overdue"><span class="status-dot"></span> Overdue Defaulter</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn act-btn-pay btn-action-pay" data-student="Ananya Verma" data-roll="STU-2026-104" data-dues="50000"><i class="fa-solid fa-credit-card"></i> Pay Dues</button>
+                        <button class="act-btn act-btn-alert btn-action-remind" data-student="Ananya Verma"><i class="fa-solid fa-bell"></i> Send Alert</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Record Payment Modal -->
+    <div class="modal-backdrop" id="recordPaymentModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-credit-card" style="color:var(--primary);"></i> Record Student Fee Payment</h3>
+          <button type="button" class="modal-close-btn" class="closeModalBtn">&times;</button>
+        </div>
+        <form id="recordPaymentForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Student Name</label>
+              <input type="text" class="form-input" id="recStudentName" placeholder="Select or type student name" required>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+              <div class="form-group">
+                <label class="form-label">Roll ID</label>
+                <input type="text" class="form-input" id="recRollId" placeholder="STU-2026-101" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Payment Mode</label>
+                <select class="form-select" id="recMode">
+                  <option value="UPI / Online">UPI / GPay / PhonePe</option>
+                  <option value="Net Banking">Net Banking</option>
+                  <option value="Debit / Credit Card">Debit / Credit Card</option>
+                  <option value="Cash / DD">Cash Deposit / DD</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Amount Paid (₹)</label>
+              <input type="number" class="form-input" id="recAmount" placeholder="e.g. 20000" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Save Payment Record</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Student Ledger Modal -->
+    <div class="modal-backdrop" id="studentLedgerModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-file-invoice" style="color:var(--primary);"></i> Detailed Fee Statement</h3>
+          <button type="button" class="modal-close-btn" class="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h4 id="ledgerStudentTitle" style="margin-bottom:12px; color:var(--text-primary);">Student Ledger Statement</h4>
+          <table class="fees-table" style="font-size:12px;">
+            <thead>
+              <tr><th>Fee Head</th><th>Allocated</th><th>Paid</th><th>Balance</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Tuition Fee</td><td>₹45,000</td><td>₹45,000</td><td>₹0</td></tr>
+              <tr><td>Hostel & Mess</td><td>₹20,000</td><td>₹10,000</td><td>₹10,000</td></tr>
+              <tr><td>Exam & Library</td><td>₹10,000</td><td>₹5,000</td><td>₹5,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary closeModalBtn">Close Statement</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="fees-student-fees.js"></script>
+  </body>
+</html>

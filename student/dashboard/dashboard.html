@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Student Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="dashboard.html" class="sidebar-item active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../academics/exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../academics/progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../services/fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../services/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../services/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../services/transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../services/library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Student Dashboard</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Overview • Student Dashboard</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="welcome-card glassmorphism" style="padding: 30px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; background-image: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.12)); position: relative; overflow: hidden; border: 1px solid var(--border-glass);">
+                <div class="welcome-text">
+                    <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 6px;">Welcome back, <span id="welcomeStudentName">Aditya Sharma</span>! 👋</h2>
+                    <p style="color: var(--text-secondary); font-size: 14px;">Here is what's happening with your academic progress today. You have <strong style="color: var(--primary);">3 pending tasks</strong> to complete.</p>
+                </div>
+                <div class="welcome-date" style="text-align: right;">
+                    <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 4px;">Today's Date</span>
+                    <strong style="font-size: 14px; color: var(--text-primary);" id="welcomeDateDisplay">Fall Sem 2026</strong>
+                </div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card glassmorphism">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div>
+                        <h3>9.42</h3>
+                        <p>Cumulative GPA</p>
+                    </div>
+                </div>
+                <div class="stat-card glassmorphism">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <div>
+                        <h3>89.5%</h3>
+                        <p>Total Attendance</p>
+                    </div>
+                </div>
+                <div class="stat-card glassmorphism">
+                    <i class="fa-solid fa-book-open"></i>
+                    <div>
+                        <h3>6</h3>
+                        <p>Active Courses</p>
+                    </div>
+                </div>
+                <div class="stat-card glassmorphism">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <div>
+                        <h3>3</h3>
+                        <p>Pending Tasks</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Panel -->
+            <div class="quick-actions-bar glassmorphism" style="padding: 15px 25px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; border: 1px solid var(--border-glass);">
+                <span style="font-size: 13px; font-weight: 700; color: var(--text-secondary);"><i class="fa-solid fa-bolt" style="color: var(--accent); margin-right: 5px;"></i> Quick Actions:</span>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../services/applications/applications.html" class="btn btn-secondary btn-sm" style="font-size: 12px; gap: 6px; padding: 6px 12px;"><i class="fa-solid fa-file-signature"></i> Apply Leave</a>
+                    <a href="../services/fees/fees.html" class="btn btn-secondary btn-sm" style="font-size: 12px; gap: 6px; padding: 6px 12px;"><i class="fa-solid fa-credit-card"></i> Pay Fees</a>
+                    <a href="../ai-assistant/ai-assistant.html" class="btn btn-secondary btn-sm" style="font-size: 12px; gap: 6px; padding: 6px 12px;"><i class="fa-solid fa-robot"></i> Ask AI Assistant</a>
+                    <a href="../classroom/stream/stream.html" class="btn btn-secondary btn-sm" style="font-size: 12px; gap: 6px; padding: 6px 12px;"><i class="fa-solid fa-graduation-cap"></i> My Classrooms</a>
+                    <a href="../profile/profile.html" class="btn btn-secondary btn-sm" style="font-size: 12px; gap: 6px; padding: 6px 12px;"><i class="fa-solid fa-id-card"></i> View ERP ID</a>
+                </div>
+            </div>
+
+            <!-- Daily Attendance Verification Widget -->
+            <div class="attendance-verify-widget glassmorphism" style="padding: 25px; margin-bottom: 30px; border: 1px solid var(--border-glass);">
+                <h3 style="font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--accent);">
+                    <i class="fa-solid fa-clipboard-user"></i> Daily Class Attendance Check-in
+                </h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">
+                    Enter the attendance validation code provided by your teacher in class to mark your daily attendance and earn credits.
+                </p>
+                
+                <form id="attendanceCodeForm" style="display: flex; gap: 12px; max-width: 500px; margin-bottom: 15px;">
+                    <input type="text" id="attendanceCodeInput" placeholder="Enter class code (e.g. NET77, DB99)" class="form-input" style="height: 42px; text-transform: uppercase;">
+                    <button type="submit" class="btn btn-primary" style="height: 42px; padding: 0 24px; white-space: nowrap;">Verify Code</button>
+                </form>
+                <div id="codeFeedbackMessage" style="font-size: 13px; font-weight: 500;"></div>
+
+                <!-- Dynamic Quiz Form -->
+                <div id="attendanceQuizBlock" style="display: none; margin-top: 25px; padding-top: 25px; border-top: 1px solid var(--border-color);">
+                    <h4 style="font-size: 16px; margin-bottom: 15px; color: var(--primary);">Class Validation Quiz</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: var(--border-radius-sm);">
+                        <div>
+                            <span style="font-size:11px; color:var(--text-secondary); display:block;">Student Name</span>
+                            <strong id="quizStudentName" style="font-size:14px;">Vikram Kumawat</strong>
+                        </div>
+                        <div>
+                            <span style="font-size:11px; color:var(--text-secondary); display:block;">Enrollment Number</span>
+                            <strong id="quizStudentId" style="font-size:14px;">STU202600145</strong>
+                        </div>
+                    </div>
+                    
+                    <form id="quizValidationForm">
+                        <div id="quizQuestionsContainer"></div>
+                        <button type="submit" class="btn btn-primary btn-full" style="margin-top: 15px;">Submit Answers & Mark Attendance</button>
+                    </form>
+                </div>
+
+                <!-- Quiz Results / Status Card -->
+                <div id="quizResultsBlock" style="display: none; margin-top: 25px; padding: 20px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: rgba(16, 185, 129, 0.05); animation: fadeIn 0.4s ease;">
+                    <h4 style="font-size: 15px; margin-bottom: 15px; color: #10b981; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-circle-check"></i> Attendance Receipt & Quiz Scorecard
+                    </h4>
+                    <div id="receiptContent" style="font-size: 13px; display:flex; flex-direction:column; gap:8px;"></div>
+                    <button class="btn btn-secondary btn-sm" id="closeReceiptBtn" style="margin-top:15px; height:32px;">Verify Another Code</button>
+                </div>
+
+                <!-- Past Check-ins Log -->
+                <div id="pastCheckinsContainer" style="margin-top: 25px; display: none; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                    <h5 style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;"><i class="fa-solid fa-clock-rotate-left"></i> Session Verification History</h5>
+                    <div class="table-responsive">
+                        <table class="custom-table" style="font-size: 12px; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>MCQ Verification</th>
+                                    <th>Short Answer</th>
+                                    <th>Credits</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pastCheckinsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2-by-2 Equal Width & Height Grid for all 6 Cards -->
+            <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 30px; align-items: stretch;">
+                
+                <!-- Card 1: Today's Schedule -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-calendar-day"></i> Today's Schedule</h3>
+                        
+                        <!-- Next Class Highlight Block -->
+                        <div class="next-class-alert" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.12)); padding: 15px; border-radius: var(--border-radius-sm); border: 1px solid var(--primary); margin-bottom: 20px;">
+                            <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 6px;">Next Class starts in 45 mins</span>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="font-size: 14px; color: var(--text-primary); display:block;">Embedded Systems & VLSI</strong>
+                                    <span style="font-size: 11px; color: var(--text-secondary);">Lab 3B • Dr. A. Verma</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <strong style="font-size: 13px; color: var(--primary); display:block;">11:30 AM</strong>
+                                    <span style="font-size: 10px; color: var(--text-tertiary);">1.5 Hrs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schedule List -->
+                        <div class="schedule-list">
+                            <div class="schedule-item" style="opacity: 0.5;">
+                                <span class="time" style="background: rgba(255,255,255,0.04); color: var(--text-tertiary);">09:00 AM</span>
+                                <div class="details">
+                                    <strong>Neural Networks (Completed)</strong>
+                                    <span>Room 403 • Prof. S. Sharma</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item" style="border-left: 3px solid var(--primary); padding-left: 10px;">
+                                <span class="time">11:30 AM</span>
+                                <div class="details">
+                                    <strong>Embedded Systems VLSI (Next Class)</strong>
+                                    <span>Lab 3B • Dr. A. Verma</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="time">02:00 PM</span>
+                                <div class="details">
+                                    <strong>Professional Communication</strong>
+                                    <span>Seminar Hall 1 • Ms. R. Joshi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Upcoming Exams & Vivas -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-file-invoice"></i> Upcoming Exams & Vivas</h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                                <div>
+                                    <strong style="display: block; font-size: 14px;">Theory Mid-Term Exams</strong>
+                                    <span style="font-size: 11px; color: var(--text-tertiary);">Pen-and-paper mode • All subjects</span>
+                                </div>
+                                <span class="badge badge-error" style="font-size: 11px; font-weight:700;">12 Days Left</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                                <div>
+                                    <strong style="display: block; font-size: 14px;">Embedded VLSI Lab Viva</strong>
+                                    <span style="font-size: 11px; color: var(--text-tertiary);">Internal Evaluation • Lab 3B</span>
+                                </div>
+                                <span class="badge badge-warning" style="font-size: 11px; font-weight:700;">19 Days Left</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="display: block; font-size: 14px;">Robotics Final Project Review</strong>
+                                    <span style="font-size: 11px; color: var(--text-tertiary);">HOD presentation • Seminar Hall</span>
+                                </div>
+                                <span class="badge badge-success" style="font-size: 11px; font-weight:700;">28 Days Left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Semester SGPA Performance -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-chart-bar"></i> Semester SGPA Performance</h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px;">
+                                    <span>Semester 1 (Autumn 2024)</span>
+                                    <strong>9.20 SGPA</strong>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 92%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px;">
+                                    <span>Semester 2 (Spring 2025)</span>
+                                    <strong>9.50 SGPA</strong>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 95%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px;">
+                                    <span>Semester 3 (Current Session)</span>
+                                    <strong>9.42 SGPA (Projected)</strong>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 94.2%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Library Books Issued -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-book"></i> Library Books Issued</h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                                <div>
+                                    <strong style="display: block; font-size: 14px;">Introduction to Algorithms</strong>
+                                    <span style="font-size: 11px; color: var(--text-tertiary);">Issued on: 15 July 2026</span>
+                                </div>
+                                <span class="badge badge-success" style="font-size: 11px;">Due: 12 Aug 2026</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                                <div>
+                                    <strong style="display: block; font-size: 14px;">Deep Learning (Ian Goodfellow)</strong>
+                                    <span style="font-size: 11px; color: var(--text-tertiary);">Issued on: 28 July 2026</span>
+                                </div>
+                                <span class="badge badge-warning" style="font-size: 11px;">Due: 18 Aug 2026</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="display: block; font-size: 14px;">Database System Concepts</strong>
+                                    <span style="font-size: 11px; color: var(--text-tertiary);">Issued on: 02 Aug 2026</span>
+                                </div>
+                                <span class="badge badge-success" style="font-size: 11px;">Due: 16 Aug 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Assigned Faculty Mentor -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-user-tie"></i> Assigned Faculty Mentor</h3>
+                        <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px; margin-bottom: 20px;">
+                            <i class="fa-solid fa-circle-user" style="font-size: 40px; color: var(--primary);"></i>
+                            <div>
+                                <strong style="display: block; font-size: 15px;">Dr. Rajesh Kumar</strong>
+                                <span style="font-size: 12px; color: var(--text-secondary); display: block; margin-top: 2px;">Senior Professor, CS Department</span>
+                                <span style="font-size: 11px; color: var(--text-tertiary); display: block;">Cabin 304 • rajesh.kumar@unifyed.edu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="../communication/communication.html" class="btn btn-secondary btn-sm btn-full" style="justify-content: center; margin-top: auto;">
+                        <i class="fa-solid fa-paper-plane"></i> Contact Mentor
+                    </a>
+                </div>
+
+                <!-- Card 6: Latest Announcements -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-bell"></i> Latest Announcements</h3>
+                        <div class="announcements-list">
+                            <div class="announce-item">
+                                <div class="bullet badge-warning"></div>
+                                <div class="content">
+                                    <strong>Mid-Term Registration Deadline</strong>
+                                    <p>Register your elective specializations before this Friday via ERP.</p>
+                                    <span class="date">3 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="announce-item">
+                                <div class="bullet badge-success"></div>
+                                <div class="content">
+                                    <strong>Placements: TCS Ninja Hiring Drive</strong>
+                                    <p>TCS drive registrations are open for 2026 batches.</p>
+                                    <span class="date">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Personal Task Planner -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-list-check"></i> Personal Task Planner</h3>
+                        <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                            <input type="text" id="todoTaskInput" placeholder="Add a quick task..." class="form-input" style="height: 34px; font-size: 12px; border-radius: 6px;">
+                            <button id="addTodoBtn" class="btn btn-primary" style="height: 34px; padding: 0 12px; font-size: 12px; white-space: nowrap; border-radius: 6px;"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <ul id="todoList" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; max-height: 180px; overflow-y: auto;">
+                            <!-- Dynamic checklist items -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 8: Overall Attendance Gauge -->
+                <div class="dashboard-card glassmorphism" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                        <h3><i class="fa-solid fa-chart-pie"></i> Real-Time Attendance Meter</h3>
+                        <div style="display: flex; align-items: center; justify-content: space-around; gap: 15px; margin-top: 10px;">
+                            <!-- Circular SVG Gauge -->
+                            <div style="position: relative; width: 100px; height: 100px; flex-shrink: 0;">
+                                <svg style="width: 100px; height: 100px; transform: rotate(-90deg);">
+                                    <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent"/>
+                                    <circle cx="50" cy="50" r="40" stroke="#10b981" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="37.68" fill="transparent" style="stroke-linecap: round; filter: drop-shadow(0 0 4px #10b981);"/>
+                                </svg>
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%;">
+                                    <strong style="font-size: 18px; color: var(--text-primary); display:block; line-height: 1;">85.0%</strong>
+                                    <span style="font-size: 8px; color: #10b981; font-weight:700; text-transform:uppercase; margin-top: 3px; display: block;">Safe Zone</span>
+                                </div>
+                            </div>
+                            <div style="font-size: 12px; display:flex; flex-direction:column; gap:6px;">
+                                <span><i class="fa-solid fa-circle" style="color: #10b981; font-size:8px; margin-right:5px;"></i> Classes: <strong>85 / 100</strong></span>
+                                <span><i class="fa-solid fa-circle" style="color: var(--accent); font-size:8px; margin-right:5px;"></i> Margin: <strong>+10</strong></span>
+                                <span><i class="fa-solid fa-circle" style="color: var(--text-tertiary); font-size:8px; margin-right:5px;"></i> Required: <strong>75%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="../academics/attendance/attendance.html" class="btn btn-secondary btn-sm btn-full" style="justify-content: center; margin-top: 15px;">
+                        <i class="fa-solid fa-arrow-right"></i> Detailed Report
+                    </a>
+                </div>
+
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="dashboard.js"></script>
+</body>
+</html>

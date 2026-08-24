@@ -1,0 +1,16 @@
+
+            .members-card {
+                padding: 30px;
+            }
+            .filter-btn {
+                transition: all 0.3s;
+            }
+            .member-item {
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .member-item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+                border-color: var(--primary) !important;
+            }
+        

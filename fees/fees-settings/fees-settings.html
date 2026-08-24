@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Fees Portal Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../fees-sidebar.css">
+    <link rel="stylesheet" href="fees-settings.css">
+  </head>
+  <body class="fees-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Control</div>
+          <a href="../dashboard-fees/dashboard-fees.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Finance Dashboard</span></a>
+          <a href="../fees-student-fees/fees-student-fees.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Student Fees</span></a>
+          <a href="../fees-payments/fees-payments.html" class="sidebar-item"><i class="fa-solid fa-credit-card"></i><span>Payments Log</span></a>
+          <a href="../fees-receipts/fees-receipts.html" class="sidebar-item"><i class="fa-solid fa-receipt"></i><span>Receipts Registry</span></a>
+          <a href="../fees-defaulters/fees-defaulters.html" class="sidebar-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Defaulters Roster</span></a>
+
+          <div class="nav-section-title">Analytics & Reports</div>
+          <a href="../fees-revenue/fees-revenue.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Revenue Stream</span></a>
+          <a href="../fees-analytics/fees-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Financial Analytics</span></a>
+          <a href="../fees-reports/fees-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i><span>Audit Reports</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../fees-messages/fees-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+          <a href="../fees-send-reminders/fees-send-reminders.html" class="sidebar-item"><i class="fa-solid fa-paper-plane"></i><span>Send Reminders</span></a>
+          <a href="../fees-due-dates/fees-due-dates.html" class="sidebar-item"><i class="fa-solid fa-calendar-check"></i><span>Fee Schedules</span></a>
+
+          <div class="nav-section-title">Portal Settings</div>
+          <a href="../fees-profile/fees-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>Finance Profile</span></a>
+          <a href="../fees-settings/fees-settings.html" class="sidebar-item active"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="feesSearchInput" placeholder="Search portal settings..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../fees-notifications/fees-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">6</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrFeesManagerName">Vikram Kumawat</strong><span id="hdrFeesCode">FIN-EMP-108</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar-mini" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../fees-profile/fees-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../fees-settings/fees-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <div class="page-header" style="margin-bottom:24px;">
+            <h1 style="font-size:26px; font-weight:800; color:var(--text-primary);">Fees Portal System Settings ⚙️</h1>
+            <span style="color:var(--text-secondary); font-size:13px;">UnifyEd • Finance Portal • System Preferences & Security Controls</span>
+          </div>
+
+          <!-- Hero Banner Card -->
+          <div class="fees-hero-card">
+            <div class="fees-hero-info">
+              <h2>Treasury Governance & Controls ⚙️</h2>
+              <p>Security Clearance: <strong style="color:var(--primary);">Level-4 Comptroller</strong> • Payment Gateway: <strong style="color:var(--success);">Razorpay / HDFC Active</strong> • Auto Enforcement: <strong style="color:var(--warning);">Enabled</strong></p>
+            </div>
+            <div style="display:flex; gap:12px;">
+              <button type="button" class="btn btn-primary" id="btnSaveSettings"><i class="fa-solid fa-floppy-disk"></i> Save Preferences</button>
+            </div>
+          </div>
+
+          <!-- Settings Grid -->
+          <div class="settings-grid">
+            <!-- Gateway & Invoicing -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-credit-card" style="color:var(--primary);"></i> Payment Gateway & Invoicing</h3>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Primary Payment Gateway Provider</label>
+                <select class="form-select" id="gatewayProviderSelect">
+                  <option value="Razorpay Enterprise">Razorpay Enterprise (UPI / Cards)</option>
+                  <option value="HDFC Merchant Stack">HDFC Bank Direct Gateway</option>
+                  <option value="PayTM Payment Hub">PayTM Campus Gateway</option>
+                </select>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Instant Tax Receipt Generation</strong>
+                  <p>Auto-generate signed PDF receipt upon payment verification</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked id="toggleAutoReceipt">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Online Transaction Timeout</strong>
+                  <p>Auto-expire incomplete payment gateway sessions after 15 mins</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked id="toggleTimeout">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Late Penalty Rules -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-gavel" style="color:var(--warning);"></i> Surcharge & Penalty Enforcement</h3>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Default Weekly Late Fine Penalty (₹)</label>
+                <input type="number" class="form-input" id="inputDefaultPenalty" value="500">
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Automatic Late Fine Application</strong>
+                  <p>Automatically attach late surcharge after grace period expires</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked id="toggleAutoPenalty">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Defaulter Portal Restriction</strong>
+                  <p>Block exam hall ticket downloads for defaulters (>60 days overdue)</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked id="toggleBlockDefaulters">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Security Controls -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-shield-halved" style="color:var(--success);"></i> Security & Authentication</h3>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Enforce 2-Factor Authentication (2FA)</strong>
+                  <p>Require OTP code for refund approvals & treasury modifications</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked id="toggle2FA">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>IP Whitelist Governance</strong>
+                  <p>Restrict treasury portal login strictly to campus IP ranges</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="toggleIPWhitelist">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Communication Channels -->
+            <div class="fees-glass-card">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-paper-plane" style="color:var(--accent);"></i> Automated Communications</h3>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>SMS Due Date Reminders</strong>
+                  <p>Dispatch automated SMS reminders 3 days before deadline</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked id="toggleSMSReminders">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>WhatsApp Notification Gateway</strong>
+                  <p>Send instant payment confirmation receipts via WhatsApp</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked id="toggleWhatsApp">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="fees-settings.js"></script>
+  </body>
+</html>

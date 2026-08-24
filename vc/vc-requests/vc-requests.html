@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Executive Senate Requests</title>
+    <meta name="description" content="Vice Chancellor Executive Senate Requests - HOD Infrastructure Grants, Faculty Sabbatical & Academic Approvals">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-requests.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item active">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="requestSearchInput" placeholder="Search senate requests, HOD equipment grants, or sabbatical approvals...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- Senate Requests Hero Banner -->
+                <section class="requests-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-file-signature"></i> SENATE & HOD GOVERNANCE
+                        </div>
+                        <h1>Executive Senate Requests Console</h1>
+                        <p>Review and decide on institutional requests submitted by Department Heads (HODs), Deans, and Academic Council members.</p>
+                    </div>
+                </section>
+
+                <!-- KPI Cards Grid (4 Columns) -->
+                <section class="requests-kpi-grid">
+                    <div class="requests-kpi-card">
+                        <div class="requests-kpi-top">
+                            <div>
+                                <div class="requests-kpi-lbl">PENDING REQUESTS</div>
+                                <div class="requests-kpi-val" style="color:var(--primary);">18 Pending</div>
+                            </div>
+                            <div class="kpi-icon icon-purple">
+                                <i class="fa-solid fa-inbox"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change purple">
+                            <i class="fa-solid fa-clock"></i> Senate Review Queue
+                        </div>
+                    </div>
+
+                    <div class="requests-kpi-card">
+                        <div class="requests-kpi-top">
+                            <div>
+                                <div class="requests-kpi-lbl">APPROVED THIS MONTH</div>
+                                <div class="requests-kpi-val" style="color:var(--secondary);">42 Cleared</div>
+                            </div>
+                            <div class="kpi-icon icon-cyan">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change info">
+                            <i class="fa-solid fa-check"></i> High Resolution Rate
+                        </div>
+                    </div>
+
+                    <div class="requests-kpi-card">
+                        <div class="requests-kpi-top">
+                            <div>
+                                <div class="requests-kpi-lbl">TOTAL PROCESSED YTD</div>
+                                <div class="requests-kpi-val" style="color:var(--success);">156 Total</div>
+                            </div>
+                            <div class="kpi-icon icon-emerald">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change success">
+                            <i class="fa-solid fa-arrow-trend-up"></i> Academic Session 2025-26
+                        </div>
+                    </div>
+
+                    <div class="requests-kpi-card">
+                        <div class="requests-kpi-top">
+                            <div>
+                                <div class="requests-kpi-lbl">AVG RESPONSE TIME</div>
+                                <div class="requests-kpi-val" style="color:var(--warning);">2.0 Days</div>
+                            </div>
+                            <div class="kpi-icon icon-amber">
+                                <i class="fa-solid fa-stopwatch"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change warning">
+                            <i class="fa-solid fa-bolt"></i> Fast Executive Turnaround
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pending Senate Requests Section -->
+                <section class="requests-section">
+                    <div class="requests-section-head">
+                        <i class="fa-solid fa-inbox" style="color:var(--primary); font-size:20px;"></i>
+                        <h2>Pending Senate & HOD Requests</h2>
+                    </div>
+
+                    <div id="pendingRequestsList">
+                        <div class="request-card-item">
+                            <div class="req-info-main">
+                                <div class="req-title">
+                                    <span>HOD: Department AI Server Cluster Upgrade</span>
+                                    <span class="status-pill pill-warning"><i class="fa-solid fa-clock"></i> Pending Senate</span>
+                                </div>
+                                <div class="req-details-meta">
+                                    <span><i class="fa-solid fa-user-tie" style="color:var(--primary);"></i> Submitted by: Dr. Ananya Sharma (CSE HOD)</span>
+                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Jan 10, 2026</span>
+                                    <span><i class="fa-solid fa-indian-rupee-sign" style="color:var(--warning);"></i> Budget Required: ₹4,50,000</span>
+                                </div>
+                            </div>
+                            <div class="req-actions-btns">
+                                <button class="btn-req-approve" onclick="handleRequestAction(this, 'Approved AI Server Cluster Grant')">
+                                    <i class="fa-solid fa-check"></i> Approve
+                                </button>
+                                <button class="btn-req-reject" onclick="handleRequestAction(this, 'Declined Senate Request')">
+                                    <i class="fa-solid fa-xmark"></i> Decline
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="request-card-item" style="border-left-color: var(--primary);">
+                            <div class="req-info-main">
+                                <div class="req-title">
+                                    <span>Faculty: Post-Doctoral Sabbatical Fellowship</span>
+                                    <span class="status-pill pill-warning"><i class="fa-solid fa-clock"></i> Pending Senate</span>
+                                </div>
+                                <div class="req-details-meta">
+                                    <span><i class="fa-solid fa-chalkboard-user" style="color:var(--primary);"></i> Submitted by: Prof. Rajesh Gupta (Mech Dept)</span>
+                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Jan 08, 2026</span>
+                                    <span><i class="fa-solid fa-plane" style="color:var(--success);"></i> Duration: 6 Months International Fellowship</span>
+                                </div>
+                            </div>
+                            <div class="req-actions-btns">
+                                <button class="btn-req-approve" onclick="handleRequestAction(this, 'Approved Sabbatical Leave')">
+                                    <i class="fa-solid fa-check"></i> Approve
+                                </button>
+                                <button class="btn-req-reject" onclick="handleRequestAction(this, 'Declined Senate Request')">
+                                    <i class="fa-solid fa-xmark"></i> Decline
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toastContainer");
+            if (!container) return;
+            const toast = document.createElement("div");
+            toast.className = `toast-alert ${type}`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateX(50px)";
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function handleRequestAction(btn, msg) {
+            const card = btn.closest(".request-card-item");
+            if (card) {
+                card.style.opacity = "0.5";
+                card.style.pointerEvents = "none";
+                setTimeout(() => card.remove(), 400);
+                showToast(msg, "success");
+            }
+        }
+
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Header Live Search Filtering
+        const searchInput = document.getElementById("requestSearchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const reqCards = document.querySelectorAll(".request-card-item");
+                reqCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = !query || text.includes(query) ? "" : "none";
+                });
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

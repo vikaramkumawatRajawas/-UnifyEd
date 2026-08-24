@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Role Access & Governance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-roles.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item active"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search system roles, privileges..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-user-shield"></i> ACCESS CONTROL MATRIX</span>
+                <h1>Role Access & Matrix Governance 🛡️</h1>
+              </div>
+              <p>Configure platform roles, define granular module permissions, security clearances, and enforcement policies.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Configured Roles</span>
+                  <strong class="val">5 Core Roles</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Permission Nodes</span>
+                  <strong class="val" style="color:var(--primary);">48 Active</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Enforcement SLA</span>
+                  <strong class="val" style="color:var(--success);">100% Policy</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnCreateRole"><i class="fa-solid fa-plus"></i> Create Custom Role</button>
+              <button class="btn btn-secondary" id="btnResetMatrix"><i class="fa-solid fa-rotate-left"></i> Reset Matrix</button>
+            </div>
+          </div>
+
+          <!-- Roles Grid (5 Core Executive Roles) -->
+          <div class="roles-cards-grid" style="margin-bottom:28px;">
+            <!-- Master Admin Card -->
+            <div class="admin-glass-card role-card role-card-admin">
+              <div class="role-card-top">
+                <div class="role-icon-box icon-cyan"><i class="fa-solid fa-shield-halved"></i></div>
+                <span class="users-count-chip">12 Admins</span>
+              </div>
+              <h3>Master Administrator</h3>
+              <p>Unrestricted root access to security policies, database backups, audit logs, and user identity management.</p>
+              <div class="role-card-bottom">
+                <span class="role-tier-badge tier-root"><i class="fa-solid fa-key"></i> Root Privilege</span>
+                <button class="act-btn btn-edit-role" data-role="Master Administrator"><i class="fa-solid fa-sliders"></i> Privileges</button>
+              </div>
+            </div>
+
+            <!-- Head of Department (HOD) Card -->
+            <div class="admin-glass-card role-card role-card-hod">
+              <div class="role-card-top">
+                <div class="role-icon-box icon-amber"><i class="fa-solid fa-user-tie"></i></div>
+                <span class="users-count-chip">8 HODs</span>
+              </div>
+              <h3>Head of Department</h3>
+              <p>Oversight over departmental faculty rosters, course curriculums, grade approvals, and student performance metrics.</p>
+              <div class="role-card-bottom">
+                <span class="role-tier-badge tier-executive"><i class="fa-solid fa-building-user"></i> Dept Executive</span>
+                <button class="act-btn btn-edit-role" data-role="Head of Department"><i class="fa-solid fa-sliders"></i> Privileges</button>
+              </div>
+            </div>
+
+            <!-- Professor / Faculty Card -->
+            <div class="admin-glass-card role-card role-card-prof">
+              <div class="role-card-top">
+                <div class="role-icon-box icon-purple"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <span class="users-count-chip">180 Faculty</span>
+              </div>
+              <h3>Professor & Faculty</h3>
+              <p>Access to course assignment publishing, student attendance tracking, exam grading, and classroom communications.</p>
+              <div class="role-card-bottom">
+                <span class="role-tier-badge tier-academic"><i class="fa-solid fa-book-open-reader"></i> Academic Tier</span>
+                <button class="act-btn btn-edit-role" data-role="Professor & Faculty"><i class="fa-solid fa-sliders"></i> Privileges</button>
+              </div>
+            </div>
+
+            <!-- Fees Manager Card -->
+            <div class="admin-glass-card role-card role-card-finance">
+              <div class="role-card-top">
+                <div class="role-icon-box icon-emerald"><i class="fa-solid fa-credit-card"></i></div>
+                <span class="users-count-chip">6 Officers</span>
+              </div>
+              <h3>Fees & Treasury Manager</h3>
+              <p>Access restricted to student fee ledgers, payment gateway transactions, defaulters rosters, and financial tax receipts.</p>
+              <div class="role-card-bottom">
+                <span class="role-tier-badge tier-finance"><i class="fa-solid fa-vault"></i> Finance SLA</span>
+                <button class="act-btn btn-edit-role" data-role="Fees Manager"><i class="fa-solid fa-sliders"></i> Privileges</button>
+              </div>
+            </div>
+
+            <!-- Student User Card -->
+            <div class="admin-glass-card role-card role-card-student">
+              <div class="role-card-top">
+                <div class="role-icon-box icon-blue"><i class="fa-solid fa-user-graduate"></i></div>
+                <span class="users-count-chip">1,850 Students</span>
+              </div>
+              <h3>Enrolled Student User</h3>
+              <p>Self-service student portal access, fee payment checkout, assignment submission, and report card downloads.</p>
+              <div class="role-card-bottom">
+                <span class="role-tier-badge tier-student"><i class="fa-solid fa-id-card"></i> Portal User</span>
+                <button class="act-btn btn-edit-role" data-role="Enrolled Student"><i class="fa-solid fa-sliders"></i> Privileges</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Granular Permissions Matrix Table Card -->
+          <div class="admin-glass-card perm-matrix-card" style="margin-top:32px;">
+            <div class="card-header-bar" style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid var(--border-color);">
+              <div>
+                <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:10px;"><i class="fa-solid fa-table-cells" style="color:var(--primary);"></i> Granular Module Access Matrix</h3>
+                <span style="font-size:12px; color:var(--text-secondary); margin-top:4px; display:block;">Enforce read, write, and administrative rights across platform modules with real-time policy checks.</span>
+              </div>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="admin-table perm-table">
+                <thead>
+                  <tr>
+                    <th>Module / Subsystem Feature</th>
+                    <th style="text-align:center;">Admin</th>
+                    <th style="text-align:center;">HOD</th>
+                    <th style="text-align:center;">Faculty</th>
+                    <th style="text-align:center;">Finance</th>
+                    <th style="text-align:center;">Student</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="module-title-cell">
+                        <i class="fa-solid fa-users" style="color:var(--primary);"></i>
+                        <div>
+                          <strong>User Account Governance</strong>
+                          <span>Create, edit, suspend or delete campus user accounts</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Full</span></td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Dept Only</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="module-title-cell">
+                        <i class="fa-solid fa-award" style="color:var(--accent);"></i>
+                        <div>
+                          <strong>Academic Grading & Marks</strong>
+                          <span>Submit exam scores, approve grades, and generate transcripts</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Full</span></td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Approve</span></td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Edit Scores</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                    <td style="text-align:center;"><span class="perm-read"><i class="fa-solid fa-eye"></i> View Only</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="module-title-cell">
+                        <i class="fa-solid fa-coins" style="color:var(--success);"></i>
+                        <div>
+                          <strong>Fee Ledgers & Gateway Collect</strong>
+                          <span>Collect fees, manage gateways, issue tax receipts and waivers</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Full</span></td>
+                    <td style="text-align:center;"><span class="perm-read"><i class="fa-solid fa-eye"></i> View Dept</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Full Control</span></td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-credit-card"></i> Pay Online</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="module-title-cell">
+                        <i class="fa-solid fa-shield-halved" style="color:var(--danger);"></i>
+                        <div>
+                          <strong>System Audit & Security Logs</strong>
+                          <span>View system access logs, IP lockouts, and database backups</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center;"><span class="perm-check"><i class="fa-solid fa-circle-check"></i> Full</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                    <td style="text-align:center;"><span class="perm-deny"><i class="fa-solid fa-circle-xmark"></i> Denied</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Configure Role Modal -->
+    <div class="modal-backdrop" id="roleModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="roleModalTitle"><i class="fa-solid fa-user-shield" style="color:var(--primary);"></i> Configure Role Privileges</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <form id="roleForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Role Name</label>
+              <input type="text" class="form-input" id="roleNameInput" placeholder="e.g. Department Academic Auditor" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Role Description</label>
+              <input type="text" class="form-input" id="roleDescInput" placeholder="Enter brief privilege scope..." required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Save Privileges</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-roles.js"></script>
+  </body>
+</html>

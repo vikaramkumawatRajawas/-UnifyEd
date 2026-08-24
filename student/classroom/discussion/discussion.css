@@ -1,0 +1,45 @@
+
+            .forum-grid {
+                display: grid;
+                grid-template-columns: 240px 1fr;
+                gap: 25px;
+                align-items: start;
+            }
+            @media (max-width: 768px) {
+                .forum-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .forum-card {
+                padding: 15px;
+                border-radius: 8px;
+            }
+            .chan-btn {
+                background: transparent;
+                border: none;
+                color: var(--text-secondary);
+                text-align: left;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 13px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background 0.2s, color 0.2s;
+                outline: none;
+            }
+            .chan-btn:hover {
+                background: rgba(255,255,255,0.02);
+                color: var(--primary);
+            }
+            .chan-btn.active {
+                background: rgba(99,102,241,0.1);
+                color: var(--primary);
+            }
+            .forum-thread {
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .forum-thread:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            }
+        

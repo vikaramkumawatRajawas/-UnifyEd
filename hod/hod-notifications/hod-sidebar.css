@@ -1,0 +1,387 @@
+/* Professor-style shared sidebar for the HOD portal. */
+:root {
+    --hod-sidebar-width: 280px;
+    --hod-sidebar-glow: rgba(99, 102, 241, 0.15);
+}
+
+.portal-sidebar {
+    width: var(--hod-sidebar-width);
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+}
+
+.portal-layout.sidebar-collapsed .portal-sidebar {
+    transform: translateX(calc(var(--hod-sidebar-width) * -1));
+}
+
+.portal-layout.sidebar-collapsed .portal-main {
+    margin-left: 0;
+}
+
+.sidebar-brand {
+    padding: 24px 30px;
+    gap: 12px;
+}
+
+.sidebar-brand i {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-brand h2 {
+    letter-spacing: 1px;
+}
+
+.sidebar-menu {
+    padding: 15px 15px 8px;
+    gap: 4px;
+}
+
+.sidebar-item {
+    padding: 10px 15px;
+    border-radius: var(--border-radius-sm);
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+    background-color: var(--hod-sidebar-glow);
+    color: var(--primary);
+    box-shadow: none;
+}
+
+.sidebar-item.active {
+    font-weight: 600;
+    border-left: 3px solid var(--primary);
+    border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+}
+
+.sidebar-item.active i,
+.sidebar-item:hover i {
+    color: var(--primary);
+}
+
+.sidebar-footer {
+    padding: 10px 15px;
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 15px;
+    border-radius: var(--border-radius-sm);
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.logout-link:hover {
+    background-color: rgba(239, 68, 68, 0.08);
+    color: #f87171;
+}
+
+.logout-link i {
+    width: 20px;
+    text-align: center;
+}
+
+.main-portal-header > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 480px;
+}
+
+.sidebar-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 8px;
+    border: 0;
+    border-radius: var(--border-radius-sm);
+    background: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.sidebar-toggle-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.main-portal-header .header-search {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.main-portal-header .header-search i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.main-portal-header .header-search input {
+    width: 100%;
+    height: 38px;
+    padding: 0 14px 0 40px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background: var(--bg-main);
+}
+
+.main-portal-header .header-search input:focus {
+    border-color: var(--primary);
+}
+
+.main-portal-header .header-actions {
+    gap: 24px;
+}
+
+.main-portal-header .theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+    border: 0;
+    border-radius: var(--border-radius-sm);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.main-portal-header .theme-toggle-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .main-portal-header .icon-sun,
+[data-theme="dark"] .main-portal-header .icon-moon {
+    display: none;
+}
+
+.header-icon-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.header-icon-btn:hover {
+    border-color: var(--primary);
+    background: var(--hod-sidebar-glow);
+    color: var(--primary);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-card);
+    border-radius: 999px;
+    background: var(--danger);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.main-portal-header .user-profile-widget {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.main-portal-header .user-profile-widget .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    line-height: 1.2;
+}
+
+.main-portal-header .user-profile-widget .details strong {
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.main-portal-header .user-profile-widget .details span {
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+.main-portal-header .user-profile-widget .profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+}
+
+.main-portal-header .user-profile-widget .user-info strong {
+    color: var(--text-primary);
+}
+
+.profile-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 1200;
+    display: none;
+    min-width: 190px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    background: var(--bg-card);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+}
+
+.profile-menu.open {
+    display: block;
+}
+
+.profile-menu a,
+.profile-menu button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: var(--border-radius-sm);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    text-align: left;
+    text-decoration: none;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.profile-menu .profile-menu-logout {
+    color: var(--danger);
+}
+
+.profile-menu .profile-menu-logout:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+}
+
+.portal-main {
+    margin-left: var(--hod-sidebar-width);
+}
+
+.mobile-portal-header {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .portal-sidebar {
+        width: var(--hod-sidebar-width);
+        left: calc(var(--hod-sidebar-width) * -1);
+        top: 0;
+        bottom: 0;
+        transition: left var(--transition-normal);
+    }
+
+    .portal-sidebar.active {
+        left: 0;
+    }
+
+    .portal-main {
+        margin-left: 0;
+    }
+
+    .main-portal-header {
+        display: none;
+    }
+
+    .mobile-portal-header {
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        position: sticky;
+        top: 0;
+        z-index: 110;
+        background-color: var(--bg-card);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .mobile-portal-header .portal-brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .mobile-portal-header .portal-brand i {
+        color: var(--primary);
+    }
+
+    .mobile-portal-header h2 {
+        color: var(--text-primary);
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .mobile-menu-toggle,
+    .mobile-theme-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+        font-size: 20px;
+    }
+}

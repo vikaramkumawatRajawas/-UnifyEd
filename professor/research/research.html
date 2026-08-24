@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Research & Patents</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="research.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../dashboard/dashboard.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+                <a href="../academics/my-classes/my-classes.html" class="sidebar-item">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+                <a href="../academics/timetable/timetable.html" class="sidebar-item">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+                <a href="../academics/attendance/attendance.html" class="sidebar-item">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+                <a href="../academics/marks/marks.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+                <a href="../academics/results/results.html" class="sidebar-item">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+                <a href="../academics/student-performance/student-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+                <a href="../classroom/stream/stream.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+                <a href="../classroom/study-materials/study-materials.html" class="sidebar-item">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+                <a href="../classroom/assignments/assignments.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+                <a href="../classroom/quiz/quiz.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Online Quizzes</span>
+                </a>
+        
+                <a href="../classroom/discussion/discussion.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+                <a href="../classroom/grades/grades.html" class="sidebar-item">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Gradebook</span>
+                </a>
+
+                <a href="../classroom/resources/resources.html" class="sidebar-item">
+                    <i class="fa-solid fa-folder-tree"></i>
+                    <span>Classroom Resources</span>
+                </a>
+
+                <a href="../classroom/members/members.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Class Members</span>
+                </a>
+        
+                <a href="../live-classes/schedule/schedule.html" class="sidebar-item">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Live Classes</span>
+                </a>
+        
+                <a href="../live-classes/start-class/start-class.html" class="sidebar-item">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Start Studio Class</span>
+                </a>
+
+                <a href="../live-classes/live-attendance/live-attendance.html" class="sidebar-item">
+                    <i class="fa-solid fa-user-clock"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+                <a href="../live-classes/recordings/recordings.html" class="sidebar-item">
+                    <i class="fa-solid fa-film"></i>
+                    <span>Class Recordings</span>
+                </a>
+
+                <a href="../live-classes/polls/polls.html" class="sidebar-item">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Live Audience Polls</span>
+                </a>
+        
+                <a href="../student-management/students/students.html" class="sidebar-item">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Student Management</span>
+                </a>
+        
+                <a href="../student-management/applications/applications.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Mentorship Meetings</span>
+                </a>
+        
+                <a href="../student-management/projects/projects.html" class="sidebar-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Project Submissions</span>
+                </a>
+
+                <a href="../student-management/certificates/certificates.html" class="sidebar-item">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+
+                <a href="../reports/attendance-report/attendance-report.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Attendance Reports</span>
+                </a>
+
+                <a href="../reports/marks-report/marks-report.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-area"></i>
+                    <span>Marks Analytics</span>
+                </a>
+
+                <a href="../reports/assignment-report/assignment-report.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+
+                <a href="../reports/analytics/analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+
+                <a href="../events/events.html" class="sidebar-item">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+
+                <a href="research.html" class="sidebar-item active">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+
+                <a href="../communication/chat/chat.html" class="sidebar-item">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+
+                <a href="../communication/messages/messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+
+                <a href="../communication/notifications/notifications.html" class="sidebar-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+
+                <a href="../profile/profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+
+                <a href="../settings/settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+
+                <!-- Breadcrumbs & Header Block -->
+                <div class="page-header-block">
+                    <div class="header-title-container">
+                        <div class="breadcrumb-trail">
+                            <a href="../dashboard/dashboard.html"><i class="fa-solid fa-house"></i> Home</a>
+                            <i class="fa-solid fa-chevron-right separator"></i>
+                            <span class="active">Research & Patents</span>
+                        </div>
+                        <h1 class="page-title">
+                            <span class="title-icon-badge"><i class="fa-solid fa-flask-vial"></i></span>
+                            <span>Research Publications & IP Patents Hub</span>
+                        </h1>
+                        <p class="page-subtitle">Manage peer-reviewed journal publications, patent filings, grant proposals, citation h-index metrics, and conference proceedings.</p>
+                    </div>
+
+                    <div class="header-action-group">
+                        <button onclick="openSubmitPubModal()" class="btn btn-primary" title="Add New Journal Publication">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add Publication</span>
+                        </button>
+                        <button onclick="openFilePatentModal()" class="btn btn-outline" title="File Patent or IP Application">
+                            <i class="fa-solid fa-lightbulb" style="color:#f59e0b;"></i>
+                            <span>File Patent</span>
+                        </button>
+                        <button onclick="exportResearchPortfolioPdf()" class="btn btn-outline" title="Export Research Portfolio PDF">
+                            <i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i>
+                            <span>Export PDF</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Telemetry KPI Overview Grid -->
+                <div class="research-kpi-grid">
+                    <div class="research-kpi-card">
+                        <div class="research-kpi-icon primary">
+                            <i class="fa-solid fa-book-journal-whills"></i>
+                        </div>
+                        <div class="research-kpi-info">
+                            <span class="research-kpi-label">Publications</span>
+                            <span class="research-kpi-value" id="kpiPubCount">24</span>
+                            <span class="research-kpi-subtext text-success"><i class="fa-solid fa-square-check"></i> 18 Scopus / IEEE Q1</span>
+                        </div>
+                    </div>
+
+                    <div class="research-kpi-card">
+                        <div class="research-kpi-icon success">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="research-kpi-info">
+                            <span class="research-kpi-label">Patents & IP</span>
+                            <span class="research-kpi-value" id="kpiPatentCount">6</span>
+                            <span class="research-kpi-subtext text-success"><i class="fa-solid fa-certificate"></i> 2 Granted, 4 Filed</span>
+                        </div>
+                    </div>
+
+                    <div class="research-kpi-card">
+                        <div class="research-kpi-icon warning">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                        <div class="research-kpi-info">
+                            <span class="research-kpi-label">Total Citations</span>
+                            <span class="research-kpi-value" id="kpiCitationCount">1,280</span>
+                            <span class="research-kpi-subtext"><i class="fa-solid fa-chart-line" style="color:#f59e0b;"></i> h-index: 18 • i10: 22</span>
+                        </div>
+                    </div>
+
+                    <div class="research-kpi-card">
+                        <div class="research-kpi-icon accent">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </div>
+                        <div class="research-kpi-info">
+                            <span class="research-kpi-label">Grant Funding</span>
+                            <span class="research-kpi-value">₹48.5 Lakhs</span>
+                            <span class="research-kpi-subtext" style="color:#ec4899;"><i class="fa-solid fa-building-columns"></i> SERB & DST Approved</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Layout Grid: Showcase & Sidebar -->
+                <div class="research-layout-grid">
+                    
+                    <!-- Left Column: Search & Showcase Cards -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Search & Category Filter Toolbar -->
+                        <div class="dashboard-card glassmorphism" style="padding: 18px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 240px;">
+                                    <i class="fa-solid fa-magnifying-glass" style="color: var(--text-tertiary);"></i>
+                                    <input type="text" id="researchSearchInput" placeholder="Search publication title, patent number, journal, or DOI..." class="form-input" style="height: 36px; font-size: 12px;" autocomplete="off">
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                    <button class="chip-btn active" data-filter="all">All Items</button>
+                                    <button class="chip-btn" data-filter="journal">IEEE / Journals</button>
+                                    <button class="chip-btn" data-filter="patent">IP Patents</button>
+                                    <button class="chip-btn" data-filter="grant">Govt Grants</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Master Container Card -->
+                        <div class="research-container-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+                                <h3 style="font-size:15.5px; font-weight:800; color:var(--text-primary); margin:0;">
+                                    <i class="fa-solid fa-atom" style="color:var(--primary); margin-right:6px;"></i> Faculty Research Portfolio
+                                </h3>
+                                <div style="display:flex; gap:4px; background:var(--bg-tertiary); padding:3px; border-radius:6px; border:1px solid var(--border-color); flex-shrink:0;">
+                                    <button id="resViewGridBtn" onclick="switchResearchView('grid')" class="btn btn-secondary btn-sm active" style="height:28px; font-size:11px; padding:0 10px;">
+                                        <i class="fa-solid fa-grip-vertical"></i> Cards
+                                    </button>
+                                    <button id="resViewTableBtn" onclick="switchResearchView('table')" class="btn btn-secondary btn-sm" style="height:28px; font-size:11px; padding:0 10px;">
+                                        <i class="fa-solid fa-table-list"></i> Table Roster
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Grid Cards Container -->
+                            <div id="researchGridView" class="research-cards-grid">
+                                <!-- Loaded dynamically via research.js -->
+                            </div>
+
+                            <!-- Table View Container -->
+                            <div id="researchTableView" style="display:none;">
+                                <table class="research-custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Title & Type</th>
+                                            <th>Venue / Journal / Office</th>
+                                            <th>Year & DOI / App No</th>
+                                            <th>Citations / Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="researchTableBody">
+                                        <!-- Loaded dynamically via research.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Research Labs & Grants Sidebar -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Active Research Labs Card -->
+                        <div class="dashboard-card glassmorphism" style="padding: 22px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--text-primary);">
+                                <i class="fa-solid fa-microscope" style="color: var(--primary); margin-right: 6px;"></i> Active Research Labs & CoE
+                            </h3>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div style="padding: 12px; background: var(--bg-tertiary); border-radius: 10px; border: 1px solid var(--border-color);">
+                                    <strong style="font-size: 13px; color: var(--text-primary); display: block;">Center of Excellence in AI & Quantum Computing</strong>
+                                    <span style="font-size: 11px; color: var(--text-secondary);">Lead Coordinator: Dr. Rajesh Kumar</span>
+                                    <div style="margin-top: 6px; display: flex; gap: 6px;">
+                                        <span class="status-pill eligible" style="font-size: 10px;">14 Scholars</span>
+                                        <span class="status-pill eligible" style="font-size: 10px; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">₹25L Grant</span>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 12px; background: var(--bg-tertiary); border-radius: 10px; border: 1px solid var(--border-color);">
+                                    <strong style="font-size: 13px; color: var(--text-primary); display: block;">Cyber-Physical Systems & IoT Lab</strong>
+                                    <span style="font-size: 11px; color: var(--text-secondary);">Co-Investigator: Prof. Alan Turing</span>
+                                    <div style="margin-top: 6px; display: flex; gap: 6px;">
+                                        <span class="status-pill eligible" style="font-size: 10px;">8 Scholars</span>
+                                        <span class="status-pill eligible" style="font-size: 10px; background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">₹23.5L Grant</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Funding Agencies Card -->
+                        <div class="dashboard-card glassmorphism" style="padding: 22px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">
+                                <i class="fa-solid fa-award" style="color: #f59e0b; margin-right: 6px;"></i> Recognized Research Partners
+                            </h3>
+                            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 12px; color: var(--text-secondary);">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-circle-check" style="color: #10b981;"></i>
+                                    <span>DST-SERB Core Research Grant (CRG)</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-circle-check" style="color: #10b981;"></i>
+                                    <span>AICTE R&D Promotion Scheme (RPS)</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-circle-check" style="color: #10b981;"></i>
+                                    <span>ISRO RESPOND Space Research Grant</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Modals Section -->
+                
+                <!-- Add Publication Modal -->
+                <div class="custom-modal-backdrop" id="pubModal">
+                    <div class="custom-modal-card">
+                        <div class="modal-header">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-book-bookmark" style="color: var(--primary);"></i> Add Journal Publication
+                            </h3>
+                            <button onclick="closeSubmitPubModal()" class="modal-close-btn" title="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <form id="pubForm" onsubmit="submitNewPublication(event)">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label">Paper Title <span style="color:#ef4444;">*</span></label>
+                                    <input type="text" id="newPubTitle" class="form-input" placeholder="e.g. Deep Residual Learning for Quantum Computing Pipelines" required>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Journal / Conference Name</label>
+                                        <input type="text" id="newPubJournal" class="form-input" placeholder="e.g. IEEE Transactions on Software Engineering" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Indexing Category</label>
+                                        <select id="newPubCategory" class="form-input">
+                                            <option value="journal">IEEE / Scopus Q1 Journal</option>
+                                            <option value="conference">International IEEE Conference</option>
+                                            <option value="book">Book Chapter / Springer</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Publication Year</label>
+                                        <input type="text" id="newPubYear" class="form-input" placeholder="e.g. 2026" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">DOI Number</label>
+                                        <input type="text" id="newPubDoi" class="form-input" placeholder="e.g. 10.1109/TSE.2026.3104821" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Abstract Overview</label>
+                                    <textarea id="newPubAbstract" class="form-input" rows="3" placeholder="Brief summary of research methodology and outcomes..." required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="justify-content: flex-end; gap: 10px;">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-check"></i> Add Publication Record
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- File Patent Modal -->
+                <div class="custom-modal-backdrop" id="patentModal">
+                    <div class="custom-modal-card">
+                        <div class="modal-header">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> File Patent / Intellectual Property
+                            </h3>
+                            <button onclick="closeFilePatentModal()" class="modal-close-btn" title="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <form id="patentForm" onsubmit="submitNewPatent(event)">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label">Invention Title <span style="color:#ef4444;">*</span></label>
+                                    <input type="text" id="newPatentTitle" class="form-input" placeholder="e.g. Autonomous Quantum Cryptographic Key Distribution System" required>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Patent Application Number</label>
+                                        <input type="text" id="newPatentAppNo" class="form-input" placeholder="e.g. IN-202611094812" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Patent Status</label>
+                                        <select id="newPatentStatus" class="form-input">
+                                            <option value="Granted">Granted (Official Patent)</option>
+                                            <option value="Published">Published & Examination</option>
+                                            <option value="Filed">Filed (Pending FERC)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Invention Summary</label>
+                                    <textarea id="newPatentDesc" class="form-input" rows="3" placeholder="Brief technical summary of patent invention..." required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="justify-content: flex-end; gap: 10px;">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-check"></i> Save Patent Record
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- End Custom Content Block -->
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="research.js"></script>
+</body>
+</html>

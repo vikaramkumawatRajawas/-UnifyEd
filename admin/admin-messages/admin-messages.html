@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Campus Communication & Chat Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-messages.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item active"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search conversations, faculty chats..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-comments"></i> ENTERPRISE MESSAGING</span>
+                <h1>Campus Communication & Broadcast Center 💬</h1>
+              </div>
+              <p>Send direct encrypted messages, campus-wide announcements, emergency broadcasts, and department channels.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Unread Messages</span>
+                  <strong class="val" style="color:var(--danger);">3 Unread</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Active Conversations</span>
+                  <strong class="val" style="color:var(--primary);">14 Threads</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Socket Connection</span>
+                  <strong class="val" style="color:var(--success);">🟢 Live Realtime</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnNewBroadcast"><i class="fa-solid fa-bullhorn"></i> New Campus Broadcast</button>
+              <button class="btn btn-secondary" id="btnNewDirectMsg"><i class="fa-solid fa-pen-to-square"></i> New Direct Chat</button>
+            </div>
+          </div>
+
+          <!-- Messenger Interface Container -->
+          <div class="messenger-container admin-glass-card">
+            <!-- Left Contacts & Threads Sidebar -->
+            <div class="chat-sidebar">
+              <div class="chat-sidebar-header">
+                <div class="chat-search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="chatSearchInput" placeholder="Search chats or contacts..." autocomplete="off">
+                </div>
+                <div class="chat-tabs" id="chatTabs">
+                  <button class="chat-tab-btn active" data-tab="all">All</button>
+                  <button class="chat-tab-btn" data-tab="direct">Direct</button>
+                  <button class="chat-tab-btn" data-tab="depts">Channels</button>
+                </div>
+              </div>
+
+              <!-- Chat List Stream -->
+              <div class="chat-list" id="chatList">
+                <!-- Active Thread 1 -->
+                <div class="chat-item active" data-name="Vikram Kumawat" data-role="Fees Manager • Treasury">
+                  <div class="avatar-circle avatar-emerald">
+                    VK
+                    <span class="avatar-status-dot"></span>
+                  </div>
+                  <div class="chat-item-info">
+                    <div class="chat-item-top">
+                      <strong class="chat-item-name">Vikram Kumawat</strong>
+                      <span class="chat-item-time">14:22</span>
+                    </div>
+                    <div class="chat-item-btm">
+                      <span class="chat-item-msg">The Q2 Treasury Audit report is signed...</span>
+                      <span class="unread-pill">2</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Active Thread 2 -->
+                <div class="chat-item" data-name="Dr. Robert Hayes" data-role="HOD Mechanical Dept">
+                  <div class="avatar-circle avatar-purple">
+                    RH
+                    <span class="avatar-status-dot"></span>
+                  </div>
+                  <div class="chat-item-info">
+                    <div class="chat-item-top">
+                      <strong class="chat-item-name">Dr. Robert Hayes</strong>
+                      <span class="chat-item-time">11:05</span>
+                    </div>
+                    <div class="chat-item-btm">
+                      <span class="chat-item-msg">Please review the mechanical lab budget...</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Active Thread 3 -->
+                <div class="chat-item" data-name="Dr. Ananya Sharma" data-role="HOD Computer Science">
+                  <div class="avatar-circle avatar-amber">
+                    AS
+                    <span class="avatar-status-dot"></span>
+                  </div>
+                  <div class="chat-item-info">
+                    <div class="chat-item-top">
+                      <strong class="chat-item-name">Dr. Ananya Sharma</strong>
+                      <span class="chat-item-time">Yesterday</span>
+                    </div>
+                    <div class="chat-item-btm">
+                      <span class="chat-item-msg">CSE semester grades are ready for approval...</span>
+                      <span class="unread-pill">1</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Active Thread 4 -->
+                <div class="chat-item" data-name="Campus Announcements" data-role="Official Broadcast Channel">
+                  <div class="avatar-circle avatar-rose">
+                    📢
+                    <span class="avatar-status-dot"></span>
+                  </div>
+                  <div class="chat-item-info">
+                    <div class="chat-item-top">
+                      <strong class="chat-item-name">Campus Broadcast Channel</strong>
+                      <span class="chat-item-time">Aug 18</span>
+                    </div>
+                    <div class="chat-item-btm">
+                      <span class="chat-item-msg">Notice: Independence Day holiday schedule...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Active Chat Window -->
+            <div class="chat-window">
+              <!-- Chat Window Header -->
+              <div class="chat-window-header">
+                <div class="active-contact-info">
+                  <div class="avatar-circle avatar-emerald">
+                    <span id="activeAvatarInitials">VK</span>
+                    <span class="avatar-status-dot"></span>
+                  </div>
+                  <div>
+                    <h3 id="activeContactName">Vikram Kumawat</h3>
+                    <span id="activeContactRole"><i class="fa-solid fa-circle" style="font-size:8px; color:#10b981;"></i> Fees Manager • Treasury (Online)</span>
+                  </div>
+                </div>
+                <div class="chat-header-actions">
+                  <button class="header-icon-btn" title="Start Call"><i class="fa-solid fa-phone"></i></button>
+                  <button class="header-icon-btn" title="Video Call"><i class="fa-solid fa-video"></i></button>
+                  <button class="header-icon-btn" title="Pin Conversation"><i class="fa-solid fa-thumbtack"></i></button>
+                </div>
+              </div>
+
+              <!-- Chat Message Stream -->
+              <div class="chat-stream-body" id="chatStream">
+                <div class="date-divider"><span>Today, August 20</span></div>
+
+                <div class="msg-bubble received">
+                  <div class="msg-content">Hello Admin, the Q2 Treasury Audit report is signed and uploaded to the Data Management vault.</div>
+                  <div class="msg-meta"><span>14:20 PM</span></div>
+                </div>
+
+                <div class="msg-bubble sent">
+                  <div class="msg-content">Great job Vikram! The backup has also been recorded in the disaster recovery vault.</div>
+                  <div class="msg-meta"><span>14:22 PM</span> <i class="fa-solid fa-check-double msg-read"></i></div>
+                </div>
+
+                <div class="msg-bubble received">
+                  <div class="msg-content">Thank you! Please let me know if any fee ledger adjustments are required for CSE batch 2026.</div>
+                  <div class="msg-meta"><span>14:23 PM</span></div>
+                </div>
+              </div>
+
+              <!-- Chat Input Composer -->
+              <form class="chat-input-composer" id="chatForm">
+                <button type="button" class="composer-icon-btn" title="Attach File"><i class="fa-solid fa-paperclip"></i></button>
+                <button type="button" class="composer-icon-btn" title="Insert Emoji"><i class="fa-solid fa-face-smile"></i></button>
+                <input type="text" id="chatInput" placeholder="Type message or announcement..." autocomplete="off" required>
+                <button type="submit" class="btn btn-primary btn-send-msg"><i class="fa-solid fa-paper-plane"></i> Send</button>
+              </form>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- New Broadcast Modal -->
+    <div class="modal-backdrop" id="broadcastModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-bullhorn" style="color:var(--primary);"></i> Send Campus Announcement Broadcast</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <form id="broadcastForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Broadcast Target Audience</label>
+              <select class="form-input" id="broadcastAudience" required>
+                <option value="All Campus Users">All Campus Users (Students & Faculty)</option>
+                <option value="All Faculty Members">All Faculty Members & HODs</option>
+                <option value="All Students">All Enrolled Students</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Announcement Title</label>
+              <input type="text" class="form-input" id="broadcastTitle" placeholder="e.g. Scheduled Mid-Term Exam Dates" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Announcement Message Body</label>
+              <textarea class="form-input" id="broadcastBody" rows="4" placeholder="Enter broadcast text..." required style="resize:vertical;"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Dispatch Broadcast</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-messages.js"></script>
+  </body>
+</html>

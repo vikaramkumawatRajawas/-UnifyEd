@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Syllabus & Audit Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hod-syllabus.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+  </head>
+  <body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item active"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search syllabus & programs..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content syllabus-content">
+          <div class="page-header">
+            <h1>Syllabus & Audit Governance 📚</h1>
+            <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Curriculum Governance</span>
+          </div>
+
+          <div class="hod-hero-card syllabus-hero">
+            <div class="hod-hero-info">
+              <h2>Curriculum governance, made visible.</h2>
+              <p>Review program coverage, course readiness, and accreditation alignment for the current academic year.</p>
+            </div>
+            <div class="syllabus-audit-score">
+              <span id="kpiAuditScore">92.4%</span>
+              <small>Audit readiness</small>
+            </div>
+          </div>
+
+          <div class="kpi-grid syllabus-kpis">
+            <div class="kpi-card"><div class="kpi-icon primary"><i class="fa-solid fa-layer-group"></i></div><div><div class="kpi-val" id="kpiActiveProg">8</div><div class="kpi-lbl">Active Programs</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon success"><i class="fa-solid fa-circle-check"></i></div><div><div class="kpi-val" id="kpiApprovedCourses">35</div><div class="kpi-lbl">Approved Courses</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon warning"><i class="fa-solid fa-file-circle-check"></i></div><div><div class="kpi-val">4 / 4</div><div class="kpi-lbl">Standards Mapped</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon accent"><i class="fa-solid fa-clock-rotate-left"></i></div><div><div class="kpi-val">1</div><div class="kpi-lbl">Draft Needing Review</div></div></div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="syllabus-actions" style="display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" id="btnAddCourse">
+              <i class="fas fa-plus"></i> Add New Course
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnExportSyllabus">
+              <i class="fas fa-download"></i> Export Syllabus CSV
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnImportCurriculum">
+              <i class="fas fa-upload"></i> Import Curriculum
+            </button>
+          </div>
+
+          <!-- Engineering Programs -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#6366f1; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-cog"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Engineering Programs</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">B.Tech and M.Tech Curriculum Overview</p>
+              </div>
+            </div>
+            <div style="padding:15px; overflow-x:auto;">
+              <table class="hod-table">
+                <thead>
+                  <tr>
+                    <th>Program Name</th>
+                    <th>Semester</th>
+                    <th style="text-align:center;">Courses Count</th>
+                    <th style="text-align:center;">Total Credits</th>
+                    <th style="text-align:center;">Governance Status</th>
+                    <th style="text-align:center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="engTableBody">
+                  <!-- Dynamic Engineering Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Management Programs -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#10b981; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-chart-line"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Management Programs</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">MBA and BBA Curriculum Overview</p>
+              </div>
+            </div>
+            <div style="padding:15px; overflow-x:auto;">
+              <table class="hod-table">
+                <thead>
+                  <tr>
+                    <th>Program Name</th>
+                    <th>Specialization</th>
+                    <th style="text-align:center;">Semester</th>
+                    <th style="text-align:center;">Courses Count</th>
+                    <th style="text-align:center;">Governance Status</th>
+                    <th style="text-align:center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="mgmtTableBody">
+                  <!-- Dynamic Management Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Course Details Example -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#f59e0b; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-book-open"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Sample Course Benchmark: Data Structures (CSE-102)</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">B.Tech CSE, Semester 2 | Credits: 4 | Prerequisites: Programming Basics</p>
+              </div>
+            </div>
+            <div style="padding:20px;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
+                <div style="background:var(--bg-tertiary); padding:16px; border-radius:var(--border-radius-md);">
+                  <div style="color:var(--primary); font-size:12px; margin-bottom:8px; font-weight:800; text-transform:uppercase;">COURSE OBJECTIVES</div>
+                  <ul style="color:var(--text-primary); font-size:13px; margin:0; padding-left:20px; line-height:1.6;">
+                    <li>Understand fundamental data structures and algorithms</li>
+                    <li>Implement and analyze time/space complexity</li>
+                    <li>Apply DSA concepts in real-world problems</li>
+                  </ul>
+                </div>
+                <div style="background:var(--bg-tertiary); padding:16px; border-radius:var(--border-radius-md);">
+                  <div style="color:var(--success); font-size:12px; margin-bottom:8px; font-weight:800; text-transform:uppercase;">LEARNING OUTCOMES</div>
+                  <ul style="color:var(--text-primary); font-size:13px; margin:0; padding-left:20px; line-height:1.6;">
+                    <li>Design efficient algorithms</li>
+                    <li>Use appropriate data structures</li>
+                    <li>Solve optimization problems</li>
+                  </ul>
+                </div>
+              </div>
+              <div style="color:var(--text-secondary); font-size:12px; margin-bottom:10px; font-weight:800; text-transform:uppercase;">COURSE MODULES COVERAGE</div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <span class="module-chip" style="border-left-color:#6366f1;">Arrays & Lists</span>
+                <span class="module-chip" style="border-left-color:#10b981;">Stacks & Queues</span>
+                <span class="module-chip" style="border-left-color:#f59e0b;">Trees & Graphs</span>
+                <span class="module-chip" style="border-left-color:#06b6d4;">Sorting & Searching</span>
+                <span class="module-chip" style="border-left-color:#ec4899;">Dynamic Programming</span>
+                <span class="module-chip" style="border-left-color:#8b5cf6;">Hash Tables</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Accreditation & Standards -->
+          <section class="section-card glass-card">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#06b6d4; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-certificate"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Accreditation Standards & Compliance</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">Engineering & Management Curriculum Frameworks</p>
+              </div>
+            </div>
+            <div style="padding:20px;">
+              <div style="margin-bottom:12px; padding:15px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm); border-left:4px solid #6366f1;">
+                <div style="color:var(--text-primary); font-weight:700; margin-bottom:4px;"><i class="fas fa-check-circle" style="color:#6366f1; margin-right:8px;"></i>AICTE Curriculum Norms</div>
+                <div style="color:var(--text-secondary); font-size:13px;">All engineering programs aligned with AICTE model curriculum guidelines (Updated 2024).</div>
+              </div>
+              <div style="margin-bottom:12px; padding:15px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm); border-left:4px solid #10b981;">
+                <div style="color:var(--text-primary); font-weight:700; margin-bottom:4px;"><i class="fas fa-check-circle" style="color:#10b981; margin-right:8px;"></i>NBA Accreditation</div>
+                <div style="color:var(--text-secondary); font-size:13px;">Programs accredited by National Board of Accreditation - Valid through 2027.</div>
+              </div>
+              <div style="padding:15px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm); border-left:4px solid #f59e0b;">
+                <div style="color:var(--text-primary); font-weight:700; margin-bottom:4px;"><i class="fas fa-check-circle" style="color:#f59e0b; margin-right:8px;"></i>AMBA Recognition</div>
+                <div style="color:var(--text-secondary); font-size:13px;">MBA Program accredited by Association of MBAs (International Standard).</div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Add Course Modal -->
+    <div class="hod-modal-overlay" id="addCourseModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-book-medical" style="color:var(--primary);"></i> Add New Syllabus Course</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="addCourseModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="addCourseForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputCourseName">Course Title / Name</label>
+                        <input type="text" id="inputCourseName" class="hod-form-input" placeholder="e.g. Machine Learning Systems" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputProgramType">Program Category</label>
+                        <select id="inputProgramType" class="hod-form-select">
+                            <option value="engineering">Engineering (B.Tech / M.Tech)</option>
+                            <option value="management">Management (MBA / BBA)</option>
+                        </select>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="hod-form-group">
+                            <label for="inputSemester">Semester</label>
+                            <input type="text" id="inputSemester" class="hod-form-input" placeholder="e.g. Sem 3" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputCredits">Credits</label>
+                            <input type="number" id="inputCredits" class="hod-form-input" placeholder="4" required>
+                        </div>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputCourseStatus">Audit Status</label>
+                        <select id="inputCourseStatus" class="hod-form-select">
+                            <option value="Active">Active (Approved)</option>
+                            <option value="Draft">Draft (Needing Review)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="addCourseModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> Add Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Course Detail Modal -->
+    <div class="hod-modal-overlay" id="courseDetailModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-book-open" style="color:var(--info);"></i> Program Syllabus Overview</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="courseDetailModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="hod-modal-body">
+                <div style="background:var(--bg-tertiary); padding:16px; border-radius:var(--border-radius-md); margin-bottom:16px;">
+                    <strong style="font-size:16px; color:var(--text-primary);" id="detailProgramTitle">B.Tech CSE</strong>
+                    <div style="font-size:12px; color:var(--primary); font-weight:700;" id="detailSemesterInfo">Semester 1 • 6 Courses • 26 Credits</div>
+                </div>
+                <p style="font-size:13px; color:var(--text-secondary); line-height:1.5;">
+                    Comprehensive curriculum aligned with AICTE 2024 model frameworks, including core programming, data structures, discrete mathematics, and lab practicums.
+                </p>
+            </div>
+            <div class="hod-modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal="courseDetailModal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Exporting Syllabus Document...');"><i class="fa-solid fa-file-export"></i> Export PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-syllabus.js"></script>
+  </body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Faculty Profile</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="profile.html" class="sidebar-item active">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header" style="margin-bottom:20px;">
+                    <h1>Faculty Profile</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Overview • Faculty Profile</span>
+                </div>
+
+                <!-- 1. Hero Profile Banner Card -->
+                <div class="profile-hero-card">
+                    <div class="profile-cover-banner" id="profileCoverBanner">
+                        <button class="change-cover-btn" id="changeCoverBtn" title="Change Background Cover">
+                            <i class="fa-solid fa-camera"></i> Change Cover
+                        </button>
+                        <input type="file" id="coverFileInput" accept="image/*" style="display:none;">
+                    </div>
+                    
+                    <div class="profile-hero-header-row">
+                        <div class="profile-avatar-wrapper">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" id="profileAvatarPic" alt="Faculty Avatar">
+                            <button class="change-avatar-btn" id="changeAvatarBtn" title="Upload Profile Photo">
+                                <i class="fa-solid fa-camera"></i>
+                            </button>
+                            <input type="file" id="avatarFileInput" accept="image/*" style="display:none;">
+                        </div>
+                        <div class="profile-hero-details">
+                            <h2 id="profileFullName">Dr. Rajesh Kumar</h2>
+                            <p><i class="fa-solid fa-graduation-cap" style="color:var(--primary);"></i> Senior Professor • <span id="profileHeroDept">Department of Computer Science & Engineering</span></p>
+                            <p><i class="fa-solid fa-id-card" style="color:var(--accent);"></i> Faculty ID: <strong id="profileEmpId" style="color:var(--text-primary);">CSE-EMP-204</strong> • Joined 2014</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-hero-body-row">
+                        <div style="font-size:12px; color:var(--text-secondary); display:flex; gap:16px;">
+                            <span><i class="fa-solid fa-building-circle-check" style="color:#10b981; margin-right:4px;"></i> Status: Active Duty</span>
+                            <span><i class="fa-solid fa-shield-halved" style="color:var(--primary); margin-right:4px;"></i> Access level: Senior Faculty</span>
+                        </div>
+                        <div class="profile-action-btns">
+                            <button class="btn btn-primary" id="openEditProfileModalBtn" style="height:38px; font-size:12px; display:inline-flex; align-items:center; gap:6px;">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+                            </button>
+                            <a href="../settings/settings.html" class="btn btn-secondary" style="height:38px; font-size:12px; display:inline-flex; align-items:center; gap:6px;">
+                                <i class="fa-solid fa-gear"></i> Settings
+                            </a>
+                            <button class="btn btn-secondary" onclick="alert('Profile details synced from university ERP server!');" style="height:38px; font-size:12px; display:inline-flex; align-items:center; gap:6px;">
+                                <i class="fa-solid fa-arrows-rotate"></i> Sync ERP
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Stats Row -->
+                <div class="profile-stats-row">
+                    <div class="profile-stat-box glassmorphism">
+                        <h4>12+ Yrs</h4>
+                        <p>Teaching Experience</p>
+                    </div>
+                    <div class="profile-stat-box glassmorphism">
+                        <h4>4 Courses</h4>
+                        <p>Active Allocated Semesters</p>
+                    </div>
+                    <div class="profile-stat-box glassmorphism">
+                        <h4>18 Papers</h4>
+                        <p>IEEE & Elsevier Publications</p>
+                    </div>
+                    <div class="profile-stat-box glassmorphism">
+                        <h4>4.9 ⭐</h4>
+                        <p>Student Evaluation Rating</p>
+                    </div>
+                </div>
+
+                <!-- 3. Two Column Details Grid -->
+                <div class="profile-grid-layout">
+                    <!-- Column 1: Personal & Academic Info -->
+                    <div>
+                        <!-- Personal Information Card -->
+                        <div class="profile-card glassmorphism">
+                            <div class="profile-card-header" style="display:flex; justify-content:space-between; align-items:center;">
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    <i class="fa-solid fa-user-gear"></i>
+                                    <h3>Personal & Contact Details</h3>
+                                </div>
+                                <button class="btn btn-secondary" id="openEditPersonalModalBtn" style="padding:5px 12px; font-size:12px; display:inline-flex; align-items:center; gap:6px;" title="Edit Personal Information">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </button>
+                            </div>
+                            <div class="profile-detail-list">
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-signature"></i> Full Name</span>
+                                    <span class="profile-detail-value" id="profileDetailFullName">Dr. Rajesh Kumar</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-id-badge"></i> Faculty ID</span>
+                                    <span class="profile-detail-value" id="profileDetailEmpId">CSE-EMP-204</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-envelope"></i> Official Email</span>
+                                    <span class="profile-detail-value" id="profileDetailEmail">rajesh.kumar@unifyed.edu</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-phone"></i> Phone Number</span>
+                                    <span class="profile-detail-value" id="profileDetailPhone">+91 98765 43210</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-location-dot"></i> Office Location</span>
+                                    <span class="profile-detail-value" id="profileDetailOffice">Room 402, Academic Block B</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Academic Information Card -->
+                        <div class="profile-card glassmorphism">
+                            <div class="profile-card-header" style="display:flex; justify-content:space-between; align-items:center;">
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                    <h3>Academic & Department Info</h3>
+                                </div>
+                                <button class="btn btn-secondary" id="openEditAcademicModalBtn" style="padding:5px 12px; font-size:12px; display:inline-flex; align-items:center; gap:6px;" title="Edit Academic Information">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </button>
+                            </div>
+                            <div class="profile-detail-list">
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-building-columns"></i> Department</span>
+                                    <span class="profile-detail-value" id="profileDetailDept">Computer Science & Engineering</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-award"></i> Highest Qualification</span>
+                                    <span class="profile-detail-value" id="profileDetailQual">Ph.D. in Computer Science (IIT Delhi)</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-flask"></i> Specialization</span>
+                                    <span class="profile-detail-value" id="profileDetailSpec">Artificial Intelligence & Full Stack Web</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-calendar-check"></i> Assigned Semester</span>
+                                    <span class="profile-detail-value" id="profileDetailSem">BCA 3rd Sem / B.Tech 5th Sem</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Courses & Facility Status -->
+                    <div>
+                        <!-- Active Assigned Courses -->
+                        <div class="profile-card glassmorphism">
+                            <div class="profile-card-header">
+                                <i class="fa-solid fa-book-open"></i>
+                                <h3>Active Allocated Courses</h3>
+                            </div>
+                            <div class="course-badge-list">
+                                <div class="course-item-box">
+                                    <div>
+                                        <strong>BCA-301: Web Engineering & Full Stack</strong>
+                                        <div style="font-size:11px; color:var(--text-secondary);">4 Hours/Week • 60 Enrolled Students</div>
+                                    </div>
+                                    <span class="badge badge-success">Active</span>
+                                </div>
+                                <div class="course-item-box">
+                                    <div>
+                                        <strong>CS-402: Artificial Intelligence & Neural Networks</strong>
+                                        <div style="font-size:11px; color:var(--text-secondary);">3 Hours/Week • 45 Enrolled Students</div>
+                                    </div>
+                                    <span class="badge badge-success">Active</span>
+                                </div>
+                                <div class="course-item-box">
+                                    <div>
+                                        <strong>BCA-305: Database Tuning & Management Lab</strong>
+                                        <div style="font-size:11px; color:var(--text-secondary);">2 Hours/Week • Lab Session</div>
+                                    </div>
+                                    <span class="badge badge-success">Active</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Facility & Feature Status -->
+                        <div class="profile-card glassmorphism">
+                            <div class="profile-card-header">
+                                <i class="fa-solid fa-sliders"></i>
+                                <h3>Campus Services & Feature Status</h3>
+                            </div>
+                            <div class="profile-detail-list">
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-bus"></i> Transport Opted</span>
+                                    <span class="profile-detail-value" id="profileDetailTransport">✅ Opted (Route #4)</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-hotel"></i> Faculty Quarters / Hostel</span>
+                                    <span class="profile-detail-value" id="profileDetailHostel">❌ Not Opted</span>
+                                </div>
+                                <div class="profile-detail-item">
+                                    <span class="profile-detail-label"><i class="fa-solid fa-microchip"></i> RFID Smart Card Status</span>
+                                    <span class="profile-detail-value">✅ Verified & Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal 1: Edit Personal & Contact Information -->
+    <div class="profile-modal-overlay" id="editPersonalModal" style="display:none;">
+        <div class="profile-modal-card glassmorphism">
+            <button class="modal-close-btn" id="closeEditPersonalModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;"><i class="fa-solid fa-user-pen" style="color:var(--primary);"></i> Edit Personal & Contact Details</h2>
+            <p style="font-size:13px; color:var(--text-secondary); margin-bottom:20px;">Update your personal contact information and faculty identification credentials.</p>
+
+            <form id="editPersonalForm">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Full Name</label>
+                        <input type="text" id="editPersonalName" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Faculty Employee ID</label>
+                        <input type="text" id="editPersonalEmpId" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Official Email Address</label>
+                    <input type="email" id="editPersonalEmail" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:20px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Phone Number</label>
+                        <input type="text" id="editPersonalPhone" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Office Location</label>
+                        <input type="text" id="editPersonalOffice" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:12px;">
+                    <button type="button" class="btn btn-secondary" id="cancelEditPersonalBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Personal Details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Edit Academic & Department Information -->
+    <div class="profile-modal-overlay" id="editAcademicModal" style="display:none;">
+        <div class="profile-modal-card glassmorphism">
+            <button class="modal-close-btn" id="closeEditAcademicModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;"><i class="fa-solid fa-graduation-cap" style="color:var(--primary);"></i> Edit Academic & Department Info</h2>
+            <p style="font-size:13px; color:var(--text-secondary); margin-bottom:20px;">Update your department, highest qualification, and academic assignments.</p>
+
+            <form id="editAcademicForm">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Department</label>
+                        <input type="text" id="editAcademicDept" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Highest Qualification</label>
+                        <input type="text" id="editAcademicQual" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Specialization Area</label>
+                    <input type="text" id="editAcademicSpec" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Assigned Semester / Classes</label>
+                    <input type="text" id="editAcademicSem" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:12px;">
+                    <button type="button" class="btn btn-secondary" id="cancelEditAcademicBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Academic Info</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="profile.js?v=1786808057784"></script>
+</body>
+</html>

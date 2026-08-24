@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Class Allocation Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hod-classes.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+  </head>
+  <body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item active"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search class, teacher, or room..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content classes-content">
+          <div class="page-header">
+            <h1>Classroom & Section Allocation 🏫</h1>
+            <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Allocation Control</span>
+          </div>
+
+          <div class="hod-hero-card classes-hero">
+            <div class="hod-hero-info">
+              <h2>Every class, room, and seat accounted for.</h2>
+              <p>Manage department sections, assign faculty leads, and keep room capacity visible before the next timetable cycle.</p>
+            </div>
+            <div class="allocation-health">
+              <span id="kpiOccupancyRate">78%</span>
+              <small>Room utilization</small>
+            </div>
+          </div>
+
+          <div class="kpi-grid classes-kpis">
+            <div class="kpi-card"><div class="kpi-icon primary"><i class="fa-solid fa-chalkboard"></i></div><div><div class="kpi-val" id="kpiActiveClasses">18</div><div class="kpi-lbl">Active Classes</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon success"><i class="fa-solid fa-users"></i></div><div><div class="kpi-val" id="kpiTotalStudents">1,045</div><div class="kpi-lbl">Enrolled Students</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon warning"><i class="fa-solid fa-building"></i></div><div><div class="kpi-val">26</div><div class="kpi-lbl">Rooms & Labs</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon accent"><i class="fa-solid fa-user-check"></i></div><div><div class="kpi-val">100%</div><div class="kpi-lbl">Faculty Assigned</div></div></div>
+          </div>
+
+          <!-- Action Buttons & Filters -->
+          <div class="classes-filters" style="display:flex; gap:14px; margin-bottom:24px; flex-wrap:wrap; align-items:center;">
+            <select id="deptFilterSelect" class="btn btn-secondary" style="height:38px; font-size:12px;">
+              <option value="all">All Departments</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Civil">Civil</option>
+              <option value="Management">Management</option>
+            </select>
+            <button type="button" class="btn btn-primary" id="btnAddClass">
+              <i class="fas fa-plus"></i> Add New Class Section
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnExportAllocation">
+              <i class="fas fa-download"></i> Export Allocation CSV
+            </button>
+          </div>
+
+          <!-- Engineering Classes -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#6366f1; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-cog"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Engineering Program Classes</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">B.Tech and M.Tech section allocations across all semesters</p>
+              </div>
+            </div>
+            <div style="padding:15px; overflow-x:auto;">
+              <table class="hod-table">
+                <thead>
+                  <tr>
+                    <th>Class Section</th>
+                    <th>Department</th>
+                    <th style="text-align:center;">Semester</th>
+                    <th style="text-align:center;">Assigned Class Teacher</th>
+                    <th style="text-align:center;">Student Strength</th>
+                    <th style="text-align:center;">Allocated Room</th>
+                    <th style="text-align:center;">Status</th>
+                    <th style="text-align:center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="engClassesBody">
+                  <!-- Dynamic Engineering Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Management Classes -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#10b981; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-chart-line"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Management Program Classes</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">MBA and BBA section allocations</p>
+              </div>
+            </div>
+            <div style="padding:15px; overflow-x:auto;">
+              <table class="hod-table">
+                <thead>
+                  <tr>
+                    <th>Class Section</th>
+                    <th>Program</th>
+                    <th>Specialization</th>
+                    <th style="text-align:center;">Assigned Class Teacher</th>
+                    <th style="text-align:center;">Student Strength</th>
+                    <th style="text-align:center;">Allocated Room</th>
+                    <th style="text-align:center;">Status</th>
+                    <th style="text-align:center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="mgmtClassesBody">
+                  <!-- Dynamic Management Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Room Allocations Grid -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#f59e0b; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-door-open"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Building Block & Room Allocations</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">Live room capacity inventory and classroom occupancy</p>
+              </div>
+            </div>
+            <div style="padding:20px;">
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px;">
+                <!-- Block A -->
+                <div class="block-card" style="border-left-color:#6366f1;">
+                  <div style="color:var(--text-primary); font-weight:800; margin-bottom:12px; font-size:15px;"><i class="fas fa-building" style="margin-right:8px; color:#6366f1;"></i>Block A - Computer Science</div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>A-101:</strong> CSE 1A <span class="badge badge-success">62 / 70 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>A-102:</strong> CSE 1B <span class="badge badge-success">58 / 70 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px;"><strong>A-103:</strong> Available <span class="badge badge-secondary">70 Seats</span></div>
+                </div>
+
+                <!-- Block B -->
+                <div class="block-card" style="border-left-color:#10b981;">
+                  <div style="color:var(--text-primary); font-weight:800; margin-bottom:12px; font-size:15px;"><i class="fas fa-building" style="margin-right:8px; color:#10b981;"></i>Block B - Electronics</div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>B-101:</strong> ECE 2A <span class="badge badge-success">56 / 70 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>B-102:</strong> ECE 2B <span class="badge badge-success">52 / 70 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px;"><strong>B-103:</strong> Available <span class="badge badge-secondary">70 Seats</span></div>
+                </div>
+
+                <!-- Block C -->
+                <div class="block-card" style="border-left-color:#f59e0b;">
+                  <div style="color:var(--text-primary); font-weight:800; margin-bottom:12px; font-size:15px;"><i class="fas fa-flask" style="margin-right:8px; color:#f59e0b;"></i>Block C - Engineering Labs</div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>C-101:</strong> CSE Programming Lab <span class="badge badge-warning">45 / 50</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>C-102:</strong> Web Engineering Lab <span class="badge badge-warning">40 / 50</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px;"><strong>C-103:</strong> AI & Robotics Lab <span class="badge badge-warning">38 / 50</span></div>
+                </div>
+
+                <!-- Block D -->
+                <div class="block-card" style="border-left-color:#06b6d4;">
+                  <div style="color:var(--text-primary); font-weight:800; margin-bottom:12px; font-size:15px;"><i class="fas fa-building" style="margin-right:8px; color:#06b6d4;"></i>Block D - Mechanical & Civil</div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>D-101:</strong> Mechanical 3A <span class="badge badge-success">54 / 60 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>D-102:</strong> Civil 4A <span class="badge badge-success">48 / 60 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px;"><strong>D-103:</strong> Available <span class="badge badge-secondary">60 Seats</span></div>
+                </div>
+
+                <!-- Block E -->
+                <div class="block-card" style="border-left-color:#ec4899;">
+                  <div style="color:var(--text-primary); font-weight:800; margin-bottom:12px; font-size:15px;"><i class="fas fa-building" style="margin-right:8px; color:#ec4899;"></i>Block E - Management Wing</div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>E-101:</strong> MBA 1A <span class="badge badge-success">45 / 60 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>E-102:</strong> MBA 1B <span class="badge badge-success">42 / 60 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px;"><strong>E-103:</strong> Available <span class="badge badge-secondary">60 Seats</span></div>
+                </div>
+
+                <!-- Block F -->
+                <div class="block-card" style="border-left-color:#8b5cf6;">
+                  <div style="color:var(--text-primary); font-weight:800; margin-bottom:12px; font-size:15px;"><i class="fas fa-building" style="margin-right:8px; color:#8b5cf6;"></i>Block F - BBA Classes</div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>F-101:</strong> BBA 1A <span class="badge badge-success">64 / 70 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px; margin-bottom:8px;"><strong>F-102:</strong> BBA 1B <span class="badge badge-success">60 / 70 Seats</span></div>
+                  <div style="color:var(--text-secondary); font-size:13px;"><strong>F-103:</strong> Available <span class="badge badge-secondary">70 Seats</span></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Add Class Modal -->
+    <div class="hod-modal-overlay" id="addClassModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-square-plus" style="color:var(--primary);"></i> Add New Class Section</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="addClassModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="addClassForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputClassName">Class Section Name</label>
+                        <input type="text" id="inputClassName" class="hod-form-input" placeholder="e.g. CSE 2B" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputClassDept">Department</label>
+                        <select id="inputClassDept" class="hod-form-select">
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Electronics & Communication">Electronics & Communication</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Management">Management</option>
+                        </select>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="hod-form-group">
+                            <label for="inputClassSem">Semester</label>
+                            <input type="text" id="inputClassSem" class="hod-form-input" placeholder="e.g. Sem 2" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputClassStrength">Student Strength</label>
+                            <input type="number" id="inputClassStrength" class="hod-form-input" placeholder="60" required>
+                        </div>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="hod-form-group">
+                            <label for="inputClassTeacher">Class Teacher</label>
+                            <input type="text" id="inputClassTeacher" class="hod-form-input" placeholder="e.g. Dr. Rajesh Kumar" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputClassRoom">Allocated Room</label>
+                            <input type="text" id="inputClassRoom" class="hod-form-input" placeholder="e.g. Room A-105" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="addClassModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> Create Class</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Allocation Modal -->
+    <div class="hod-modal-overlay" id="editAllocationModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-pen-to-square" style="color:var(--info);"></i> Edit Class Allocation</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="editAllocationModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="editAllocationForm">
+                <input type="hidden" id="editClassId">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="editClassName">Class Section</label>
+                        <input type="text" id="editClassName" class="hod-form-input" readonly style="opacity:0.7;">
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="editClassTeacher">Class Teacher</label>
+                        <input type="text" id="editClassTeacher" class="hod-form-input" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="editClassRoom">Allocated Room</label>
+                        <input type="text" id="editClassRoom" class="hod-form-input" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="editClassStrength">Student Headcount</label>
+                        <input type="number" id="editClassStrength" class="hod-form-input" required>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="editAllocationModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Allocation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-classes.js"></script>
+  </body>
+</html>

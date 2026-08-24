@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Class Timetable</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="timetable.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="timetable.html" class="sidebar-item active">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../../services/fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../../services/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../../services/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../../services/transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../../services/library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Class Timetable</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Academics • Class Timetable</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="timetable-controls-wrapper">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 15px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.02); padding: 5px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <button class="tab-btn active" onclick="switchTimetableTab('day')"><i class="fa-solid fa-calendar-day"></i> Day View</button>
+                        <button class="tab-btn" onclick="switchTimetableTab('week')"><i class="fa-solid fa-calendar-week"></i> Full Week Grid</button>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <select id="sectionSelect" class="form-input" style="height: 36px; padding: 0 10px; font-size:12px; width: 140px; margin: 0; background: var(--bg-secondary); border-radius: 6px;">
+                            <option value="sec_a">Section A (CS-A)</option>
+                            <option value="sec_b">Section B (CS-B)</option>
+                        </select>
+                        <button id="downloadPdfBtn" class="btn btn-secondary btn-sm" style="height: 36px; gap: 6px; padding: 0 16px;"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <!-- Day View Container (Active by default) -->
+                <div id="dayTimetableContainer" style="display: block; margin-bottom: 30px;">
+                    <!-- Mon-Fri Tab pills -->
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px;">
+                        <button class="day-pill active" onclick="showDaySchedule('Monday')">Mon</button>
+                        <button class="day-pill" onclick="showDaySchedule('Tuesday')">Tue</button>
+                        <button class="day-pill" onclick="showDaySchedule('Wednesday')">Wed</button>
+                        <button class="day-pill" onclick="showDaySchedule('Thursday')">Thu</button>
+                        <button class="day-pill" onclick="showDaySchedule('Friday')">Fri</button>
+                    </div>
+
+                    <!-- Timeline Schedule cards -->
+                    <div id="dailyTimeline" style="display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Javascript renders these daily timeline blocks -->
+                    </div>
+                </div>
+
+                <!-- Week Grid Container (Hidden by default) -->
+                <div id="weekTimetableContainer" class="timetable-card glassmorphism" style="display: none; padding: 30px;">
+                    <div class="card-header" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="font-size: 16px; font-weight:700; color: var(--accent);"><i class="fa-solid fa-table"></i> Complete Weekly Matrix</h3>
+                        <span style="font-size:12px; color:var(--text-secondary);">Section A • Autumn Session</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="timetable-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>09:00 - 10:30 AM</th>
+                                    <th>11:00 - 12:30 PM</th>
+                                    <th>01:30 - 03:00 PM</th>
+                                    <th>03:15 - 04:45 PM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td class="slot-active"><strong>Neural Networks</strong>Room 403</td>
+                                    <td class="slot-active"><strong>Embedded VLSI</strong>Lab 3B</td>
+                                    <td class="slot-free">Lunch Interval</td>
+                                    <td class="slot-active"><strong>Robotics Lab</strong>Lab 1A</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td class="slot-active"><strong>AI Specializations</strong>Seminar Hall</td>
+                                    <td class="slot-free">Self Study</td>
+                                    <td class="slot-active"><strong>Database Systems</strong>Room 402</td>
+                                    <td class="slot-active"><strong>Humanities</strong>Room 405</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td class="slot-active"><strong>Neural Networks</strong>Room 403</td>
+                                    <td class="slot-active"><strong>Database Systems</strong>Room 402</td>
+                                    <td class="slot-free">Lunch Interval</td>
+                                    <td class="slot-active"><strong>VLSI Systems</strong>Room 410</td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td class="slot-active"><strong>Embedded VLSI</strong>Lab 3B</td>
+                                    <td class="slot-active"><strong>AI Specializations</strong>Seminar Hall</td>
+                                    <td class="slot-free">Self Study</td>
+                                    <td class="slot-active"><strong>Database Systems</strong>Room 402</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td class="slot-active"><strong>Robotics Lab</strong>Lab 1A</td>
+                                    <td class="slot-active"><strong>Humanities</strong>Room 405</td>
+                                    <td class="slot-free">Lunch Interval</td>
+                                    <td class="slot-free">Weekly Review</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="timetable.js"></script>
+</body>
+</html>

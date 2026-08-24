@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - University Executive Overview</title>
+    <meta name="description" content="University Executive Overview - Campus Infrastructure, Accreditation, Academic Standing & Placement Statistics">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-overview.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item active">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search campus facilities, accreditation status, or departments...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- Overview Hero Banner -->
+                <section class="overview-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-building-columns"></i> INSTITUTIONAL OVERVIEW
+                        </div>
+                        <h1>EduTech State University Executive Briefing</h1>
+                        <p>Comprehensive overview of university infrastructure, NIRF ranking standing, NAAC Grade A++ accreditation, faculty ratio, placement records, and campus facilities.</p>
+                        <div class="nav-pills-bar">
+                            <a href="#basic-info" class="nav-pill-link"><i class="fa-solid fa-circle-info"></i> Basic Info</a>
+                            <a href="#infrastructure" class="nav-pill-link"><i class="fa-solid fa-landmark"></i> Infrastructure</a>
+                            <a href="#academic" class="nav-pill-link"><i class="fa-solid fa-graduation-cap"></i> Academics</a>
+                            <a href="#placements" class="nav-pill-link"><i class="fa-solid fa-briefcase"></i> Placements</a>
+                            <a href="#contact" class="nav-pill-link"><i class="fa-solid fa-location-dot"></i> Location</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Institutional Facts Grid -->
+                <section class="facts-grid">
+                    <div class="fact-card">
+                        <div class="fact-icon icon-purple">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <div class="fact-info">
+                            <div class="fact-label">ESTABLISHED</div>
+                            <div class="fact-val">1998 (28 Years)</div>
+                        </div>
+                    </div>
+
+                    <div class="fact-card">
+                        <div class="fact-icon icon-cyan">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="fact-info">
+                            <div class="fact-label">NAAC GRADE</div>
+                            <div class="fact-val" style="color:var(--success);">Grade A++ (3.84 CGPA)</div>
+                        </div>
+                    </div>
+
+                    <div class="fact-card">
+                        <div class="fact-icon icon-emerald">
+                            <i class="fa-solid fa-ranking-star"></i>
+                        </div>
+                        <div class="fact-info">
+                            <div class="fact-label">NIRF RANKING</div>
+                            <div class="fact-val" style="color:var(--info);">National Rank #24</div>
+                        </div>
+                    </div>
+
+                    <div class="fact-card">
+                        <div class="fact-icon icon-amber">
+                            <i class="fa-solid fa-user-group"></i>
+                        </div>
+                        <div class="fact-info">
+                            <div class="fact-label">STUDENT:TEACHER</div>
+                            <div class="fact-val">12 : 1 Ratio</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Campus Infrastructure Section -->
+                <section class="overview-section" id="infrastructure">
+                    <div class="section-head-bar">
+                        <i class="fa-solid fa-landmark" style="color:var(--primary); font-size:20px;"></i>
+                        <h2>Campus Infrastructure & Facilities</h2>
+                    </div>
+                    <div class="infra-grid">
+                        <div class="infra-card">
+                            <h3><i class="fa-solid fa-book-open-reader" style="color:var(--primary);"></i> Academic Infrastructure</h3>
+                            <div class="infra-list">
+                                <div class="infra-item"><span>Academic Departments</span><strong>18 Departments</strong></div>
+                                <div class="infra-item"><span>Smart Classrooms</span><strong>90 Multimedia Rooms</strong></div>
+                                <div class="infra-item"><span>Research & Tech Labs</span><strong>36 Advanced Labs</strong></div>
+                                <div class="infra-item"><span>Auditoriums</span><strong>2 Convention Halls</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="infra-card">
+                            <h3><i class="fa-solid fa-shield-halved" style="color:var(--accent);"></i> Support Services</h3>
+                            <div class="infra-list">
+                                <div class="infra-item"><span>Central Digital Library</span><strong>85,000+ Volumes</strong></div>
+                                <div class="infra-item"><span>Hostel Accommodation</span><strong>1,200 Capacity</strong></div>
+                                <div class="infra-item"><span>High-Speed Wi-Fi</span><strong>10 Gbps Campus-Wide</strong></div>
+                                <div class="infra-item"><span>Medical Center</span><strong>24/7 Campus Hospital</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="infra-card">
+                            <h3><i class="fa-solid fa-volleyball" style="color:var(--warning);"></i> Sports & Recreation</h3>
+                            <div class="infra-list">
+                                <div class="infra-item"><span>Sports Complex</span><strong>Multi-Court Facility</strong></div>
+                                <div class="infra-item"><span>Athletic Grounds</span><strong>Cricket & Football</strong></div>
+                                <div class="infra-item"><span>Gymnasium</span><strong>State-of-Art Fitness Center</strong></div>
+                                <div class="infra-item"><span>Student Activity Center</span><strong>Cultural Hub</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Placement Overview Section -->
+                <section class="overview-section" id="placements">
+                    <div class="section-head-bar">
+                        <i class="fa-solid fa-briefcase" style="color:var(--success); font-size:20px;"></i>
+                        <h2>Campus Recruitment & Placement Performance</h2>
+                    </div>
+                    <div class="placement-stats-grid">
+                        <div class="placement-box">
+                            <div class="big-num" style="color:var(--success);">85%</div>
+                            <strong style="font-size:14px; color:var(--text-primary);">Overall Placement Rate</strong>
+                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">Across UG, PG & PhD Streams</p>
+                        </div>
+                        <div class="placement-box">
+                            <div class="big-num" style="color:var(--amber); font-family:'JetBrains Mono';">₹24.5 LPA</div>
+                            <strong style="font-size:14px; color:var(--text-primary);">Highest Package Offered</strong>
+                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">International Tech Placement</p>
+                        </div>
+                        <div class="placement-box">
+                            <div class="big-num" style="color:var(--info);">120+</div>
+                            <strong style="font-size:14px; color:var(--text-primary);">Recruiting Partners</strong>
+                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">Google, Microsoft, TCS, Infosys</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact & Campus Location Section -->
+                <section class="overview-section" id="contact">
+                    <div class="section-head-bar">
+                        <i class="fa-solid fa-location-dot" style="color:#ef4444; font-size:20px;"></i>
+                        <h2>Location & Executive Contact Details</h2>
+                    </div>
+                    <div class="contact-cards-grid">
+                        <div class="contact-card">
+                            <i class="fa-solid fa-map-location-dot icon-rose"></i>
+                            <div>
+                                <strong style="font-size:14px; display:block;">Campus Address</strong>
+                                <span style="font-size:12px; color:var(--text-secondary);">123 University Campus Road, Knowledge Park, City - 123456</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <i class="fa-solid fa-phone icon-cyan"></i>
+                            <div>
+                                <strong style="font-size:14px; display:block;">VC Executive Desk</strong>
+                                <span style="font-size:12px; color:var(--text-secondary);">+91 98765 43210 / 011-2345678</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <i class="fa-solid fa-envelope icon-purple"></i>
+                            <div>
+                                <strong style="font-size:14px; display:block;">Official Email</strong>
+                                <span style="font-size:12px; color:var(--text-secondary);">vc@edutech.edu.in</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

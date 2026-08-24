@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Official Bulletins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hod-announcements.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+  </head>
+  <body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item active"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search official bulletins & notices..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content bulletins-content">
+          <div class="page-header">
+            <h1>Official Bulletins & Broadcasts 📢</h1>
+            <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Broadcast Center</span>
+          </div>
+
+          <div class="hod-hero-card bulletins-hero">
+            <div class="hod-hero-info">
+              <h2>Keep the department aligned.</h2>
+              <p>Publish important academic updates, events, notices, and urgent instructions from one central broadcast center.</p>
+            </div>
+            <div class="bulletin-reach">
+              <span id="kpiTotalReach">4,820</span>
+              <small>Total reach</small>
+            </div>
+          </div>
+
+          <div class="kpi-grid bulletins-kpis">
+            <div class="kpi-card"><div class="kpi-icon primary"><i class="fa-solid fa-bullhorn"></i></div><div><div class="kpi-val" id="kpiPublishedCount">24</div><div class="kpi-lbl">Published Bulletins</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon warning"><i class="fa-solid fa-thumbtack"></i></div><div><div class="kpi-val" id="kpiPinnedCount">2</div><div class="kpi-lbl">Pinned Updates</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon success"><i class="fa-solid fa-eye"></i></div><div><div class="kpi-val">86%</div><div class="kpi-lbl">Average Read Rate</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon accent"><i class="fa-solid fa-clock"></i></div><div><div class="kpi-val">3</div><div class="kpi-lbl">Draft Bulletins</div></div></div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="bulletin-actions" style="display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" id="btnCreateAnnouncement">
+              <i class="fas fa-plus"></i> Create New Broadcast
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnFilterPinned">
+              <i class="fas fa-thumbtack"></i> Pinned Only
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnExportBulletins">
+              <i class="fas fa-download"></i> Export Bulletins Log
+            </button>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="bulletin-tabs" style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
+            <button type="button" class="bulletin-tab-btn active" data-category="all">All Broadcasts</button>
+            <button type="button" class="bulletin-tab-btn" data-category="urgent">Urgent Alerts</button>
+            <button type="button" class="bulletin-tab-btn" data-category="academic">Academic Notices</button>
+            <button type="button" class="bulletin-tab-btn" data-category="event">Seminars & Events</button>
+            <button type="button" class="bulletin-tab-btn" data-category="opportunity">Opportunities</button>
+          </div>
+
+          <!-- Bulletins Feed -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#6366f1; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-bullhorn"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Department Broadcast Feed</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">Official announcements dispatched to students & faculty</p>
+              </div>
+            </div>
+            <div style="padding:20px;" id="bulletinFeedContainer">
+              <!-- Dynamic Bulletin Cards -->
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Create Announcement Modal -->
+    <div class="hod-modal-overlay" id="createAnnouncementModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-bullhorn" style="color:var(--primary);"></i> Create Official Broadcast</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="createAnnouncementModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="createAnnouncementForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputBulletinTitle">Broadcast Title</label>
+                        <input type="text" id="inputBulletinTitle" class="hod-form-input" placeholder="e.g. URGENT: Semester Exam Schedule Released" required>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="hod-form-group">
+                            <label for="inputBulletinCategory">Category / Type</label>
+                            <select id="inputBulletinCategory" class="hod-form-select">
+                                <option value="urgent">Urgent Alert</option>
+                                <option value="academic">Academic Notice</option>
+                                <option value="event">Event / Seminar</option>
+                                <option value="opportunity">Opportunity</option>
+                                <option value="notice">General Notice</option>
+                            </select>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputBulletinAudience">Target Audience</label>
+                            <select id="inputBulletinAudience" class="hod-form-select">
+                                <option value="All Students & Faculty">All Students & Faculty</option>
+                                <option value="CSE Students Only">CSE Students Only</option>
+                                <option value="Faculty Only">Faculty Only</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputBulletinContent">Broadcast Message Content</label>
+                        <textarea id="inputBulletinContent" class="hod-form-textarea" rows="4" placeholder="Enter detailed announcement message..." required></textarea>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="createAnnouncementModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Publish Broadcast</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-announcements.js"></script>
+  </body>
+</html>

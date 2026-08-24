@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Portal Settings</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="settings.html" class="sidebar-item active">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header" style="margin-bottom:20px;">
+                    <h1>Portal Settings</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Overview • Portal Settings</span>
+                </div>
+
+                <!-- 1. Faculty Settings Hero Banner Card -->
+                <div class="settings-hero-card">
+                    <div class="settings-hero-user">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" id="settingsAvatarPic" class="settings-avatar" alt="Faculty Avatar">
+                        <div>
+                            <h3 id="settingsUserName">Dr. Rajesh Kumar</h3>
+                            <p><span id="settingsUserEmpId">CSE-EMP-204</span> • <span id="settingsUserDept">Department of Computer Science & Engineering</span></p>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span class="badge badge-success" style="padding:6px 14px; font-size:12px;"><i class="fa-solid fa-circle" style="font-size:8px; margin-right:6px;"></i> Active Faculty Account</span>
+                        <button class="btn btn-secondary" onclick="window.location.href='../profile/profile.html';" style="height:38px; font-size:12px;"><i class="fa-solid fa-user"></i> View Profile</button>
+                    </div>
+                </div>
+
+                <!-- 2. Two-Column Settings Layout -->
+                <div class="settings-main-layout">
+                    <!-- Sidebar Navigation Tabs -->
+                    <div class="settings-sidebar-card">
+                        <button class="settings-tab-btn active" data-target="tab-appearance">
+                            <div>
+                                <i class="fa-solid fa-palette"></i>
+                                <span>Appearance & Theme</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right" style="font-size:12px;"></i>
+                        </button>
+
+                        <button class="settings-tab-btn" data-target="tab-account">
+                            <div>
+                                <i class="fa-solid fa-user-gear"></i>
+                                <span>Account Preferences</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right" style="font-size:12px;"></i>
+                        </button>
+
+                        <button class="settings-tab-btn" data-target="tab-services">
+                            <div>
+                                <i class="fa-solid fa-bus"></i>
+                                <span>Campus Facilities</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right" style="font-size:12px;"></i>
+                        </button>
+
+                        <button class="settings-tab-btn" data-target="tab-notifications">
+                            <div>
+                                <i class="fa-solid fa-bell"></i>
+                                <span>Notifications & Alerts</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right" style="font-size:12px;"></i>
+                        </button>
+
+                        <button class="settings-tab-btn" data-target="tab-security">
+                            <div>
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>Security & Password</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right" style="font-size:12px;"></i>
+                        </button>
+
+                        <button class="settings-tab-btn" data-target="tab-system">
+                            <div>
+                                <i class="fa-solid fa-sliders"></i>
+                                <span>System & ERP Sync</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right" style="font-size:12px;"></i>
+                        </button>
+                    </div>
+
+                    <!-- Panels Container -->
+                    <div>
+                        <!-- Panel 1: Appearance & Theme -->
+                        <div class="settings-card glassmorphism settings-panel" id="tab-appearance">
+                            <div class="settings-card-header">
+                                <h3><i class="fa-solid fa-palette" style="color:var(--primary);"></i> Appearance & Theme Preferences</h3>
+                                <p>Personalize the visual theme, color palette, and display density of your portal.</p>
+                            </div>
+
+                            <div class="settings-group">
+                                <label>Interface Theme Mode</label>
+                                <div class="theme-picker-grid">
+                                    <div class="theme-card active" id="cardThemeDark" onclick="setPortalTheme('dark')">
+                                        <div class="theme-card-preview dark-preview">
+                                            <i class="fa-solid fa-moon"></i>
+                                        </div>
+                                        <strong>Dark Glassmorphism</strong>
+                                        <span>Dark background with glass cards</span>
+                                    </div>
+                                    <div class="theme-card" id="cardThemeLight" onclick="setPortalTheme('light')">
+                                        <div class="theme-card-preview light-preview">
+                                            <i class="fa-solid fa-sun"></i>
+                                        </div>
+                                        <strong>Clean Light Mode</strong>
+                                        <span>Bright, high-contrast light theme</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-toggle-box">
+                                <div class="option-toggle-info">
+                                    <strong>Glassmorphism Dynamic Translucency</strong>
+                                    <p>Enable backdrop blur, glowing borders, and glass card depth.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="option-toggle-box">
+                                <div class="option-toggle-info">
+                                    <strong>Compact Portal Sidebar Layout</strong>
+                                    <p>Automatically collapse sidebar into icon-only view on desktop.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="compactSidebarToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Account Preferences -->
+                        <div class="settings-card glassmorphism settings-panel" id="tab-account" style="display:none;">
+                            <div class="settings-card-header">
+                                <h3><i class="fa-solid fa-user-gear" style="color:var(--primary);"></i> Account & Workspace Preferences</h3>
+                                <p>Configure default landing views, faculty role flags, and working hours.</p>
+                            </div>
+
+                            <div class="settings-form-row">
+                                <div class="settings-group">
+                                    <label>Default Landing Page</label>
+                                    <select class="settings-field" id="settingLandingPage">
+                                        <option value="dashboard">Faculty Dashboard</option>
+                                        <option value="my-classes">My Classes</option>
+                                        <option value="timetable">Weekly Timetable</option>
+                                        <option value="chat">Messenger Chat</option>
+                                    </select>
+                                </div>
+                                <div class="settings-group">
+                                    <label>Automated Away Status Timer</label>
+                                    <select class="settings-field">
+                                        <option>After 15 Minutes Inactivity</option>
+                                        <option selected>After 30 Minutes Inactivity</option>
+                                        <option>Never Auto-Away</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Campus Facilities -->
+                        <div class="settings-card glassmorphism settings-panel" id="tab-services" style="display:none;">
+                            <div class="settings-card-header">
+                                <h3><i class="fa-solid fa-bus" style="color:var(--primary);"></i> Campus Services & Facility Allocations</h3>
+                                <p>Manage your university transportation, hostel quarters, and RFID smart cards.</p>
+                            </div>
+
+                            <!-- Transport Service Box -->
+                            <div style="padding:20px; background:var(--bg-tertiary); border-radius:var(--border-radius-md); border:1px solid var(--border-color); margin-bottom:20px;">
+                                <div class="option-toggle-box" style="padding:0; background:none; border:none; margin-bottom:15px;">
+                                    <div class="option-toggle-info">
+                                        <strong><i class="fa-solid fa-bus" style="color:var(--primary); margin-right:8px;"></i> University Faculty Bus Shuttle</strong>
+                                        <p>Opt-in for daily faculty AC bus shuttle service.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="settingTransportToggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="settings-form-row" style="margin-bottom:0;">
+                                    <div>
+                                        <label style="font-size:12px;">Assigned Bus Route</label>
+                                        <select class="settings-field" id="settingBusRouteSelect">
+                                            <option value="route1">Route #1: City Center → Main Gate</option>
+                                            <option value="route4" selected>Route #4: Tech Hub → Science Block</option>
+                                            <option value="route7">Route #7: Express Highway → Staff Quarters</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="font-size:12px;">Pickup Stop Location</label>
+                                        <input type="text" class="settings-field" value="Central Metro Station Gate 2">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hostel / Quarters Box -->
+                            <div style="padding:20px; background:var(--bg-tertiary); border-radius:var(--border-radius-md); border:1px solid var(--border-color);">
+                                <div class="option-toggle-box" style="padding:0; background:none; border:none; margin-bottom:15px;">
+                                    <div class="option-toggle-info">
+                                        <strong><i class="fa-solid fa-hotel" style="color:var(--accent); margin-right:8px;"></i> Faculty Residential Quarters</strong>
+                                        <p>Opt-in for on-campus residential quarter allocation.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="settingHostelToggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="settings-form-row" style="margin-bottom:0;">
+                                    <div>
+                                        <label style="font-size:12px;">Quarter Block Allocation</label>
+                                        <select class="settings-field">
+                                            <option selected>Block B - Senior Faculty Suites (Quarters B-2)</option>
+                                            <option>Block A - Executive Towers</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="font-size:12px;">Allocation Status</label>
+                                        <input type="text" class="settings-field" value="Verified & Allocated" readonly style="opacity:0.8;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 4: Notifications -->
+                        <div class="settings-card glassmorphism settings-panel" id="tab-notifications" style="display:none;">
+                            <div class="settings-card-header">
+                                <h3><i class="fa-solid fa-bell" style="color:var(--primary);"></i> Notification & Alert Dispatch Rules</h3>
+                                <p>Select alerts you wish to receive via Email, SMS, and Portal Push popups.</p>
+                            </div>
+
+                            <div class="option-toggle-box">
+                                <div class="option-toggle-info">
+                                    <strong>Email Digest & Circulars</strong>
+                                    <p>Receive daily digest of official circulars and student submissions.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="option-toggle-box">
+                                <div class="option-toggle-info">
+                                    <strong>Urgent Exam & Invigilation SMS Alerts</strong>
+                                    <p>Instant SMS alerts for invigilation duties and exam schedule changes.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="option-toggle-box">
+                                <div class="option-toggle-info">
+                                    <strong>Audio Sound Chimes for Student Messages</strong>
+                                    <p>Play audio notification chime when a new chat message arrives.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Panel 5: Security & Password -->
+                        <div class="settings-card glassmorphism settings-panel" id="tab-security" style="display:none;">
+                            <div class="settings-card-header">
+                                <h3><i class="fa-solid fa-shield-halved" style="color:var(--primary);"></i> Security & Password Management</h3>
+                                <p>Update your password, enable 2FA authentication, and manage active sessions.</p>
+                            </div>
+
+                            <form id="changePasswordForm">
+                                <div class="settings-group">
+                                    <label>Current Password</label>
+                                    <input type="password" class="settings-field" required placeholder="Enter current password">
+                                </div>
+
+                                <div class="settings-form-row">
+                                    <div>
+                                        <label>New Password</label>
+                                        <input type="password" class="settings-field" required placeholder="Enter new password">
+                                    </div>
+                                    <div>
+                                        <label>Confirm New Password</label>
+                                        <input type="password" class="settings-field" required placeholder="Confirm new password">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" style="height:40px; margin-bottom:25px;"><i class="fa-solid fa-lock"></i> Update Password</button>
+                            </form>
+
+                            <h4 style="font-size:14px; font-weight:700; color:var(--text-primary); margin-bottom:12px;">Active Login Sessions</h4>
+                            <table class="sessions-table">
+                                <thead>
+                                    <tr>
+                                        <th>Device / Browser</th>
+                                        <th>Location</th>
+                                        <th>IP Address</th>
+                                        <th>Last Active</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><i class="fa-solid fa-desktop" style="color:var(--primary); margin-right:6px;"></i> Windows PC • Chrome</td>
+                                        <td>Delhi, India</td>
+                                        <td>192.168.1.42</td>
+                                        <td><span class="badge badge-success">Active Now</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-mobile-screen" style="color:var(--text-secondary); margin-right:6px;"></i> Android • UnifyEd Mobile App</td>
+                                        <td>Delhi, India</td>
+                                        <td>192.168.1.88</td>
+                                        <td>2 hours ago</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Panel 6: System Preferences -->
+                        <div class="settings-card glassmorphism settings-panel" id="tab-system" style="display:none;">
+                            <div class="settings-card-header">
+                                <h3><i class="fa-solid fa-sliders" style="color:var(--primary);"></i> System & ERP Synchronization</h3>
+                                <p>Configure server heartbeat intervals and data localization rules.</p>
+                            </div>
+
+                            <div class="settings-form-row">
+                                <div class="settings-group">
+                                    <label>Automated ERP Sync Interval</label>
+                                    <select class="settings-field">
+                                        <option>Every 15 Minutes</option>
+                                        <option selected>Every 30 Minutes</option>
+                                        <option>Every Hour</option>
+                                    </select>
+                                </div>
+                                <div class="settings-group">
+                                    <label>Timezone</label>
+                                    <select class="settings-field">
+                                        <option selected>Indian Standard Time (IST - UTC+05:30)</option>
+                                        <option>UTC (Coordinated Universal Time)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Bar -->
+                        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:25px;">
+                            <button class="btn btn-primary" id="saveAllSettingsBtn" style="height:44px; padding:0 28px; font-size:14px; font-weight:700;">
+                                <i class="fa-solid fa-floppy-disk"></i> Save Portal Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="settings.js?v=1786808057786"></script>
+</body>
+</html>

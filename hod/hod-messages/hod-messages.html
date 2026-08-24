@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Messages & Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hod-messages.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+  </head>
+  <body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item active"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search chats or messages..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content" style="padding-bottom:10px;">
+          <div class="page-header" style="margin-bottom:14px;">
+            <h1>Executive Communications & Chat 💬</h1>
+            <span class="breadcrumbs">UnifyEd • HOD Portal • Direct Messages & Committee Channels</span>
+          </div>
+
+          <div class="chat-container-layout">
+            <!-- Conversations List -->
+            <div class="chat-contacts-panel">
+              <div style="padding:15px; border-bottom:1px solid var(--border-color);">
+                <input type="text" id="contactSearchInput" placeholder="Search contacts..." style="width:100%; padding:10px 14px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:var(--border-radius-sm); color:var(--text-primary); font-size:13px; outline:none;">
+              </div>
+              <div style="flex:1; overflow-y:auto;" id="contactsListContainer">
+                <!-- Dynamic Contacts List -->
+              </div>
+              <div style="padding:12px; border-top:1px solid var(--border-color);">
+                <button type="button" class="btn btn-primary" id="btnNewMessage" style="width:100%; justify-content:center; gap:8px;">
+                  <i class="fas fa-plus"></i> New Message
+                </button>
+              </div>
+            </div>
+
+            <!-- Active Chat Window -->
+            <div class="chat-window-panel">
+              <!-- Chat Header -->
+              <div style="padding:16px 20px; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(99, 102, 241, 0.08), transparent);">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <div id="activeAvatar" style="width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#6366f1,#8b5cf6); display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:14px; flex-shrink:0;">DR</div>
+                  <div>
+                    <div style="color:var(--text-primary); font-weight:800; font-size:15px;" id="activeContactName">Dr. Robert Hayes</div>
+                    <div style="color:var(--success); font-size:11px; font-weight:700;" id="activeContactStatus"><i class="fa-solid fa-circle" style="font-size:8px;"></i> Online</div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <button type="button" class="btn btn-secondary" title="Voice Call" onclick="alert('Initiating audio call...')"><i class="fas fa-phone"></i></button>
+                  <button type="button" class="btn btn-secondary" title="Video Call" onclick="alert('Initiating HD video conference...')"><i class="fas fa-video"></i></button>
+                </div>
+              </div>
+
+              <!-- Messages Thread -->
+              <div class="chat-messages-container" id="chatThreadContainer">
+                <!-- Dynamic Chat Bubbles -->
+              </div>
+
+              <!-- Message Input Bar -->
+              <div style="padding:16px 20px; border-top:1px solid var(--border-color); display:flex; gap:12px; align-items:center; background:var(--bg-card);">
+                <input type="text" id="chatInputMessage" placeholder="Type a message..." style="flex:1; padding:12px 16px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:var(--border-radius-sm); color:var(--text-primary); font-size:13px; outline:none;">
+                <button type="button" class="btn btn-secondary" title="Attach file" onclick="alert('Attach document or image...')"><i class="fas fa-paperclip"></i></button>
+                <button type="button" class="btn btn-primary" id="btnSendMessage" style="padding:10px 18px;"><i class="fas fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- New Message Modal -->
+    <div class="hod-modal-overlay" id="newChatModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-comment-medical" style="color:var(--primary);"></i> Start New Direct Chat</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="newChatModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="newChatForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputContactName">Recipient Name / Channel</label>
+                        <input type="text" id="inputContactName" class="hod-form-input" placeholder="e.g. Prof. Meera Patel" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputInitialMessage">First Message</label>
+                        <textarea id="inputInitialMessage" class="hod-form-textarea" rows="3" placeholder="Hello, I wanted to discuss..." required></textarea>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="newChatModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Start Conversation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-messages.js"></script>
+  </body>
+</html>

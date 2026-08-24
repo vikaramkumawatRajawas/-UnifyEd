@@ -1,0 +1,16 @@
+
+            .roster-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 12px 20px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.01);
+                transition: border-color 0.2s ease, transform 0.2s ease;
+            }
+            .roster-row:hover {
+                border-color: rgba(99, 102, 241, 0.2);
+                transform: translateX(2px);
+            }
+        

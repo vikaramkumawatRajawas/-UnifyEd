@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Security Governance & Sentinel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-security.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item active"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search security policies, IP rules..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-shield-halved"></i> ZERO-TRUST GOVERNANCE</span>
+                <h1>Enterprise Security Governance & Sentinel 🛡️</h1>
+              </div>
+              <p>Enforce multi-factor authentication (MFA), IP whitelist policies, password complexity, and monitor live intrusion threats.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Shield Protection Score</span>
+                  <strong class="val" style="color:var(--success);">99.98% Active</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">2FA Enforcement</span>
+                  <strong class="val" style="color:var(--danger);">Forced (Admin/Faculty)</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Intrusion Threats</span>
+                  <strong class="val" style="color:var(--primary);">0 Active Threats</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnRunScan"><i class="fa-solid fa-lock"></i> Run Firewall Scan</button>
+              <button class="btn btn-secondary" id="btnSavePolicies"><i class="fa-solid fa-floppy-disk"></i> Save Policies</button>
+            </div>
+          </div>
+
+          <!-- Security Sentinel KPI Grid (Equal 4 Columns) -->
+          <div class="kpi-grid" style="margin-bottom:28px;">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Firewall Health Score</span>
+                  <div class="kpi-val">99.98%</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-shield-check"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-circle-check"></i> Firewall Rules Active</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:99%; background:var(--success);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">MFA Enrollment Rate</span>
+                  <div class="kpi-val">88.5%</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-key"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-user-shield"></i> Mandatory for Faculty/Admins</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:88%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Blocked Threats (24h)</span>
+                  <div class="kpi-val">142</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-ban"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-filter-circle-xmark"></i> Rate Limiter & IP Bans</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:72%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Active Admin Sessions</span>
+                  <div class="kpi-val">4 Live</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-user-lock"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-lock"></i> TLS 1.3 Encrypted</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--info);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Policy Enforcer Modules Grid (2x2 Glass Cards) -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;">
+            <!-- Multi-Factor Authentication (MFA) Card -->
+            <div class="admin-glass-card sec-policy-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-mobile-screen-button" style="color:var(--primary);"></i> Mandatory Multi-Factor Authentication (MFA)</h3>
+              </div>
+              <div class="policy-list">
+                <div class="policy-item">
+                  <div>
+                    <strong>Require 2FA for System Administrators</strong>
+                    <span>Mandatory TOTP authenticator code on every admin login</span>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked id="toggleAdmin2fa"><span class="slider"></span></label>
+                </div>
+
+                <div class="policy-item">
+                  <div>
+                    <strong>Require 2FA for HODs & Faculty Members</strong>
+                    <span>Enforce email/SMS OTP verification for grade approvals</span>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked id="toggleFaculty2fa"><span class="slider"></span></label>
+                </div>
+
+                <div class="policy-item">
+                  <div>
+                    <strong>Enable WebAuthn Hardware Security Keys</strong>
+                    <span>Support YubiKey & FIDO2 biometric authentication</span>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked id="toggleFido2"><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Password Complexity & Expiration Card -->
+            <div class="admin-glass-card sec-policy-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-shield-cat" style="color:var(--accent);"></i> Password Complexity & Expiration Rules</h3>
+              </div>
+              <div class="policy-list">
+                <div class="policy-item">
+                  <div>
+                    <strong>Enforce Minimum Password Length (12 Characters)</strong>
+                    <span>Require uppercase, lowercase, digits, and special symbols</span>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked id="togglePassLength"><span class="slider"></span></label>
+                </div>
+
+                <div class="policy-item">
+                  <div>
+                    <strong>Mandatory 90-Day Password Expiration</strong>
+                    <span>Prompt users to update credentials every fiscal quarter</span>
+                  </div>
+                  <label class="switch"><input type="checkbox" id="togglePassExpire"><span class="slider"></span></label>
+                </div>
+
+                <div class="policy-item">
+                  <div>
+                    <strong>Block Re-Use of Last 5 Passwords</strong>
+                    <span>Prevent users from recycling previous login passphrases</span>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked id="togglePassReuse"><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- IP Whitelisting & Subnet Range Card -->
+            <div class="admin-glass-card sec-policy-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-network-wired" style="color:var(--danger);"></i> Campus IP Whitelisting & Geo-Fencing</h3>
+              </div>
+              <div class="policy-list">
+                <div class="policy-item">
+                  <div>
+                    <strong>Restrict Admin Login to Campus Network</strong>
+                    <span>Block administrative access outside verified CIDR ranges</span>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked id="toggleIpRestricted"><span class="slider"></span></label>
+                </div>
+
+                <div class="form-group" style="margin-top:10px; margin-bottom:0;">
+                  <label class="form-label">Allowed Subnet CIDR Range</label>
+                  <input type="text" class="form-input" id="cidrInput" value="192.168.1.0/24, 10.0.4.0/16" placeholder="e.g. 192.168.1.0/24">
+                </div>
+              </div>
+            </div>
+
+            <!-- Session Timeout & Lockout Policy Card -->
+            <div class="admin-glass-card sec-policy-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--warning);"></i> Session Timeout & Lockout Policy</h3>
+              </div>
+              <div class="policy-list">
+                <div class="form-group" style="margin-bottom:14px;">
+                  <label class="form-label">Session Idle Auto-Timeout (Minutes)</label>
+                  <input type="number" class="form-input" id="sessionTimeoutInput" value="15" min="5" max="120">
+                </div>
+
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Max Failed Login Retries Before Lockout</label>
+                  <input type="number" class="form-input" id="maxRetriesInput" value="3" min="1" max="10">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Security Intrusion & Audit Log Stream Table Card -->
+          <div class="admin-glass-card sec-logs-card" style="margin-top:32px; padding:28px;">
+            <div class="card-header-bar" style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid var(--border-color);">
+              <div class="dir-title-group">
+                <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:10px;"><i class="fa-solid fa-shield-virus" style="color:var(--danger);"></i> Sentinel Live Threat & Intrusion Stream</h3>
+                <span class="live-status-chip"><span class="pulse-dot"></span> Sentinel Monitor Live</span>
+              </div>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="admin-table sec-table" id="secLogsTable">
+                <thead>
+                  <tr>
+                    <th>Security Event & Source IP</th>
+                    <th>Target User Account</th>
+                    <th>Threat Severity</th>
+                    <th>Timestamp</th>
+                    <th>Mitigation Status</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="sec-event-cell">
+                        <i class="fa-solid fa-triangle-exclamation" style="color:var(--danger);"></i>
+                        <div>
+                          <strong class="evt-name">Failed Admin Login Retry</strong>
+                          <span class="evt-ip">IP: 103.45.12.88 (External)</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-cyan">ADM-001</span></td>
+                    <td><span class="sev-badge sev-high">High Severity</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 4 mins ago</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> IP Locked Out</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-ban-ip" data-ip="103.45.12.88" title="Permanent IP Ban"><i class="fa-solid fa-ban"></i> Ban IP</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="sec-event-cell">
+                        <i class="fa-solid fa-circle-check" style="color:var(--success);"></i>
+                        <div>
+                          <strong class="evt-name">2FA OTP Verification Passed</strong>
+                          <span class="evt-ip">IP: 192.168.1.104 (Campus)</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-emerald">FIN-EMP-108</span></td>
+                    <td><span class="sev-badge sev-low">Info Only</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 18 mins ago</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Session Granted</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-event" title="View Audit Details"><i class="fa-solid fa-eye"></i> Details</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="sec-event-cell">
+                        <i class="fa-solid fa-shield-cat" style="color:var(--warning);"></i>
+                        <div>
+                          <strong class="evt-name">Privilege Elevation Audit</strong>
+                          <span class="evt-ip">IP: 192.168.1.42 (Campus)</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-amber">HOD-CSE-001</span></td>
+                    <td><span class="sev-badge sev-med">Medium Severity</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 1 hour ago</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Audit Verified</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-event" title="View Audit Details"><i class="fa-solid fa-eye"></i> Details</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="sec-event-cell">
+                        <i class="fa-solid fa-lock" style="color:var(--info);"></i>
+                        <div>
+                          <strong class="evt-name">Session Auto-Timeout Executed</strong>
+                          <span class="evt-ip">IP: 192.168.1.15 (Campus)</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-blue">STU-2026-101</span></td>
+                    <td><span class="sev-badge sev-low">Info Only</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 3 hours ago</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Token Expired</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-event" title="View Audit Details"><i class="fa-solid fa-eye"></i> Details</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-security.js"></script>
+  </body>
+</html>

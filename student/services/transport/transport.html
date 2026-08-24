@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Transport</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="transport.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../../academics/exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../../academics/progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="transport.html" class="sidebar-item active">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Transport</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Services • Transport</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="transport-card glassmorphism">
+                <h3>Bus Transport Routes & Details</h3>
+                <div class="details-box" style="margin-top: 20px; padding: 20px; background-color: var(--bg-tertiary); border-radius: var(--border-radius-sm); border: 1px solid var(--border-color);">
+                    <strong>Bus Card Status: <span class="text-danger">Not Subscribed</span></strong>
+                    <p style="margin-top: 10px; font-size:13px; color: var(--text-secondary);">Apply for a monthly/yearly college transport card to access standard bus routes sweeping Jaipur and Sikar routes.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 15px;" onclick="alert('Subscription forms loading...')">Apply for Bus Route Pass</button>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="transport.js"></script>
+</body>
+</html>

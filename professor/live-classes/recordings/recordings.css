@@ -1,0 +1,74 @@
+
+            .filter-tab {
+                background: transparent;
+                border: 1px solid var(--border-color);
+                color: var(--text-secondary);
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 11px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            .filter-tab.active {
+                background: var(--primary);
+                border-color: var(--primary);
+                color: white;
+            }
+            .filter-tab:hover:not(.active) {
+                border-color: rgba(99,102,241,0.5);
+                color: var(--text-primary);
+            }
+            .recording-video-card {
+                background: rgba(30, 41, 59, 0.45);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.2s ease, border-color 0.2s ease;
+            }
+            .recording-video-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(99, 102, 241, 0.25);
+            }
+            .video-thumbnail-mock {
+                width: 100%;
+                height: 140px;
+                background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .play-overlay-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background: rgba(99, 102, 241, 0.85);
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                transition: transform 0.2s ease;
+                cursor: pointer;
+            }
+            .recording-video-card:hover .play-overlay-icon {
+                transform: scale(1.1);
+                background: var(--primary);
+            }
+            .rec-time-badge {
+                position: absolute;
+                bottom: 8px;
+                right: 8px;
+                background: rgba(0, 0, 0, 0.75);
+                color: white;
+                font-size: 10px;
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-weight: 600;
+            }
+        

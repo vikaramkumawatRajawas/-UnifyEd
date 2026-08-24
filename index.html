@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<!-- cspell:ignore NAAC AICTE CGPA NIRF Rajesh VLSI RFID Gbps Hackathon SGPA Ayush Sharma Mishra Ananya Rohan Verma skillset Sumit Chawla Neha Vikram Aditya Scopus Sikar bootcamps -->
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Centralized Digital Platform for Comprehensive College Management</title>
+    <meta name="description" content="UnifyEd - Centralized Digital Platform for Comprehensive College Management">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 1. Header Section -->
+    <header class="main-header" id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="college-logo">
+                    <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                    <div class="logo-text">
+                        <span class="logo-main">UnifyEd</span>
+                        <span class="logo-sub">College of Engineering</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#overview" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#departments" class="nav-link">Departments</a>
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#placements" class="nav-link">Placements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <a href="auth/login.html" class="btn btn-secondary nav-btn" id="headerLoginBtn">Login</a>
+                    <a href="auth/register.html" class="btn btn-primary nav-btn" id="headerRegisterBtn">Create Account</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge-tag">
+                    <i class="fa-solid fa-award"></i> Ranked 1st in Region | NAAC A++ Accredited
+                </div>
+                <h1 class="hero-title">Shaping Future Leaders with Modern Engineering & Technology</h1>
+                <p class="hero-subtitle">Experience a futuristic learning environment powered by UnifyEd ERP. Manage classrooms, fees, attendance, and connect with mentors in a single tap.</p>
+                <div class="hero-actions">
+                    <a href="auth/login.html" class="btn btn-primary btn-large" id="heroLoginBtn">
+                        <i class="fa-solid fa-right-to-bracket"></i> Access ERP Portal
+                    </a>
+                    <a href="auth/register.html" class="btn btn-secondary btn-large" id="heroApplyBtn">
+                        <i class="fa-solid fa-file-signature"></i> Apply Now 2026
+                    </a>
+                    <button class="btn btn-outline btn-large" id="heroTourBtn" onclick="openTourModal()">
+                        <i class="fa-solid fa-street-view"></i> Virtual Tour
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. College Overview Section -->
+    <section class="overview-section section-padding" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get to Know Us</span>
+                <h2 class="section-title">Discover UnifyEd College</h2>
+                <div class="title-underline"></div>
+            </div>
+            
+            <div class="overview-grid">
+                <div class="overview-info">
+                    <h3>Empowering Minds Since 1998</h3>
+                    <p class="lead-text">UnifyEd has been a pioneer in tech education, fostering innovation, leadership, and analytical thinking.</p>
+                    <p>Approved by the **AICTE**, affiliated with **State Technological University**, and accredited with a stellar **NAAC A++ Grade** (CGPA 3.82), we set high benchmarks in academic excellence, state-of-the-art infrastructure, and strong recruiter alliances.</p>
+                    
+                    <div class="accreditations-grid">
+                        <div class="acc-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <div>
+                                <strong>NAAC A++ Grade</strong>
+                                <span>Highest Accreditation</span>
+                            </div>
+                        </div>
+                        <div class="acc-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>AICTE Approved</strong>
+                                <span>Govt. of India Certified</span>
+                            </div>
+                        </div>
+                        <div class="acc-item">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <div>
+                                <strong>STU Affiliation</strong>
+                                <span>Curriculum aligned with industry</span>
+                            </div>
+                        </div>
+                        <div class="acc-item">
+                            <i class="fa-solid fa-ranking-star"></i>
+                            <div>
+                                <strong>Top 50 NIRF</strong>
+                                <span>National Institutional Ranking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="principal-message-card">
+                    <div class="message-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                    <div class="principal-avatar">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h4>Dr. Rajesh Kumar</h4>
+                    <span class="principal-title">Principal & Director</span>
+                    <p class="principal-message">"At UnifyEd, our mission is to build a vibrant ecosystem of active research and industrial alignment, where every student is mentored to innovate and build solutions for a better tomorrow. Welcome to our digital campus!"</p>
+                </div>
+            </div>
+
+            <!-- Stats Sub-section -->
+            <div class="quick-overview-stats">
+                <div class="q-stat">
+                    <span class="q-num">25+</span>
+                    <span class="q-label">Years of Excellence</span>
+                </div>
+                <div class="q-stat">
+                    <span class="q-num">120+</span>
+                    <span class="q-label">Acres Campus Area</span>
+                </div>
+                <div class="q-stat">
+                    <span class="q-num">5000+</span>
+                    <span class="q-label">Total Active Students</span>
+                </div>
+                <div class="q-stat">
+                    <span class="q-num">350+</span>
+                    <span class="q-label">PhD Faculty & Staff</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Campus Statistics Section -->
+    <section class="stats-section section-padding" id="stats">
+        <div class="stats-overlay"></div>
+        <div class="container">
+            <div class="stats-grid">
+                <!-- 1. Students -->
+                <div class="stat-card" data-aos="fade-up">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-user-graduate"></i></div>
+                    <div class="stat-number" data-target="5200">0</div>
+                    <div class="stat-label">Students Enrolled</div>
+                </div>
+                <!-- 2. Professors -->
+                <div class="stat-card" data-aos="fade-up" data-delay="100">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <div class="stat-number" data-target="240">0</div>
+                    <div class="stat-label">Expert Professors</div>
+                </div>
+                <!-- 3. Departments -->
+                <div class="stat-card" data-aos="fade-up" data-delay="200">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="stat-number" data-target="8">0</div>
+                    <div class="stat-label">Departments</div>
+                </div>
+                <!-- 4. Courses -->
+                <div class="stat-card" data-aos="fade-up" data-delay="300">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Offered Courses</div>
+                </div>
+                <!-- 5. Buses -->
+                <div class="stat-card" data-aos="fade-up" data-delay="400">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-bus"></i></div>
+                    <div class="stat-number" data-target="45">0</div>
+                    <div class="stat-label">Bus Fleets</div>
+                </div>
+                <!-- 6. Library Books -->
+                <div class="stat-card" data-aos="fade-up" data-delay="500">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-book"></i></div>
+                    <div class="stat-number" data-target="85000">0</div>
+                    <div class="stat-label">Library Books</div>
+                </div>
+                <!-- 7. Placement % -->
+                <div class="stat-card" data-aos="fade-up" data-delay="600">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="stat-number" data-target="96">0</div>
+                    <div class="stat-label">Placement Rate %</div>
+                </div>
+                <!-- 8. Alumni -->
+                <div class="stat-card" data-aos="fade-up" data-delay="700">
+                    <div class="stat-icon-wrapper"><i class="fa-solid fa-user-check"></i></div>
+                    <div class="stat-number" data-target="12000">0</div>
+                    <div class="stat-label">Global Alumni</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Departments Section -->
+    <section class="departments-section section-padding" id="departments">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Specializations</span>
+                <h2 class="section-title">Academic Departments</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="departments-grid">
+                <!-- CS -->
+                <div class="dept-card" onclick="openDeptDetails('cs')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-laptop-code dept-icon"></i>
+                        <h3>Computer Science</h3>
+                        <p>Specializations in AI, Machine Learning, Cyber Security, and Cloud Computing.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- Mechanical -->
+                <div class="dept-card" onclick="openDeptDetails('mech')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-gears dept-icon"></i>
+                        <h3>Mechanical</h3>
+                        <p>Advanced labs for Robotics, Automobile Engineering, CAD/CAM, and Thermodynamics.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- Civil -->
+                <div class="dept-card" onclick="openDeptDetails('civil')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-trowel-bricks dept-icon"></i>
+                        <h3>Civil Engineering</h3>
+                        <p>Focus on Structural Planning, Environmental Engineering, and Smart Infrastructure.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- Electrical -->
+                <div class="dept-card" onclick="openDeptDetails('electrical')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-bolt-lightning dept-icon"></i>
+                        <h3>Electrical & Electronics</h3>
+                        <p>Deep dive into Smart Grids, Power Electronics, Renewable Systems, and IoT.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- BBA -->
+                <div class="dept-card" onclick="openDeptDetails('bba')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-graduation-cap dept-icon"></i>
+                        <h3>BBA Department</h3>
+                        <p>Undergraduate management education specializing in Finance, HR, and Marketing.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- BPT -->
+                <div class="dept-card" onclick="openDeptDetails('bpt')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-kit-medical dept-icon"></i>
+                        <h3>Physiotherapy (BPT)</h3>
+                        <p>Clinical department focused on physical therapy, rehabilitation, and anatomy sciences.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- Management -->
+                <div class="dept-card" onclick="openDeptDetails('management')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-briefcase dept-icon"></i>
+                        <h3>Management</h3>
+                        <p>Shaping global managers in Human Resources, Marketing, Operations, and Business Analytics.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- ECE -->
+                <div class="dept-card" onclick="openDeptDetails('ece')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-microchip dept-icon"></i>
+                        <h3>Electronics & Comm.</h3>
+                        <p>Specialization in IoT devices, VLSI designs, signal processing, and communication networks.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+                <!-- Basic Sciences -->
+                <div class="dept-card" onclick="openDeptDetails('basic_sciences')">
+                    <div class="dept-bg"></div>
+                    <div class="dept-content">
+                        <i class="fa-solid fa-flask dept-icon"></i>
+                        <h3>Basic Sciences</h3>
+                        <p>Providing the foundations of Engineering through Applied Physics, Chemistry, and Mathematics.</p>
+                        <span class="read-more-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Courses Section -->
+    <section class="courses-section section-padding" id="courses">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Academic Programs</span>
+                <h2 class="section-title">Offered Courses</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="courses-tabs-container">
+                <div class="courses-block">
+                    <h3 class="course-group-title"><i class="fa-solid fa-graduation-cap"></i> Undergraduate (UG)</h3>
+                    <div class="courses-grid">
+                        <div class="course-pill">
+                            <span class="course-code">BCA</span>
+                            <div class="course-info">
+                                <h4>Bachelor of Computer Applications</h4>
+                                <span>3 Years | Regular</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">BBA</span>
+                            <div class="course-info">
+                                <h4>Bachelor of Business Administration</h4>
+                                <span>3 Years | Regular</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">B.Tech</span>
+                            <div class="course-info">
+                                <h4>CSE (AI & ML)</h4>
+                                <span>4 Years | Specialization</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">BPT</span>
+                            <div class="course-info">
+                                <h4>Bachelor of Physiotherapy</h4>
+                                <span>4.5 Years | Clinical</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">B.Tech</span>
+                            <div class="course-info">
+                                <h4>Mechanical Engineering</h4>
+                                <span>4 Years | Regular</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">B.Tech</span>
+                            <div class="course-info">
+                                <h4>Civil Engineering</h4>
+                                <span>4 Years | Regular</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">B.Tech</span>
+                            <div class="course-info">
+                                <h4>Electrical & Electronics</h4>
+                                <span>4 Years | Regular</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">B.Tech</span>
+                            <div class="course-info">
+                                <h4>Computer Science & Eng.</h4>
+                                <span>4 Years | Regular</span>
+                            </div>
+                        </div>
+                        <div class="course-pill">
+                            <span class="course-code">B.Tech</span>
+                            <div class="course-info">
+                                <h4>Electronics & Comm.</h4>
+                                <span>4 Years | Regular</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="courses-block">
+                    <h3 class="course-group-title"><i class="fa-solid fa-award"></i> Postgraduate (PG)</h3>
+                    <div class="courses-grid">
+                        <div class="course-pill pg">
+                            <span class="course-code">MCA</span>
+                            <div class="course-info">
+                                <h4>Master of Computer Applications</h4>
+                                <span>2 Years | Industry-Aligned</span>
+                            </div>
+                        </div>
+                        <div class="course-pill pg">
+                            <span class="course-code">MBA</span>
+                            <div class="course-info">
+                                <h4>Master of Business Administration</h4>
+                                <span>2 Years | Dual Specialization</span>
+                            </div>
+                        </div>
+                        <div class="course-pill pg">
+                            <span class="course-code">M.Tech</span>
+                            <div class="course-info">
+                                <h4>M.Tech Computer Science</h4>
+                                <span>2 Years | Research Driven</span>
+                            </div>
+                        </div>
+                        <div class="course-pill pg">
+                            <span class="course-code">M.Tech</span>
+                            <div class="course-info">
+                                <h4>M.Tech VLSI & Embedded Systems</h4>
+                                <span>2 Years | Specialization</span>
+                            </div>
+                        </div>
+                        <div class="course-pill pg">
+                            <span class="course-code">M.Tech</span>
+                            <div class="course-info">
+                                <h4>M.Tech Power Systems</h4>
+                                <span>2 Years | Industry-Aligned</span>
+                            </div>
+                        </div>
+                        <div class="course-pill pg">
+                            <span class="course-code">M.Tech</span>
+                            <div class="course-info">
+                                <h4>M.Tech Structural Engineering</h4>
+                                <span>2 Years | Advanced Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Facilities Section -->
+    <section class="facilities-section section-padding" id="facilities">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">World Class Infrastructure</span>
+                <h2 class="section-title">Campus Facilities</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <i class="fa-solid fa-chalkboard"></i>
+                    <h4>Smart Classrooms</h4>
+                    <p>Digital boards, recording cameras, and spatial audio system.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h4>Computer Labs</h4>
+                    <p>High-end workstation systems equipped with modern developer tools.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <h4>Library</h4>
+                    <p>RFID tagged index, online journals, and quiet reading zones.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-hotel"></i>
+                    <h4>Hostel</h4>
+                    <p>AC and Non-AC hostel rooms with absolute hygienic dining hubs.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-bus-simple"></i>
+                    <h4>Transport</h4>
+                    <p>Comprehensive bus routes mapping across a radius of 50 KMs.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-volleyball"></i>
+                    <h4>Sports</h4>
+                    <p>Football field, lawn tennis courts, and indoor sports arenas.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <h4>Cafeteria</h4>
+                    <p>Multi-cuisine dining area focusing on nutritious choices.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <h4>Medical Room</h4>
+                    <p>First aid, round the clock doctor consultation, ambulance facility.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-wifi"></i>
+                    <h4>WiFi Campus</h4>
+                    <p>1 Gbps high-speed internet connectivity across all campus nodes.</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <h4>Auditorium</h4>
+                    <p>1000-seater capacity stadium with state-of-the-art AV equipment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Gallery Section -->
+    <section class="gallery-section section-padding" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Visual Experience</span>
+                <h2 class="section-title">Life at UnifyEd</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Controls (Search + Filters) -->
+            <div class="gallery-controls">
+                <div class="gallery-search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="gallerySearchInput" placeholder="Search gallery...">
+                </div>
+                <div class="gallery-filter-buttons" id="galleryFilters">
+                    <button class="gallery-filter-btn active" data-filter="all">All</button>
+                    <button class="gallery-filter-btn" data-filter="campus">Campus</button>
+                    <button class="gallery-filter-btn" data-filter="events">Events</button>
+                    <button class="gallery-filter-btn" data-filter="sports">Sports</button>
+                    <button class="gallery-filter-btn" data-filter="labs">Labs</button>
+                    <button class="gallery-filter-btn" data-filter="library">Library</button>
+                    <button class="gallery-filter-btn" data-filter="classrooms">Classrooms</button>
+                    <button class="gallery-filter-btn" data-filter="convocation">Convocation</button>
+                    <button class="gallery-filter-btn" data-filter="placements">Placements</button>
+                    <button class="gallery-filter-btn" data-filter="cultural">Cultural Fest</button>
+                    <button class="gallery-filter-btn" data-filter="workshops">Workshops</button>
+                </div>
+            </div>
+
+            <!-- Image Grid -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item" data-category="campus" data-title="Modern Academic Block Campus Greenery">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/campus.png" alt="UnifyEd Campus" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Campus Main Block</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item" data-category="events" data-title="Hackathon coding event 2026">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/event.png" alt="UnifyEd Labs" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>National Hackathon</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item" data-category="sports" data-title="Cricket tournament championship cup sports">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/sports.png" alt="UnifyEd Sports" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Sports Meet Final</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item" data-category="labs" data-title="Computer graphics coding lab servers">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/lab.png" alt="UnifyEd computer lab" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Advanced Computer Lab</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item" data-category="library" data-title="Main central library books desks">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/library.png" alt="UnifyEd Library" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Central Library</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item" data-category="classrooms" data-title="Smart classrooms screens projector">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/classroom.png" alt="UnifyEd Classroom" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Smart Lecture Room</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item" data-category="convocation" data-title="Graduation day convocation degree hats">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/convocation.png" alt="UnifyEd Convocation" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Graduation Ceremony</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item" data-category="placements" data-title="Placement recruitment cell interviews google microsoft">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/placement.png" alt="UnifyEd Placements" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Placement Drives</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 9 -->
+                <div class="gallery-item" data-category="cultural" data-title="Cultural fest dance singing show concert">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/cultural.png" alt="UnifyEd Cultural Fest" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Annual Fest (Aura 2026)</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 10 -->
+                <div class="gallery-item" data-category="workshops" data-title="AI ML Deep Learning workshops research">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/workshop.png" alt="UnifyEd Workshop" class="gallery-image-element" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <div class="gallery-item-overlay">
+                            <h4>Robotics & AI Workshop</h4>
+                            <span class="gallery-zoom-icon"><i class="fa-solid fa-maximize"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Campus Virtual Tour Section -->
+    <section class="tour-section section-padding" id="tour">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Interactive Map</span>
+                <h2 class="section-title">Campus Virtual Tour</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="tour-container">
+                <div class="tour-visual-card">
+                    <div class="tour-visual-placeholder">
+                        <i class="fa-solid fa-earth-asia tour-globe-icon"></i>
+                        <h3>Explore Campus Virtually in 360°</h3>
+                        <p>Our upcoming fully immersive drone fly-through, high fidelity 3D maps, and indoor virtual tour is coming soon.</p>
+                        <div class="tour-options">
+                            <div class="tour-opt"><i class="fa-solid fa-street-view"></i> 360° Panorama</div>
+                            <div class="tour-opt"><i class="fa-solid fa-helicopter"></i> Drone Flyby</div>
+                            <div class="tour-opt"><i class="fa-solid fa-map-location-dot"></i> Interactive Building Map</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="openTourModal()">Launch Preview Alpha</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Placements Section -->
+    <section class="placements-section section-padding" id="placements">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Careers & Jobs</span>
+                <h2 class="section-title">Excellent Placements</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="placement-stats-grid">
+                <div class="p-stat-card">
+                    <span class="p-stat-val">₹ 48 LPA</span>
+                    <span class="p-stat-lbl">Highest Package Offer</span>
+                </div>
+                <div class="p-stat-card">
+                    <span class="p-stat-val">₹ 7.5 LPA</span>
+                    <span class="p-stat-lbl">Average Package Offer</span>
+                </div>
+                <div class="p-stat-card">
+                    <span class="p-stat-val">96%</span>
+                    <span class="p-stat-lbl">Placement Success Rate</span>
+                </div>
+                <div class="p-stat-card">
+                    <span class="p-stat-val">150+</span>
+                    <span class="p-stat-lbl">Core & IT Recruiters</span>
+                </div>
+            </div>
+
+            <!-- Recruiter Logo Carousel -->
+            <div class="recruiters-wrapper">
+                <h4>Our Esteemed Recruiters</h4>
+                <div class="recruiters-slider">
+                    <div class="recruiter-logo"><i class="fa-brands fa-google"></i> Google</div>
+                    <div class="recruiter-logo"><i class="fa-brands fa-microsoft"></i> Microsoft</div>
+                    <div class="recruiter-logo"><i class="fa-brands fa-amazon"></i> Amazon</div>
+                    <div class="recruiter-logo"><i class="fa-brands fa-meta"></i> Meta</div>
+                    <div class="recruiter-logo"><i class="fa-brands fa-apple"></i> Apple</div>
+                    <div class="recruiter-logo"><i class="fa-solid fa-microchip"></i> Intel</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. ERP Features Section -->
+    <section class="erp-section section-padding" id="erp-features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Student & Faculty Hub</span>
+                <h2 class="section-title">UnifyEd ERP Capabilities</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="erp-features-grid">
+                <!-- Classroom -->
+                <div class="erp-feat-card">
+                    <i class="fa-solid fa-users-rectangle"></i>
+                    <h4>Smart Classroom</h4>
+                    <p>Access notes, upload assignments, and view grading curves instantly.</p>
+                </div>
+                <!-- Live Classes -->
+                <div class="erp-feat-card">
+                    <i class="fa-solid fa-video"></i>
+                    <h4>Live Interactive Lectures</h4>
+                    <p>Participate in remote coding workshops, guest seminars with chat channels.</p>
+                </div>
+                <!-- Attendance -->
+                <div class="erp-feat-card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h4>Attendance Tracking</h4>
+                    <p>Geo-fenced, dynamic check-ins for students with real-time percentages.</p>
+                </div>
+                <!-- Fees -->
+                <div class="erp-feat-card">
+                    <i class="fa-solid fa-wallet"></i>
+                    <h4>Online Fee Payment</h4>
+                    <p>Transparent ledger logs, payment status tracking, and online downloads.</p>
+                </div>
+                <!-- Results -->
+                <div class="erp-feat-card">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <h4>Results & Metrics</h4>
+                    <p>Breakdown analysis of CGPA, SGPA, and individual subjects grade charts.</p>
+                </div>
+                <!-- Mentor -->
+                <div class="erp-feat-card">
+                    <i class="fa-solid fa-comments-dollar"></i>
+                    <h4>Mentor Connectivity</h4>
+                    <p>1-on-1 counseling channels to resolve career or personal queries.</p>
+                </div>
+                <!-- Library -->
+                <div class="erp-feat-card">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <h4>Digital Library ERP</h4>
+                    <p>Book check-outs, reservation holds, search catalog availability online.</p>
+                </div>
+                <!-- AI Assistant -->
+                <div class="erp-feat-card highlight">
+                    <i class="fa-solid fa-brain"></i>
+                    <h4>UnifyEd AI Assistant</h4>
+                    <p>Resolve academic doubts, construct resumes, and get smart recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Latest News Section & 13. Upcoming Events -->
+    <section class="news-events-section section-padding" id="news-events">
+        <div class="container">
+            <div class="news-events-grid">
+                <!-- Latest News -->
+                <div class="news-block">
+                    <div class="block-header">
+                        <h3><i class="fa-solid fa-newspaper"></i> Latest News Board</h3>
+                        <div class="line"></div>
+                    </div>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <span class="news-tag notice">Exam Notice</span>
+                            <h4>Odd Semester Theory Exams Schedule Released</h4>
+                            <p class="news-date">August 05, 2026</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-tag placement">Placement</span>
+                            <h4>Amazon hiring drive starts from next Wednesday</h4>
+                            <p class="news-date">August 04, 2026</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-tag academic">Academic</span>
+                            <h4>Registration dates for elective courses finalized</h4>
+                            <p class="news-date">August 01, 2026</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-tag holiday">Holiday</span>
+                            <h4>Independence Day celebration & half-holiday announced</h4>
+                            <p class="news-date">July 28, 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="events-block">
+                    <div class="block-header">
+                        <h3><i class="fa-solid fa-calendar-days"></i> Upcoming Events</h3>
+                        <div class="line"></div>
+                    </div>
+                    <div class="events-list">
+                        <div class="event-item">
+                            <div class="event-date-badge">
+                                <span class="date">14</span>
+                                <span class="month">AUG</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Global Seminar on Quantum Machine Learning</h4>
+                                <span><i class="fa-solid fa-clock"></i> 10:00 AM - Auditorium A</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date-badge">
+                                <span class="date">22</span>
+                                <span class="month">AUG</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Tech-Aura 48-Hour National Hackathon</h4>
+                                <span><i class="fa-solid fa-clock"></i> Coding Labs Block C</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date-badge">
+                                <span class="date">05</span>
+                                <span class="month">SEP</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Annual Sports & Athletic Championship Meet</h4>
+                                <span><i class="fa-solid fa-clock"></i> Campus Ground</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date-badge">
+                                <span class="date">18</span>
+                                <span class="month">SEP</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>UnifyEd Cultural Fest & Concert Night</h4>
+                                <span><i class="fa-solid fa-clock"></i> Open Air Theater</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Testimonials Section -->
+    <section class="testimonials-section section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Feedbacks</span>
+                <h2 class="section-title">What People Say</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Student -->
+                <div class="testimonial-card">
+                    <div class="test-user">
+                        <div class="avatar"><i class="fa-solid fa-user-graduate"></i></div>
+                        <div>
+                            <h4>Ayush Sharma</h4>
+                            <span>CS Student</span>
+                        </div>
+                    </div>
+                    <p>"The UnifyEd ERP made tracking classes, assignments, and communicating with my mentor extremely smooth. The labs are world-class too."</p>
+                </div>
+                <!-- Parent -->
+                <div class="testimonial-card">
+                    <div class="test-user">
+                        <div class="avatar"><i class="fa-solid fa-user-shield"></i></div>
+                        <div>
+                            <h4>S. K. Mishra</h4>
+                            <span>Parent</span>
+                        </div>
+                    </div>
+                    <p>"I can track my daughter's academic progress, college fee details, and attendance updates in real time through the parent ERP login."</p>
+                </div>
+                <!-- Faculty -->
+                <div class="testimonial-card">
+                    <div class="test-user">
+                        <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                        <div>
+                            <h4>Prof. Ananya Sen</h4>
+                            <span>HOD, Computer Science</span>
+                        </div>
+                    </div>
+                    <p>"The integrated classroom and grading feature in our ERP allows us to focus entirely on quality teaching and research publications."</p>
+                </div>
+                <!-- Alumni -->
+                <div class="testimonial-card">
+                    <div class="test-user">
+                        <div class="avatar"><i class="fa-solid fa-user-check"></i></div>
+                        <div>
+                            <h4>Rohan Verma</h4>
+                            <span>SDE, Microsoft (Alumni)</span>
+                        </div>
+                    </div>
+                    <p>"UnifyEd provided the right foundation, technical skillset, and interview prep that helped me secure a job during the placement drive."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. Alumni Section -->
+    <section class="alumni-section section-padding" id="alumni">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Legacy</span>
+                <h2 class="section-title">Notable Alumni</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-img"><i class="fa-solid fa-user-tie"></i></div>
+                    <h4>Sumit Chawla</h4>
+                    <span class="alumni-work">VP of Engineering at NextGen Tech</span>
+                    <p class="alumni-story">Class of 2004. Sumit led the transition of cloud infrastructure at NextGen. "UnifyEd's coding culture shaped my foundation."</p>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-img"><i class="fa-solid fa-user-tie"></i></div>
+                    <h4>Neha Gupta</h4>
+                    <span class="alumni-work">Research Scientist at DeepAI Lab</span>
+                    <p class="alumni-story">Class of 2012. Neha published 15+ patents in AI. "The support of professors at UnifyEd inspired me to choose research."</p>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-img"><i class="fa-solid fa-user-tie"></i></div>
+                    <h4>Vikram Aditya</h4>
+                    <span class="alumni-work">Founder & CEO, HealthCart Startup</span>
+                    <p class="alumni-story">Class of 2016. Vikram built a multi-million health portal. "The entrepreneurship incubation cell at UnifyEd was crucial."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. Research Section -->
+    <section class="research-section section-padding" id="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Academic Development</span>
+                <h2 class="section-title">Research & Innovation</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h4>Publications</h4>
+                    <span class="r-count">450+ Papers</span>
+                    <p>International journals listed in Scopus & Web of Science written by faculty and students.</p>
+                </div>
+                <div class="research-card">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h4>Patents</h4>
+                    <span class="r-count">32 Patents</span>
+                    <p>Registered intellectual properties in fields of clean energy, IoT solutions, and robotics.</p>
+                </div>
+                <div class="research-card">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <h4>Projects</h4>
+                    <span class="r-count">18 Sponsored</span>
+                    <p>Ongoing government and industrial funded projects exploring AI-driven smart grids.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. Contact Us Section -->
+    <section class="contact-section section-padding" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get in Touch</span>
+                <h2 class="section-title">Contact Us</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Info & Map -->
+                <div class="contact-info-block">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-details">
+                        <div class="c-detail-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Campus Address</strong>
+                                <span>UnifyEd Campus, Sikar Road, Sector-12, Tech-City, Pin: 400001</span>
+                            </div>
+                        </div>
+                        <div class="c-detail-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <strong>Admission Hotline</strong>
+                                <span>+91 98765 43210, 011-2345678</span>
+                            </div>
+                        </div>
+                        <div class="c-detail-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>Support Email</strong>
+                                <span>admissions@orion.edu.in, erpsupport@orion.edu.in</span>
+                            </div>
+                        </div>
+                        <div class="c-detail-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <strong>Office Hours</strong>
+                                <span>Mon - Sat: 9:00 AM - 5:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Embed -->
+                    <div class="map-container" style="border-radius: var(--border-radius-md); overflow: hidden; height: 220px; border: 1px solid var(--border-color); margin-top: 20px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3550.844111303868!2d75.78726537554907!3d27.114704376529322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c21e6aaa5ad7f%3A0x7d0189d2d09dfb0!2sUniversity%20of%20Engineering%20%26%20Management%20(UnifyEd)%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="contact-form-block">
+                    <h3>Send Us a Query</h3>
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="formName">Full Name</label>
+                            <input type="text" id="formName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formEmail">Email Address</label>
+                            <input type="email" id="formEmail" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formSubject">Subject</label>
+                            <input type="text" id="formSubject" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formMessage">Message</label>
+                            <textarea id="formMessage" class="form-input textarea" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="contactSubmitBtn">Submit Query</button>
+                    </form>
+                    <div id="formFeedback" class="form-feedback"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. FAQ Section -->
+    <section class="faq-section section-padding" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Clarify Doubts</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="faq-accordion-wrapper">
+                <div class="faq-item">
+                    <button class="faq-toggle" onclick="toggleFAQ(this)">
+                        <span>How can I register for the UnifyEd ERP portal?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Newly admitted students receive their unique Enrollment ID and temporary passwords via their registered email. You can use those credentials in the "Create Account" section to activate your profile.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-toggle" onclick="toggleFAQ(this)">
+                        <span>What is the eligibility criteria for BCA/BBA admissions?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Candidates must have passed 10+2 examinations from a recognized board with minimum 50% marks. For BCA, having mathematics/computer science as a subject is preferred but not mandatory.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-toggle" onclick="toggleFAQ(this)">
+                        <span>Is hostel accommodation guaranteed for outstation students?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Yes, we have 4 boys and 3 girls hostel buildings that accommodate over 2000 outstation students. Allotment is done on a first-come, first-serve basis during admission registration.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-toggle" onclick="toggleFAQ(this)">
+                        <span>Does the college offer transport facility to all areas?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Our fleet of 45 buses connects the campus to major railway stations, metro terminals, and residential hubs in the city. Route details are available on the student ERP portal.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-toggle" onclick="toggleFAQ(this)">
+                        <span>How is placement training conducted at UnifyEd?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>We provide structural training starting from the 3rd year, including mock interviews, coding bootcamps, soft-skills training, and mentorship panels under our placement office.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 19. Footer Section -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>UnifyEd</span>
+                </div>
+                <p>Establishing futuristic learning benchmarks via industry integrated engineering and management curriculum.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About College</a></li>
+                    <li><a href="#departments">Departments</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#placements">Placements</a></li>
+                    <li><a href="#erp-features">ERP Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col policies">
+                <h4>Legal & Info</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">AICTE Compliance</a></li>
+                    <li><a href="#">RTI Declaration</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col downloads">
+                <h4>Downloads</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Academic Calendar 2026</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> College Brochure PDF</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Placement Report 2025</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 UnifyEd. All rights reserved.</p>
+                <p>Designed with <i class="fa-solid fa-heart" style="color: var(--primary);"></i> by Antigravity</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Department Detail Modal -->
+    <div class="modal-overlay" id="deptModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('deptModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div id="deptModalContent">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Virtual Tour Modal -->
+    <div class="modal-overlay" id="tourModal">
+        <div class="modal-card tour-modal-card">
+            <button class="modal-close" onclick="closeModal('tourModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="tour-modal-content">
+                <h3>Campus 360° VR Tour Preview</h3>
+                <div class="tour-iframe-simulation">
+                    <!-- We'll simulate a 3D tour container here -->
+                    <div class="tour-sim-info">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                        <p>Entering Main Gate Auditorium Plaza... Hover to scan panorama.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Gallery -->
+    <div class="modal-overlay lightbox-overlay" id="lightboxModal">
+        <div class="lightbox-card">
+            <button class="modal-close lightbox-close" onclick="closeModal('lightboxModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="lightbox-content">
+                <div class="lightbox-img-container">
+                    <div id="lightboxPlaceholder" class="lightbox-placeholder-display"></div>
+                </div>
+                <h3 id="lightboxTitle">Image Title</h3>
+                <div class="lightbox-actions">
+                    <button onclick="zoomLightbox(0.9)"><i class="fa-solid fa-magnifying-glass-minus"></i> Zoom Out</button>
+                    <button onclick="zoomLightbox(1.1)"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="js/script.js"></script>
+</body>
+</html>

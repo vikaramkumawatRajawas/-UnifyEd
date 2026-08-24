@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Executive Portal Preferences</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-preferences.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item active"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search preferences..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-sliders"></i> PERSONALIZATION ENGINE</span>
+                <h1>Executive Portal Preferences & Workspace Settings 🎛️</h1>
+              </div>
+              <p>Customize your portal visual themes, sidebar behavior, notification alert channels, and localization preferences.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Active Theme Preset</span>
+                  <strong class="val" style="color:var(--primary);">Dark Glass Mode</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Sidebar Memory</span>
+                  <strong class="val" style="color:var(--success);">🟢 Laptop Optimized</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Alert Channels</span>
+                  <strong class="val">Push & Sound On</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnSavePreferences"><i class="fa-solid fa-floppy-disk"></i> Save Preferences</button>
+              <button class="btn btn-secondary" id="btnResetDefaults"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
+            </div>
+          </div>
+
+          <!-- Preferences Status KPI Grid (Equal 4 Columns) -->
+          <div class="kpi-grid" style="margin-bottom:28px;">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Visual Theme Mode</span>
+                  <div class="kpi-val" style="font-size:22px;">Dark Glass</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-palette"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-moon"></i> High Contrast Executive</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Sidebar Responsiveness</span>
+                  <div class="kpi-val" style="font-size:22px;">Auto 1380px</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-bars-staggered"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-laptop"></i> Laptop Breakpoint Safety</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--info);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Desktop Notifications</span>
+                  <div class="kpi-val" style="font-size:22px;">Realtime On</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-bell"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-volume-high"></i> Push & Audio Chimes</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--success);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Data Formatting</span>
+                  <div class="kpi-val" style="font-size:22px;">INR (₹) / IST</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-globe"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-clock"></i> Asia/Kolkata (+5:30)</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preferences Modules Grid (2x2 Glass Cards) -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;">
+            <!-- Theme & Interface Visual Aesthetics -->
+            <div class="admin-glass-card pref-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-palette" style="color:var(--primary);"></i> Theme & Visual Aesthetics</h3>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Visual Theme Mode</label>
+                <select class="form-input" id="prefThemeMode">
+                  <option value="dark">Executive Dark Glassmorphism</option>
+                  <option value="light">Clean Executive Light Mode</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Accent Color Theme</label>
+                <select class="form-input" id="prefAccentColor">
+                  <option value="indigo">Royal Indigo (#6366F1)</option>
+                  <option value="emerald">Emerald Success (#10B981)</option>
+                  <option value="crimson">Crimson Red (#EF4444)</option>
+                </select>
+              </div>
+              <div class="pref-toggle-item" style="margin-bottom:0;">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Enable Glassmorphism Blur</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Backdrop-filter blur 16px effects on dashboard cards</p>
+                </div>
+                <label class="switch"><input type="checkbox" checked id="toggleGlassBlur"><span class="slider"></span></label>
+              </div>
+            </div>
+
+            <!-- Notification Alert Channels -->
+            <div class="admin-glass-card pref-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-bell" style="color:var(--warning);"></i> Notification & Alert Channels</h3>
+              </div>
+              <div class="pref-toggle-item">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Browser Desktop Push Alerts</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Receive instant toast popups for security alerts</p>
+                </div>
+                <label class="switch"><input type="checkbox" checked id="togglePushAlerts"><span class="slider"></span></label>
+              </div>
+              <div class="pref-toggle-item">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Audio Alert Chime Sound</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Play subtle sound effect on incoming messages and toasts</p>
+                </div>
+                <label class="switch"><input type="checkbox" checked id="toggleAudioSound"><span class="slider"></span></label>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Email Digest Frequency</label>
+                <select class="form-input" id="emailDigestSelect">
+                  <option value="instant">Instant Realtime Email Alerts</option>
+                  <option value="daily">Daily Morning Digest (08:00 AM)</option>
+                  <option value="weekly">Weekly Executive Summary</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Sidebar Navigation & Workspace Controls -->
+            <div class="admin-glass-card pref-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-bars-staggered" style="color:var(--accent);"></i> Sidebar & Workspace Controls</h3>
+              </div>
+              <div class="pref-toggle-item">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Auto-Collapse Sidebar on Laptops</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Automatically shrink sidebar at 1380px breakpoint</p>
+                </div>
+                <label class="switch"><input type="checkbox" checked id="toggleAutoCollapse"><span class="slider"></span></label>
+              </div>
+              <div class="pref-toggle-item" style="margin-bottom:0;">
+                <div>
+                  <strong style="font-size:13px; color:var(--text-primary);">Remember Sidebar Toggle State</strong>
+                  <p style="font-size:11px; color:var(--text-tertiary);">Persist sidebar collapse preference across page reloads</p>
+                </div>
+                <label class="switch"><input type="checkbox" checked id="toggleRememberState"><span class="slider"></span></label>
+              </div>
+            </div>
+
+            <!-- Localization & Data Presentation -->
+            <div class="admin-glass-card pref-card">
+              <div class="card-header" style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-color);">
+                <h3><i class="fa-solid fa-globe" style="color:var(--info);"></i> Localization & Data Formatting</h3>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                <div class="form-group">
+                  <label class="form-label">Date Display Format</label>
+                  <select class="form-input" id="dateFormatSelect">
+                    <option value="DD/MM/YYYY">DD/MM/YYYY (20/08/2026)</option>
+                    <option value="YYYY-MM-DD">YYYY-MM-DD (2026-08-20)</option>
+                    <option value="MMM DD, YYYY">MMM DD, YYYY (Aug 20, 2026)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Number Notation System</label>
+                  <select class="form-input" id="numFormatSelect">
+                    <option value="lakhs">Indian System (₹ 1,50,000)</option>
+                    <option value="intl">International System ($ 150,000)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Default Table Rows Per Page</label>
+                <select class="form-input" id="rowsPerPageSelect">
+                  <option value="10">10 Rows Per Page</option>
+                  <option value="25">25 Rows Per Page</option>
+                  <option value="50">50 Rows Per Page</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-preferences.js"></script>
+  </body>
+</html>

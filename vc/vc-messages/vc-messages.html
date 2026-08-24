@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Executive Messages & Secure Chat</title>
+    <meta name="description" content="Vice Chancellor Executive Messages & Secure Chat - Direct Line with Deans, HODs, & Institutional Directors">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-messages.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item active">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="msgSearchInput" placeholder="Search direct messages, deans, or HOD contacts...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- Messages Hero Banner -->
+                <section class="msg-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-comments"></i> SECURE EXECUTIVE COMMUNICATIONS
+                        </div>
+                        <h1>Executive Messages & Secure Chat</h1>
+                        <p>Encrypted direct communications console for Vice Chancellor interactions with Academic Deans, Department Heads, Registrar, and Financial Directors.</p>
+                    </div>
+                </section>
+
+                <!-- 2-Pane Chat Interface Layout -->
+                <div class="chat-container-layout">
+                    <!-- Left Pane: Executive Directory / Contacts List -->
+                    <aside class="contacts-pane">
+                        <div class="contacts-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="contactSearchInput" placeholder="Filter contacts...">
+                        </div>
+                        <div class="contacts-list-wrapper" id="contactsList">
+                            <div class="contact-user-item active" onclick="selectContact(this, 'Dr. Ananya Sharma', 'CSE Department Head', 'AS')">
+                                <div class="contact-avatar">
+                                    AS <span class="online-dot"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-name">Dr. Ananya Sharma</div>
+                                    <div class="contact-role">CSE Department Head</div>
+                                </div>
+                                <span class="status-pill pill-success" style="font-size:10px; padding:2px 6px;">Active</span>
+                            </div>
+
+                            <div class="contact-user-item" onclick="selectContact(this, 'Prof. Rajesh Gupta', 'Mechanical Dept Head', 'RG')">
+                                <div class="contact-avatar" style="background:linear-gradient(135deg, var(--accent), var(--purple));">
+                                    RG <span class="online-dot"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-name">Prof. Rajesh Gupta</div>
+                                    <div class="contact-role">Mechanical Dept Head</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-user-item" onclick="selectContact(this, 'Dr. Sunita Verma', 'Dean of Academic Affairs', 'SV')">
+                                <div class="contact-avatar" style="background:linear-gradient(135deg, var(--info), var(--primary));">
+                                    SV <span class="online-dot"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-name">Dr. Sunita Verma</div>
+                                    <div class="contact-role">Dean Academic Affairs</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-user-item" onclick="selectContact(this, 'Shri Vikram Malhotra', 'University Registrar', 'VM')">
+                                <div class="contact-avatar" style="background:linear-gradient(135deg, var(--warning), var(--accent));">
+                                    VM
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-name">Shri Vikram Malhotra</div>
+                                    <div class="contact-role">University Registrar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Right Pane: Active Thread Chat Window -->
+                    <section class="chat-thread-pane">
+                        <div class="chat-header-bar">
+                            <div class="chat-active-user">
+                                <div class="contact-avatar" id="activeAvatar">
+                                    AS <span class="online-dot"></span>
+                                </div>
+                                <div>
+                                    <strong style="font-size:15px; color:var(--text-primary);" id="activeName">Dr. Ananya Sharma</strong>
+                                    <span style="font-size:12px; color:var(--text-tertiary); display:block;" id="activeRole">CSE Department Head</span>
+                                </div>
+                            </div>
+                            <span class="status-pill pill-purple"><i class="fa-solid fa-lock"></i> Encrypted Executive Thread</span>
+                        </div>
+
+                        <div class="messages-body" id="messagesBody">
+                            <div class="message-bubble incoming">
+                                Respected Vice Chancellor Sir, the proposed AI Research Server Cluster grant application (₹4,50,000) has been uploaded to the Senate console for your executive review.
+                                <span class="message-time">10:14 AM</span>
+                            </div>
+
+                            <div class="message-bubble outgoing">
+                                Thank you Dr. Sharma. I have reviewed the technical specifications for the GPU nodes. The grant approval is queued for endorsement.
+                                <span class="message-time">10:28 AM</span>
+                            </div>
+
+                            <div class="message-bubble incoming">
+                                We sincerely appreciate your continuous support for the Computer Science Department's research infrastructure.
+                                <span class="message-time">10:32 AM</span>
+                            </div>
+                        </div>
+
+                        <form class="chat-input-bar" onsubmit="sendMessage(event)">
+                            <input type="text" id="chatMsgInput" placeholder="Type encrypted message to HOD..." required autocomplete="off">
+                            <button type="submit" class="btn-send-msg">
+                                <i class="fa-solid fa-paper-plane"></i> Send
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toastContainer");
+            if (!container) return;
+            const toast = document.createElement("div");
+            toast.className = `toast-alert ${type}`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateX(50px)";
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function selectContact(element, name, role, initials) {
+            document.querySelectorAll(".contact-user-item").forEach(item => item.classList.remove("active"));
+            element.classList.add("active");
+
+            document.getElementById("activeName").textContent = name;
+            document.getElementById("activeRole").textContent = role;
+            document.getElementById("activeAvatar").innerHTML = `${initials} <span class="online-dot"></span>`;
+
+            // Refresh chat thread
+            const body = document.getElementById("messagesBody");
+            body.innerHTML = `
+                <div class="message-bubble incoming">
+                    Hello Vice Chancellor Sir, logged in for executive briefing regarding ${role}.
+                    <span class="message-time">09:00 AM</span>
+                </div>
+                <div class="message-bubble outgoing">
+                    Good day. Please provide the status update for your department.
+                    <span class="message-time">09:15 AM</span>
+                </div>
+            `;
+            showToast("Connected to Chat with " + name, "success");
+        }
+
+        function sendMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById("chatMsgInput");
+            const msgText = input.value.trim();
+            if (!msgText) return;
+
+            const body = document.getElementById("messagesBody");
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            const bubble = document.createElement("div");
+            bubble.className = "message-bubble outgoing";
+            bubble.innerHTML = `${msgText}<span class="message-time">${timeStr}</span>`;
+            body.appendChild(bubble);
+            body.scrollTop = body.scrollHeight;
+
+            input.value = "";
+        }
+
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Contact Search Filter
+        const contactSearchInput = document.getElementById("contactSearchInput");
+        if (contactSearchInput) {
+            contactSearchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const contacts = document.querySelectorAll(".contact-user-item");
+                contacts.forEach(c => {
+                    const text = c.textContent.toLowerCase();
+                    c.style.display = !query || text.includes(query) ? "flex" : "none";
+                });
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

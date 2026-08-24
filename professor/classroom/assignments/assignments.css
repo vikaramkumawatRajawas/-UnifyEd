@@ -1,0 +1,30 @@
+
+            .assign-item-card {
+                padding: 15px 20px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.01);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: border-color 0.2s ease;
+            }
+            .assign-item-card:hover {
+                border-color: rgba(99, 102, 241, 0.2);
+            }
+            .excel-table th {
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                padding: 10px 12px;
+                font-weight: 700;
+                border-bottom: 1px solid var(--border-color);
+                box-sizing: border-box;
+            }
+            .excel-table td {
+                padding: 10px 12px;
+                border-bottom: 1px solid var(--border-color);
+                vertical-align: middle;
+                color: var(--text-secondary);
+                box-sizing: border-box;
+            }
+        

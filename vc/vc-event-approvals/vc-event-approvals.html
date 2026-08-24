@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Executive Event Approvals</title>
+    <meta name="description" content="Vice Chancellor Executive Event Approvals - Campus Fests, Academic Symposia, & Budget Grants Oversight">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-event-approvals.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item active">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="eventSearchInput" placeholder="Search pending events, organizers, or budget grants...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- Event Approvals Hero Banner -->
+                <section class="events-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-circle-check"></i> EXECUTIVE EVENT GOVERNANCE
+                        </div>
+                        <h1>Executive Event Approvals & Grants</h1>
+                        <p>Review, authorize, or decline university-level tech fests, cultural concerts, national research symposia, and departmental budget requests.</p>
+                    </div>
+                </section>
+
+                <!-- KPI Cards Grid (4 Columns) -->
+                <section class="events-kpi-grid">
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-top">
+                            <div>
+                                <div class="events-kpi-lbl">PENDING APPROVALS</div>
+                                <div class="events-kpi-val" style="color:var(--warning);">12 Pending</div>
+                            </div>
+                            <div class="kpi-icon icon-amber">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change warning">
+                            <i class="fa-solid fa-clock"></i> Requires VC Authorization
+                        </div>
+                    </div>
+
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-top">
+                            <div>
+                                <div class="events-kpi-lbl">APPROVED THIS MONTH</div>
+                                <div class="events-kpi-val" style="color:var(--success);">34 Approved</div>
+                            </div>
+                            <div class="kpi-icon icon-emerald">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change success">
+                            <i class="fa-solid fa-circle-check"></i> 100% Budget Cleared
+                        </div>
+                    </div>
+
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-top">
+                            <div>
+                                <div class="events-kpi-lbl">SCHEDULED EVENTS</div>
+                                <div class="events-kpi-val" style="color:var(--primary);">156 Total</div>
+                            </div>
+                            <div class="kpi-icon icon-purple">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change purple">
+                            <i class="fa-solid fa-arrow-trend-up"></i> Academic Calendar 2026
+                        </div>
+                    </div>
+
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-top">
+                            <div>
+                                <div class="events-kpi-lbl">TOTAL BUDGET GRANTED</div>
+                                <div class="events-kpi-val" style="color:var(--info); font-family:'JetBrains Mono';">₹12.5 Lakh</div>
+                            </div>
+                            <div class="kpi-icon icon-cyan">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change info">
+                            <i class="fa-solid fa-piggy-bank"></i> Institutional Funds
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 1: Pending Event Requests List -->
+                <section class="events-section">
+                    <div class="events-section-head">
+                        <i class="fa-solid fa-hourglass-end" style="color:var(--warning); font-size:20px;"></i>
+                        <h2>Pending Executive Event Requests</h2>
+                    </div>
+
+                    <div id="pendingEventsList">
+                        <div class="event-card-item">
+                            <div class="event-info-main">
+                                <div class="event-title">
+                                    <span>International Tech Fest 2026</span>
+                                    <span class="status-pill pill-warning"><i class="fa-solid fa-clock"></i> Senate Review</span>
+                                </div>
+                                <div class="event-details-meta">
+                                    <span><i class="fa-solid fa-building" style="color:var(--primary);"></i> Organizer: CSE Department</span>
+                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Feb 20-22, 2026</span>
+                                    <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Footfall: 1,500+ Attendees</span>
+                                    <span><i class="fa-solid fa-indian-rupee-sign" style="color:var(--warning);"></i> Budget: ₹5,50,000</span>
+                                </div>
+                            </div>
+                            <div class="event-actions-btns">
+                                <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved Tech Fest 2026 Grant')">
+                                    <i class="fa-solid fa-check"></i> Approve Grant
+                                </button>
+                                <button class="btn-act-reject" onclick="handleEventAction(this, 'Declined Event Request')">
+                                    <i class="fa-solid fa-xmark"></i> Decline
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="event-card-item" style="border-left-color: var(--accent);">
+                            <div class="event-info-main">
+                                <div class="event-title">
+                                    <span>University Annual Cultural Fest (Aura 2026)</span>
+                                    <span class="status-pill pill-warning"><i class="fa-solid fa-clock"></i> Senate Review</span>
+                                </div>
+                                <div class="event-details-meta">
+                                    <span><i class="fa-solid fa-masks-theater" style="color:var(--accent);"></i> Organizer: Cultural Committee</span>
+                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Mar 10-12, 2026</span>
+                                    <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Footfall: 2,000+ Attendees</span>
+                                    <span><i class="fa-solid fa-indian-rupee-sign" style="color:var(--warning);"></i> Budget: ₹4,50,000</span>
+                                </div>
+                            </div>
+                            <div class="event-actions-btns">
+                                <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved Cultural Fest 2026 Grant')">
+                                    <i class="fa-solid fa-check"></i> Approve Grant
+                                </button>
+                                <button class="btn-act-reject" onclick="handleEventAction(this, 'Declined Event Request')">
+                                    <i class="fa-solid fa-xmark"></i> Decline
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Approved & Scheduled Events Grid -->
+                <section class="events-section">
+                    <div class="events-section-head">
+                        <i class="fa-solid fa-calendar-check" style="color:var(--success); font-size:20px;"></i>
+                        <h2>Approved & Scheduled University Events</h2>
+                    </div>
+                    <div class="scheduled-events-grid">
+                        <div class="sched-event-box">
+                            <div>
+                                <h4>Annual Convocation & Graduation 2026</h4>
+                                <span style="font-size:12px; color:var(--text-tertiary); display:block; margin-top:2px;"><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> Date: Jun 10, 2026</span>
+                            </div>
+                            <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Approved</span>
+                                <span style="font-size:11.5px; color:var(--text-secondary); font-family:'JetBrains Mono';">Budget: ₹8,00,000</span>
+                            </div>
+                        </div>
+
+                        <div class="sched-event-box">
+                            <div>
+                                <h4>National Research & AI Symposium</h4>
+                                <span style="font-size:12px; color:var(--text-tertiary); display:block; margin-top:2px;"><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> Date: May 05, 2026</span>
+                            </div>
+                            <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Approved</span>
+                                <span style="font-size:11.5px; color:var(--text-secondary); font-family:'JetBrains Mono';">Budget: ₹3,00,000</span>
+                            </div>
+                        </div>
+
+                        <div class="sched-event-box">
+                            <div>
+                                <h4>Inter-University Sports Championship</h4>
+                                <span style="font-size:12px; color:var(--text-tertiary); display:block; margin-top:2px;"><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> Date: Apr 15, 2026</span>
+                            </div>
+                            <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Approved</span>
+                                <span style="font-size:11.5px; color:var(--text-secondary); font-family:'JetBrains Mono';">Budget: ₹1,50,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toastContainer");
+            if (!container) return;
+            const toast = document.createElement("div");
+            toast.className = `toast-alert ${type}`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateX(50px)";
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function handleEventAction(btn, msg) {
+            const card = btn.closest(".event-card-item");
+            if (card) {
+                card.style.opacity = "0.5";
+                card.style.pointerEvents = "none";
+                setTimeout(() => card.remove(), 400);
+                showToast(msg, "success");
+            }
+        }
+
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Header Live Search Filtering
+        const searchInput = document.getElementById("eventSearchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const eventCards = document.querySelectorAll(".event-card-item");
+                eventCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = !query || text.includes(query) ? "" : "none";
+                });
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

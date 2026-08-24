@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Official Notices</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="messages.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="messages.html" class="sidebar-item active">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header" style="margin-bottom:20px;">
+                    <h1>Official Notices</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Communication • Official Notices</span>
+                </div>
+
+                <!-- 1. Stats Row -->
+                <div class="notices-stats-grid">
+                    <div class="notice-stat-card glassmorphism">
+                        <div class="notice-stat-icon" style="background:rgba(99, 102, 241, 0.12); color:var(--primary);">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div class="notice-stat-info">
+                            <h3>18</h3>
+                            <p>Active Circulars</p>
+                        </div>
+                    </div>
+
+                    <div class="notice-stat-card glassmorphism">
+                        <div class="notice-stat-icon" style="background:rgba(239, 68, 68, 0.12); color:#ef4444;">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="notice-stat-info">
+                            <h3>3</h3>
+                            <p>High Priority Urgent</p>
+                        </div>
+                    </div>
+
+                    <div class="notice-stat-card glassmorphism">
+                        <div class="notice-stat-icon" style="background:rgba(16, 185, 129, 0.12); color:#10b981;">
+                            <i class="fa-solid fa-users-viewfinder"></i>
+                        </div>
+                        <div class="notice-stat-info">
+                            <h3>1,420</h3>
+                            <p>Students & Staff Target</p>
+                        </div>
+                    </div>
+
+                    <div class="notice-stat-card glassmorphism">
+                        <div class="notice-stat-icon" style="background:rgba(245, 158, 11, 0.12); color:var(--accent);">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <div class="notice-stat-info">
+                            <h3>2</h3>
+                            <p>Pending Action</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Action & Search Bar -->
+                <div class="notices-action-bar">
+                    <div class="notices-search-group">
+                        <div class="notice-search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="searchNoticeInput" placeholder="Search notices by keyword or reference no...">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="publishNoticeBtn" style="height:40px; padding:0 20px; display:inline-flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-plus"></i> Publish New Notice
+                    </button>
+                </div>
+
+                <!-- 3. Category Filters -->
+                <div class="notices-filter-chips">
+                    <button class="chip-btn active" data-filter="all">All Notices</button>
+                    <button class="chip-btn" data-filter="urgent">🔴 Urgent Alerts</button>
+                    <button class="chip-btn" data-filter="academic">📘 Academic</button>
+                    <button class="chip-btn" data-filter="exam">🟣 Examinations</button>
+                    <button class="chip-btn" data-filter="event">🟢 College Events</button>
+                </div>
+
+                <!-- 4. Notices Grid -->
+                <div class="notices-grid" id="noticesContainer">
+                    <!-- Notice 1 -->
+                    <div class="notice-card glassmorphism" data-category="exam">
+                        <div>
+                            <div class="notice-card-header">
+                                <span class="notice-tag tag-exam">Examination</span>
+                                <span class="notice-ref">REF: UEM/EXAM/2026/042</span>
+                            </div>
+                            <h3 class="notice-title">Revised Autumn Semester Mid-Term Examination Schedule & Guidelines</h3>
+                            <p class="notice-excerpt">
+                                All BCA and B.Tech students are hereby informed that the Autumn Semester mid-term examinations will commence from September 01, 2026. Detailed room seating and invigilation duties are attached.
+                            </p>
+                            <a href="#" class="notice-attachment-pill" onclick="alert('Downloading Exam_Schedule_Autumn_2026.pdf'); return false;">
+                                <i class="fa-solid fa-file-pdf"></i> Exam_Schedule_Autumn_2026.pdf (1.8 MB)
+                            </a>
+                        </div>
+                        <div class="notice-card-footer">
+                            <div class="notice-author-info">
+                                <i class="fa-solid fa-circle-user"></i>
+                                <span>Dean of Academics • Aug 18</span>
+                            </div>
+                            <button class="btn-read-more" onclick="openNoticeDetail('exam_notice_1')">View Circular</button>
+                        </div>
+                    </div>
+
+                    <!-- Notice 2 -->
+                    <div class="notice-card glassmorphism" data-category="urgent">
+                        <div>
+                            <div class="notice-card-header">
+                                <span class="notice-tag tag-urgent">Urgent Alert</span>
+                                <span class="notice-ref">REF: UEM/REG/2026/108</span>
+                            </div>
+                            <h3 class="notice-title">Mandatory Student ID Card Verification & Smart Campus Access</h3>
+                            <p class="notice-excerpt">
+                                Effective August 25, 2026, physical RFID smart cards are required at all campus entry turnstiles and library checkouts. Unverified students must visit the Dean Office by Friday.
+                            </p>
+                            <a href="#" class="notice-attachment-pill" onclick="alert('Downloading RFID_Campus_Security_Circular.pdf'); return false;">
+                                <i class="fa-solid fa-file-pdf"></i> RFID_Campus_Security_Circular.pdf (850 KB)
+                            </a>
+                        </div>
+                        <div class="notice-card-footer">
+                            <div class="notice-author-info">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>Registrar Office • Aug 17</span>
+                            </div>
+                            <button class="btn-read-more" onclick="openNoticeDetail('urgent_notice_2')">View Circular</button>
+                        </div>
+                    </div>
+
+                    <!-- Notice 3 -->
+                    <div class="notice-card glassmorphism" data-category="event">
+                        <div>
+                            <div class="notice-card-header">
+                                <span class="notice-tag tag-event">College Event</span>
+                                <span class="notice-ref">REF: UEM/EVE/2026/019</span>
+                            </div>
+                            <h3 class="notice-title">Annual National Hackathon 2026 - Registration Open</h3>
+                            <p class="notice-excerpt">
+                                Registration for Smart India Hackathon internal qualifiers is now open. Prizes worth ₹2,50,000 for top winning student teams across Web, AI, and IoT tracks.
+                            </p>
+                            <a href="#" class="notice-attachment-pill" onclick="alert('Downloading Hackathon_Brochure_2026.pdf'); return false;">
+                                <i class="fa-solid fa-file-pdf"></i> Hackathon_Brochure_2026.pdf (3.2 MB)
+                            </a>
+                        </div>
+                        <div class="notice-card-footer">
+                            <div class="notice-author-info">
+                                <i class="fa-solid fa-trophy"></i>
+                                <span>Innovation Cell • Aug 15</span>
+                            </div>
+                            <button class="btn-read-more" onclick="openNoticeDetail('event_notice_3')">View Circular</button>
+                        </div>
+                    </div>
+
+                    <!-- Notice 4 -->
+                    <div class="notice-card glassmorphism" data-category="academic">
+                        <div>
+                            <div class="notice-card-header">
+                                <span class="notice-tag tag-academic">Academic</span>
+                                <span class="notice-ref">REF: UEM/ACAD/2026/077</span>
+                            </div>
+                            <h3 class="notice-title">Submission of Elective Specialization Preference Forms for Sem 5</h3>
+                            <p class="notice-excerpt">
+                                3rd Semester BCA students must submit their choice of major specialization electives (Cloud Computing, Cyber Security, or AI & ML) before August 30.
+                            </p>
+                        </div>
+                        <div class="notice-card-footer">
+                            <div class="notice-author-info">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>HOD Computer Applications • Aug 14</span>
+                            </div>
+                            <button class="btn-read-more" onclick="openNoticeDetail('academic_notice_4')">View Circular</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+    <!-- Modal: View Full Circular -->
+    <div class="notice-modal-overlay" id="viewNoticeModal" style="display:none;">
+        <div class="notice-modal-card glassmorphism">
+            <button class="modal-close-btn" id="closeViewModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <div style="margin-bottom:15px; display:flex; gap:10px; align-items:center;">
+                <span class="notice-tag tag-exam" id="modalTag">Examination</span>
+                <span class="notice-ref" id="modalRef">REF: UEM/EXAM/2026/042</span>
+            </div>
+            <h2 id="modalTitle" style="font-size:22px; font-weight:800; color:var(--text-primary); margin-bottom:12px;">Revised Autumn Semester Mid-Term Examination Schedule</h2>
+            <div style="font-size:12px; color:var(--text-secondary); margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                Published by <strong id="modalAuthor" style="color:var(--text-primary);">Dean of Academics</strong> • Issued on <span id="modalDate">Aug 18, 2026</span>
+            </div>
+
+            <div id="modalBodyText" style="font-size:14px; line-height:1.7; color:var(--text-primary); margin-bottom:25px;">
+                This circular serves to notify all faculty members and enrolled students regarding the finalized Autumn Semester Mid-Term Examinations timeline...
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:18px;">
+                <button class="btn btn-secondary" onclick="alert('Notice receipt acknowledged successfully!');">
+                    <i class="fa-solid fa-circle-check" style="color:#10b981; margin-right:6px;"></i> Acknowledge Receipt
+                </button>
+                <button class="btn btn-primary" onclick="alert('Downloading official signed PDF document...');">
+                    <i class="fa-solid fa-download" style="margin-right:6px;"></i> Download Signed Circular
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Publish New Circular -->
+    <div class="notice-modal-overlay" id="publishNoticeModal" style="display:none;">
+        <div class="notice-modal-card glassmorphism">
+            <button class="modal-close-btn" id="closePublishModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;"><i class="fa-solid fa-pen-to-square" style="color:var(--primary);"></i> Broadcast New Official Notice</h2>
+            <p style="font-size:13px; color:var(--text-secondary); margin-bottom:20px;">Compose and issue an official circular to students and department faculty.</p>
+
+            <form id="publishNoticeForm">
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Notice Title</label>
+                    <input type="text" id="newNoticeTitle" required placeholder="e.g. Schedule for Internal Practical Lab Evaluation" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Category</label>
+                        <select id="newNoticeCategory" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                            <option value="academic">Academic</option>
+                            <option value="exam">Examination</option>
+                            <option value="urgent">Urgent Alert</option>
+                            <option value="event">College Event</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Target Audience</label>
+                        <select id="newNoticeAudience" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px;">
+                            <option>All Students & Faculty</option>
+                            <option>BCA 3rd Semester Only</option>
+                            <option>Faculty Members Only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">Notice Body Content</label>
+                    <textarea id="newNoticeBody" rows="5" required placeholder="Write the complete details of the official circular..." style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary); font-size:13px; font-family:var(--font-body);"></textarea>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:12px;">
+                    <button type="button" class="btn btn-secondary" id="cancelPublishBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Publish & Notify</button>
+                </div>
+            </form>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="messages.js?v=1786808057780"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Audit Records</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hod-reports.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+  </head>
+  <body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item active"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search audit records or reports..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content audit-content">
+          <div class="page-header">
+            <h1>Department Audit Records 📑</h1>
+            <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Compliance Workspace</span>
+          </div>
+
+          <div class="hod-hero-card audit-hero">
+            <div class="hod-hero-info">
+              <h2>Every record ready for executive review.</h2>
+              <p>Generate, organize, and retrieve department evidence for academic, attendance, faculty, and curriculum audits.</p>
+            </div>
+            <div class="audit-status">
+              <span id="kpiAuditComplete">98%</span>
+              <small>Records complete</small>
+            </div>
+          </div>
+
+          <div class="kpi-grid audit-kpis">
+            <div class="kpi-card"><div class="kpi-icon primary"><i class="fa-solid fa-file-circle-check"></i></div><div><div class="kpi-val" id="kpiRecordCount">24</div><div class="kpi-lbl">Generated Records</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon success"><i class="fa-solid fa-folder-open"></i></div><div><div class="kpi-val">6</div><div class="kpi-lbl">Active Templates</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon warning"><i class="fa-solid fa-clock"></i></div><div><div class="kpi-val">2</div><div class="kpi-lbl">Pending Reviews</div></div></div>
+            <div class="kpi-card"><div class="kpi-icon accent"><i class="fa-solid fa-database"></i></div><div><div class="kpi-val">12.4 MB</div><div class="kpi-lbl">Archive Storage</div></div></div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="audit-actions" style="display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" id="btnGenerateReport">
+              <i class="fas fa-plus"></i> Generate Audit Record
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnDownloadTemplate" onclick="showToast('Downloaded official NBA/AICTE audit template pack!', 'info')">
+              <i class="fas fa-file-download"></i> Download Audit Template
+            </button>
+          </div>
+
+          <!-- Report Templates -->
+          <div class="audit-templates">
+            <div class="audit-section-heading" style="margin-bottom:16px;">
+              <h3 style="font-size:18px; font-weight:800; color:var(--text-primary);">Audit Template Frameworks</h3>
+              <span style="color:var(--text-tertiary); font-size:12px;">Click a template to generate record</span>
+            </div>
+            <div class="audit-template-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
+              
+              <div class="audit-template-card" data-type="Academic Performance" data-title="Academic Performance Audit">
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
+                  <div style="width:44px; height:44px; background:rgba(99, 102, 241, 0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--primary); font-size:22px;"><i class="fas fa-chart-bar"></i></div>
+                  <div>
+                    <h4 style="margin:0; color:var(--text-primary); font-weight:800; font-size:15px;">Academic Performance</h4>
+                    <p style="margin:2px 0 0; color:var(--text-tertiary); font-size:11px;">GPA & course analysis</p>
+                  </div>
+                </div>
+                <p style="margin:0; color:var(--text-secondary); font-size:12px; line-height:1.5;">View semester-wise and course-wise performance analytics with detailed insights.</p>
+              </div>
+
+              <div class="audit-template-card" data-type="Attendance Report" data-title="Student Attendance Compliance Audit">
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
+                  <div style="width:44px; height:44px; background:rgba(16, 185, 129, 0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--success); font-size:22px;"><i class="fas fa-book"></i></div>
+                  <div>
+                    <h4 style="margin:0; color:var(--text-primary); font-weight:800; font-size:15px;">Attendance Report</h4>
+                    <p style="margin:2px 0 0; color:var(--text-tertiary); font-size:11px;">Student attendance</p>
+                  </div>
+                </div>
+                <p style="margin:0; color:var(--text-secondary); font-size:12px; line-height:1.5;">Generate attendance records for students, classes, or specific date ranges.</p>
+              </div>
+
+              <div class="audit-template-card" data-type="Faculty Report" data-title="Faculty Qualifications & Roster Audit">
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
+                  <div style="width:44px; height:44px; background:rgba(168, 85, 247, 0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--accent); font-size:22px;"><i class="fas fa-users"></i></div>
+                  <div>
+                    <h4 style="margin:0; color:var(--text-primary); font-weight:800; font-size:15px;">Faculty Report</h4>
+                    <p style="margin:2px 0 0; color:var(--text-tertiary); font-size:11px;">Teacher information</p>
+                  </div>
+                </div>
+                <p style="margin:0; color:var(--text-secondary); font-size:12px; line-height:1.5;">Details on faculty qualifications, experience, and departmental assignments.</p>
+              </div>
+
+              <div class="audit-template-card" data-type="Student Progress" data-title="Student Enrollment & Graduation Audit">
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
+                  <div style="width:44px; height:44px; background:rgba(245, 158, 11, 0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--warning); font-size:22px;"><i class="fas fa-graduation-cap"></i></div>
+                  <div>
+                    <h4 style="margin:0; color:var(--text-primary); font-weight:800; font-size:15px;">Student Progress</h4>
+                    <p style="margin:2px 0 0; color:var(--text-tertiary); font-size:11px;">Enrollment & progress</p>
+                  </div>
+                </div>
+                <p style="margin:0; color:var(--text-secondary); font-size:12px; line-height:1.5;">Track student enrollments, progress, and completion status.</p>
+              </div>
+
+              <div class="audit-template-card" data-type="Exam Results" data-title="Semester Assessment & Results Audit">
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
+                  <div style="width:44px; height:44px; background:rgba(239, 68, 68, 0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--danger); font-size:22px;"><i class="fas fa-certificate"></i></div>
+                  <div>
+                    <h4 style="margin:0; color:var(--text-primary); font-weight:800; font-size:15px;">Exam Results</h4>
+                    <p style="margin:2px 0 0; color:var(--text-tertiary); font-size:11px;">Assessment analysis</p>
+                  </div>
+                </div>
+                <p style="margin:0; color:var(--text-secondary); font-size:12px; line-height:1.5;">Comprehensive exam statistics and result distribution analysis.</p>
+              </div>
+
+              <div class="audit-template-card" data-type="Curriculum Report" data-title="Curriculum Mapping & Syllabus Audit">
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
+                  <div style="width:44px; height:44px; background:rgba(6, 182, 212, 0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--info); font-size:22px;"><i class="fas fa-folder-open"></i></div>
+                  <div>
+                    <h4 style="margin:0; color:var(--text-primary); font-weight:800; font-size:15px;">Curriculum Report</h4>
+                    <p style="margin:2px 0 0; color:var(--text-tertiary); font-size:11px;">Syllabus mapping</p>
+                  </div>
+                </div>
+                <p style="margin:0; color:var(--text-secondary); font-size:12px; line-height:1.5;">Curriculum coverage and subject-wise course completion status.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Recent Reports -->
+          <section class="section-card glass-card" style="margin-bottom:25px;">
+            <div class="section-header" style="display:flex; align-items:center; gap:14px; padding:16px 20px;">
+              <div class="section-icon" style="background:#6366f1; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff;"><i class="fas fa-file-invoice"></i></div>
+              <div>
+                <h2 style="font-size:17px; font-weight:800; color:var(--text-primary);">Recently Generated Audit Records</h2>
+                <p class="muted" style="font-size:12px; color:var(--text-secondary);">Compliance archive log and generated PDF/XLSX files</p>
+              </div>
+            </div>
+            <div style="padding:15px; overflow-x:auto;">
+              <table class="hod-table">
+                <thead>
+                  <tr>
+                    <th>Report Record Name</th>
+                    <th>Format Type</th>
+                    <th style="text-align:center;">Generated Date</th>
+                    <th style="text-align:center;">File Size</th>
+                    <th style="text-align:center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="auditRecordsBody">
+                  <!-- Dynamic Audit Log Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+
+    <!-- Generate Audit Record Modal -->
+    <div class="hod-modal-overlay" id="generateReportModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-file-circle-plus" style="color:var(--primary);"></i> Generate Audit Record</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="generateReportModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="generateReportForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputReportTitle">Report Record Name</label>
+                        <input type="text" id="inputReportTitle" class="hod-form-input" placeholder="e.g. Academic Performance Report - Sem 1" required>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="hod-form-group">
+                            <label for="inputReportType">Record Category</label>
+                            <select id="inputReportType" class="hod-form-select">
+                                <option value="Academic Performance">Academic Performance</option>
+                                <option value="Attendance Report">Attendance Compliance</option>
+                                <option value="Faculty Report">Faculty Roster</option>
+                                <option value="Student Progress">Student Progress</option>
+                                <option value="Exam Results">Exam Results</option>
+                                <option value="Curriculum Report">Curriculum Audit</option>
+                            </select>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="inputReportFormat">Export Format</label>
+                            <select id="inputReportFormat" class="hod-form-select">
+                                <option value="PDF">PDF Document (.pdf)</option>
+                                <option value="XLSX">Spreadsheet (.xlsx)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="generateReportModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-file-export"></i> Generate Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-reports.js"></script>
+  </body>
+</html>

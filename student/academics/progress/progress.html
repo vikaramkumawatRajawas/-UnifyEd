@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Academic Progress</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="progress.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="progress.html" class="sidebar-item active">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../../services/fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../../services/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../../services/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../../services/transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../../services/library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Academic Progress</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Academics • Academic Progress</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="progress-container">
+                
+                <!-- Left Column: Performance Trend Chart -->
+                <div class="progress-card glassmorphism">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; flex-wrap:wrap; gap:10px;">
+                        <h3 style="margin:0; font-size:16px; font-weight:700; color:var(--text-primary);"><i class="fa-solid fa-chart-column"></i> Semester SGPA Performance Trend</h3>
+                        <span style="font-size:11px; background:rgba(99,102,241,0.15); color:var(--primary); padding:3px 10px; border-radius:12px; font-weight:700;">Average CGPA: 9.27</span>
+                    </div>
+
+                    <!-- Visual Chart Container -->
+                    <div class="performance-chart-container">
+                        <div class="chart-bars">
+                            <div class="bar-col">
+                                <div class="bar" style="height: 92%;">
+                                    <span>9.20</span>
+                                </div>
+                                <span class="label">Sem 1</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar" style="height: 95%;">
+                                    <span>9.50</span>
+                                </div>
+                                <span class="label">Sem 2</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar" style="height: 91%;">
+                                    <span>9.08</span>
+                                </div>
+                                <span class="label">Sem 3</span>
+                            </div>
+                            <!-- Future semesters styled locked/dotted outline -->
+                            <div class="bar-col" style="opacity:0.4;">
+                                <div class="bar" style="height: 10%; background: transparent; border: 2px dashed var(--border-color); border-bottom: none;">
+                                    <span><i class="fa-solid fa-lock" style="font-size:8px;"></i></span>
+                                </div>
+                                <span class="label">Sem 4</span>
+                            </div>
+                            <div class="bar-col" style="opacity:0.4;">
+                                <div class="bar" style="height: 10%; background: transparent; border: 2px dashed var(--border-color); border-bottom: none;">
+                                    <span><i class="fa-solid fa-lock" style="font-size:8px;"></i></span>
+                                </div>
+                                <span class="label">Sem 5</span>
+                            </div>
+                            <div class="bar-col" style="opacity:0.4;">
+                                <div class="bar" style="height: 10%; background: transparent; border: 2px dashed var(--border-color); border-bottom: none;">
+                                    <span><i class="fa-solid fa-lock" style="font-size:8px;"></i></span>
+                                </div>
+                                <span class="label">Sem 6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metrics summary panel -->
+                    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:15px; margin-top:25px;">
+                        <div style="padding:15px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; text-align:center;">
+                            <span style="font-size:11px; color:var(--text-secondary); display:block; text-transform:uppercase; margin-bottom:4px; font-weight:600;">Credits Earned</span>
+                            <strong style="font-size:18px; color:var(--text-primary);">62 Credits</strong>
+                        </div>
+                        <div style="padding:15px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; text-align:center;">
+                            <span style="font-size:11px; color:var(--text-secondary); display:block; text-transform:uppercase; margin-bottom:4px; font-weight:600;">Class Rank</span>
+                            <strong style="font-size:18px; color:var(--accent);">4th / 68</strong>
+                        </div>
+                        <div style="padding:15px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; text-align:center;">
+                            <span style="font-size:11px; color:var(--text-secondary); display:block; text-transform:uppercase; margin-bottom:4px; font-weight:600;">Backlogs</span>
+                            <strong style="font-size:18px; color:#10b981;">0 Active</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive CGPA Calculator Planner -->
+                <div class="progress-card glassmorphism">
+                    <div>
+                        <h3 style="margin:0 0 10px 0; font-size:16px; font-weight:700; color:var(--accent);"><i class="fa-solid fa-graduation-cap"></i> CGPA Target Planner</h3>
+                        <p style="font-size:11px; color:var(--text-secondary); margin-bottom:20px;">Input your projected targets for future semesters to calculate your graduating CGPA.</p>
+                        
+                        <div style="display:flex; flex-direction:column; gap:16px;">
+                            <div>
+                                <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;">
+                                    <span style="color:var(--text-primary); font-weight:600;">Semester 4 Target:</span>
+                                    <span id="sem4Val" style="color:var(--primary); font-weight:700;">8.50</span>
+                                </div>
+                                <input type="range" id="sem4Range" min="5.0" max="10.0" step="0.1" value="8.5" oninput="calculateProjectedCgpa()" style="width:100%;">
+                            </div>
+                            <div>
+                                <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;">
+                                    <span style="color:var(--text-primary); font-weight:600;">Semester 5 Target:</span>
+                                    <span id="sem5Val" style="color:var(--primary); font-weight:700;">8.50</span>
+                                </div>
+                                <input type="range" id="sem5Range" min="5.0" max="10.0" step="0.1" value="8.5" oninput="calculateProjectedCgpa()" style="width:100%;">
+                            </div>
+                            <div>
+                                <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;">
+                                    <span style="color:var(--text-primary); font-weight:600;">Semester 6 Target:</span>
+                                    <span id="sem6Val" style="color:var(--primary); font-weight:700;">8.50</span>
+                                </div>
+                                <input type="range" id="sem6Range" min="5.0" max="10.0" step="0.1" value="8.5" oninput="calculateProjectedCgpa()" style="width:100%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:25px; padding:20px; background:rgba(99,102,241,0.06); border:1px dashed var(--primary); border-radius:10px; text-align:center;">
+                        <span style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:5px; text-transform:uppercase; font-weight:600;">Graduation CGPA Projection</span>
+                        <strong id="projectedCgpaText" style="font-size:32px; color:var(--text-primary); filter: drop-shadow(0 0 5px var(--primary));">8.89</strong>
+                    </div>
+                </div>
+
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="progress.js"></script>
+</body>
+</html>

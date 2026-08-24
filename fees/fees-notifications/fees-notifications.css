@@ -1,0 +1,214 @@
+/* ==========================================================================
+   UNIFYED FEES MANAGER PORTAL - NOTIFICATIONS SPECIFIC STYLES
+   ========================================================================== */
+
+.fees-hero-card {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(99, 102, 241, 0.18), rgba(239, 68, 68, 0.1)), var(--glass-bg);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: var(--border-radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.fees-hero-info h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.fees-hero-info p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.filter-toolbar {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.search-box-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 9px 18px;
+    border-radius: 20px;
+    width: 320px;
+}
+
+.search-box-wrap input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 13px;
+    width: 100%;
+}
+
+.filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-pill-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-pill-btn:hover, .filter-pill-btn.active {
+    background: var(--warning);
+    color: white;
+    border-color: var(--warning);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.fees-glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    margin-bottom: 24px;
+}
+
+.fees-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 14px;
+}
+
+.fees-card-header h3 {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notif-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notif-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.notif-item.unread {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.notif-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.notif-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.notif-icon-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.notif-icon-payment { background: linear-gradient(135deg, #10b981, #059669); }
+.notif-icon-defaulter { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.notif-icon-audit { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+.notif-icon-system { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+.unread-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--warning);
+    box-shadow: 0 0 8px var(--warning);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.notif-content strong {
+    font-size: 14px;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.notif-content p {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.notif-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.notif-time {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+}
+
+.notif-act-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.notif-act-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--primary);
+}

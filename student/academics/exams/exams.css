@@ -1,0 +1,12 @@
+
+            .exams-card {
+                padding: 30px;
+            }
+            .exams-card h3 {
+                font-size: 18px;
+                color: var(--accent);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        

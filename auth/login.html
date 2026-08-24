@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - ERP Login Portal</title>
+    <meta name="description"
+        content="Access UnifyEd ERP Portal. Log in with your email or username, password, and Student or Employee ID to manage classes, grades, and communication.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="auth-page-body">
+
+    <!-- Auth Page Background Layer -->
+    <div class="auth-bg-glows">
+        <div class="glow-sphere g-1"></div>
+        <div class="glow-sphere g-2"></div>
+    </div>
+
+    <!-- Theme toggle floating header -->
+    <header class="auth-floating-header">
+        <a href="../index.html" class="back-home-link">
+            <i class="fa-solid fa-arrow-left-long"></i> Back to Home
+        </a>
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card glassmorphism">
+            <!-- Brand Head -->
+            <div class="auth-brand">
+                <i class="fa-solid fa-graduation-cap auth-logo-icon"></i>
+                <h2>UnifyEd</h2>
+                <span class="auth-subtitle">ERP LOGIN PORTAL</span>
+            </div>
+
+            <!-- Form -->
+            <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+
+                <!-- Email / Username -->
+                <div class="form-group">
+                    <label for="loginUser">Username / Email ID</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user input-icon"></i>
+                        <input type="text" id="loginUser" class="form-input" placeholder="Enter username or email"
+                            required>
+                    </div>
+                    <div style="text-align: right; margin-top: 6px;">
+                        <a href="forgot-username.html" class="forgot-pass-link"
+                            style="font-size: 12px; font-weight: 500;">Forgot Username?</a>
+                    </div>
+                </div>
+
+                <!-- Student ID / Faculty ID -->
+                <div class="form-group">
+                    <label for="loginStudentId">Student ID / Employee ID <small style="color:var(--text-tertiary); font-weight:400;">(Optional)</small></label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-id-card input-icon"></i>
+                        <input type="text" id="loginStudentId" class="form-input" placeholder="e.g. STU-2026-1024 or FIN-EMP-108">
+                    </div>
+                </div>
+
+                <!-- Portal Role Selector (Optional Override) -->
+                <div class="form-group">
+                    <label for="loginRole">Select Portal Role <small style="color:var(--text-tertiary); font-weight:400;">(Optional)</small></label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user-gear input-icon"></i>
+                        <select id="loginRole" class="form-input select-input" style="background:var(--bg-tertiary); color:var(--text-primary);">
+                            <option value="auto" selected>✨ Auto-Detect Profile Role</option>
+                            <option value="fees-manager">💳 Fees Manager</option>
+                            <option value="student">🎓 Student</option>
+                            <option value="professor">👨‍🏫 Professor / Faculty</option>
+                            <option value="hod">🏛️ Head of Dept (HOD)</option>
+                            <option value="vc">👔 Vice Chancellor (VC)</option>
+                            <option value="admin">🛡️ Administrator</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="Enter password"
+                            required>
+                        <button type="button" class="password-toggle-btn" id="passwordToggleBtn"
+                            aria-label="Toggle password visibility">
+                            <i class="fa-solid fa-eye-slash icon-eye-hidden"></i>
+                            <i class="fa-solid fa-eye icon-eye-visible"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="auth-options">
+                    <label class="remember-me-checkbox">
+                        <input type="checkbox" id="loginRemember">
+                        <span>Remember Me</span>
+                    </label>
+                    <a href="forgot-password.html" class="forgot-pass-link">Forgot Password?</a>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary btn-full btn-large" id="loginSubmitBtn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In to ERP Portal
+                </button>
+
+                <!-- Feedback -->
+                <div id="loginFeedback" class="form-feedback"></div>
+            </form>
+
+            <div class="auth-divider">
+                <div class="line"></div>
+                <span>New to UnifyEd?</span>
+                <div class="line"></div>
+            </div>
+
+            <!-- Redirect link -->
+            <div class="auth-redirect">
+                <p>Register your student or faculty profile to access classes, results, and fees.</p>
+                <a href="register.html" class="btn btn-secondary btn-full" id="goToRegisterBtn">
+                    <i class="fa-solid fa-user-plus"></i> Create New Account
+                </a>
+            </div>
+
+            <!-- Direct Dashboard Quick Launch Bar -->
+            <div style="margin-top:20px; padding-top:16px; border-top:1px dashed rgba(255,255,255,0.15); text-align:center;">
+                <span style="font-size:11px; font-weight:800; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.8px; display:block; margin-bottom:10px;">⚡ Instant Direct Dashboard Access</span>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
+                    <a href="../student/dashboard/dashboard.html" class="btn btn-secondary" onclick="setQuickRole('student', 'Student User', 'STU-2026-101')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-user-graduate" style="color:#6366f1;"></i> Student</a>
+                    <a href="../professor/dashboard/dashboard.html" class="btn btn-secondary" onclick="setQuickRole('professor', 'Dr. Rajesh Kumar', 'EMP-2026-204')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-chalkboard-user" style="color:#10b981;"></i> Professor</a>
+                    <a href="../hod/dashboard-hod/dashboard-hod.html" class="btn btn-secondary" onclick="setQuickRole('hod', 'Dr. Ananya Sharma', 'HOD-CSE-01')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-user-tie" style="color:#a855f7;"></i> HOD</a>
+                    <a href="../vc/dashboard-vc/dashboard-vc.html" class="btn btn-secondary" onclick="setQuickRole('vc', 'Prof. Vice Chancellor', 'VC-2026-001')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-user-tie" style="color:#22d3ee;"></i> VC</a>
+                    <a href="../fees/dashboard-fees/dashboard-fees.html" class="btn btn-secondary" onclick="setQuickRole('fees-manager', 'Vikram Kumawat', 'FIN-EMP-108')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-credit-card" style="color:#f59e0b;"></i> Fees Manager</a>
+                    <a href="../admin/dashboard-admin/dashboard-admin.html" class="btn btn-secondary" onclick="setQuickRole('admin', 'System Admin', 'ADM-001')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-shield-halved" style="color:#ef4444;"></i> Admin</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS Helper for Theme & Password visibility -->
+    <script>
+        function setQuickRole(role, name, id) {
+            localStorage.setItem("userRole", role);
+            localStorage.setItem("loggedInUser", name);
+            localStorage.setItem("loggedInStudentId", id);
+            localStorage.setItem("currentUser", JSON.stringify({
+                name: name,
+                id: id,
+                role: role,
+                email: `${role}@unifyed.edu`
+            }));
+        }
+        window.setQuickRole = setQuickRole;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Theme Toggle Logic
+            const themeToggleBtn = document.getElementById("themeToggleBtn");
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener("click", () => {
+                    const activeTheme = document.documentElement.getAttribute("data-theme");
+                    const newTheme = activeTheme === "dark" ? "light" : "dark";
+                    document.documentElement.setAttribute("data-theme", newTheme);
+                    localStorage.setItem("theme", newTheme);
+                });
+            }
+
+            // Password Visibility Toggle
+            const passwordField = document.getElementById("loginPassword");
+            const toggleBtn = document.getElementById("passwordToggleBtn");
+
+            if (toggleBtn && passwordField) {
+                toggleBtn.addEventListener("click", () => {
+                    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+                    passwordField.setAttribute("type", type);
+                    toggleBtn.classList.toggle("show-password");
+                });
+            }
+
+            // Auto-fill registered credentials if present
+            const registeredUser = localStorage.getItem("registeredUsername") || localStorage.getItem("registeredEmail");
+            const registeredId = localStorage.getItem("registeredStudentId");
+
+            const loginUserInput = document.getElementById("loginUser");
+            const loginStudentIdInput = document.getElementById("loginStudentId");
+
+            if (registeredUser && loginUserInput && !loginUserInput.value) {
+                loginUserInput.value = registeredUser;
+            }
+            if (registeredId && loginStudentIdInput && !loginStudentIdInput.value) {
+                loginStudentIdInput.value = registeredId;
+            }
+        });
+
+        // Form Submit Simulation
+        function handleLoginSubmit(event) {
+            if (event) event.preventDefault();
+            const feedback = document.getElementById("loginFeedback");
+            const submitBtn = document.getElementById("loginSubmitBtn");
+
+            const usernameInput = document.getElementById("loginUser") ? document.getElementById("loginUser").value.trim() : "";
+            let studentIdInput = document.getElementById("loginStudentId") ? document.getElementById("loginStudentId").value.trim() : "";
+            const pass = document.getElementById("loginPassword") ? document.getElementById("loginPassword").value : "";
+            const selectedRole = document.getElementById("loginRole") ? document.getElementById("loginRole").value : "auto";
+
+            if (!usernameInput) {
+                if (feedback) {
+                    feedback.style.color = "#ef4444";
+                    feedback.textContent = "Please enter your username or email address.";
+                }
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...';
+                submitBtn.disabled = true;
+            }
+
+            try {
+                // 1. Load multi-user database from localStorage
+                let registeredUsers = [];
+                try {
+                    registeredUsers = JSON.parse(localStorage.getItem("registeredUsersDatabase")) || [];
+                } catch (e) {}
+
+                // 2. Check for registered match in database array
+                const matchedUser = registeredUsers.find(u => 
+                    (u.username && u.username.toLowerCase() === usernameInput.toLowerCase()) || 
+                    (u.email && u.email.toLowerCase() === usernameInput.toLowerCase()) ||
+                    (studentIdInput && u.studentId && u.studentId.toLowerCase() === studentIdInput.toLowerCase())
+                );
+
+                const regUser = localStorage.getItem("registeredUsername");
+                const regEmail = localStorage.getItem("registeredEmail");
+                const regFirst = localStorage.getItem("registeredFirstName") || "";
+                const regLast = localStorage.getItem("registeredLastName") || "";
+                const regId = localStorage.getItem("registeredStudentId");
+                const regRole = localStorage.getItem("registeredRole");
+
+                const isSingleRegUser = (
+                    usernameInput.toLowerCase() === (regUser || "").toLowerCase() || 
+                    usernameInput.toLowerCase() === (regEmail || "").toLowerCase() || 
+                    (studentIdInput && studentIdInput.toLowerCase() === (regId || "").toLowerCase())
+                );
+
+                let role = "student";
+                let displayName = usernameInput;
+
+                if (selectedRole && selectedRole !== "auto") {
+                    role = selectedRole;
+                    displayName = usernameInput;
+                    if (!studentIdInput) {
+                        if (role === "fees-manager") studentIdInput = "FIN-EMP-108";
+                        else if (role === "hod") studentIdInput = "HOD-CSE-01";
+                        else if (role === "vc") studentIdInput = "VC-2026-001";
+                        else if (role === "admin") studentIdInput = "ADM-001";
+                        else if (role === "professor") studentIdInput = "EMP-2026-204";
+                        else studentIdInput = "STU-2026-101";
+                    }
+                } else if (matchedUser) {
+                    role = matchedUser.role || "student";
+                    displayName = `${matchedUser.firstName || ''} ${matchedUser.lastName || ''}`.trim() || matchedUser.username || usernameInput;
+                    if (!studentIdInput) studentIdInput = matchedUser.studentId || "ERP-" + Math.floor(1000 + Math.random() * 9000);
+                } else if (isSingleRegUser && regRole) {
+                    role = regRole;
+                    displayName = `${regFirst} ${regLast}`.trim() || regUser || usernameInput;
+                    if (!studentIdInput) studentIdInput = regId || "ERP-1001";
+                } else {
+                    const lowerUser = usernameInput.toLowerCase();
+                    const lowerId = (studentIdInput || "").toLowerCase();
+
+                    if (lowerUser.includes("fee") || lowerUser.includes("fin") || lowerId.includes("fee") || lowerId.includes("fin")) {
+                        role = "fees-manager";
+                        if (!studentIdInput) studentIdInput = "FIN-EMP-108";
+                    } else if (lowerUser.includes("vc") || lowerUser.includes("principal") || lowerId.includes("vc")) {
+                        role = "vc";
+                        if (!studentIdInput) studentIdInput = "VC-2026-001";
+                    } else if (lowerUser.includes("hod") || lowerId.includes("hod")) {
+                        role = "hod";
+                        if (!studentIdInput) studentIdInput = "HOD-CSE-01";
+                    } else if (lowerUser.includes("prof") || lowerUser.includes("rajesh") || lowerUser.includes("teacher") || lowerId.includes("prof") || lowerId.includes("emp")) {
+                        role = "professor";
+                        if (!studentIdInput) studentIdInput = "EMP-2026-204";
+                    } else if (lowerUser.includes("adm") || lowerId.includes("adm")) {
+                        role = "admin";
+                        if (!studentIdInput) studentIdInput = "ADM-001";
+                    } else {
+                        role = "student";
+                        if (!studentIdInput) studentIdInput = "STU-2026-101";
+                    }
+                }
+
+                if (role === "professor" && (usernameInput.toLowerCase().includes("rajesh") || studentIdInput.toLowerCase().includes("emp-204")) && !matchedUser && !isSingleRegUser) {
+                    displayName = "Dr. Rajesh Kumar";
+                }
+                if (role === "vc" && !matchedUser && !isSingleRegUser) {
+                    displayName = "Prof. Vice Chancellor";
+                }
+
+                localStorage.setItem("userRole", role);
+                localStorage.setItem("loggedInUser", displayName);
+                localStorage.setItem("loggedInStudentId", studentIdInput);
+                localStorage.setItem("currentUser", JSON.stringify({
+                    name: displayName,
+                    id: studentIdInput,
+                    role: role,
+                    email: usernameInput.includes("@") ? usernameInput : `${usernameInput.toLowerCase()}@unifyed.edu`
+                }));
+
+                if (feedback) {
+                    feedback.style.color = "#10b981";
+                    feedback.textContent = `Access Granted! Opening ${role.toUpperCase()} dashboard...`;
+                }
+
+                // Role-based target dashboard routing
+                const cleanRole = (role || "").toLowerCase().replace(/_/g, '-').trim();
+                let targetUrl = "../student/dashboard/dashboard.html";
+
+                if (cleanRole === "professor" || cleanRole === "teacher") {
+                    targetUrl = "../professor/dashboard/dashboard.html";
+                } else if (cleanRole === "vc" || cleanRole === "principal" || cleanRole === "vice-chancellor") {
+                    targetUrl = "../vc/dashboard-vc/dashboard-vc.html";
+                } else if (cleanRole === "hod") {
+                    targetUrl = "../hod/dashboard-hod/dashboard-hod.html";
+                } else if (cleanRole === "admin") {
+                    targetUrl = "../admin/dashboard-admin/dashboard-admin.html";
+                } else if (cleanRole === "fees-manager" || cleanRole.includes("fee") || cleanRole === "finance") {
+                    targetUrl = "../fees/dashboard-fees/dashboard-fees.html";
+                } else {
+                    targetUrl = "../student/dashboard/dashboard.html";
+                }
+                
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 300);
+            } catch (err) {
+                console.error("Login redirect error:", err);
+                window.location.href = "../student/dashboard/dashboard.html";
+            }
+        }
+    </script>
+</body>
+
+</html>

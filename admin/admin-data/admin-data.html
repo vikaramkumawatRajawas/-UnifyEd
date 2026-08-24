@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Data Management & Pipelines</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-data.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item active"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search datasets, migrations, exports..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-database"></i> DATABASE PIPELINES</span>
+                <h1>Campus Data Pipelines & Migration Hub 💾</h1>
+              </div>
+              <p>Execute batch imports, export database schemas, sync student ledgers, and manage automated data sanitation.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Storage Consumption</span>
+                  <strong class="val">98.4 GB Used</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Indexed Records</span>
+                  <strong class="val" style="color:var(--primary);">1.2M Rows</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Database Status</span>
+                  <strong class="val" style="color:var(--success);">🟢 Healthy</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnOpenImportModal"><i class="fa-solid fa-file-import"></i> Batch Import Wizard</button>
+              <button class="btn btn-secondary" id="btnOpenExportModal"><i class="fa-solid fa-file-export"></i> Export DB Schema</button>
+              <button class="btn btn-secondary" id="btnRunSanitation"><i class="fa-solid fa-broom"></i> Data Sanitation</button>
+            </div>
+          </div>
+
+          <!-- KPI Cards Grid (Equal 4 Columns) -->
+          <div class="kpi-grid" style="margin-bottom:28px;">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Storage Capacity</span>
+                  <div class="kpi-val">98.4 GB</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-server"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-hard-drive"></i> 39% of 250 GB Total</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:39%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Total DB Records</span>
+                  <div class="kpi-val">1,248,500</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-table-list"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-arrow-trend-up"></i> +12.4k Records This Month</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:78%; background:var(--info);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Realtime Sync SLA</span>
+                  <div class="kpi-val">100% Live</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-rotate"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-circle-check"></i> Zero Pipeline Delays</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:100%; background:var(--success);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Data Integrity Score</span>
+                  <div class="kpi-val">99.8%</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-shield-cat"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-check-double"></i> 0 Orphaned Keys Detected</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:99%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Operations Grid (2x2 Glass Cards) -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;">
+            <!-- CSV/Excel Batch Import Module -->
+            <div class="admin-glass-card data-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-purple"><i class="fa-solid fa-file-import"></i></div>
+                <div>
+                  <h3>Batch CSV/Excel Data Importer</h3>
+                  <span>Bulk upload student registrations, faculty rosters or grade ledgers</span>
+                </div>
+              </div>
+              <div class="drag-upload-box" id="dragDropArea">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p>Drag and drop <strong>.CSV</strong> or <strong>.XLSX</strong> file here</p>
+                <span style="font-size:11px; color:var(--text-tertiary);">Maximum file size: 50MB per batch</span>
+              </div>
+              <div class="op-footer">
+                <div class="file-format-tags">
+                  <span class="tag-chip">.CSV</span>
+                  <span class="tag-chip">.XLSX</span>
+                  <span class="tag-chip">.JSON</span>
+                </div>
+                <button class="btn btn-primary" id="btnTriggerUpload"><i class="fa-solid fa-upload"></i> Start Import</button>
+              </div>
+            </div>
+
+            <!-- Database Exporter Module -->
+            <div class="admin-glass-card data-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-emerald"><i class="fa-solid fa-file-export"></i></div>
+                <div>
+                  <h3>Automated Schema & Record Exporter</h3>
+                  <span>Download structured database dumps or module subsets</span>
+                </div>
+              </div>
+              <div class="export-options-box">
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label class="form-label">Select Target Dataset</label>
+                  <select class="form-input" id="exportDatasetSelect">
+                    <option value="all">Entire Database Dump (.SQL)</option>
+                    <option value="users">User Identities & Roles (.CSV)</option>
+                    <option value="fees">Student Fee Ledgers & Receipts (.JSON)</option>
+                    <option value="logs">System Activity Logs (.CSV)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">Compression Format</label>
+                  <select class="form-input" id="exportCompressionSelect">
+                    <option value="zip">GZIP Archive (.tar.gz)</option>
+                    <option value="raw">Raw Uncompressed File</option>
+                  </select>
+                </div>
+              </div>
+              <div class="op-footer">
+                <span style="font-size:11px; color:var(--text-tertiary);"><i class="fa-solid fa-lock"></i> Encrypted RSA-2048 Export</span>
+                <button class="btn btn-secondary" id="btnTriggerExport"><i class="fa-solid fa-download"></i> Generate Export</button>
+              </div>
+            </div>
+
+            <!-- Index & Query Optimizer -->
+            <div class="admin-glass-card data-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-cyan"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                  <h3>Database Index & Query Optimizer</h3>
+                  <span>Re-index foreign keys and purge stale cache memory</span>
+                </div>
+              </div>
+              <p style="font-size:13px; color:var(--text-secondary); line-height:1.5; margin-bottom:18px;">Automated query optimization improves database read/write speeds by reorganizing table indexes and clearing temporary query caches.</p>
+              <div class="op-footer">
+                <span class="status-pill status-active"><span class="status-dot"></span> Indexes Up-to-Date</span>
+                <button class="btn btn-secondary" id="btnOptimizeDb"><i class="fa-solid fa-gears"></i> Optimize Indexes</button>
+              </div>
+            </div>
+
+            <!-- Data Sanitation & Health -->
+            <div class="admin-glass-card data-op-card">
+              <div class="op-header">
+                <div class="op-icon-box icon-amber"><i class="fa-solid fa-broom"></i></div>
+                <div>
+                  <h3>Data Sanitation & Orphan Cleanup</h3>
+                  <span>Scan database for unlinked references and duplicate rows</span>
+                </div>
+              </div>
+              <p style="font-size:13px; color:var(--text-secondary); line-height:1.5; margin-bottom:18px;">Identify and purge temporary upload buffers, unlinked session tokens, and duplicate records without affecting live campus transactions.</p>
+              <div class="op-footer">
+                <span class="status-pill status-active"><span class="status-dot"></span> 0 Integrity Faults</span>
+                <button class="btn btn-secondary" id="btnPurgeOrphans"><i class="fa-solid fa-broom"></i> Run Sanitation</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Migration & Pipeline Logs Table Card -->
+          <div class="admin-glass-card migration-logs-card" style="margin-top:32px; padding:28px;">
+            <div class="card-header-bar" style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid var(--border-color);">
+              <div class="dir-title-group">
+                <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:10px;"><i class="fa-solid fa-clock-rotate-left" style="color:var(--primary);"></i> Recent Data Pipeline & Migration History</h3>
+                <span class="live-status-chip"><span class="pulse-dot"></span> Live Sync Enabled</span>
+              </div>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="admin-table data-table" id="migrationLogsTable">
+                <thead>
+                  <tr>
+                    <th>Data Operation & Dataset</th>
+                    <th>Records Processed</th>
+                    <th>Initiator Admin</th>
+                    <th>Executed Timestamp</th>
+                    <th>Pipeline Status</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="data-op-cell">
+                        <i class="fa-solid fa-file-import" style="color:var(--primary);"></i>
+                        <div>
+                          <strong class="op-name">Batch Student Roster Import</strong>
+                          <span class="op-filename">students_cse_2026_batch.csv</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-blue">1,450 Rows</span></td>
+                    <td>
+                      <div class="initiator-cell">
+                        <span class="avatar-sm avatar-blue">SA</span>
+                        <span>System Admin</span>
+                      </div>
+                    </td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Today, 14:30</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Completed</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log" title="View Summary Log"><i class="fa-solid fa-file-lines"></i> Log</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="data-op-cell">
+                        <i class="fa-solid fa-file-export" style="color:var(--success);"></i>
+                        <div>
+                          <strong class="op-name">Full Database Backup Dump</strong>
+                          <span class="op-filename">unifyed_db_dump_2026_08.sql.gz</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-emerald">1.2M Rows</span></td>
+                    <td>
+                      <div class="initiator-cell">
+                        <span class="avatar-sm avatar-purple">SA</span>
+                        <span>System Admin</span>
+                      </div>
+                    </td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Today, 12:15</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Completed</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log" title="View Summary Log"><i class="fa-solid fa-file-lines"></i> Log</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="data-op-cell">
+                        <i class="fa-solid fa-broom" style="color:var(--warning);"></i>
+                        <div>
+                          <strong class="op-name">Orphan Token & Cache Purge</strong>
+                          <span class="op-filename">cache_cleanup_task_882.log</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-amber">8,420 Items</span></td>
+                    <td>
+                      <div class="initiator-cell">
+                        <span class="avatar-sm avatar-cyan">SYS</span>
+                        <span>Automated Cron</span>
+                      </div>
+                    </td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Yesterday, 04:00</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Completed</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log" title="View Summary Log"><i class="fa-solid fa-file-lines"></i> Log</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="data-op-cell">
+                        <i class="fa-solid fa-bolt" style="color:var(--info);"></i>
+                        <div>
+                          <strong class="op-name">Database Re-Index Task</strong>
+                          <span class="op-filename">table_indexes_rebuild.sql</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-cyan">48 Tables</span></td>
+                    <td>
+                      <div class="initiator-cell">
+                        <span class="avatar-sm avatar-rose">VK</span>
+                        <span>Vikram K.</span>
+                      </div>
+                    </td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 2 days ago</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Completed</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log" title="View Summary Log"><i class="fa-solid fa-file-lines"></i> Log</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Batch Import Modal -->
+    <div class="modal-backdrop" id="importModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-file-import" style="color:var(--primary);"></i> Batch Data Import Wizard</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <form id="importForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Select Target Entity</label>
+              <select class="form-input" id="importEntityType" required>
+                <option value="Student Roster">Student Registration Roster</option>
+                <option value="Faculty Records">Faculty & HOD Roster</option>
+                <option value="Course Catalog">Course & Subject Catalog</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Upload File (.CSV or .XLSX)</label>
+              <input type="file" class="form-input" id="importFileInput" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-cloud-arrow-up"></i> Start Batch Import</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-data.js"></script>
+  </body>
+</html>

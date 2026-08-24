@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - University Official Announcements</title>
+    <meta name="description" content="Vice Chancellor Official Announcements - Campus Broadcasts, University Circulars & Executive Communications">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-announcements.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item active">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="announceSearchInput" placeholder="Search official circulars, semester schedules, or executive notices...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- Announcements Hero Banner -->
+                <section class="announce-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-bullhorn"></i> OFFICIAL EXECUTIVE BROADCAST CONSOLE
+                        </div>
+                        <h1>University Official Circulars & Announcements</h1>
+                        <p>Create, manage, and broadcast executive university circulars, academic calendar updates, and senate decisions to Deans, HODs, Faculty, and Students.</p>
+                    </div>
+                </section>
+
+                <!-- KPI Cards Grid (4 Columns) -->
+                <section class="announce-kpi-grid">
+                    <div class="announce-kpi-card">
+                        <div class="announce-kpi-top">
+                            <div>
+                                <div class="announce-kpi-lbl">TOTAL PUBLISHED</div>
+                                <div class="announce-kpi-val" style="color:var(--primary);">34 Circulars</div>
+                            </div>
+                            <div class="kpi-icon icon-purple">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change purple">
+                            <i class="fa-solid fa-circle-check"></i> Executive Archive
+                        </div>
+                    </div>
+
+                    <div class="announce-kpi-card">
+                        <div class="announce-kpi-top">
+                            <div>
+                                <div class="announce-kpi-lbl">ACTIVE CIRCULARS</div>
+                                <div class="announce-kpi-val" style="color:var(--warning);">5 Active</div>
+                            </div>
+                            <div class="kpi-icon icon-amber">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change warning">
+                            <i class="fa-solid fa-eye"></i> Currently Displayed
+                        </div>
+                    </div>
+
+                    <div class="announce-kpi-card">
+                        <div class="announce-kpi-top">
+                            <div>
+                                <div class="announce-kpi-lbl">TARGET AUDIENCE</div>
+                                <div class="announce-kpi-val" style="color:var(--success);">2,780 Total</div>
+                            </div>
+                            <div class="kpi-icon icon-emerald">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change success">
+                            <i class="fa-solid fa-check"></i> All Campus Portals
+                        </div>
+                    </div>
+
+                    <div class="announce-kpi-card">
+                        <div class="announce-kpi-top">
+                            <div>
+                                <div class="announce-kpi-lbl">ISSUED THIS MONTH</div>
+                                <div class="announce-kpi-val" style="color:var(--info);">12 Notices</div>
+                            </div>
+                            <div class="kpi-icon icon-cyan">
+                                <i class="fa-solid fa-calendar-day"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change info">
+                            <i class="fa-solid fa-clock-rotate-left"></i> Session 2026
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 1: Create Executive Circular Form -->
+                <section class="announce-section">
+                    <div class="announce-section-head">
+                        <i class="fa-solid fa-paper-plane" style="color:var(--primary); font-size:20px;"></i>
+                        <h2>Broadcast New University Circular</h2>
+                    </div>
+
+                    <form id="vcBroadcastForm" onsubmit="handleBroadcastSubmit(event)">
+                        <div class="form-grid-2">
+                            <div class="form-group-vc">
+                                <label>Circular Title / Heading *</label>
+                                <input type="text" id="circTitle" placeholder="e.g. End Semester Examination Schedule & Guidelines 2026" required>
+                            </div>
+                            <div class="form-group-vc">
+                                <label>Target Recipient Audience *</label>
+                                <select id="circAudience" required>
+                                    <option value="All Campus (Faculty, HODs, Students)">All Campus (Faculty, HODs, Students)</option>
+                                    <option value="All Faculty Members & HODs">All Faculty Members & HODs</option>
+                                    <option value="All Students Only">All Students Only</option>
+                                    <option value="Academic Senate Council Only">Academic Senate Council Only</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group-vc" style="margin-bottom:16px;">
+                            <label>Circular Content / Executive Details *</label>
+                            <textarea id="circBody" rows="4" placeholder="Enter official executive circular message details..." required></textarea>
+                        </div>
+                        <button type="submit" style="background:var(--primary); color:white; border:none; padding:10px 22px; border-radius:8px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-bullhorn"></i> Broadcast Circular Immediately
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Section 2: Active University Circulars List -->
+                <section class="announce-section">
+                    <div class="announce-section-head">
+                        <i class="fa-solid fa-scroll" style="color:var(--warning); font-size:20px;"></i>
+                        <h2>Active University Circulars & Executive Notices</h2>
+                    </div>
+
+                    <div id="circularsList">
+                        <div class="circular-card-item">
+                            <div style="flex:1;">
+                                <div class="circular-title">
+                                    <span>End Semester Examination Schedule & Guidelines 2026</span>
+                                    <span class="status-pill pill-success" style="margin-left:10px;"><i class="fa-solid fa-circle-check"></i> Published</span>
+                                </div>
+                                <p style="font-size:13px; color:var(--text-secondary); margin-top:4px;">Official examination timetable for Semester 6 end-term examinations. Biometric admit cards available for download.</p>
+                                <div class="circular-meta">
+                                    <span><i class="fa-solid fa-user-tie" style="color:var(--primary);"></i> Issued by: Vice Chancellor Office</span>
+                                    <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Audience: All Campus</span>
+                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Jan 12, 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="circular-card-item" style="border-left-color: var(--primary);">
+                            <div style="flex:1;">
+                                <div class="circular-title">
+                                    <span>Research Grant Proposals Invitation (DST & UGC 2026)</span>
+                                    <span class="status-pill pill-info" style="margin-left:10px;"><i class="fa-solid fa-circle-check"></i> Active</span>
+                                </div>
+                                <p style="font-size:13px; color:var(--text-secondary); margin-top:4px;">All teaching faculty members are invited to submit interdisciplinary research proposals for DST grants by Feb 15, 2026.</p>
+                                <div class="circular-meta">
+                                    <span><i class="fa-solid fa-user-tie" style="color:var(--primary);"></i> Issued by: Vice Chancellor Office</span>
+                                    <span><i class="fa-solid fa-users" style="color:var(--purple);"></i> Audience: Faculty & HODs</span>
+                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Jan 05, 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toastContainer");
+            if (!container) return;
+            const toast = document.createElement("div");
+            toast.className = `toast-alert ${type}`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateX(50px)";
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function handleBroadcastSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById("circTitle").value;
+            const audience = document.getElementById("circAudience").value;
+            const body = document.getElementById("circBody").value;
+
+            const list = document.getElementById("circularsList");
+            if (list) {
+                const card = document.createElement("div");
+                card.className = "circular-card-item";
+                card.innerHTML = `
+                    <div style="flex:1;">
+                        <div class="circular-title">
+                            <span>${title}</span>
+                            <span class="status-pill pill-success" style="margin-left:10px;"><i class="fa-solid fa-circle-check"></i> Just Published</span>
+                        </div>
+                        <p style="font-size:13px; color:var(--text-secondary); margin-top:4px;">${body}</p>
+                        <div class="circular-meta">
+                            <span><i class="fa-solid fa-user-tie" style="color:var(--primary);"></i> Issued by: Vice Chancellor Office</span>
+                            <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Audience: ${audience}</span>
+                            <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Today</span>
+                        </div>
+                    </div>
+                `;
+                list.prepend(card);
+            }
+
+            document.getElementById("vcBroadcastForm").reset();
+            showToast("Official Circular Broadcasted to " + audience + " Successfully!", "success");
+        }
+
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Header Live Search Filtering
+        const searchInput = document.getElementById("announceSearchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const circularCards = document.querySelectorAll(".circular-card-item");
+                circularCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = !query || text.includes(query) ? "" : "none";
+                });
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

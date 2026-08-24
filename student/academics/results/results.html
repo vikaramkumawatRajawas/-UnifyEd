@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Semester Results</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="results.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="results.html" class="sidebar-item active">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../../services/fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../../services/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../../services/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../../services/transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../../services/library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Semester Results</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Academics • Semester Results</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="results-dashboard-wrapper">
+                <div style="margin-bottom: 25px;">
+                    <h3 style="font-size: 16px; font-weight:700; color: var(--accent); margin-bottom: 5px;"><i class="fa-solid fa-graduation-cap"></i> Student Marksheet Dashboard</h3>
+                    <p style="font-size: 12px; color: var(--text-secondary);">Click on any declared semester card to download/view the official grade card report. Future semesters remain locked.</p>
+                </div>
+
+                <!-- Grid of 6 Semester Cards -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px;">
+                    
+                    <!-- Semester 1 Card -->
+                    <div class="sem-card glassmorphism" onclick="viewSemesterResult(1)" style="cursor:pointer; padding: 25px; border: 1px solid var(--border-glass); transition: all 0.3s ease; position:relative; overflow:hidden;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <span style="font-size: 11px; text-transform:uppercase; color: var(--primary); font-weight:700;">Academic Year 2024-25</span>
+                            <span class="badge badge-success">Declared</span>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight:700; margin-bottom:10px; color:var(--text-primary);">Semester 1</h4>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-secondary); border-top: 1px solid var(--border-color); padding-top:12px; margin-top:10px;">
+                            <span>SGPA: <strong>9.20</strong></span>
+                            <span>Credits: <strong>20/20</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Semester 2 Card -->
+                    <div class="sem-card glassmorphism" onclick="viewSemesterResult(2)" style="cursor:pointer; padding: 25px; border: 1px solid var(--border-glass); transition: all 0.3s ease; position:relative; overflow:hidden;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <span style="font-size: 11px; text-transform:uppercase; color: var(--primary); font-weight:700;">Academic Year 2024-25</span>
+                            <span class="badge badge-success">Declared</span>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight:700; margin-bottom:10px; color:var(--text-primary);">Semester 2</h4>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-secondary); border-top: 1px solid var(--border-color); padding-top:12px; margin-top:10px;">
+                            <span>SGPA: <strong>9.50</strong></span>
+                            <span>Credits: <strong>22/22</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Semester 3 Card -->
+                    <div class="sem-card glassmorphism" onclick="viewSemesterResult(3)" style="cursor:pointer; padding: 25px; border: 1px solid var(--border-glass); transition: all 0.3s ease; position:relative; overflow:hidden;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <span style="font-size: 11px; text-transform:uppercase; color: var(--primary); font-weight:700;">Academic Year 2025-26</span>
+                            <span class="badge badge-success">Declared</span>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight:700; margin-bottom:10px; color:var(--text-primary);">Semester 3</h4>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-secondary); border-top: 1px solid var(--border-color); padding-top:12px; margin-top:10px;">
+                            <span>SGPA: <strong>9.08</strong></span>
+                            <span>Credits: <strong>20/20</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Semester 4 Card (Locked) -->
+                    <div class="sem-card glassmorphism locked" onclick="viewSemesterResult(4)" style="padding: 25px; border: 1px solid var(--border-glass); opacity: 0.65; position:relative; overflow:hidden;">
+                        <div style="position:absolute; top: 15px; right: 15px; font-size: 16px; color: var(--text-tertiary);">
+                            <i class="fa-solid fa-lock" style="color:var(--accent);"></i>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <span style="font-size: 11px; text-transform:uppercase; color: var(--text-tertiary); font-weight:700;">Academic Year 2025-26</span>
+                            <span class="badge badge-error" style="background:rgba(239,68,68,0.15); color:#ef4444;">Locked</span>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight:700; margin-bottom:10px; color:var(--text-tertiary);">Semester 4</h4>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-tertiary); border-top: 1px dashed var(--border-color); padding-top:12px; margin-top:10px;">
+                            <span>SGPA: <strong>--</strong></span>
+                            <span>Credits: <strong>--</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Semester 5 Card (Locked) -->
+                    <div class="sem-card glassmorphism locked" onclick="viewSemesterResult(5)" style="padding: 25px; border: 1px solid var(--border-glass); opacity: 0.65; position:relative; overflow:hidden;">
+                        <div style="position:absolute; top: 15px; right: 15px; font-size: 16px; color: var(--text-tertiary);">
+                            <i class="fa-solid fa-lock" style="color:var(--accent);"></i>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <span style="font-size: 11px; text-transform:uppercase; color: var(--text-tertiary); font-weight:700;">Academic Year 2026-27</span>
+                            <span class="badge badge-error" style="background:rgba(239,68,68,0.15); color:#ef4444;">Locked</span>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight:700; margin-bottom:10px; color:var(--text-tertiary);">Semester 5</h4>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-tertiary); border-top: 1px dashed var(--border-color); padding-top:12px; margin-top:10px;">
+                            <span>SGPA: <strong>--</strong></span>
+                            <span>Credits: <strong>--</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Semester 6 Card (Locked) -->
+                    <div class="sem-card glassmorphism locked" onclick="viewSemesterResult(6)" style="padding: 25px; border: 1px solid var(--border-glass); opacity: 0.65; position:relative; overflow:hidden;">
+                        <div style="position:absolute; top: 15px; right: 15px; font-size: 16px; color: var(--text-tertiary);">
+                            <i class="fa-solid fa-lock" style="color:var(--accent);"></i>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <span style="font-size: 11px; text-transform:uppercase; color: var(--text-tertiary); font-weight:700;">Academic Year 2026-27</span>
+                            <span class="badge badge-error" style="background:rgba(239,68,68,0.15); color:#ef4444;">Locked</span>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight:700; margin-bottom:10px; color:var(--text-tertiary);">Semester 6</h4>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-tertiary); border-top: 1px dashed var(--border-color); padding-top:12px; margin-top:10px;">
+                            <span>SGPA: <strong>--</strong></span>
+                            <span>Credits: <strong>--</strong></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Grade Card Modal (Overlay) -->
+                <div id="gradesModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); z-index:1000; align-items:center; justify-content:center; padding: 20px;">
+                    <div class="glassmorphism" style="width:100%; max-width:700px; padding:30px; border: 1px solid var(--border-glass); position:relative; animation: fadeIn 0.3s ease;">
+                        
+                        <!-- Close button -->
+                        <button onclick="closeGradesModal()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:var(--text-secondary); font-size:20px; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+                        
+                        <h3 id="modalTitle" style="font-size:18px; font-weight:700; color:var(--accent); margin-bottom:20px;">Semester 1 Grades Sheet</h3>
+                        
+                        <div class="table-responsive">
+                            <table class="custom-table" style="font-size:13px; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Subject Title</th>
+                                        <th>Credits</th>
+                                        <th>Grade Point</th>
+                                        <th>Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modalGradesBody">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; padding-top:15px; border-top:1px solid var(--border-color); font-size:13px; flex-wrap:wrap; gap: 15px;">
+                            <span id="modalSgpa">SGPA: <strong>9.20</strong></span>
+                            <span id="modalCgpa">CGPA: <strong>9.20</strong></span>
+                            <button class="btn btn-secondary btn-sm" id="downloadReportBtn" style="gap:5px; height: 32px;"><i class="fa-solid fa-file-pdf"></i> Download Gradesheet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="results.js"></script>
+</body>
+</html>

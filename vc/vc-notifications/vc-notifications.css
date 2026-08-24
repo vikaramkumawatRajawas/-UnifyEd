@@ -1,0 +1,145 @@
+/* ==========================================================================
+   UNIFYED VICE CHANCELLOR (VC) PORTAL - NOTIFICATIONS STYLES
+   ========================================================================== */
+
+/* Hero Banner */
+.notif-hero-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.22), rgba(168, 85, 247, 0.18), rgba(6, 182, 212, 0.12)), var(--glass-bg);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    border-radius: var(--border-radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.notif-hero-card h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.notif-hero-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+/* Glass Section Container */
+.notif-section {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 26px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+}
+
+.notif-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.notif-section-head h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Notification Item Cards List */
+.notif-card-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--border-radius-md);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: transform var(--transition-fast);
+}
+
+.notif-card-item:hover {
+    transform: translateY(-2px);
+}
+
+.notif-card-item.unread {
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.notif-icon-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.notif-content-wrap {
+    flex: 1;
+}
+
+.notif-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.notif-title-row strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.notif-time {
+    font-size: 11.5px;
+    color: var(--text-tertiary);
+}
+
+.notif-desc {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.btn-mark-all {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--primary);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    padding: 8px 16px;
+    border-radius: var(--border-radius-sm);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition-fast);
+}
+
+.btn-mark-all:hover {
+    background: var(--primary);
+    color: #ffffff;
+}

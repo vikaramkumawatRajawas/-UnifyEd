@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - University Performance Analytics</title>
+    <meta name="description" content="University Performance Analytics - Institutional KPIs, Academic Pass Rates, Faculty Research Metrics & Departmental Rankings">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-performance.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="perfSearchInput" placeholder="Search departments, GPA metrics, or research publications...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- Executive Performance Hero Banner -->
+                <section class="perf-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-chart-pie"></i> PERFORMANCE INTELLIGENCE
+                        </div>
+                        <h1>University Performance Dashboard</h1>
+                        <p>Track institutional academic growth indicators, student grade distributions, faculty research publications, and top departmental rankings across all 18 faculties.</p>
+                    </div>
+                </section>
+
+                <!-- KPI Cards Grid (4 Columns) -->
+                <section class="perf-kpi-grid">
+                    <div class="perf-kpi-card">
+                        <div class="perf-kpi-top">
+                            <div>
+                                <div class="perf-kpi-lbl">ACADEMIC PASS RATE</div>
+                                <div class="perf-kpi-val" style="color:var(--success);">95.2%</div>
+                            </div>
+                            <div class="kpi-icon icon-emerald">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change success">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +2.4% vs Previous Term
+                        </div>
+                    </div>
+
+                    <div class="perf-kpi-card">
+                        <div class="perf-kpi-top">
+                            <div>
+                                <div class="perf-kpi-lbl">AVERAGE CGPA</div>
+                                <div class="perf-kpi-val" style="color:var(--primary);">8.7 / 10</div>
+                            </div>
+                            <div class="kpi-icon icon-purple">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change purple">
+                            <i class="fa-solid fa-star"></i> University Distinction
+                        </div>
+                    </div>
+
+                    <div class="perf-kpi-card">
+                        <div class="perf-kpi-top">
+                            <div>
+                                <div class="perf-kpi-lbl">PLACEMENT RATE</div>
+                                <div class="perf-kpi-val" style="color:var(--warning);">85.0%</div>
+                            </div>
+                            <div class="kpi-icon icon-amber">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change warning">
+                            <i class="fa-solid fa-arrow-trend-up"></i> 120+ Corporate Drives
+                        </div>
+                    </div>
+
+                    <div class="perf-kpi-card">
+                        <div class="perf-kpi-top">
+                            <div>
+                                <div class="perf-kpi-lbl">FACULTY SATISFACTION</div>
+                                <div class="perf-kpi-val" style="color:var(--info);">4.9 / 5</div>
+                            </div>
+                            <div class="kpi-icon icon-cyan">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change info">
+                            <i class="fa-solid fa-face-smile"></i> High Feedback Rating
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Performance Modules Row 1 -->
+                <div class="perf-grid-2">
+                    <!-- Module 1: Academic Pass Rate Metrics -->
+                    <div class="perf-glass-card">
+                        <div class="perf-card-header">
+                            <div class="perf-card-title">
+                                <i class="fa-solid fa-graduation-cap" style="color:var(--primary); font-size:18px;"></i>
+                                <h2>Undergraduate & Postgraduate Academics</h2>
+                            </div>
+                        </div>
+                        <div class="metric-box-grid">
+                            <div class="metric-box">
+                                <span class="m-lbl">Pass Rate (UG)</span>
+                                <span class="m-val" style="color:var(--success);">94.0%</span>
+                                <span class="m-sub">1,856 Enrolled Students</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Pass Rate (PG)</span>
+                                <span class="m-val" style="color:var(--success);">98.0%</span>
+                                <span class="m-sub">524 Masters Candidates</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Avg Marks (UG)</span>
+                                <span class="m-val" style="color:var(--primary);">74.5%</span>
+                                <span class="m-sub">Mid-Term & End-Term Avg</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Avg Marks (PG)</span>
+                                <span class="m-val" style="color:var(--accent);">83.2%</span>
+                                <span class="m-sub">Thesis & Exam Avg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 2: Student Grade Distribution -->
+                    <div class="perf-glass-card">
+                        <div class="perf-card-header">
+                            <div class="perf-card-title">
+                                <i class="fa-solid fa-users" style="color:var(--accent); font-size:18px;"></i>
+                                <h2>Student Grade Distribution</h2>
+                            </div>
+                        </div>
+                        <div class="metric-box-grid">
+                            <div class="metric-box">
+                                <span class="m-lbl">Excellence Grade (A+)</span>
+                                <span class="m-val" style="color:var(--warning);">780</span>
+                                <span class="m-sub">Top 31.2% of Cohort</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Good Standing (A/B)</span>
+                                <span class="m-val" style="color:var(--accent);">1,350</span>
+                                <span class="m-sub">54.0% of Cohort</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Pass Grade (C/D)</span>
+                                <span class="m-val" style="color:var(--info);">370</span>
+                                <span class="m-sub">14.8% of Cohort</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Avg Campus Attendance</span>
+                                <span class="m-val" style="color:var(--success);">91.0%</span>
+                                <span class="m-sub">Biometric Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Modules Row 2 -->
+                <div class="perf-grid-2">
+                    <!-- Module 3: Faculty Research & Publications -->
+                    <div class="perf-glass-card">
+                        <div class="perf-card-header">
+                            <div class="perf-card-title">
+                                <i class="fa-solid fa-flask" style="color:var(--info); font-size:18px;"></i>
+                                <h2>Faculty Research & Innovations</h2>
+                            </div>
+                        </div>
+                        <div class="metric-box-grid">
+                            <div class="metric-box">
+                                <span class="m-lbl">Teaching Effectiveness</span>
+                                <span class="m-val" style="color:var(--info);">4.7 / 5</span>
+                                <span class="m-sub">Student Audit Rating</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Research Papers YTD</span>
+                                <span class="m-val" style="color:var(--accent);">245</span>
+                                <span class="m-sub">Indexed in Scopus / IEEE</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Research Grants YTD</span>
+                                <span class="m-val" style="color:var(--success); font-family:'JetBrains Mono';">₹5.8 Cr</span>
+                                <span class="m-sub">DST / UGC Sanctioned</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="m-lbl">Faculty Trained YTD</span>
+                                <span class="m-val" style="color:var(--warning);">110</span>
+                                <span class="m-sub">Pedagogy Workshops</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4: Departmental Performance Rankings Table -->
+                    <div class="perf-glass-card">
+                        <div class="perf-card-header">
+                            <div class="perf-card-title">
+                                <i class="fa-solid fa-ranking-star" style="color:var(--warning); font-size:18px;"></i>
+                                <h2>Top Departmental Performance Matrix</h2>
+                            </div>
+                        </div>
+                        <div class="perf-table-wrapper">
+                            <table class="perf-table">
+                                <thead>
+                                    <tr>
+                                        <th>Department</th>
+                                        <th>Pass Rate</th>
+                                        <th>Avg GPA</th>
+                                        <th>Placement</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Computer Science</strong></td>
+                                        <td><span class="status-pill pill-success">98%</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700; color:var(--primary);">8.9</span></td>
+                                        <td><span class="status-pill pill-success">94%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mechanical Engineering</strong></td>
+                                        <td><span class="status-pill pill-success">96%</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700; color:var(--primary);">8.5</span></td>
+                                        <td><span class="status-pill pill-success">88%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Electronics & Comm</strong></td>
+                                        <td><span class="status-pill pill-success">94%</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700; color:var(--primary);">8.3</span></td>
+                                        <td><span class="status-pill pill-info">82%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Management Studies</strong></td>
+                                        <td><span class="status-pill pill-info">93%</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700; color:var(--primary);">8.1</span></td>
+                                        <td><span class="status-pill pill-info">79%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Header Live Search Filtering
+        const searchInput = document.getElementById("perfSearchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const tableRows = document.querySelectorAll(".perf-table tbody tr");
+                tableRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = !query || text.includes(query) ? "" : "none";
+                });
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - University People Management</title>
+    <meta name="description" content="University People Management - Faculty Roster, Administrative Support Personnel & Student Demographics Oversight">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared VC Stylesheet -->
+    <link rel="stylesheet" href="../vc-sidebar.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="vc-people.css">
+</head>
+
+<body class="vc-portal-body">
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd ERP</h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="nav-section-title">Executive Core</div>
+                <a href="../dashboard-vc/dashboard-vc.html" class="sidebar-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>VC Dashboard</span>
+                </a>
+                <a href="../vc-overview/vc-overview.html" class="sidebar-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>College Overview</span>
+                </a>
+                <a href="../vc-performance/vc-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Performance</span>
+                </a>
+                <a href="../vc-academic/vc-academic.html" class="sidebar-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Academic Governance</span>
+                </a>
+                <a href="../vc-people/vc-people.html" class="sidebar-item active">
+                    <i class="fa-solid fa-users"></i>
+                    <span>People Management</span>
+                </a>
+
+                <div class="nav-section-title">Executive Approvals</div>
+                <a href="../vc-event-approvals/vc-event-approvals.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Event Approvals</span>
+                </a>
+                <a href="../vc-requests/vc-requests.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Senate Requests</span>
+                </a>
+                <a href="../vc-announcements/vc-announcements.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+
+                <div class="nav-section-title">Reports & Intelligence</div>
+                <a href="../vc-analytics/vc-analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="../vc-reports/vc-reports.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Executive Reports</span>
+                </a>
+
+                <div class="nav-section-title">Governance Settings</div>
+                <a href="../vc-messages/vc-messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Messages & Chat</span>
+                </a>
+                <a href="../vc-profile/vc-profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i><span>VC Profile</span>
+                </a>
+                <a href="../vc-settings/vc-settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logout-link" data-logout>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portal Container -->
+        <main class="portal-main">
+            <!-- Top Header Bar -->
+            <header class="main-portal-header">
+                <div class="header-left">
+                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="peopleSearchInput" placeholder="Search faculty department, experience, qualifications...">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">9</span>
+                    </a>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+                        <div class="details">
+                            <strong id="hdrAdminName">Prof. Vice Chancellor</strong>
+                            <span>VC-2026-001</span>
+                        </div>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Profile Menu Dropdown -->
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="../vc-profile/vc-profile.html"><i class="fa-solid fa-id-badge"></i><span>View VC Profile</span></a>
+                        <a href="../vc-settings/vc-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                        <button class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Wrapper -->
+            <div class="portal-content">
+                <!-- People Management Hero Banner -->
+                <section class="people-hero-card">
+                    <div>
+                        <div class="system-badge">
+                            <i class="fa-solid fa-users"></i> HUMAN CAPITAL & ROSTER GOVERNANCE
+                        </div>
+                        <h1>People Management & Campus HR</h1>
+                        <p>Institutional oversight of teaching faculty distribution, administrative staff personnel, research scholars, and student demographics across all 18 faculties.</p>
+                    </div>
+                </section>
+
+                <!-- KPI Cards Grid (4 Columns) -->
+                <section class="people-kpi-grid">
+                    <div class="people-kpi-card">
+                        <div class="people-kpi-top">
+                            <div>
+                                <div class="people-kpi-lbl">FACULTY MEMBERS</div>
+                                <div class="people-kpi-val" style="color:var(--primary);">280 Active</div>
+                            </div>
+                            <div class="kpi-icon icon-purple">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change purple">
+                            <i class="fa-solid fa-circle-check"></i> 100% PhD / M.Tech Verified
+                        </div>
+                    </div>
+
+                    <div class="people-kpi-card">
+                        <div class="people-kpi-top">
+                            <div>
+                                <div class="people-kpi-lbl">SUPPORT STAFF</div>
+                                <div class="people-kpi-val" style="color:var(--secondary);">145 Staff</div>
+                            </div>
+                            <div class="kpi-icon icon-cyan">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change info">
+                            <i class="fa-solid fa-check"></i> HR & Admin Officers
+                        </div>
+                    </div>
+
+                    <div class="people-kpi-card">
+                        <div class="people-kpi-top">
+                            <div>
+                                <div class="people-kpi-lbl">ACTIVE STUDENTS</div>
+                                <div class="people-kpi-val" style="color:var(--success);">2,500</div>
+                            </div>
+                            <div class="kpi-icon icon-emerald">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change success">
+                            <i class="fa-solid fa-arrow-trend-up"></i> UG, PG & PhD Cohorts
+                        </div>
+                    </div>
+
+                    <div class="people-kpi-card">
+                        <div class="people-kpi-top">
+                            <div>
+                                <div class="people-kpi-lbl">AVG ATTENDANCE</div>
+                                <div class="people-kpi-val" style="color:var(--warning);">96.2%</div>
+                            </div>
+                            <div class="kpi-icon icon-amber">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-change warning">
+                            <i class="fa-solid fa-shield-check"></i> Biometric Verified
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 1: Faculty Members Department Matrix Table -->
+                <section class="people-section">
+                    <div class="people-section-head">
+                        <i class="fa-solid fa-chalkboard-user" style="color:var(--primary); font-size:20px;"></i>
+                        <h2>Teaching Faculty Distribution by Department</h2>
+                    </div>
+                    <div class="people-table-wrapper">
+                        <table class="people-table">
+                            <thead>
+                                <tr>
+                                    <th>Department</th>
+                                    <th>Faculty Count</th>
+                                    <th>Avg Experience</th>
+                                    <th>Ph.D. Holders</th>
+                                    <th>Qualifications Framework</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong style="color:var(--primary);">Computer Science & Engineering</strong></td>
+                                    <td><span style="font-weight:700;">75 Faculty</span></td>
+                                    <td>12.1 Years</td>
+                                    <td><span class="status-pill pill-success">52 (69%)</span></td>
+                                    <td>Ph.D. / M.Tech + AI Research</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:var(--accent);">Mechanical Engineering</strong></td>
+                                    <td><span style="font-weight:700;">62 Faculty</span></td>
+                                    <td>11.0 Years</td>
+                                    <td><span class="status-pill pill-purple">40 (64%)</span></td>
+                                    <td>Ph.D. / M.Tech + Robotics</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:var(--info);">Electronics & Communication</strong></td>
+                                    <td><span style="font-weight:700;">58 Faculty</span></td>
+                                    <td>10.4 Years</td>
+                                    <td><span class="status-pill pill-info">36 (62%)</span></td>
+                                    <td>Ph.D. / M.Tech + VLSI Labs</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:var(--warning);">Management Studies (MBA)</strong></td>
+                                    <td><span style="font-weight:700;">48 Faculty</span></td>
+                                    <td>9.8 Years</td>
+                                    <td><span class="status-pill pill-warning">30 (62%)</span></td>
+                                    <td>Ph.D. / MBA + Industry Focus</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 2: Support Staff & Administrative Roster Grid -->
+                <section class="people-section">
+                    <div class="people-section-head">
+                        <i class="fa-solid fa-briefcase" style="color:var(--info); font-size:20px;"></i>
+                        <h2>Administrative & Support Staff Breakdown</h2>
+                    </div>
+                    <div class="staff-cards-grid">
+                        <div class="staff-box">
+                            <div>
+                                <strong style="font-size:14px; display:block;">Administrative Staff</strong>
+                                <span style="font-size:24px; font-weight:800; color:var(--primary); margin-top:4px; display:block;">52 Staff</span>
+                                <span style="font-size:11px; color:var(--text-tertiary);">Office, HR, Finance & Registry</span>
+                            </div>
+                            <i class="fa-solid fa-briefcase icon-purple" style="font-size:20px; padding:12px; border-radius:12px;"></i>
+                        </div>
+
+                        <div class="staff-box">
+                            <div>
+                                <strong style="font-size:14px; display:block;">Technical Lab Staff</strong>
+                                <span style="font-size:24px; font-weight:800; color:var(--accent); margin-top:4px; display:block;">42 Staff</span>
+                                <span style="font-size:11px; color:var(--text-tertiary);">Computing Labs & Engineering</span>
+                            </div>
+                            <i class="fa-solid fa-screwdriver-wrench icon-purple" style="font-size:20px; padding:12px; border-radius:12px;"></i>
+                        </div>
+
+                        <div class="staff-box">
+                            <div>
+                                <strong style="font-size:14px; display:block;">Library & Facilities</strong>
+                                <span style="font-size:24px; font-weight:800; color:var(--success); margin-top:4px; display:block;">28 Staff</span>
+                                <span style="font-size:11px; color:var(--text-tertiary);">Digital Archive & Maintenance</span>
+                            </div>
+                            <i class="fa-solid fa-book-open icon-emerald" style="font-size:20px; padding:12px; border-radius:12px;"></i>
+                        </div>
+
+                        <div class="staff-box">
+                            <div>
+                                <strong style="font-size:14px; display:block;">Campus Safety & Security</strong>
+                                <span style="font-size:24px; font-weight:800; color:var(--warning); margin-top:4px; display:block;">23 Officers</span>
+                                <span style="font-size:11px; color:var(--text-tertiary);">24/7 Surveillance & Guarding</span>
+                            </div>
+                            <i class="fa-solid fa-shield-halved icon-amber" style="font-size:20px; padding:12px; border-radius:12px;"></i>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Toggle with Memory
+        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+        const sidebar = document.getElementById("sidebar");
+        const mainPortal = document.querySelector(".portal-main");
+
+        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
+            if (sidebar) sidebar.classList.add("collapsed");
+            if (mainPortal) mainPortal.classList.add("expanded");
+        }
+
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle("active");
+                } else {
+                    const isCollapsed = sidebar.classList.toggle("collapsed");
+                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
+                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggleBtn");
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", activeTheme);
+                localStorage.setItem("theme", activeTheme);
+            });
+        }
+
+        // Profile Menu Dropdown
+        const profileTrigger = document.getElementById("portalProfileTrigger");
+        const profileMenu = document.getElementById("profileMenu");
+        if (profileTrigger && profileMenu) {
+            profileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle("open");
+            });
+            document.addEventListener("click", (e) => {
+                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
+                    profileMenu.classList.remove("open");
+                }
+            });
+        }
+
+        // Header Live Search Filtering
+        const searchInput = document.getElementById("peopleSearchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const tableRows = document.querySelectorAll(".people-table tbody tr");
+                tableRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = !query || text.includes(query) ? "" : "none";
+                });
+            });
+        }
+
+        // Logout
+        document.querySelectorAll("[data-logout]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                window.location.href = "../../auth/login.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

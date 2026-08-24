@@ -1,0 +1,32 @@
+
+            .excel-table th {
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                padding: 12px 15px;
+                font-weight: 700;
+                border-bottom: 1px solid var(--border-color);
+                box-sizing: border-box;
+            }
+            .excel-table td {
+                padding: 12px 15px;
+                border-bottom: 1px solid var(--border-color);
+                vertical-align: middle;
+                color: var(--text-secondary);
+                box-sizing: border-box;
+            }
+            .excel-table tr:hover td {
+                background: rgba(255, 255, 255, 0.02);
+            }
+            .grade-badge {
+                padding: 3px 8px;
+                border-radius: 4px;
+                font-size: 11px;
+                font-weight: 700;
+                display: inline-block;
+            }
+            .badge-A { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+            .badge-B { background: rgba(99, 102, 241, 0.15); color: var(--primary); }
+            .badge-C { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+            .badge-D { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+            .badge-F { background: rgba(239, 68, 68, 0.25); color: #ef4444; border:1px solid #ef4444; }
+        

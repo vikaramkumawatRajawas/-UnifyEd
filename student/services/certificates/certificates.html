@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Certificates</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="certificates.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../../academics/exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../../academics/progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="certificates.html" class="sidebar-item active">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Certificates</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Services • Certificates</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="certificates-container">
+                <!-- Page Header -->
+                <div style="border-bottom:1px solid var(--border-color); padding-bottom:15px; margin-bottom:25px;">
+                    <h2 style="margin:0; font-size:18px; font-weight:800; color:var(--text-primary);"><i class="fa-solid fa-certificate"></i> Official Certificates & Credentials Registry</h2>
+                    <p style="margin:5px 0 0 0; font-size:12px; color:var(--text-secondary);">Request, generate, and retrieve official university-signed credentials instantly.</p>
+                </div>
+
+                <!-- Certificates Grid -->
+                <div class="cert-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+                    
+                    <!-- Card 1: Bonafide -->
+                    <div class="cert-item glassmorphism" style="padding:25px; border-radius:12px; border:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:space-between; height:180px;">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                <i class="fa-solid fa-file-contract" style="font-size:24px; color:var(--primary);"></i>
+                                <span class="badge badge-success" style="font-size:9px;">Instant Generate</span>
+                            </div>
+                            <strong style="font-size:15px; color:var(--text-primary); display:block; margin-bottom:5px;">Bonafide Student Certificate</strong>
+                            <p style="font-size:12px; color:var(--text-secondary); line-height:1.4; margin:0;">Validates active enrollment, enrollment number, and course duration details at UnifyEd.</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="triggerCertGeneration('Bonafide Student Certificate', 'enrollment')" style="width:100%; height:34px; font-size:11px;">Generate & Download</button>
+                    </div>
+
+                    <!-- Card 2: NOC -->
+                    <div class="cert-item glassmorphism" style="padding:25px; border-radius:12px; border:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:space-between; height:180px;">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                <i class="fa-solid fa-building-shield" style="font-size:24px; color:var(--accent);"></i>
+                                <span class="badge badge-success" style="font-size:9px;">Instant Generate</span>
+                            </div>
+                            <strong style="font-size:15px; color:var(--text-primary); display:block; margin-bottom:5px;">No Objection Certificate (NOC)</strong>
+                            <p style="font-size:12px; color:var(--text-secondary); line-height:1.4; margin:0;">Required for enrolling in external off-campus technical training, internships, or industrial vivas.</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="triggerCertGeneration('No Objection Certificate (NOC)', 'internship')" style="width:100%; height:34px; font-size:11px;">Generate & Download</button>
+                    </div>
+
+                    <!-- Card 3: Fee Structure -->
+                    <div class="cert-item glassmorphism" style="padding:25px; border-radius:12px; border:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:space-between; height:180px;">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                <i class="fa-solid fa-file-invoice-dollar" style="font-size:24px; color:#10b981;"></i>
+                                <span class="badge badge-success" style="font-size:9px;">Instant Generate</span>
+                            </div>
+                            <strong style="font-size:15px; color:var(--text-primary); display:block; margin-bottom:5px;">Fee Structure Estimation</strong>
+                            <p style="font-size:12px; color:var(--text-secondary); line-height:1.4; margin:0;">Official cost breakdown statement of tuition and hostel fees for educational loan disbursement processing.</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="triggerCertGeneration('Fee Structure Estimation', 'fees')" style="width:100%; height:34px; font-size:11px;">Generate & Download</button>
+                    </div>
+
+                </div>
+
+                <!-- Certificate Generation Loader Modal -->
+                <div id="certGenModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); backdrop-filter:blur(8px); z-index:1000; justify-content:center; align-items:center;">
+                    <div class="glassmorphism" style="width:520px; padding:35px; border-radius:16px; border:1px solid var(--border-color); background:var(--bg-primary); text-align:center;">
+                        <!-- Close Button -->
+                        <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
+                            <button onclick="closeCertModal()" id="certCloseBtn" style="background:transparent; border:none; color:var(--text-secondary); font-size:20px; cursor:pointer; display:none;"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <!-- Spinner Section -->
+                        <div id="certGenSpinner">
+                            <i class="fa-solid fa-spinner fa-spin-pulse" style="font-size:42px; color:var(--primary); margin-bottom:20px;"></i>
+                            <h3 style="margin:0 0 10px 0; font-size:16px; font-weight:800; color:var(--text-primary);" id="certStatusHeader">Initializing Document Compilation...</h3>
+                            <div style="width:100%; height:4px; background:var(--bg-tertiary); border-radius:10px; overflow:hidden; margin:20px 0;">
+                                <div id="certProgressBar" style="width:0%; height:100%; background:var(--primary); transition: width 0.3s;"></div>
+                            </div>
+                            <span style="font-size:11px; color:var(--text-secondary);" id="certStepLabel">Contacting credentials authority...</span>
+                        </div>
+
+                        <!-- Preview Section -->
+                        <div id="certGenPreview" style="display:none; text-align:left;">
+                            <div style="width:36px; height:36px; border-radius:50%; background:rgba(16,185,129,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:15px;">
+                                <i class="fa-solid fa-circle-check" style="color:#10b981; font-size:18px;"></i>
+                            </div>
+                            <h3 style="margin:0 0 5px 0; font-size:16px; font-weight:800; color:var(--text-primary);">Credential Compiled Successfully</h3>
+                            <span style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:20px;">Your secure digital document is ready for retrieval.</span>
+
+                            <!-- Mock Document Canvas Card -->
+                            <div style="background:rgba(255,255,255,0.01); border:1px dashed var(--border-color); padding:20px; border-radius:8px; margin-bottom:25px; font-family:monospace; font-size:11px; line-height:1.6; color:var(--text-secondary);">
+                                <div style="text-align:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px;">
+                                    <strong style="color:var(--text-primary); font-size:12px;">UNIVERSITY OF ENGINEERING & MANAGEMENT</strong>
+                                    <span style="display:block; font-size:10px;">Jaipur Campus Credentials Registry</span>
+                                </div>
+                                <span style="display:block;"><strong style="color:var(--text-primary);">Document:</strong> <span id="previewCertTitle">Bonafide Student Certificate</span></span>
+                                <span style="display:block;"><strong style="color:var(--text-primary);">Date Issued:</strong> <span id="previewCertDate">Just Now</span></span>
+                                <span style="display:block;"><strong style="color:var(--text-primary);">Signature Hash:</strong> SHA256-D7A49B...F2B4</span>
+                                <span style="display:block; margin-top:8px; color:var(--text-primary); font-weight:700;">Status: SIGNED & SECURED</span>
+                            </div>
+
+                            <button class="btn btn-primary btn-sm" onclick="downloadCompiledCertFile()" style="width:100%; height:40px; font-weight:700; gap:8px;"><i class="fa-solid fa-file-pdf"></i> Download Secure e-Document</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="certificates.js"></script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Class Attendance</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="attendance.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="attendance.html" class="sidebar-item active">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="../../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Class Attendance</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Academic Management • Class Attendance</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="welcome-card glassmorphism" style="padding: 25px 30px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; background-image: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.12)); border: 1px solid var(--border-glass);">
+                <div>
+                    <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 4px;">Dynamic Class Attendance, MCQ Quiz & Session Controller</h2>
+                    <p style="color: var(--text-secondary); font-size: 13px;">Publish attendance codes, design MCQ questions with option options and weights, and reset student sessions if they get logged out.</p>
+                </div>
+            </div>
+
+            <!-- Toast Notification Container -->
+            <div id="toastNotification" style="display:none; position:fixed; top:20px; right:20px; background:#10b981; color:white; padding:12px 24px; border-radius:8px; font-weight:600; font-size:13px; z-index:1000; box-shadow:0 10px 15px rgba(0,0,0,0.3); align-items:center; gap:8px; animation:slideIn 0.3s ease;">
+                <i class="fa-solid fa-circle-check"></i> <span id="toastMessage">Action completed successfully!</span>
+            </div>
+
+            <div class="attendance-vertical-layout" style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 30px;">
+                <!-- Top Card: Code Generator & Question Settings -->
+                <div class="dashboard-card glassmorphism" style="padding: 28px; box-sizing: border-box;">
+                    <h3><i class="fa-solid fa-gears"></i> Attendance, Timer & MCQ Builder</h3>
+                    <p style="color:var(--text-secondary); font-size:12px; margin-top:8px; margin-bottom:20px;">
+                        Configure active lecture, set code expiry, and create multiple choice questions (MCQs) with separate credit points.
+                    </p>
+                    
+                    <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:30px; margin-bottom:20px;">
+                        <!-- Left inputs: Class and timer -->
+                        <div style="display:flex; flex-direction:column; gap:15px;">
+                            <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:15px;">
+                                <div class="form-group">
+                                    <label style="font-size:11px; font-weight:600; color:var(--text-secondary); display:block; margin-bottom:4px;">Active Lecture</label>
+                                    <select id="lectureSelect" class="form-input select-input" style="height:38px; background-color: var(--bg-secondary); font-size:12px; width:100%;">
+                                        <option value="" disabled selected>Select Lecture</option>
+                                        <option value="DBMS">DBMS (BCA Sem 3)</option>
+                                        <option value="WEB">Web Technology (CSE Sem 5)</option>
+                                        <option value="NN">Neural Networks (M.Tech Sem 1)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-size:11px; font-weight:600; color:var(--text-secondary); display:block; margin-bottom:4px;">Code Expiry (Minutes)</label>
+                                    <input type="number" id="expiryTimerInput" class="form-input" value="10" min="1" max="60" style="height:38px; background-color: var(--bg-secondary); font-size:12px; width:100%;">
+                                </div>
+                            </div>
+
+                            <!-- Question List Section -->
+                            <div class="form-group">
+                                <label style="font-size:11px; font-weight:600; color:var(--text-secondary); display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                    <span>Class Validation Questions (Max 5)</span>
+                                    <button type="button" id="addQuestionBtn" class="btn btn-secondary btn-sm" style="padding:2px 8px; font-size:10px; height:24px;"><i class="fa-solid fa-plus"></i> Add Question</button>
+                                </label>
+                                <div id="questionsContainer" style="display:flex; flex-direction:column; gap:15px;">
+                                    <!-- Dynamic Questions Row -->
+                                    <div class="question-row" data-index="1" style="display:flex; flex-direction:column; gap:8px; border-bottom:1px dashed var(--border-color); padding-bottom:12px; animation:fadeIn 0.2s ease;">
+                                        <div style="display:flex; gap:12px; align-items:center;">
+                                            <span style="font-family:monospace; font-weight:bold; color:var(--primary); font-size:12px; width:15px;">Q1</span>
+                                            <input type="text" class="form-input q-text" value="Identify the primary key feature." placeholder="Question text" style="flex:1; height:36px; background-color: var(--bg-secondary); font-size:12px;">
+                                            <input type="number" class="form-input q-credits" value="5" min="1" max="50" style="width:70px; height:36px; background-color: var(--bg-secondary); font-size:12px;" title="Credit points">
+                                            <span style="font-size:10px; color:var(--text-tertiary);">Credits</span>
+                                            <button type="button" onclick="removeQuestionRow(this)" class="btn btn-secondary btn-sm" style="padding:4px 8px; height:36px; color:#ef4444; display:none;"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                        <div style="display:flex; gap:10px; margin-left:27px;">
+                                            <input type="text" class="form-input q-optA" value="Unique & Not Null" placeholder="Option A" style="flex:1; height:30px; background-color: var(--bg-tertiary); font-size:11px;">
+                                            <input type="text" class="form-input q-optB" value="Allows Null" placeholder="Option B" style="flex:1; height:30px; background-color: var(--bg-tertiary); font-size:11px;">
+                                            <input type="text" class="form-input q-optC" value="Duplicate entries" placeholder="Option C" style="flex:1; height:30px; background-color: var(--bg-tertiary); font-size:11px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right panel: Code publish view -->
+                        <div style="display:flex; flex-direction:column; justify-content:space-between; border-left:1px solid var(--border-color); padding-left:30px;">
+                            <button class="btn btn-primary" id="generateCodeBtn" style="height:42px; display:flex; justify-content:center; align-items:center; font-size:12px; width:100%;"><i class="fa-solid fa-satellite-dish" style="margin-right:5px;"></i> Generate Code & Publish Quiz</button>
+                            
+                            <div id="codeDisplayBlock" style="display:none; padding:20px; border-radius:var(--border-radius-sm); border:1px solid var(--border-color); background:rgba(255,255,255,0.02); text-align:center; animation:fadeIn 0.3s ease; margin-top:20px;">
+                                <span style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:4px;">Active Code</span>
+                                <strong id="activeValidationCode" style="font-size:36px; letter-spacing:3px; color:var(--primary); font-family:monospace; display:block; margin-bottom:6px;">NET77</strong>
+                                <p style="font-size:11px; color:var(--text-secondary);"><i class="fa-solid fa-circle-notch fa-spin" style="color:var(--accent); margin-right:5px;"></i> Active validation expires in <span id="timerCountdownText">10</span> mins</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Card: Live Records Log -->
+                <div class="dashboard-card glassmorphism" style="padding: 28px; box-sizing: border-box;">
+                    <h3><i class="fa-solid fa-users-viewfinder"></i> Live Check-In & Assessment Log</h3>
+                    <p style="color:var(--text-secondary); font-size:12px; margin-top:5px; margin-bottom:15px;">
+                        Displays submitted answers. If a student got logged out, click **Reset Session** to allow them to log in and retake.
+                    </p>
+                    <div class="table-responsive" style="max-height:450px; overflow-y:auto;">
+                        <table class="custom-table" style="font-size:11px; width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="width:160px;">Student</th>
+                                    <th style="width:90px;">Time</th>
+                                    <th style="width:150px;">Status</th>
+                                    <th>Responses / Answers</th>
+                                    <th style="width:180px; text-align:right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentAttendanceTableBody">
+                                <tr id="attStudentRow1">
+                                    <td><strong>Vikram Kumawat</strong><br><span style="font-size:9px; color:var(--text-tertiary);">BCA23015</span></td>
+                                    <td id="attTime1">—</td>
+                                    <td><span id="attBadge1" style="padding:2px 6px; background:rgba(239, 68, 68, 0.15); color:#ef4444; border-radius:4px; font-weight:600;">Absent</span></td>
+                                    <td id="attAns1" style="font-style:italic; color:var(--text-tertiary);">No response yet</td>
+                                    <td style="text-align:right; display:flex; gap:6px; justify-content:flex-end;">
+                                        <button onclick="toggleStudentAtt(1)" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button onclick="resetStudentSession(1, 'Vikram Kumawat')" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px; color:var(--primary);" title="Reset Session"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                                    </td>
+                                </tr>
+                                <tr id="attStudentRow2">
+                                    <td><strong>Priya Sharma</strong><br><span style="font-size:9px; color:var(--text-tertiary);">CSE23099</span></td>
+                                    <td id="attTime2">—</td>
+                                    <td><span id="attBadge2" style="padding:2px 6px; background:rgba(239, 68, 68, 0.15); color:#ef4444; border-radius:4px; font-weight:600;">Absent</span></td>
+                                    <td id="attAns2" style="font-style:italic; color:var(--text-tertiary);">No response yet</td>
+                                    <td style="text-align:right; display:flex; gap:6px; justify-content:flex-end;">
+                                        <button onclick="toggleStudentAtt(2)" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button onclick="resetStudentSession(2, 'Priya Sharma')" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px; color:var(--primary);" title="Reset Session"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                                    </td>
+                                </tr>
+                                <tr id="attStudentRow3">
+                                    <td><strong>Aditya Bose</strong><br><span style="font-size:9px; color:var(--text-tertiary);">CSE23115</span></td>
+                                    <td id="attTime3">—</td>
+                                    <td><span id="attBadge3" style="padding:2px 6px; background:rgba(239, 68, 68, 0.15); color:#ef4444; border-radius:4px; font-weight:600;">Absent</span></td>
+                                    <td id="attAns3" style="font-style:italic; color:var(--text-tertiary);">No response yet</td>
+                                    <td style="text-align:right; display:flex; gap:6px; justify-content:flex-end;">
+                                        <button onclick="toggleStudentAtt(3)" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button onclick="resetStudentSession(3, 'Aditya Bose')" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px; color:var(--primary);" title="Reset Session"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                                    </td>
+                                </tr>
+                                <tr id="attStudentRow4">
+                                    <td><strong>Neha Sen</strong><br><span style="font-size:9px; color:var(--text-tertiary);">BCA23088</span></td>
+                                    <td id="attTime4">—</td>
+                                    <td><span id="attBadge4" style="padding:2px 6px; background:rgba(239, 68, 68, 0.15); color:#ef4444; border-radius:4px; font-weight:600;">Absent</span></td>
+                                    <td id="attAns4" style="font-style:italic; color:var(--text-tertiary);">No response yet</td>
+                                    <td style="text-align:right; display:flex; gap:6px; justify-content:flex-end;">
+                                        <button onclick="toggleStudentAtt(4)" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button onclick="resetStudentSession(4, 'Neha Sen')" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px; color:var(--primary);" title="Reset Session"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                                    </td>
+                                </tr>
+                                <tr id="attStudentRow5">
+                                    <td><strong>Amit Roy</strong><br><span style="font-size:9px; color:var(--text-tertiary);">CSE23045</span></td>
+                                    <td id="attTime5">—</td>
+                                    <td><span id="attBadge5" style="padding:2px 6px; background:#f59e0b; color:white; border-radius:4px; font-weight:600;">Session Interrupted</span></td>
+                                    <td id="attAns5" style="font-style:italic; color:#ef4444;">Interrupted (Locked out)</td>
+                                    <td style="text-align:right; display:flex; gap:6px; justify-content:flex-end;">
+                                        <button onclick="toggleStudentAtt(5)" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button onclick="resetStudentSession(5, 'Amit Roy')" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px; color:var(--primary);" title="Reset Session"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="attendance.js?v=1786808057687"></script>
+</body>
+</html>

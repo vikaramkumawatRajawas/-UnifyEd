@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Executive User Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-users.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item active"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search user accounts by name, email or ID..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-users"></i> IDENTITY GOVERNANCE</span>
+                <h1>Campus User Accounts Directory 👥</h1>
+              </div>
+              <p>Manage enterprise platform accounts, credential status, assigned roles, and departmental permissions.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Total Accounts</span>
+                  <strong class="val">2,540</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Active Students</span>
+                  <strong class="val" style="color:var(--primary);">1,850</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Faculty Roster</span>
+                  <strong class="val" style="color:var(--accent);">180</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">System Admins</span>
+                  <strong class="val" style="color:var(--danger);">12</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnAddNewUser"><i class="fa-solid fa-user-plus"></i> Create User Account</button>
+              <button class="btn btn-secondary" id="btnImportCsv"><i class="fa-solid fa-file-import"></i> Import CSV</button>
+              <button class="btn btn-secondary" id="btnExportJson"><i class="fa-solid fa-file-export"></i> Export JSON</button>
+            </div>
+          </div>
+
+          <!-- User Directory Card -->
+          <div class="admin-glass-card user-directory-card" style="margin-top: 28px;">
+            <div class="card-header-bar">
+              <div class="dir-title-group">
+                <h3><i class="fa-solid fa-users-gear" style="color:var(--primary);"></i> Campus User Accounts Directory</h3>
+                <span class="live-status-chip"><span class="pulse-dot"></span> 2,540 Accounts</span>
+              </div>
+            </div>
+
+            <div class="directory-toolbar">
+              <div class="search-and-filter">
+                <div class="dir-search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="dirSearchInput" placeholder="Filter user directory by name, email or system ID..." autocomplete="off">
+                </div>
+                <div class="filter-dropdown-group">
+                  <span class="filter-label"><i class="fa-solid fa-filter"></i> Status:</span>
+                  <select id="dirStatusFilter" class="dir-select">
+                    <option value="all">All Statuses</option>
+                    <option value="active">Active Accounts</option>
+                    <option value="pending">Pending Clearance</option>
+                    <option value="suspended">Suspended</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Role Category Tabs -->
+              <div class="role-filter-tabs" id="roleFilterTabs">
+                <button class="tab-btn active" data-role="all"><i class="fa-solid fa-layer-group"></i> All Users</button>
+                <button class="tab-btn" data-role="student"><i class="fa-solid fa-user-graduate"></i> Students</button>
+                <button class="tab-btn" data-role="professor"><i class="fa-solid fa-chalkboard-user"></i> Professors</button>
+                <button class="tab-btn" data-role="hod"><i class="fa-solid fa-user-tie"></i> HODs</button>
+                <button class="tab-btn" data-role="finance"><i class="fa-solid fa-credit-card"></i> Finance</button>
+                <button class="tab-btn" data-role="admin"><i class="fa-solid fa-shield-halved"></i> Admins</button>
+              </div>
+            </div>
+
+            <!-- Users Roster Table -->
+            <div class="table-responsive-wrapper">
+              <table class="admin-table user-table" id="usersTable">
+                <thead>
+                  <tr>
+                    <th>User Profile & Email</th>
+                    <th>System Identifier</th>
+                    <th>Role & Department</th>
+                    <th>Account Status</th>
+                    <th>Last Active</th>
+                    <th style="text-align:right;">Governance Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-role="student" data-status="active">
+                    <td>
+                      <div class="user-profile-cell">
+                        <div class="avatar-circle avatar-blue">
+                          AC
+                          <span class="avatar-status-dot"></span>
+                        </div>
+                        <div>
+                          <strong class="user-name">Alex Carter</strong>
+                          <span class="user-email">alex.carter@unifyed.edu</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-blue"><i class="fa-solid fa-hashtag"></i> STU-2026-101</span></td>
+                    <td><span class="role-badge role-student"><i class="fa-solid fa-user-graduate"></i> Student • CSE</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 2 mins ago</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-edit-user" data-id="STU-2026-101" title="Edit Profile"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <button class="act-btn btn-lock-user" title="Lock Account"><i class="fa-solid fa-lock"></i></button>
+                        <button class="act-btn btn-delete-user" title="Revoke Access"><i class="fa-solid fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-role="professor" data-status="active">
+                    <td>
+                      <div class="user-profile-cell">
+                        <div class="avatar-circle avatar-purple">
+                          RH
+                          <span class="avatar-status-dot"></span>
+                        </div>
+                        <div>
+                          <strong class="user-name">Dr. Robert Hayes</strong>
+                          <span class="user-email">robert.h@unifyed.edu</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-purple"><i class="fa-solid fa-hashtag"></i> FAC-2026-042</span></td>
+                    <td><span class="role-badge role-prof"><i class="fa-solid fa-chalkboard-user"></i> Professor • Mech</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 14 mins ago</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-edit-user" data-id="FAC-2026-042" title="Edit Profile"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <button class="act-btn btn-lock-user" title="Lock Account"><i class="fa-solid fa-lock"></i></button>
+                        <button class="act-btn btn-delete-user" title="Revoke Access"><i class="fa-solid fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-role="hod" data-status="active">
+                    <td>
+                      <div class="user-profile-cell">
+                        <div class="avatar-circle avatar-amber">
+                          AS
+                          <span class="avatar-status-dot"></span>
+                        </div>
+                        <div>
+                          <strong class="user-name">Dr. Ananya Sharma</strong>
+                          <span class="user-email">ananya.s@unifyed.edu</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-amber"><i class="fa-solid fa-hashtag"></i> HOD-CSE-001</span></td>
+                    <td><span class="role-badge role-hod"><i class="fa-solid fa-user-tie"></i> HOD • CSE Dept</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 1 hour ago</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-edit-user" data-id="HOD-CSE-001" title="Edit Profile"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <button class="act-btn btn-lock-user" title="Lock Account"><i class="fa-solid fa-lock"></i></button>
+                        <button class="act-btn btn-delete-user" title="Revoke Access"><i class="fa-solid fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-role="finance" data-status="active">
+                    <td>
+                      <div class="user-profile-cell">
+                        <div class="avatar-circle avatar-emerald">
+                          VK
+                          <span class="avatar-status-dot"></span>
+                        </div>
+                        <div>
+                          <strong class="user-name">Vikram Kumawat</strong>
+                          <span class="user-email">vikram.k@unifyed.edu</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-emerald"><i class="fa-solid fa-hashtag"></i> FIN-EMP-108</span></td>
+                    <td><span class="role-badge role-finance"><i class="fa-solid fa-credit-card"></i> Finance Officer</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 3 hours ago</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-edit-user" data-id="FIN-EMP-108" title="Edit Profile"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <button class="act-btn btn-lock-user" title="Lock Account"><i class="fa-solid fa-lock"></i></button>
+                        <button class="act-btn btn-delete-user" title="Revoke Access"><i class="fa-solid fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-role="student" data-status="pending">
+                    <td>
+                      <div class="user-profile-cell">
+                        <div class="avatar-circle avatar-rose">
+                          SG
+                          <span class="avatar-status-dot status-idle"></span>
+                        </div>
+                        <div>
+                          <strong class="user-name">Sophia Garcia</strong>
+                          <span class="user-email">sophia.g@unifyed.edu</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-rose"><i class="fa-solid fa-hashtag"></i> STU-2026-145</span></td>
+                    <td><span class="role-badge role-student"><i class="fa-solid fa-user-graduate"></i> Student • ECE</span></td>
+                    <td><span class="status-pill status-pending"><span class="status-dot-amber"></span> Pending Clearance</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Yesterday</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-edit-user" data-id="STU-2026-145" title="Edit Profile"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <button class="act-btn btn-lock-user" title="Lock Account"><i class="fa-solid fa-lock"></i></button>
+                        <button class="act-btn btn-delete-user" title="Revoke Access"><i class="fa-solid fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-role="admin" data-status="active">
+                    <td>
+                      <div class="user-profile-cell">
+                        <div class="avatar-circle avatar-cyan">
+                          SA
+                          <span class="avatar-status-dot"></span>
+                        </div>
+                        <div>
+                          <strong class="user-name">System Admin</strong>
+                          <span class="user-email">admin@unifyed.edu</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="id-mono-tag id-tag-cyan"><i class="fa-solid fa-shield-halved"></i> ADM-001</span></td>
+                    <td><span class="role-badge role-admin"><i class="fa-solid fa-shield-halved"></i> Master Admin</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-bolt" style="color:var(--success);"></i> Online Now</span></td>
+                    <td style="text-align:right;">
+                      <div class="action-btn-group">
+                        <button class="act-btn btn-edit-user" data-id="ADM-001" title="Edit Profile"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <button class="act-btn btn-lock-user" title="Protected" disabled style="opacity:0.5; cursor:not-allowed;"><i class="fa-solid fa-shield-cat"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Create / Edit User Modal -->
+    <div class="modal-backdrop" id="userModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitleText"><i class="fa-solid fa-user-plus" style="color:var(--primary);"></i> Create New User Account</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <form id="userForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" id="userNameInput" placeholder="e.g. Rahul Verma" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Official Email</label>
+              <input type="email" class="form-input" id="userEmailInput" placeholder="user@unifyed.edu" required>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+              <div class="form-group">
+                <label class="form-label">System Role</label>
+                <select class="form-input" id="userRoleSelect" required>
+                  <option value="Student">Student User</option>
+                  <option value="Professor">Professor Faculty</option>
+                  <option value="HOD">Head of Department (HOD)</option>
+                  <option value="Fees Manager">Fees Manager</option>
+                  <option value="Admin">System Administrator</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Department</label>
+                <input type="text" class="form-input" id="userDeptInput" placeholder="e.g. Computer Science" required>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Save User Account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-users.js"></script>
+  </body>
+</html>

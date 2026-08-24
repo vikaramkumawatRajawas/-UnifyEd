@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Fees Analytics & Revenue Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../fees-sidebar.css">
+    <link rel="stylesheet" href="fees-analytics.css">
+  </head>
+  <body class="fees-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Control</div>
+          <a href="../dashboard-fees/dashboard-fees.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Finance Dashboard</span></a>
+          <a href="../fees-student-fees/fees-student-fees.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Student Fees</span></a>
+          <a href="../fees-payments/fees-payments.html" class="sidebar-item"><i class="fa-solid fa-credit-card"></i><span>Payments Log</span></a>
+          <a href="../fees-receipts/fees-receipts.html" class="sidebar-item"><i class="fa-solid fa-receipt"></i><span>Receipts Registry</span></a>
+          <a href="../fees-defaulters/fees-defaulters.html" class="sidebar-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Defaulters Roster</span></a>
+
+          <div class="nav-section-title">Analytics & Reports</div>
+          <a href="../fees-revenue/fees-revenue.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Revenue Stream</span></a>
+          <a href="../fees-analytics/fees-analytics.html" class="sidebar-item active"><i class="fa-solid fa-chart-simple"></i><span>Financial Analytics</span></a>
+          <a href="../fees-reports/fees-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i><span>Audit Reports</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../fees-messages/fees-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+          <a href="../fees-send-reminders/fees-send-reminders.html" class="sidebar-item"><i class="fa-solid fa-paper-plane"></i><span>Send Reminders</span></a>
+          <a href="../fees-due-dates/fees-due-dates.html" class="sidebar-item"><i class="fa-solid fa-calendar-check"></i><span>Fee Schedules</span></a>
+
+          <div class="nav-section-title">Portal Settings</div>
+          <a href="../fees-profile/fees-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>Finance Profile</span></a>
+          <a href="../fees-settings/fees-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="feesSearchInput" placeholder="Search department, ratio, forecasting..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../fees-notifications/fees-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">6</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrFeesManagerName">Vikram Kumawat</strong><span id="hdrFeesCode">FIN-EMP-108</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar-mini" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../fees-profile/fees-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../fees-settings/fees-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <div class="page-header" style="margin-bottom:24px;">
+            <h1 style="font-size:26px; font-weight:800; color:var(--text-primary);">Financial Analytics & Forecasting 📊</h1>
+            <span style="color:var(--text-secondary); font-size:13px;">UnifyEd • Finance Portal • Predictive Analytics & Cash Flow Ratios</span>
+          </div>
+
+          <!-- Hero Banner Card -->
+          <div class="fees-hero-card">
+            <div class="fees-hero-info">
+              <h2>Campus Financial Health & Forecasting 📊</h2>
+              <p>Operating Cash Efficiency: <strong style="color:var(--success);">96.4%</strong> • Cost Efficiency Index: <strong style="color:var(--accent);">+18.5%</strong> • Risk Exposure: <strong style="color:var(--warning);">4.9% (Low Risk)</strong> • Rating: <strong style="color:var(--success);">AAA Certified</strong></p>
+            </div>
+            <div style="display:flex; gap:12px;">
+              <button type="button" class="btn btn-primary" id="btnOpenForecastModal" style="background:var(--accent); color:white; border:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> Run Forecast Model</button>
+              <a href="../fees-reports/fees-reports.html" class="btn btn-secondary"><i class="fa-solid fa-file-invoice"></i> Download Dossier</a>
+            </div>
+          </div>
+
+          <!-- KPI Grid -->
+          <div class="analytics-kpi-grid">
+            <div class="analytics-kpi-card">
+              <div class="kpi-head">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
+                <span class="rating-pill rating-aaa">+12% MoM</span>
+              </div>
+              <div class="kpi-val">₹24.8 Lakh</div>
+              <div class="kpi-lbl">Monthly Cash Flow Run Rate</div>
+              <div class="progress-track"><div class="progress-fill" style="width:94%;"></div></div>
+            </div>
+
+            <div class="analytics-kpi-card">
+              <div class="kpi-head">
+                <i class="fa-solid fa-shield-halved" style="color:var(--success);"></i>
+                <span class="rating-pill rating-aaa">Low Risk</span>
+              </div>
+              <div class="kpi-val">4.9%</div>
+              <div class="kpi-lbl">Overdue Defaulter Exposure</div>
+              <div class="progress-track"><div class="progress-fill" style="width:95.1%; background:linear-gradient(90deg, var(--success), #059669);"></div></div>
+            </div>
+
+            <div class="analytics-kpi-card">
+              <div class="kpi-head">
+                <i class="fa-solid fa-globe" style="color:var(--info);"></i>
+                <span class="rating-pill rating-aa">+22% YoY</span>
+              </div>
+              <div class="kpi-val">86.0%</div>
+              <div class="kpi-lbl">Digital Payment Adoption</div>
+              <div class="progress-track"><div class="progress-fill" style="width:86%; background:linear-gradient(90deg, var(--info), var(--primary));"></div></div>
+            </div>
+
+            <div class="analytics-kpi-card">
+              <div class="kpi-head">
+                <i class="fa-solid fa-stopwatch" style="color:var(--warning);"></i>
+                <span class="rating-pill rating-aaa">4.2 Days</span>
+              </div>
+              <div class="kpi-val">98.2%</div>
+              <div class="kpi-lbl">Collection Velocity Index</div>
+              <div class="progress-track"><div class="progress-fill" style="width:98.2%; background:linear-gradient(90deg, var(--warning), #f97316);"></div></div>
+            </div>
+          </div>
+
+          <!-- Analytics Visual Grid -->
+          <div class="analytics-grid">
+            <div class="fees-glass-card" style="margin-bottom:0;">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-chart-column" style="color:var(--accent);"></i> Monthly Collection Velocity</h3>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>August 2026 (Current Month)</span><strong>₹85.0 Lakh (94%)</strong>
+                  </div>
+                  <div class="progress-track"><div class="progress-fill" style="width:94%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>July 2026</span><strong>₹78.5 Lakh (91%)</strong>
+                  </div>
+                  <div class="progress-track"><div class="progress-fill" style="width:91%; background:linear-gradient(90deg, var(--primary), var(--info));"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>June 2026</span><strong>₹62.0 Lakh (88%)</strong>
+                  </div>
+                  <div class="progress-track"><div class="progress-fill" style="width:88%; background:linear-gradient(90deg, var(--info), var(--success));"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fees-glass-card" style="margin-bottom:0;">
+              <div class="fees-card-header">
+                <h3><i class="fa-solid fa-chart-pie" style="color:var(--primary);"></i> Department Revenue Share</h3>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>Computer Science (CSE)</span><strong>₹1.15 Cr (40.3%)</strong>
+                  </div>
+                  <div class="progress-track"><div class="progress-fill" style="width:40.3%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>Electronics (ECE)</span><strong>₹75.0 Lakh (26.3%)</strong>
+                  </div>
+                  <div class="progress-track"><div class="progress-fill" style="width:26.3%; background:linear-gradient(90deg, var(--info), var(--primary));"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>Management (MBA)</span><strong>₹55.0 Lakh (19.3%)</strong>
+                  </div>
+                  <div class="progress-track"><div class="progress-fill" style="width:19.3%; background:linear-gradient(90deg, var(--warning), var(--accent));"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Departmental Financial Health Matrix Table Card -->
+          <div class="fees-glass-card" style="margin-top:24px;">
+            <div class="fees-card-header">
+              <h3><i class="fa-solid fa-table-list" style="color:var(--accent);"></i> Departmental Financial Health Matrix</h3>
+              <span style="font-size:12px; color:var(--text-tertiary); font-weight:600;"><i class="fa-solid fa-circle-check"></i> Audit Clearance 2026</span>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="fees-table">
+                <thead>
+                  <tr>
+                    <th>Dept Code</th>
+                    <th>Faculty / Department</th>
+                    <th>Enrolled Students</th>
+                    <th>Annual Allocated Target</th>
+                    <th>Collected YTD</th>
+                    <th>Efficiency %</th>
+                    <th>Health Rating</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="dept-badge"><i class="fa-solid fa-graduation-cap"></i> CSE-DEPT</span></td>
+                    <td><strong>Computer Science & Engg</strong><br><small style="color:var(--text-tertiary);">B.Tech & BCA Programs</small></td>
+                    <td><strong style="color:var(--text-primary);">1,250 Students</strong></td>
+                    <td><span class="amt-target">₹1.20 Cr</span></td>
+                    <td><span class="amt-collected">₹1.15 Cr</span></td>
+                    <td><small style="color:var(--success); font-weight:700;">95.8%</small></td>
+                    <td><span class="rating-pill rating-aaa"><i class="fa-solid fa-shield-check"></i> AAA Excellent</span></td>
+                    <td style="text-align:right;">
+                      <button class="btn btn-secondary btn-audit-dept" data-dept="CSE" style="padding:5px 12px; font-size:12px;"><i class="fa-solid fa-chart-simple"></i> Audit</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><span class="dept-badge"><i class="fa-solid fa-microchip"></i> ECE-DEPT</span></td>
+                    <td><strong>Electronics & Comm Engg</strong><br><small style="color:var(--text-tertiary);">B.Tech & M.Tech</small></td>
+                    <td><strong style="color:var(--text-primary);">680 Students</strong></td>
+                    <td><span class="amt-target">₹80.0 Lakh</span></td>
+                    <td><span class="amt-collected">₹75.0 Lakh</span></td>
+                    <td><small style="color:var(--success); font-weight:700;">93.7%</small></td>
+                    <td><span class="rating-pill rating-aaa"><i class="fa-solid fa-shield-check"></i> AAA Excellent</span></td>
+                    <td style="text-align:right;">
+                      <button class="btn btn-secondary btn-audit-dept" data-dept="ECE" style="padding:5px 12px; font-size:12px;"><i class="fa-solid fa-chart-simple"></i> Audit</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><span class="dept-badge"><i class="fa-solid fa-briefcase"></i> MBA-DEPT</span></td>
+                    <td><strong>School of Management</strong><br><small style="color:var(--text-tertiary);">MBA & BBA Programs</small></td>
+                    <td><strong style="color:var(--text-primary);">505 Students</strong></td>
+                    <td><span class="amt-target">₹60.0 Lakh</span></td>
+                    <td><span class="amt-collected">₹55.0 Lakh</span></td>
+                    <td><small style="color:var(--primary); font-weight:700;">91.6%</small></td>
+                    <td><span class="rating-pill rating-aa"><i class="fa-solid fa-shield"></i> AA Stable</span></td>
+                    <td style="text-align:right;">
+                      <button class="btn btn-secondary btn-audit-dept" data-dept="MBA" style="padding:5px 12px; font-size:12px;"><i class="fa-solid fa-chart-simple"></i> Audit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Forecast Simulation Modal -->
+    <div class="modal-backdrop" id="forecastModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent);"></i> Predictive AI Forecast Model</h3>
+          <button type="button" class="modal-close-btn" class="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="color:var(--text-secondary); font-size:13px; margin-bottom:16px;">Simulated Revenue Growth Projection for Spring Semester 2027:</p>
+          <div style="background:var(--bg-tertiary); padding:16px; border-radius:12px; font-size:13px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+              <span style="color:var(--text-tertiary);">Projected Total Revenue:</span>
+              <strong style="color:var(--success);">₹3.25 Cr (+14.0%)</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+              <span style="color:var(--text-tertiary);">Expected Defaulter Exposure:</span>
+              <strong style="color:var(--success);">Reduced to 3.2%</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:var(--text-tertiary);">Confidence Score:</span>
+              <strong style="color:var(--accent);">97.8% High Accuracy</strong>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary closeModalBtn">Close Simulation</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="fees-analytics.js"></script>
+  </body>
+</html>

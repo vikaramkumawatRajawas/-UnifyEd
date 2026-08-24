@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - System Activity & Security Audit Logs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-logs.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item active"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search system activity logs, user IPs..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-clock-rotate-left"></i> REALTIME AUDIT LOGS</span>
+                <h1>System Activity & Security Audit Logs 📜</h1>
+              </div>
+              <p>Track platform user actions, authentication events, system errors, database queries, and security audit trails.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Recorded Log Entries</span>
+                  <strong class="val">45,280 Logs</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Audit Stream SLA</span>
+                  <strong class="val" style="color:var(--success);">🟢 Live Realtime</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Integrity Vault</span>
+                  <strong class="val" style="color:var(--primary);">0 Corruptions</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnExportLogs"><i class="fa-solid fa-download"></i> Export Audit Logs</button>
+              <button class="btn btn-secondary" id="btnFlushLogs"><i class="fa-solid fa-broom"></i> Flush Old Logs (30d+)</button>
+            </div>
+          </div>
+
+          <!-- Audit Stream KPI Grid (Equal 4 Columns) -->
+          <div class="kpi-grid" style="margin-bottom:28px;">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Recorded Audit Logs</span>
+                  <div class="kpi-val">45,280</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-list-check"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-arrow-trend-up"></i> +1,420 Today</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:78%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Authentication Events</span>
+                  <div class="kpi-val">18,420</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-user-lock"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-shield-check"></i> 100% Verified Logins</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:92%; background:var(--info);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Warnings & Errors</span>
+                  <div class="kpi-val">14 Logs</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-circle-check"></i> 0 Critical System Faults</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:12%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Audit Vault Storage</span>
+                  <div class="kpi-val">1.8 GB</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-hard-drive"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-rotate"></i> Auto-Rotated Monthly</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:36%; background:var(--success);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Logs Directory Card -->
+          <div class="admin-glass-card logs-directory-card" style="margin-top:28px; padding:28px;">
+            <div class="card-header-bar" style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border-color);">
+              <div class="dir-title-group">
+                <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:10px;"><i class="fa-solid fa-list-ol" style="color:var(--primary);"></i> Immutable System Audit Log Directory</h3>
+                <span class="live-status-chip"><span class="pulse-dot"></span> Audit Stream Live</span>
+              </div>
+            </div>
+
+            <div class="directory-toolbar">
+              <div class="search-and-filter">
+                <div class="dir-search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="logSearchInput" placeholder="Search log entry by user, action, IP or resource..." autocomplete="off">
+                </div>
+                <div class="filter-dropdown-group">
+                  <span class="filter-label"><i class="fa-solid fa-filter"></i> Log Level:</span>
+                  <select id="logLevelFilter" class="dir-select">
+                    <option value="all">All Levels</option>
+                    <option value="info">Info / Normal</option>
+                    <option value="warning">Warning</option>
+                    <option value="error">Error / Alert</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Log Category Tabs -->
+              <div class="role-filter-tabs" id="logFilterTabs">
+                <button class="tab-btn active" data-cat="all"><i class="fa-solid fa-layer-group"></i> All Activity</button>
+                <button class="tab-btn" data-cat="auth"><i class="fa-solid fa-key"></i> Authentication</button>
+                <button class="tab-btn" data-cat="security"><i class="fa-solid fa-shield-halved"></i> Security</button>
+                <button class="tab-btn" data-cat="database"><i class="fa-solid fa-database"></i> Database</button>
+                <button class="tab-btn" data-cat="users"><i class="fa-solid fa-users"></i> User Edits</button>
+              </div>
+            </div>
+
+            <!-- Activity Logs Table -->
+            <div class="table-responsive-wrapper">
+              <table class="admin-table logs-table" id="logsTable">
+                <thead>
+                  <tr>
+                    <th>Timestamp & Event Category</th>
+                    <th>User Account & Role</th>
+                    <th>Action Performed & Resource</th>
+                    <th>IP Address & Source</th>
+                    <th>Log Level</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-cat="auth" data-level="info">
+                    <td>
+                      <div class="log-time-cell">
+                        <i class="fa-solid fa-key" style="color:var(--primary);"></i>
+                        <div>
+                          <strong class="log-cat-title">2FA Authentication Passed</strong>
+                          <span class="log-timestamp">Today, 15:42:10 UTC</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="log-user-cell">
+                        <div class="avatar-sm avatar-emerald">VK</div>
+                        <div>
+                          <strong>Vikram Kumawat</strong>
+                          <span>Fees Manager</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="action-desc">Verified 2FA OTP code and established active portal session</span></td>
+                    <td><span class="ip-mono-chip"><i class="fa-solid fa-network-wired"></i> 192.168.1.108</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Info</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log-detail" title="View Full Raw JSON Log"><i class="fa-solid fa-code"></i> JSON</button>
+                    </td>
+                  </tr>
+
+                  <tr data-cat="database" data-level="info">
+                    <td>
+                      <div class="log-time-cell">
+                        <i class="fa-solid fa-database" style="color:var(--success);"></i>
+                        <div>
+                          <strong class="log-cat-title">Automated DB Snapshot Created</strong>
+                          <span class="log-timestamp">Today, 14:15:00 UTC</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="log-user-cell">
+                        <div class="avatar-sm avatar-purple">SYS</div>
+                        <div>
+                          <strong>Cron Daemon</strong>
+                          <span>System Automated</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="action-desc">Created encrypted backup snapshot (1.42 GB) to S3 Vault</span></td>
+                    <td><span class="ip-mono-chip"><i class="fa-solid fa-server"></i> 127.0.0.1 (Local)</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Info</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log-detail" title="View Full Raw JSON Log"><i class="fa-solid fa-code"></i> JSON</button>
+                    </td>
+                  </tr>
+
+                  <tr data-cat="security" data-level="warning">
+                    <td>
+                      <div class="log-time-cell">
+                        <i class="fa-solid fa-shield-halved" style="color:var(--warning);"></i>
+                        <div>
+                          <strong class="log-cat-title">Security Governance Updated</strong>
+                          <span class="log-timestamp">Today, 13:10:44 UTC</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="log-user-cell">
+                        <div class="avatar-sm avatar-cyan">SA</div>
+                        <div>
+                          <strong>System Admin</strong>
+                          <span>Master Admin</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="action-desc">Updated Level-4 Mandatory 2FA Enforcement policy parameters</span></td>
+                    <td><span class="ip-mono-chip"><i class="fa-solid fa-network-wired"></i> 192.168.1.1</span></td>
+                    <td><span class="status-pill status-warning"><span class="status-dot-amber"></span> Warning</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log-detail" title="View Full Raw JSON Log"><i class="fa-solid fa-code"></i> JSON</button>
+                    </td>
+                  </tr>
+
+                  <tr data-cat="users" data-level="info">
+                    <td>
+                      <div class="log-time-cell">
+                        <i class="fa-solid fa-user-pen" style="color:var(--accent);"></i>
+                        <div>
+                          <strong class="log-cat-title">User Account Role Modified</strong>
+                          <span class="log-timestamp">Yesterday, 18:20:12 UTC</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="log-user-cell">
+                        <div class="avatar-sm avatar-rose">RH</div>
+                        <div>
+                          <strong>Dr. Robert Hayes</strong>
+                          <span>HOD Mech</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="action-desc">Assigned Professor permissions to Faculty Member (FAC-2026-042)</span></td>
+                    <td><span class="ip-mono-chip"><i class="fa-solid fa-network-wired"></i> 192.168.1.42</span></td>
+                    <td><span class="status-pill status-active"><span class="status-dot"></span> Info</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log-detail" title="View Full Raw JSON Log"><i class="fa-solid fa-code"></i> JSON</button>
+                    </td>
+                  </tr>
+
+                  <tr data-cat="auth" data-level="error">
+                    <td>
+                      <div class="log-time-cell">
+                        <i class="fa-solid fa-triangle-exclamation" style="color:var(--danger);"></i>
+                        <div>
+                          <strong class="log-cat-title">Failed Login Attempt Lockout</strong>
+                          <span class="log-timestamp">Yesterday, 11:05:00 UTC</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="log-user-cell">
+                        <div class="avatar-sm avatar-blue">UN</div>
+                        <div>
+                          <strong>Unknown Actor</strong>
+                          <span>External IP</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="action-desc">Triggered rate-limit lock out after 3 failed password retries</span></td>
+                    <td><span class="ip-mono-chip ip-danger"><i class="fa-solid fa-ban"></i> 103.45.12.88</span></td>
+                    <td><span class="status-pill status-danger"><span class="status-dot-danger"></span> Security Alert</span></td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-view-log-detail" title="View Full Raw JSON Log"><i class="fa-solid fa-code"></i> JSON</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Log Detail Modal -->
+    <div class="modal-backdrop" id="logDetailModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-code" style="color:var(--primary);"></i> Raw Audit Log JSON Payload</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <pre style="background:var(--bg-tertiary); padding:16px; border-radius:8px; font-family:monospace; font-size:12px; color:#34d399; overflow-x:auto;">{
+  "event_id": "LOG-2026-889104",
+  "timestamp": "2026-08-20T15:42:10.842Z",
+  "actor": {
+    "user_id": "FIN-EMP-108",
+    "name": "Vikram Kumawat",
+    "role": "Fees Manager"
+  },
+  "action": "2FA_AUTHENTICATION_PASSED",
+  "source_ip": "192.168.1.108",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+  "status": "SUCCESS"
+}</pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary closeModalBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-logs.js"></script>
+  </body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Student Portal - Class Attendance</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../student-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="attendance.css">
+</head>
+<body class="student-portal-body">
+
+    <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Student Dashboard</span>
+                </a>
+        
+
+                <a href="../timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Class Timetable</span>
+                </a>
+        
+
+                <a href="attendance.html" class="sidebar-item active">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Semester Results</span>
+                </a>
+        
+
+                <a href="../exams/exams.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Examinations</span>
+                </a>
+        
+
+                <a href="../progress/progress.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Academic Progress</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Classroom Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../live-classes/live-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+        
+
+                <a href="../../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>My Projects</span>
+                </a>
+        
+
+                <a href="../../mentor/mentor.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Mentor</span>
+                </a>
+        
+
+                <a href="../../services/fees/fees.html" class="sidebar-item ">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Fee Details</span>
+                </a>
+        
+
+                <a href="../../services/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Applications</span>
+                </a>
+        
+
+                <a href="../../services/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+        
+
+                <a href="../../services/transport/transport.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+        
+
+                <a href="../../services/library/library.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Library Portal</span>
+                </a>
+        
+
+                <a href="../../career/career.html" class="sidebar-item ">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career & Placement</span>
+                </a>
+        
+
+                <a href="../../communication/communication.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>ERP Messenger</span>
+                </a>
+        
+
+                <a href="../../ai-assistant/ai-assistant.html" class="sidebar-item ">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Help Assistant</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>My Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search pages, tools, assignments..." autocomplete="off">
+                        <div id="portalSearchResults" class="search-results-dropdown glassmorphism"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="notification-trigger" id="portalNotificationTrigger">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="badge badge-error" id="portalNotificationBadge">2</span>
+                        <div id="portalNotificationsDropdown" class="notifications-dropdown glassmorphism">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button id="markAllReadBtn">Clear All</button>
+                            </div>
+                            <div class="dropdown-body" id="notificationsDropdownBody">
+                                <!-- Dynamic notifications loaded via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Aditya Sharma</strong>
+                            <span>UNIFY-2026-1024</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar"></i>
+                        <div id="portalProfileDropdown" class="profile-dropdown glassmorphism">
+                            <a href="../../profile/profile.html" class="profile-dropdown-item"><i class="fa-solid fa-user"></i> View Profile</a>
+                            <a href="../../settings/settings.html" class="profile-dropdown-item"><i class="fa-solid fa-gears"></i> Settings</a>
+                            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                            <a href="../../../auth/login.html" class="profile-dropdown-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Class Attendance</h1>
+                    <span class="breadcrumbs">UnifyEd • Student Portal • Academics • Class Attendance</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+            <div class="attendance-wrapper">
+                <!-- Top Row: 3 Symmetrical Cards (Summary, Simulator, Policies) -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 30px; align-items: stretch;">
+                    
+                    <!-- Card 1: Circular Meter Summary Card -->
+                    <div class="attendance-summary glassmorphism" style="padding: 25px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                        <div>
+                            <div class="overall-progress" style="margin-bottom: 15px;">
+                                <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 10px auto;">
+                                    <svg style="width: 110px; height: 110px; transform: rotate(-90deg);">
+                                        <circle cx="55" cy="55" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent"/>
+                                        <circle cx="55" cy="55" r="45" stroke="#10b981" stroke-width="8" stroke-dasharray="282.6" stroke-dashoffset="29.67" fill="transparent" style="stroke-linecap: round; filter: drop-shadow(0 0 4px #10b981);"/>
+                                    </svg>
+                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%;">
+                                        <strong style="font-size: 20px; color: var(--text-primary); display:block; line-height: 1;">89.5%</strong>
+                                        <span style="font-size: 8px; color: #10b981; font-weight:700; text-transform:uppercase; margin-top: 2px; display: block;">Safe Zone</span>
+                                    </div>
+                                </div>
+                                <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">Overall Attendance</h3>
+                                <p style="font-size: 11px; color: var(--text-secondary);">6th Semester • Section A</p>
+                            </div>
+                            <div style="display: flex; justify-content: space-around; gap: 5px; font-size: 10px; border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 10px;">
+                                <div>
+                                    <span style="color: var(--text-tertiary); display:block;">Delivered</span>
+                                    <strong style="font-size:12px; color:var(--text-primary);">180</strong>
+                                </div>
+                                <div>
+                                    <span style="color: var(--text-tertiary); display:block;">Attended</span>
+                                    <strong style="font-size:12px; color:#10b981;">161</strong>
+                                </div>
+                                <div>
+                                    <span style="color: var(--text-tertiary); display:block;">Absent</span>
+                                    <strong style="font-size:12px; color:#ef4444;">19</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Attendance Simulator Card -->
+                    <div class="attendance-summary glassmorphism" style="padding: 25px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                        <div>
+                            <h3 style="font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 12px; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-calculator"></i> Attendance Simulator
+                            </h3>
+                            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 11px;">
+                                <div>
+                                    <label style="color: var(--text-secondary); display:block; margin-bottom:3px;">Attend next classes:</label>
+                                    <div style="display:flex; gap:6px;">
+                                        <input type="number" id="attendSimInput" placeholder="e.g. 5" class="form-input" style="height:28px; font-size:11px;" min="0">
+                                        <button onclick="simulateAttendance('attend')" class="btn btn-primary btn-sm" style="height:28px; white-space:nowrap; padding: 0 10px; font-size:11px;">Calc</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label style="color: var(--text-secondary); display:block; margin-bottom:3px;">Miss next classes:</label>
+                                    <div style="display:flex; gap:6px;">
+                                        <input type="number" id="missSimInput" placeholder="e.g. 3" class="form-input" style="height:28px; font-size:11px;" min="0">
+                                        <button onclick="simulateAttendance('miss')" class="btn btn-secondary btn-sm" style="height:28px; white-space:nowrap; background:#ef4444; border-color:#ef4444; color:#fff; padding: 0 10px; font-size:11px;">Calc</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="simResultBlock" style="margin-top: 10px; padding: 8px; border-radius: 4px; display:none; font-size: 11px; font-weight: 500; line-height: 1.3;">
+                            <!-- Simulated Output -->
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Attendance Policies -->
+                    <div class="attendance-summary glassmorphism" style="padding: 25px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                        <div>
+                            <h3 style="font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 12px; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-circle-info"></i> ERP Regulations
+                            </h3>
+                            <div style="font-size: 11px; color: var(--text-secondary); display:flex; flex-direction:column; gap:8px; line-height: 1.4;">
+                                <span>• Minimum <strong>75% attendance</strong> is mandatory to write end-semester exams.</span>
+                                <span>• Attendance between <strong>60% - 75%</strong> requires a medical certificate or duty leave approval.</span>
+                                <span>• Attendance below <strong>60%</strong> leads to academic detention.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Row: Wide Matrix Table -->
+                <div class="attendance-list glassmorphism" style="padding: 30px;">
+                    <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px;">
+                        Course Wise Attendance Breakup
+                    </h3>
+                    <div class="table-responsive">
+                        <table class="custom-table" style="font-size:13px;">
+                            <thead>
+                                <tr>
+                                    <th>Subject Name</th>
+                                    <th>Delivered</th>
+                                    <th>Attended</th>
+                                    <th style="width: 160px;">Percentage Status</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Neural Networks & Deep Learning</strong></td>
+                                    <td>36</td>
+                                    <td>33</td>
+                                    <td>
+                                        <div style="display:flex; align-items:center; gap:8px;">
+                                            <span style="font-weight:700; color:#10b981; min-width:35px;">91.6%</span>
+                                            <div style="flex-grow:1; height:6px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                                <div style="width:91.6%; height:100%; background:#10b981; border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-success">Safe</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Embedded VLSI Design</strong></td>
+                                    <td>36</td>
+                                    <td>31</td>
+                                    <td>
+                                        <div style="display:flex; align-items:center; gap:8px;">
+                                            <span style="font-weight:700; color:#10b981; min-width:35px;">86.1%</span>
+                                            <div style="flex-grow:1; height:6px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                                <div style="width:86.1%; height:100%; background:#10b981; border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-success">Safe</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Robotics Engineering & Control</strong></td>
+                                    <td>40</td>
+                                    <td>38</td>
+                                    <td>
+                                        <div style="display:flex; align-items:center; gap:8px;">
+                                            <span style="font-weight:700; color:#10b981; min-width:35px;">95.0%</span>
+                                            <div style="flex-grow:1; height:6px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                                <div style="width:95%; height:100%; background:#10b981; border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-success">Safe</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Database Systems & Query Tuning</strong></td>
+                                    <td>36</td>
+                                    <td>29</td>
+                                    <td>
+                                        <div style="display:flex; align-items:center; gap:8px;">
+                                            <span style="font-weight:700; color:#f59e0b; min-width:35px;">80.5%</span>
+                                            <div style="flex-grow:1; height:6px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                                <div style="width:80.5%; height:100%; background:#f59e0b; border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-warning">Caution</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Humanities & Comm Skills</strong></td>
+                                    <td>32</td>
+                                    <td>30</td>
+                                    <td>
+                                        <div style="display:flex; align-items:center; gap:8px;">
+                                            <span style="font-weight:700; color:#10b981; min-width:35px;">93.7%</span>
+                                            <div style="flex-grow:1; height:6px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                                <div style="width:93.7%; height:100%; background:#10b981; border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-success">Safe</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../student-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="attendance.js"></script>
+</body>
+</html>

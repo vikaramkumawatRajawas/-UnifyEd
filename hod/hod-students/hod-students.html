@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Students Registry</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="hod-students.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+</head>
+<body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item active"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search HOD portal..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../hod-notifications/hod-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">4</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong>Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>              <div class="profile-menu" id="profileMenu">
+                <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+                <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+                <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+              </div>
+          </div>
+        </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                    <div>
+                        <h1>Students Master Registry 🎓</h1>
+                        <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering • Student Registry</span>
+                    </div>
+                    <div style="display:flex; gap:12px;">
+                        <button type="button" class="btn btn-secondary" id="btnExportExcel"><i class="fa-solid fa-file-excel"></i> Export Excel</button>
+                        <button type="button" class="btn btn-primary" id="btnOpenAddStudentModal"><i class="fa-solid fa-user-plus"></i> Register New Student</button>
+                    </div>
+                </div>
+
+                <!-- KPI Overview Bar -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon primary">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiTotalStudents">620</div>
+                            <div class="kpi-lbl">Total Dept Students</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +45 new intake</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon success">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiAttendanceRate">95.4%</div>
+                            <div class="kpi-lbl">Attendance Rate</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-check"></i> High Engagement</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon warning">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiAvgGpa">8.6 / 10</div>
+                            <div class="kpi-lbl">Average CGPA</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +0.3 vs last yr</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon accent">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiFeeClearance">96.4%</div>
+                            <div class="kpi-lbl">Fee Clearances</div>
+                            <span class="trend-badge neutral"><i class="fa-solid fa-shield-check"></i> Verified Status</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Students Directory Card -->
+                <div class="glass-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
+                        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+                            <h3 style="font-size:17px; font-weight:800; color:var(--text-primary);">
+                                <i class="fa-solid fa-users-rectangle" style="color:var(--primary); margin-right:8px;"></i> Student Roster & Academic Status
+                            </h3>
+                            <select id="classFilterSelect" class="btn btn-secondary" style="height:36px; font-size:12px;">
+                                <option value="all">All Department Classes</option>
+                                <option value="bca3">BCA 3rd Sem (BCA-3A)</option>
+                                <option value="cse5">B.Tech CSE 5th Sem (CSE-5B)</option>
+                                <option value="mca2">MCA 2nd Sem (MCA-2A)</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; gap:10px;">
+                            <button id="viewTableBtn" class="btn btn-secondary active" onclick="switchStudentView('table')" style="height:36px; font-size:12px;"><i class="fa-solid fa-table-list"></i> Table View</button>
+                            <button id="viewGridBtn" class="btn btn-secondary" onclick="switchStudentView('grid')" style="height:36px; font-size:12px;"><i class="fa-solid fa-grip"></i> Cards View</button>
+                        </div>
+                    </div>
+
+                    <!-- Table View -->
+                    <div id="studentTableView" style="overflow-x:auto;">
+                        <table class="hod-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Details</th>
+                                    <th>Roll Number / ID</th>
+                                    <th>Assigned Class & Sem</th>
+                                    <th>Contact Info</th>
+                                    <th>Attendance</th>
+                                    <th>CGPA</th>
+                                    <th>Status</th>
+                                    <th style="text-align:center;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentTableBody">
+                                <!-- Dynamic Student Table Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Cards Grid View -->
+                    <div id="studentGridView" style="display:none; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-top:15px;">
+                        <!-- Dynamic Student Grid Cards -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Register Student Modal -->
+    <div class="hod-modal-overlay" id="addStudentModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-user-plus" style="color:var(--primary);"></i> Register New Student</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="addStudentModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="addStudentForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="inputStudentName">Student Full Name</label>
+                        <input type="text" id="inputStudentName" class="hod-form-input" placeholder="e.g. Vikram Kumawat" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputStudentRoll">Roll Number / Student ID</label>
+                        <input type="text" id="inputStudentRoll" class="hod-form-input" placeholder="e.g. STU202600145" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputStudentClass">Class & Semester</label>
+                        <select id="inputStudentClass" class="hod-form-select">
+                            <option value="BCA 3rd Sem (BCA-3A)">BCA 3rd Sem (BCA-3A)</option>
+                            <option value="B.Tech 5th Sem (CSE-5B)">B.Tech CSE 5th Sem (CSE-5B)</option>
+                            <option value="MCA 2nd Sem (MCA-2A)">MCA 2nd Sem (MCA-2A)</option>
+                        </select>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputStudentEmail">Email Address</label>
+                        <input type="email" id="inputStudentEmail" class="hod-form-input" placeholder="e.g. vikram@uem.edu.in" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="inputStudentPhone">Phone Number</label>
+                        <input type="text" id="inputStudentPhone" class="hod-form-input" placeholder="e.g. +91 98765 43210" required>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="addStudentModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-user-check"></i> Register Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Student Academic Dossier Modal -->
+    <div class="hod-modal-overlay" id="studentDossierModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-id-card" style="color:var(--info);"></i> Student Academic Profile</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="studentDossierModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="hod-modal-body">
+                <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px; background:var(--bg-tertiary); padding:16px; border-radius:var(--border-radius-md);">
+                    <div class="student-card-avatar" id="dossierStudentAvatar" style="width:56px; height:56px; font-size:22px;">VK</div>
+                    <div>
+                        <strong style="font-size:18px; color:var(--text-primary);" id="dossierStudentName">Vikram Kumawat</strong>
+                        <div style="font-size:12px; color:var(--primary); font-weight:700;" id="dossierStudentRoll">STU202600145 • BCA 3rd Sem</div>
+                        <div style="font-size:11px; color:var(--text-tertiary);" id="dossierStudentContact">vikram@uem.edu.in • +91 98765 43210</div>
+                    </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+                    <div style="padding:12px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm);">
+                        <span style="font-size:10px; color:var(--text-tertiary); text-transform:uppercase;">Attendance Progress</span>
+                        <strong style="display:block; font-size:14px; color:var(--success); margin-top:2px;" id="dossierStudentAttendance">96.5%</strong>
+                    </div>
+                    <div style="padding:12px; background:var(--bg-tertiary); border-radius:var(--border-radius-sm);">
+                        <span style="font-size:10px; color:var(--text-tertiary); text-transform:uppercase;">Cumulative CGPA</span>
+                        <strong style="display:block; font-size:14px; color:var(--primary); margin-top:2px;" id="dossierStudentCgpa">8.8 / 10</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="hod-modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal="studentDossierModal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Opening Student Full Academic Record...');"><i class="fa-solid fa-file-user"></i> Full Academic Dossier</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Student Record Modal -->
+    <div class="hod-modal-overlay" id="editStudentModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-user-pen" style="color:var(--primary);"></i> Edit Student Record</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="editStudentModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="editStudentForm">
+                <input type="hidden" id="editStudentId">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="editStudentName">Student Full Name</label>
+                        <input type="text" id="editStudentName" class="hod-form-input" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="editStudentRoll">Roll Number / Student ID</label>
+                        <input type="text" id="editStudentRoll" class="hod-form-input" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="editStudentClass">Class & Semester</label>
+                        <select id="editStudentClass" class="hod-form-select">
+                            <option value="BCA 3rd Sem (BCA-3A)">BCA 3rd Sem (BCA-3A)</option>
+                            <option value="B.Tech 5th Sem (CSE-5B)">B.Tech CSE 5th Sem (CSE-5B)</option>
+                            <option value="MCA 2nd Sem (MCA-2A)">MCA 2nd Sem (MCA-2A)</option>
+                        </select>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="hod-form-group">
+                            <label for="editStudentAttendance">Attendance Rate (%)</label>
+                            <input type="text" id="editStudentAttendance" class="hod-form-input" placeholder="e.g. 95.5%" required>
+                        </div>
+                        <div class="hod-form-group">
+                            <label for="editStudentCgpa">Cumulative CGPA</label>
+                            <input type="text" id="editStudentCgpa" class="hod-form-input" placeholder="e.g. 8.8" required>
+                        </div>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="editStudentEmail">Email Address</label>
+                        <input type="email" id="editStudentEmail" class="hod-form-input" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="editStudentPhone">Phone Number</label>
+                        <input type="text" id="editStudentPhone" class="hod-form-input" required>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="editStudentModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Student Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="hod-students.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

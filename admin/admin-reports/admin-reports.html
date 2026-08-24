@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Reports & Business Intelligence Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="admin-reports.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item active"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search analytics reports, datasets..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-chart-pie"></i> EXECUTIVE INTELLIGENCE</span>
+                <h1>Campus Analytics & Intelligence Hub 📊</h1>
+              </div>
+              <p>Generate financial audit reports, student enrollment metrics, academic grade distributions, and custom BI exports.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Annual Revenue Realized</span>
+                  <strong class="val" style="color:var(--success);">₹4.28 Cr</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Campus Attendance Avg</span>
+                  <strong class="val" style="color:var(--primary);">94.2%</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Executive Reports</span>
+                  <strong class="val" style="color:var(--accent);">142 Active</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnGenCustomReport"><i class="fa-solid fa-bolt"></i> Generate Custom Report</button>
+              <button class="btn btn-secondary" id="btnDownloadBiSuite"><i class="fa-solid fa-download"></i> Download BI Suite</button>
+            </div>
+          </div>
+
+          <!-- BI KPI Cards Grid (Equal 4 Columns) -->
+          <div class="kpi-grid" style="margin-bottom:28px;">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Annual Revenue Realized</span>
+                  <div class="kpi-val">₹4.28 Cr</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-arrow-trend-up"></i> +18.5% YoY Growth</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:82%; background:var(--success);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Student Attendance Avg</span>
+                  <div class="kpi-val">94.2%</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-user-check"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-arrow-trend-up"></i> +2.1% Higher Than Target</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:94%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Academic Pass Rate</span>
+                  <div class="kpi-val">91.8%</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-graduation-cap"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-award"></i> CSE & ECE Top Performers</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:91%; background:var(--info);"></div></div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">Active BI Reports</span>
+                  <div class="kpi-val">142</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-file-chart-column"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-calendar-check"></i> Generated This Quarter</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width:68%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analytics Visualization Widgets (2 Glass Cards) -->
+          <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:24px; margin-bottom:28px;">
+            <!-- Revenue vs Fee Streams Breakdown -->
+            <div class="admin-glass-card chart-card">
+              <div class="card-header" style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <h3 style="font-size:16px; font-weight:800; color:var(--text-primary);"><i class="fa-solid fa-chart-simple" style="color:var(--success);"></i> Revenue Stream Distribution</h3>
+                  <span style="font-size:12px; color:var(--text-secondary);">Fee collection distribution by category for Fiscal Year 2026</span>
+                </div>
+                <span class="live-status-chip"><span class="pulse-dot"></span> Realtime Audit</span>
+              </div>
+              
+              <div class="analytics-tracks">
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Tuition & Academic Fees</strong>
+                    <span>₹2,57,10,000 (60%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:60%; background:linear-gradient(90deg, #6366f1, #3b82f6);"></div></div>
+                </div>
+
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Hostel & Campus Residency</strong>
+                    <span>₹94,27,000 (22%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:22%; background:linear-gradient(90deg, #10b981, #06b6d4);"></div></div>
+                </div>
+
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Examination & Certification</strong>
+                    <span>₹42,85,000 (10%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:10%; background:linear-gradient(90deg, #f59e0b, #ef4444);"></div></div>
+                </div>
+
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Transport & Fleet Services</strong>
+                    <span>₹34,28,000 (8%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:8%; background:linear-gradient(90deg, #a855f7, #6366f1);"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Departmental Student Distribution -->
+            <div class="admin-glass-card chart-card">
+              <div class="card-header" style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border-color);">
+                <h3 style="font-size:16px; font-weight:800; color:var(--text-primary);"><i class="fa-solid fa-pie-chart" style="color:var(--primary);"></i> Department Enrollment Shares</h3>
+                <span style="font-size:12px; color:var(--text-secondary);">Student distribution across academic faculties</span>
+              </div>
+              
+              <div class="analytics-tracks">
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Computer Science (CSE)</strong>
+                    <span>647 Students (35%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:35%; background:var(--primary);"></div></div>
+                </div>
+
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Electronics (ECE)</strong>
+                    <span>462 Students (25%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:25%; background:var(--accent);"></div></div>
+                </div>
+
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Mechanical Eng.</strong>
+                    <span>370 Students (20%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:20%; background:var(--warning);"></div></div>
+                </div>
+
+                <div class="track-item">
+                  <div class="track-info">
+                    <strong>Civil & Infrastructure</strong>
+                    <span>370 Students (20%)</span>
+                  </div>
+                  <div class="kpi-progress-bar"><div class="progress" style="width:20%; background:var(--info);"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Executive Reports Directory Table Card -->
+          <div class="admin-glass-card reports-table-card" style="margin-top:32px; padding:28px;">
+            <div class="card-header-bar" style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid var(--border-color);">
+              <div class="dir-title-group">
+                <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:10px;"><i class="fa-solid fa-file-invoice" style="color:var(--primary);"></i> Executive BI Reports Directory</h3>
+                <span class="live-status-chip"><span class="pulse-dot"></span> 12 Pre-Built Templates</span>
+              </div>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="admin-table reports-table" id="reportsTable">
+                <thead>
+                  <tr>
+                    <th>Report Title & Identifier</th>
+                    <th>Category & Domain</th>
+                    <th>Frequency</th>
+                    <th>Last Generated</th>
+                    <th>Available Formats</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="report-title-cell">
+                        <i class="fa-solid fa-file-invoice-dollar" style="color:var(--success);"></i>
+                        <div>
+                          <strong class="rpt-name">Financial Ledger & Defaulters Audit</strong>
+                          <span class="rpt-code">FIN-RPT-2026-Q1</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="role-badge role-finance"><i class="fa-solid fa-credit-card"></i> Treasury & Finance</span></td>
+                    <td><span class="freq-tag">Monthly</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Today, 09:00</span></td>
+                    <td>
+                      <div class="format-tags-group">
+                        <span class="fmt-chip fmt-pdf">PDF</span>
+                        <span class="fmt-chip fmt-xlsx">XLSX</span>
+                        <span class="fmt-chip fmt-csv">CSV</span>
+                      </div>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-export-rpt" data-name="Financial Ledger Audit"><i class="fa-solid fa-download"></i> Export</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="report-title-cell">
+                        <i class="fa-solid fa-graduation-cap" style="color:var(--primary);"></i>
+                        <div>
+                          <strong class="rpt-name">Semester Academic Performance Roster</strong>
+                          <span class="rpt-code">ACA-RPT-2026-S1</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="role-badge role-student"><i class="fa-solid fa-award"></i> Academic & Examination</span></td>
+                    <td><span class="freq-tag">Semester</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> Yesterday, 16:45</span></td>
+                    <td>
+                      <div class="format-tags-group">
+                        <span class="fmt-chip fmt-pdf">PDF</span>
+                        <span class="fmt-chip fmt-xlsx">XLSX</span>
+                      </div>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-export-rpt" data-name="Academic Performance Roster"><i class="fa-solid fa-download"></i> Export</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="report-title-cell">
+                        <i class="fa-solid fa-user-check" style="color:var(--accent);"></i>
+                        <div>
+                          <strong class="rpt-name">Campus Attendance & SLA Analytics</strong>
+                          <span class="rpt-code">ATT-RPT-2026-M2</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="role-badge role-prof"><i class="fa-solid fa-clipboard-user"></i> Student Attendance</span></td>
+                    <td><span class="freq-tag">Weekly</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 3 days ago</span></td>
+                    <td>
+                      <div class="format-tags-group">
+                        <span class="fmt-chip fmt-pdf">PDF</span>
+                        <span class="fmt-chip fmt-csv">CSV</span>
+                      </div>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-export-rpt" data-name="Attendance Analytics"><i class="fa-solid fa-download"></i> Export</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="report-title-cell">
+                        <i class="fa-solid fa-shield-halved" style="color:var(--danger);"></i>
+                        <div>
+                          <strong class="rpt-name">System Security & Audit Log Summary</strong>
+                          <span class="rpt-code">SEC-RPT-2026-A1</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="role-badge role-admin"><i class="fa-solid fa-shield-cat"></i> Security Governance</span></td>
+                    <td><span class="freq-tag">Realtime</span></td>
+                    <td><span class="last-active"><i class="fa-solid fa-clock"></i> 10 mins ago</span></td>
+                    <td>
+                      <div class="format-tags-group">
+                        <span class="fmt-chip fmt-pdf">PDF</span>
+                        <span class="fmt-chip fmt-json">JSON</span>
+                      </div>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="act-btn btn-export-rpt" data-name="Security Audit Log Summary"><i class="fa-solid fa-download"></i> Export</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Generate Custom Report Modal -->
+    <div class="modal-backdrop" id="reportModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-bolt" style="color:var(--primary);"></i> Generate Custom BI Report</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <form id="reportForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Report Category</label>
+              <select class="form-input" id="rptDomainSelect" required>
+                <option value="Financial & Fee Audit">Financial & Fee Audit</option>
+                <option value="Academic Performance">Academic Performance</option>
+                <option value="Student Attendance">Student Attendance</option>
+                <option value="Security Governance">Security Governance</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date Range</label>
+              <select class="form-input" id="rptDateSelect" required>
+                <option value="Current Fiscal Quarter">Current Fiscal Quarter</option>
+                <option value="Last 30 Days">Last 30 Days</option>
+                <option value="Full Academic Year 2025-26">Full Academic Year 2025-26</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Generate & Download</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="admin-reports.js"></script>
+  </body>
+</html>

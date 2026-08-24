@@ -1,0 +1,39 @@
+
+            .student-row-card {
+                padding: 15px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.01);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                transition: border-color 0.2s ease, transform 0.2s ease;
+                position: relative;
+            }
+            .student-row-card:hover {
+                border-color: rgba(99, 102, 241, 0.2);
+                transform: translateX(2px);
+            }
+            .student-edit-btn {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                background: transparent;
+                border: none;
+                color: var(--text-tertiary);
+                cursor: pointer;
+                font-size: 11px;
+                display: none;
+            }
+            .student-row-card:hover .student-edit-btn {
+                display: block;
+            }
+            .student-edit-btn:hover {
+                color: var(--primary);
+            }
+            @media (max-width: 900px) {
+                .students-container-grid {
+                    grid-template-columns: 1fr !important;
+                }
+            }
+        

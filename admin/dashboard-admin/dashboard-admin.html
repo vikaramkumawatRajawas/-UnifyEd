@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd - Executive Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-sidebar.css">
+    <link rel="stylesheet" href="dashboard-admin.css">
+  </head>
+  <body class="admin-portal-body">
+    <div class="portal-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Main Menu</div>
+          <a href="../dashboard-admin/dashboard-admin.html" class="sidebar-item active"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+          <a href="../admin-users/admin-users.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+          <a href="../admin-roles/admin-roles.html" class="sidebar-item"><i class="fa-solid fa-user-shield"></i><span>Role Assignment</span></a>
+          <a href="../admin-data/admin-data.html" class="sidebar-item"><i class="fa-solid fa-database"></i><span>Data Management</span></a>
+          <a href="../admin-reports/admin-reports.html" class="sidebar-item"><i class="fa-solid fa-chart-pie"></i><span>Reports & Analytics</span></a>
+
+          <div class="nav-section-title">System & Security</div>
+          <a href="../admin-security/admin-security.html" class="sidebar-item"><i class="fa-solid fa-shield-halved"></i><span>Security Governance</span></a>
+          <a href="../admin-backup/admin-backup.html" class="sidebar-item"><i class="fa-solid fa-box-archive"></i><span>Backup & Restore</span></a>
+          <a href="../admin-settings/admin-settings.html" class="sidebar-item"><i class="fa-solid fa-gears"></i><span>System Settings</span></a>
+          <a href="../admin-logs/admin-logs.html" class="sidebar-item"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity Logs</span></a>
+
+          <div class="nav-section-title">Communications</div>
+          <a href="../admin-messages/admin-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages & Chat</span></a>
+
+          <div class="nav-section-title">Account</div>
+          <a href="../admin-profile/admin-profile.html" class="sidebar-item"><i class="fa-solid fa-user-gear"></i><span>Admin Profile</span></a>
+          <a href="../admin-preferences/admin-preferences.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Preferences</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout Portal</span></div>
+        </div>
+      </aside>
+
+      <div class="portal-main">
+        <!-- Main Top Bar -->
+        <header class="main-portal-header">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="adminSearchInput" placeholder="Search registered users, security logs..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <a href="../admin-notifications/admin-notifications.html" class="header-icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notification-badge">7</span></a>
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hdrAdminName">System Admin</strong><span>ADM-001</span></div>
+              <i class="fa-solid fa-user-shield" style="font-size:22px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../admin-profile/admin-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../admin-settings/admin-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+        <main class="portal-content">
+          <!-- Executive Hero Banner -->
+          <div class="fees-hero-card">
+            <div class="hero-info">
+              <div class="hero-title-group">
+                <span class="system-badge"><i class="fa-solid fa-shield-halved"></i> MASTER GOVERNANCE</span>
+                <h1>Executive System Command 🛡️</h1>
+              </div>
+              <p>UnifyEd Enterprise Platform • Oversee real-time user registrations, infrastructure SLA & security policies.</p>
+              <div class="hero-metrics">
+                <div class="h-metric">
+                  <span class="lbl">Registered Users</span>
+                  <strong class="val">2,540</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">SLA Uptime Ratio</span>
+                  <strong class="val" style="color:var(--success);">99.98%</strong>
+                </div>
+                <div class="h-metric">
+                  <span class="lbl">Security Nodes</span>
+                  <strong class="val" style="color:var(--info);">8/8 Online</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="btnOpenUserModal"><i class="fa-solid fa-user-plus"></i> Add New User</button>
+              <button class="btn btn-secondary" id="btnOpenMaintModal"><i class="fa-solid fa-sliders"></i> System Maintenance</button>
+              <a href="../admin-logs/admin-logs.html" class="btn btn-secondary" style="text-decoration:none;"><i class="fa-solid fa-clock-rotate-left"></i> System Logs</a>
+            </div>
+          </div>
+
+          <!-- Quick KPI Cards Grid -->
+          <div class="kpi-grid">
+            <div class="admin-glass-card kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">TOTAL PLATFORM USERS</span>
+                  <div class="kpi-val">2,540</div>
+                </div>
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-users"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-arrow-trend-up"></i> +145 new this month</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width: 82%; background:var(--primary);"></div></div>
+              </div>
+            </div>
+
+            <div class="admin-glass-card kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">ACTIVE STUDENTS</span>
+                  <div class="kpi-val">1,850</div>
+                </div>
+                <div class="kpi-icon icon-emerald"><i class="fa-solid fa-user-graduate"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-circle-check"></i> 98.4% Active Roster</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width: 92%; background:var(--success);"></div></div>
+              </div>
+            </div>
+
+            <div class="admin-glass-card kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">FACULTY & HOD ROSTER</span>
+                  <div class="kpi-val">180</div>
+                </div>
+                <div class="kpi-icon icon-amber"><i class="fa-solid fa-chalkboard-user"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change info"><i class="fa-solid fa-shield-check"></i> 100% Credentials Verified</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width: 100%; background:var(--warning);"></div></div>
+              </div>
+            </div>
+
+            <div class="admin-glass-card kpi-card">
+              <div class="kpi-top">
+                <div>
+                  <span class="kpi-label">SYSTEM CORE SLA</span>
+                  <div class="kpi-val" style="color:var(--success);">99.98%</div>
+                </div>
+                <div class="kpi-icon icon-cyan"><i class="fa-solid fa-server"></i></div>
+              </div>
+              <div class="kpi-bottom">
+                <span class="kpi-change success"><i class="fa-solid fa-bolt"></i> Latency 14ms Nominal</span>
+                <div class="kpi-progress-bar"><div class="progress" style="width: 99.98%; background:var(--info);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Operational 2-Column Grid -->
+          <div class="operational-grid">
+            <!-- Left Main Column -->
+            <div class="grid-column-main">
+              <!-- Recent User Registrations Roster Table Card -->
+              <div class="admin-glass-card roster-card" style="margin-bottom:24px;">
+                <div class="roster-header">
+                  <div class="roster-title-group">
+                    <h3><i class="fa-solid fa-users-viewfinder" style="color:var(--primary);"></i> Recent User Registrations Roster</h3>
+                    <span class="live-status-chip"><span class="pulse-dot"></span> Live Sync</span>
+                  </div>
+                  <div class="roster-toolbar">
+                    <div class="roster-search-box">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                      <input type="text" id="rosterSearchInput" placeholder="Filter roster by name, email or ID..." autocomplete="off">
+                    </div>
+                    <select id="rosterRoleFilter" class="roster-filter-select">
+                      <option value="all">All Roles</option>
+                      <option value="student">Students</option>
+                      <option value="professor">Professors</option>
+                      <option value="hod">HODs</option>
+                      <option value="finance">Finance</option>
+                    </select>
+                    <a href="../admin-users/admin-users.html" class="btn btn-secondary" style="font-size:12px; padding:6px 12px; text-decoration:none;"><i class="fa-solid fa-users"></i> Full Directory</a>
+                  </div>
+                </div>
+
+                <div class="table-responsive-wrapper">
+                  <table class="admin-table roster-table" id="recentUsersTable">
+                    <thead>
+                      <tr>
+                        <th>User Profile</th>
+                        <th>System ID</th>
+                        <th>Role & Department</th>
+                        <th>Registered Date</th>
+                        <th>Verification Status</th>
+                        <th style="text-align:right;">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-role="student">
+                        <td>
+                          <div class="user-info-cell">
+                            <div class="avatar-circle avatar-blue">
+                              AC
+                              <span class="avatar-status-dot"></span>
+                            </div>
+                            <div>
+                              <strong class="user-name">Alex Carter</strong>
+                              <span class="email">alex.carter@unifyed.edu</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="id-mono-tag">STU-2026-101</span></td>
+                        <td><span class="role-badge role-student"><i class="fa-solid fa-user-graduate"></i> Student • CSE</span></td>
+                        <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                        <td style="text-align:right;">
+                          <a href="../admin-users/admin-users.html" class="act-btn btn-manage"><i class="fa-solid fa-gear"></i> Manage</a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <div class="user-info-cell">
+                            <div class="avatar-circle avatar-purple">RH</div>
+                            <div>
+                              <strong>Dr. Robert Hayes</strong>
+                              <span class="email">robert.h@unifyed.edu</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="id-mono-tag">FAC-2026-042</span></td>
+                        <td><span class="role-badge role-prof"><i class="fa-solid fa-chalkboard-user"></i> Professor • Mech</span></td>
+                        <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                        <td style="text-align:right;">
+                          <a href="../admin-users/admin-users.html" class="act-btn btn-manage"><i class="fa-solid fa-gear"></i> Manage</a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <div class="user-info-cell">
+                            <div class="avatar-circle avatar-amber">AS</div>
+                            <div>
+                              <strong>Dr. Ananya Sharma</strong>
+                              <span class="email">ananya.s@unifyed.edu</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="id-mono-tag">HOD-CSE-001</span></td>
+                        <td><span class="role-badge role-hod"><i class="fa-solid fa-user-tie"></i> HOD • CSE Dept</span></td>
+                        <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                        <td style="text-align:right;">
+                          <a href="../admin-users/admin-users.html" class="act-btn btn-manage"><i class="fa-solid fa-gear"></i> Manage</a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <div class="user-info-cell">
+                            <div class="avatar-circle avatar-emerald">VK</div>
+                            <div>
+                              <strong>Vikram Kumawat</strong>
+                              <span class="email">vikram.k@unifyed.edu</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="id-mono-tag">FIN-EMP-108</span></td>
+                        <td><span class="role-badge role-finance"><i class="fa-solid fa-credit-card"></i> Finance Officer</span></td>
+                        <td><span class="status-pill status-active"><span class="status-dot"></span> Active</span></td>
+                        <td style="text-align:right;">
+                          <a href="../admin-users/admin-users.html" class="act-btn btn-manage"><i class="fa-solid fa-gear"></i> Manage</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Infrastructure & Server Performance Velocity Card -->
+              <div class="admin-glass-card">
+                <div class="card-header" style="margin-bottom:16px;">
+                  <h3><i class="fa-solid fa-microchip" style="color:var(--info);"></i> Infrastructure Velocity & Health Tracks</h3>
+                  <span style="font-size:12px; color:var(--text-tertiary);">Live Node Metrics</span>
+                </div>
+                <div class="perf-metrics-container">
+                  <div class="perf-item">
+                    <div class="perf-label-group">
+                      <span><i class="fa-solid fa-database" style="color:var(--primary);"></i> Database Query Latency</span>
+                      <strong>14 ms (Optimal)</strong>
+                    </div>
+                    <div class="perf-bar-track"><div class="perf-bar-fill" style="width:20%; background:var(--primary);"></div></div>
+                  </div>
+
+                  <div class="perf-item">
+                    <div class="perf-label-group">
+                      <span><i class="fa-solid fa-memory" style="color:var(--success);"></i> System RAM Utilization</span>
+                      <strong>34% / 64 GB</strong>
+                    </div>
+                    <div class="perf-bar-track"><div class="perf-bar-fill" style="width:34%; background:var(--success);"></div></div>
+                  </div>
+
+                  <div class="perf-item">
+                    <div class="perf-label-group">
+                      <span><i class="fa-solid fa-cpu" style="color:var(--warning);"></i> Core CPU Cluster Load</span>
+                      <strong>45% Idle Capacity</strong>
+                    </div>
+                    <div class="perf-bar-track"><div class="perf-bar-fill" style="width:45%; background:var(--warning);"></div></div>
+                  </div>
+
+                  <div class="perf-item">
+                    <div class="perf-label-group">
+                      <span><i class="fa-solid fa-cloud-arrow-up" style="color:var(--info);"></i> Storage Drive Consumption</span>
+                      <strong>68% (780 GB / 1 TB)</strong>
+                    </div>
+                    <div class="perf-bar-track"><div class="perf-bar-fill" style="width:68%; background:var(--info);"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="grid-column-side">
+              <!-- Security Alerts & Event Stream -->
+              <div class="admin-glass-card" style="margin-bottom:24px;">
+                <div class="card-header" style="margin-bottom:16px;">
+                  <h3><i class="fa-solid fa-shield-cat" style="color:var(--danger);"></i> Security & System Alert Zone</h3>
+                  <span class="badge-pill alert-badge">3 Notices</span>
+                </div>
+                <div class="alerts-stream">
+                  <div class="alert-box alert-danger">
+                    <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="alert-content">
+                      <strong>DB Cluster Storage Warning</strong>
+                      <p>Primary DB partition storage reached 68% threshold capacity.</p>
+                      <span class="time">10 mins ago</span>
+                    </div>
+                  </div>
+
+                  <div class="alert-box alert-warning">
+                    <div class="alert-icon"><i class="fa-solid fa-user-clock"></i></div>
+                    <div class="alert-content">
+                      <strong>Pending Verification Queue</strong>
+                      <p>8 student accounts awaiting identity clearance approval.</p>
+                      <span class="time">42 mins ago</span>
+                    </div>
+                  </div>
+
+                  <div class="alert-box alert-success">
+                    <div class="alert-icon"><i class="fa-solid fa-cloud-check"></i></div>
+                    <div class="alert-content">
+                      <strong>Automated Snapshot Backup</strong>
+                      <p>Daily encrypted database backup completed successfully.</p>
+                      <span class="time">2 hours ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Terminal Actions Card -->
+              <div class="admin-glass-card">
+                <div class="card-header" style="margin-bottom:16px;">
+                  <h3><i class="fa-solid fa-bolt" style="color:var(--warning);"></i> Quick Governance Terminal</h3>
+                </div>
+                <div class="quick-terminal-grid">
+                  <a href="../admin-roles/admin-roles.html" class="terminal-tile">
+                    <i class="fa-solid fa-user-shield" style="color:var(--accent);"></i>
+                    <span>Role Assignment</span>
+                  </a>
+
+                  <a href="../admin-security/admin-security.html" class="terminal-tile">
+                    <i class="fa-solid fa-shield-halved" style="color:var(--danger);"></i>
+                    <span>Security Rules</span>
+                  </a>
+
+                  <a href="../admin-backup/admin-backup.html" class="terminal-tile">
+                    <i class="fa-solid fa-box-archive" style="color:var(--success);"></i>
+                    <span>Database Backup</span>
+                  </a>
+
+                  <a href="../admin-settings/admin-settings.html" class="terminal-tile">
+                    <i class="fa-solid fa-gears" style="color:var(--info);"></i>
+                    <span>System Settings</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Create User Modal -->
+    <div class="modal-backdrop" id="userModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-user-plus" style="color:var(--primary);"></i> Add New User Account</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <form id="userForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" id="userNameInput" placeholder="e.g. Rahul Verma" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" id="userEmailInput" placeholder="e.g. rahul.v@unifyed.edu" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Select Account Role</label>
+              <select class="form-input" id="userRoleSelect" required>
+                <option value="Student">Student User</option>
+                <option value="Professor">Professor Faculty</option>
+                <option value="HOD">Head of Department (HOD)</option>
+                <option value="Fees Manager">Fees Manager / Accountant</option>
+                <option value="Admin">System Administrator</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Create User</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Maintenance Modal -->
+    <div class="modal-backdrop" id="maintModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-sliders" style="color:var(--warning);"></i> System Maintenance Options</h3>
+          <button type="button" class="modal-close-btn closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:13px; color:var(--text-secondary); margin-bottom:16px;">Trigger emergency maintenance modes or flush system cache buffers.</p>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <button class="btn btn-secondary" id="btnFlushCache"><i class="fa-solid fa-broom"></i> Flush System Redis Cache</button>
+            <button class="btn btn-secondary" id="btnOptimizeDb"><i class="fa-solid fa-database"></i> Run Database Index Optimization</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary closeModalBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="dashboard-admin.js"></script>
+  </body>
+</html>

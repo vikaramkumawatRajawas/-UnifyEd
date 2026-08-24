@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEM Student ID Verification Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: rgba(17, 24, 39, 0.95);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent: #10b981;
+            --primary: #6366f1;
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .verify-header {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            padding: 24px 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--glass-shadow);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .verify-badge {
+            color: var(--accent);
+            font-size: 16px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            margin-bottom: 15px;
+        }
+        .verify-header h1 {
+            font-size: 24px;
+            margin: 0 0 8px 0;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        .verify-header p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .summary-box {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            flex-wrap: wrap;
+        }
+        .summary-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .summary-info {
+            text-align: left;
+            font-size: 13px;
+        }
+        .summary-info strong {
+            font-size: 16px;
+            color: #fff;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .card-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0 10px 0;
+            width: 100%;
+            text-align: left;
+            border-left: 3px solid var(--primary);
+            padding-left: 10px;
+        }
+        .cards-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .card-wrapper span {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        
+        /* Premium ID Card styling */
+        .id-card {
+            width: 320px;
+            height: 500px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .id-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.15), transparent 50%);
+            pointer-events: none;
+        }
+        .id-header {
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .logo-area i {
+            font-size: 18px;
+            color: var(--primary);
+        }
+        .logo-area strong {
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .card-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .photo-container {
+            width: 100px;
+            height: 110px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-container i {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: 125px 10px 1fr;
+            row-gap: 6px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        .details-grid label {
+            text-align: left;
+            font-weight: 600;
+            color: #fcd34d;
+        }
+        .details-grid span {
+            text-align: left;
+            color: #fff;
+        }
+        .card-divider {
+            grid-column: span 3;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            margin: 5px 0;
+        }
+        .id-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .signature-area {
+            text-align: center;
+            font-size: 8px;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .signature-line {
+            width: 70px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 2px;
+        }
+        .signature-font {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+        .id-card-back {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+            font-size: 9.5px;
+            color: var(--text-secondary);
+            justify-content: flex-start;
+            gap: 8px;
+        }
+        .back-section {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 6px;
+        }
+        .back-section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .back-section h4 {
+            color: #fff;
+            margin: 0 0 4px 0;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-section h4 i {
+            color: var(--primary);
+            font-size: 8px;
+        }
+        .back-section p {
+            margin: 0;
+            line-height: 1.4;
+            color: #fff;
+        }
+        .back-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            row-gap: 3px;
+        }
+        .back-grid label {
+            font-weight: 600;
+            color: #fcd34d;
+        }
+        .back-grid span {
+            color: #fff;
+        }
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+        }
+        .btn {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .btn-accent {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .btn-accent:hover {
+            background: #059669;
+            border-color: #059669;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            background: rgba(16, 185, 129, 0.95);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 9999;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: #0b0f19 !important;
+                color: #ffffff !important;
+                padding: 40px 0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .verify-header, .button-group, .card-section-title, .card-wrapper > span {
+                display: none !important;
+            }
+            .cards-container {
+                gap: 50px !important;
+                justify-content: center !important;
+            }
+            .id-card {
+                box-shadow: none !important;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .id-card * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .verify-badge {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Verification Banner -->
+        <div class="verify-header">
+            <div class="verify-badge">
+                <i class="fa-solid fa-circle-check"></i> Student Verification
+            </div>
+            <h1 id="titleBanner">VERIFIED STUDENT</h1>
+            <p>Academic Credentials Officially Registered at UEM Jaipur</p>
+            
+            <div class="summary-box">
+                <div class="summary-avatar">
+                    <img id="summaryAvatarImg" src="" style="width:100%; height:100%; object-fit:cover; display:none;">
+                    <i id="summaryAvatarIcon" class="fa-solid fa-user" style="font-size:24px; color:var(--primary);"></i>
+                </div>
+                <div class="summary-info">
+                    <strong id="summaryName">Vikram Kumawat</strong>
+                    <span id="summaryMeta">Course: BCA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-section-title">Verified Student ID Cards</div>
+
+        <div class="cards-container">
+            <!-- Front Card Face -->
+            <div class="card-wrapper">
+                <span>[ FRONT SIDE ]</span>
+                <div class="id-card">
+                    <div class="id-header">
+                        <div class="logo-area">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <strong>UEM JAIPUR</strong>
+                        </div>
+                        <div class="card-title">STUDENT ID CARD</div>
+                    </div>
+                    
+                    <div class="photo-container">
+                        <img id="frontAvatarImg" src="" style="display:none;">
+                        <i id="frontAvatarIcon" class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="details-grid">
+                        <label>Name</label><span>:</span><strong style="color:#fff;" id="frontName">Vikram Kumawat</strong>
+                        <label>Student ID</label><span>:</span><span id="frontEnroll">ST20260001</span>
+                        <label>Roll Number</label><span>:</span><span id="frontRoll">BCA23015</span>
+                        <label>Course</label><span>:</span><span id="frontCourse">BCA</span>
+                        <label>DOB</label><span>:</span><span id="frontDob">15-08-2004</span>
+                        <label>Mobile</label><span>:</span><span id="frontPhone">**********</span>
+                        
+                        <div class="card-divider"></div>
+                        
+                        <label>Department</label><span>:</span><span id="frontDept">Computer Application</span>
+                        <label>Academic Year</label><span>:</span><span id="frontYear">2026-27</span>
+                    </div>
+
+                    <div class="id-footer">
+                        <canvas id="idCardQrCanvas" style="width:36px; height:36px; background:#fff; padding:2px; border-radius:4px;"></canvas>
+                        <div class="signature-area">
+                            <span class="signature-font" id="frontSigName">Vikram</span>
+                            <div class="signature-line"></div>
+                            <span>Student Signature</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Card Face -->
+            <div class="card-wrapper">
+                <span>[ BACK SIDE ]</span>
+                <div class="id-card id-card-back">
+                    <div class="id-header" style="width:100%; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px; margin-bottom:5px;">
+                        <div class="card-title" style="letter-spacing:1px;">STUDENT ID CARD (BACK)</div>
+                    </div>
+
+                    <!-- Emergency Details -->
+                    <div class="back-section" style="width:100%;">
+                        <h4><i class="fa-solid fa-heart-pulse"></i> Emergency Contact</h4>
+                        <div class="back-grid">
+                            <label>Father Name</label><span id="backFather">: Shri R. K. Kumawat</span>
+                            <label>Mother Name</label><span id="backMother">: Smt. Kamala Devi</span>
+                            <label>Emergency No</label><span id="backEmergencyNo">: +91 94140 XXXXX</span>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="back-section" style="width:100%;">
+                        <h4><i class="fa-solid fa-house-user"></i> Address</h4>
+                        <p id="backAddress" style="padding-left:12px;">104, Mansarovar, Jaipur 302020</p>
+                    </div>
+
+                    <!-- Institution Coordinates -->
+                    <div class="back-section" style="width:100%;">
+                        <h4><i class="fa-solid fa-envelope-open-text"></i> College Contact</h4>
+                        <div class="back-grid">
+                            <label>Website</label><span>: www.uem.edu.in</span>
+                            <label>Email</label><span>: admissions@uem.edu.in</span>
+                            <label>Phone</label><span>: +91 141 2345678</span>
+                        </div>
+                    </div>
+
+                    <!-- Registrar Signature -->
+                    <div style="display:flex; justify-content:flex-end; width:100%; margin-top:auto; padding-right:10px;">
+                        <div class="signature-area">
+                            <span class="signature-font" style="color:var(--primary); font-size:12px; font-weight:bold;">UEM Registrar</span>
+                            <div class="signature-line" style="width:80px;"></div>
+                            <span>Authorized Signature</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+            <button class="btn btn-accent" onclick="saveAsPdf()"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+            <button class="btn" onclick="printCard()"><i class="fa-solid fa-print"></i> Print Card</button>
+            <button class="btn" onclick="shareCard()"><i class="fa-solid fa-share-nodes"></i> Share Card</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-check"></i> Verification Link Copied to Clipboard!
+    </div>
+
+    <!-- Load client side QRious library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        // Fetch student details from URL parameters
+        const params = new URLSearchParams(window.location.search);
+        
+        // Front Details
+        const name = params.get('name') || "Vikram Kumawat";
+        const id = params.get('id') || "ST20260001";
+        const roll = params.get('roll') || "BCA23015";
+        const course = params.get('course') || "BCA";
+        const semester = params.get('semester') || "3";
+        const blood = params.get('blood') || "O+";
+        const dob = params.get('dob') || "15-08-2004";
+        const phone = params.get('phone') || "**********";
+        const dept = params.get('dept') || "Computer Application";
+        const year = params.get('year') || "2026-27";
+        
+        // Back Details
+        const father = params.get('father') || "Shri R. K. Kumawat";
+        const mother = params.get('mother') || "Smt. Kamala Devi";
+        const emergencyNo = params.get('emergNo') || "+91 94140 XXXXX";
+        const address = params.get('address') || "104, Mansarovar, Jaipur 302020";
+        const busRoute = params.get('busRoute') || "Route No. 12 (Mansarovar)";
+        const hostel = params.get('hostel') || "NO";
+        const allergy = params.get('allergy') || "None";
+
+        // Bind Front UI
+        document.getElementById('summaryName').textContent = name;
+        document.getElementById('summaryMeta').textContent = `Course: ${course}`;
+        
+        document.getElementById('frontName').textContent = name;
+        document.getElementById('frontEnroll').textContent = id;
+        document.getElementById('frontRoll').textContent = roll;
+        document.getElementById('frontCourse').textContent = course;
+        document.getElementById('frontDob').textContent = dob;
+        document.getElementById('frontPhone').textContent = phone;
+        document.getElementById('frontDept').textContent = dept;
+        document.getElementById('frontYear').textContent = year;
+        
+        // Dynamic sig font
+        const firstWord = name.split(' ')[0];
+        document.getElementById('frontSigName').textContent = firstWord;
+
+        // Bind Back UI
+        document.getElementById('backFather').textContent = ": " + father;
+        document.getElementById('backMother').textContent = ": " + mother;
+        document.getElementById('backEmergencyNo').textContent = ": " + emergencyNo;
+        document.getElementById('backAddress').textContent = address;
+        document.getElementById('backBus').textContent = ": " + busRoute;
+        document.getElementById('backHostel').textContent = ": " + hostel;
+        document.getElementById('backMedical').textContent = `: Allergy: ${allergy}`;
+
+        // Attempt to load profile image from localStorage
+        try {
+            const photo = localStorage.getItem("studentPhoto");
+            if (photo) {
+                const sImg = document.getElementById("summaryAvatarImg");
+                const sIcon = document.getElementById("summaryAvatarIcon");
+                const fImg = document.getElementById("frontAvatarImg");
+                const fIcon = document.getElementById("frontAvatarIcon");
+                
+                sImg.src = photo; sImg.style.display = "block"; sIcon.style.display = "none";
+                fImg.src = photo; fImg.style.display = "block"; fIcon.style.display = "none";
+            }
+        } catch(e) {
+            console.log("LocalStorage not accessible.");
+        }
+
+        // Generate QR code client side representing student details text directly (deferred until script loads)
+        window.addEventListener('load', () => {
+            if (typeof QRious !== 'undefined') {
+                const qrText = `UNIVERSITY OF ENGINEERING & MANAGEMENT\nSTUDENT ID CARD VERIFIED\n\n` +
+                               `Name          : ${name}\n` +
+                               `Student ID    : ${id}\n` +
+                               `Roll Number   : ${roll}\n` +
+                               `Course        : ${course}\n` +
+                               `DOB           : ${dob}\n` +
+                               `Mobile        : ${phone}\n` +
+                               `Department    : ${dept}\n` +
+                               `Academic Year : ${year}\n\n` +
+                               `Father Name   : ${father}\n` +
+                               `Mother Name   : ${mother}\n` +
+                               `Emergency No  : ${emergencyNo}\n` +
+                               `Address       : ${address}`;
+
+                new QRious({
+                    element: document.getElementById('idCardQrCanvas'),
+                    value: qrText,
+                    size: 150
+                });
+            }
+        });
+
+        // Action Functions
+        function printCard() {
+            window.print();
+        }
+
+        function saveAsPdf() {
+            generateA4CardImage((dataUrl) => {
+                const link = document.createElement('a');
+                link.download = `Student_ID_${id}.png`;
+                link.href = dataUrl;
+                link.click();
+            });
+        }
+
+        function shareCard() {
+            const shareUrl = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'UEM Verified Student Identity',
+                    text: `Verified student credentials for ${name}`,
+                    url: shareUrl
+                }).catch(err => console.log(err));
+            } else {
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    const toast = document.getElementById('toast');
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 3000);
+                });
+            }
+        }
+
+        function generateA4CardImage(callback) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1240;
+            canvas.height = 1754;
+            const ctx = canvas.getContext('2d');
+
+            // Draw clean white background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw elegant blue border around A4
+            ctx.strokeStyle = '#1e3a8a';
+            ctx.lineWidth = 15;
+            ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+
+            // Header Banner
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(40, 40, canvas.width - 80, 100);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 28px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('UNIVERSITY OF ENGINEERING & MANAGEMENT, JAIPUR', canvas.width / 2, 95);
+            ctx.font = '16px sans-serif';
+            ctx.fillStyle = '#fcd34d';
+            ctx.fillText('OFFICIAL STUDENT RECORD • VERIFIED ID CARD PRINT PORTAL', canvas.width / 2, 125);
+
+            // Draw Front Label
+            ctx.fillStyle = '#0f172a';
+            ctx.font = 'bold 20px sans-serif';
+            ctx.fillText('[ CARD FRONT SIDE ]', canvas.width / 2, 190);
+
+            // Function to draw card face
+            function drawCardFace(x, y, w, h, isBack) {
+                const grad = ctx.createLinearGradient(x, y, x + w, y + h);
+                if (isBack) {
+                    grad.addColorStop(0, '#0f172a');
+                    grad.addColorStop(1, '#1e293b');
+                } else {
+                    grad.addColorStop(0, '#1e293b');
+                    grad.addColorStop(1, '#0f172a');
+                }
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.roundRect(x, y, w, h, 20);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                if (!isBack) {
+                    // FRONT FACE DESIGN
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 16px sans-serif';
+                    ctx.fillText('UNIVERSITY OF ENGINEERING & MANAGEMENT', x + w / 2, y + 45);
+                    ctx.fillStyle = '#10b981';
+                    ctx.font = 'bold 12px sans-serif';
+                    ctx.fillText('STUDENT ID CARD', x + w / 2, y + 65);
+
+                    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(x + 20, y + 80);
+                    ctx.lineTo(x + w - 20, y + 80);
+                    ctx.stroke();
+
+                    const photoX = x + w / 2 - 60;
+                    const photoY = y + 100;
+                    const photoW = 120;
+                    const photoH = 130;
+                    ctx.fillStyle = 'rgba(255,255,255,0.05)';
+                    ctx.fillRect(photoX, photoY, photoW, photoH);
+                    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                    ctx.strokeRect(photoX, photoY, photoW, photoH);
+
+                    const frontImgEl = document.getElementById("frontAvatarImg");
+                    if (frontImgEl && frontImgEl.src && frontImgEl.style.display !== "none") {
+                        try {
+                            ctx.drawImage(frontImgEl, photoX + 2, photoY + 2, photoW - 4, photoH - 4);
+                        } catch (e) {
+                            drawUserIcon(ctx, photoX + photoW / 2, photoY + photoH / 2);
+                        }
+                    } else {
+                        drawUserIcon(ctx, photoX + photoW / 2, photoY + photoH / 2);
+                    }
+
+                    ctx.textAlign = 'left';
+                    let gridY = y + 270;
+                    const rowGap = 30;
+
+                    const frontFields = [
+                        { label: 'Name', val: name },
+                        { label: 'Student ID', val: id },
+                        { label: 'Roll Number', val: roll },
+                        { label: 'Course', val: course },
+                        { label: 'DOB', val: dob },
+                        { label: 'Mobile', val: phone },
+                        { label: 'Department', val: dept },
+                        { label: 'Academic Year', val: year }
+                    ];
+
+                    frontFields.forEach(f => {
+                        ctx.fillStyle = '#fcd34d';
+                        ctx.font = 'bold 14px sans-serif';
+                        ctx.fillText(f.label, x + 30, gridY);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillText(':', x + 160, gridY);
+                        ctx.fillText(f.val, x + 185, gridY);
+                        gridY += rowGap;
+                    });
+
+                    const qrCanvas = document.getElementById('idCardQrCanvas');
+                    if (qrCanvas) {
+                        ctx.drawImage(qrCanvas, x + 30, y + h - 100, 75, 75);
+                    }
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'italic 18px Georgia';
+                    ctx.fillText(firstWord, x + w - 150, y + h - 55);
+                    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+                    ctx.beginPath();
+                    ctx.moveTo(x + w - 180, y + h - 45);
+                    ctx.lineTo(x + w - 30, y + h - 45);
+                    ctx.stroke();
+                    ctx.font = '10px sans-serif';
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.fillText('Student Signature', x + w - 145, y + h - 30);
+
+                } else {
+                    // BACK FACE DESIGN
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 16px sans-serif';
+                    ctx.fillText('STUDENT ID CARD (BACK)', x + w / 2, y + 35);
+                    ctx.textAlign = 'left';
+                    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                    ctx.beginPath();
+                    ctx.moveTo(x + 20, y + 45);
+                    ctx.lineTo(x + w - 20, y + 45);
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 15px sans-serif';
+                    ctx.fillText('Emergency Contact', x + 30, y + 75);
+                    let subY = y + 105;
+                    const backFields1 = [
+                        { label: 'Father Name', val: father },
+                        { label: 'Mother Name', val: mother },
+                        { label: 'Emergency No', val: emergencyNo }
+                    ];
+                    backFields1.forEach(f => {
+                        ctx.fillStyle = '#fcd34d';
+                        ctx.font = 'bold 13px sans-serif';
+                        ctx.fillText(f.label, x + 40, subY);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '13px sans-serif';
+                        ctx.fillText(': ' + f.val, x + 160, subY);
+                        subY += 25;
+                    });
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 15px sans-serif';
+                    ctx.fillText('Address', x + 30, y + 200);
+                    ctx.font = '13px sans-serif';
+                    ctx.fillText(address, x + 40, y + 225);
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 15px sans-serif';
+                    ctx.fillText('College Contact', x + 30, y + 275);
+                    ctx.font = '13px sans-serif';
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillText('Website : www.uem.edu.in', x + 40, y + 300);
+                    ctx.fillText('Email : admissions@uem.edu.in', x + 40, y + 322);
+                    ctx.fillText('Phone : +91 141 2345678', x + 40, y + 344);
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'italic 18px Georgia';
+                    ctx.fillText('UEM Registrar', x + w - 160, y + h - 70);
+                    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+                    ctx.beginPath();
+                    ctx.moveTo(x + w - 180, y + h - 60);
+                    ctx.lineTo(x + w - 30, y + h - 60);
+                    ctx.stroke();
+                    ctx.font = '11px sans-serif';
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.fillText('Authorized Signature', x + w - 150, y + h - 45);
+                }
+            }
+
+            function drawUserIcon(c, cx, cy) {
+                c.fillStyle = '#6366f1';
+                c.beginPath();
+                c.arc(cx, cy - 15, 25, 0, Math.PI * 2);
+                c.fill();
+                c.beginPath();
+                c.arc(cx, cy + 40, 45, Math.PI, 0);
+                c.fill();
+            }
+
+            // Draw front face box
+            drawCardFace(370, 220, 500, 750, false);
+
+            ctx.fillStyle = '#0f172a';
+            ctx.font = 'bold 20px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('[ CARD BACK SIDE ]', canvas.width / 2, 1020);
+
+            // Draw back face box
+            drawCardFace(370, 1050, 500, 630, true);
+
+            setTimeout(() => {
+                const dataUrl = canvas.toDataURL('image/png');
+                callback(dataUrl);
+            }, 100);
+        }
+
+        // Auto render and direct image redirect if renderImage is true
+        if (params.get('renderImage') === 'true') {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    generateA4CardImage((dataUrl) => {
+                        document.body.innerHTML = '';
+                        document.body.style.margin = '0';
+                        document.body.style.padding = '0';
+                        document.body.style.background = '#f1f5f9';
+                        document.body.style.display = 'flex';
+                        document.body.style.justifyContent = 'center';
+                        document.body.style.alignItems = 'center';
+                        document.body.style.minHeight = '100vh';
+                        
+                        const img = document.createElement('img');
+                        img.src = dataUrl;
+                        img.style.maxWidth = '100%';
+                        img.style.maxHeight = '100vh';
+                        img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+                        img.style.objectFit = 'contain';
+                        
+                        document.body.appendChild(img);
+                    });
+                }, 600);
+            });
+        }
+    </script>
+</body>
+</html>

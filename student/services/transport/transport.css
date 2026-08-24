@@ -1,0 +1,9 @@
+
+            .transport-card {
+                padding: 30px;
+            }
+            .transport-card h3 {
+                font-size: 18px;
+                color: var(--accent);
+            }
+        

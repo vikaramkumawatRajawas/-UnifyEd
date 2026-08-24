@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd HOD Portal - Executive Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="dashboard-hod.css">
+    <link rel="stylesheet" href="../hod-sidebar.css">
+</head>
+<body class="hod-portal-body">
+    <header class="mobile-portal-header">
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+      <div class="portal-brand"><i class="fa-solid fa-graduation-cap"></i><h2>UnifyEd</h2></div>
+      <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+    </header>
+
+
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>UnifyEd</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="nav-section-title">Executive Control</div>
+          <a href="../dashboard-hod/dashboard-hod.html" class="sidebar-item active"><i class="fa-solid fa-chart-pie"></i><span>HOD Dashboard</span></a>
+          <a href="../hod-teachers/hod-teachers.html" class="sidebar-item"><i class="fa-solid fa-users"></i><span>Faculty Roster</span></a>
+          <a href="../hod-students/hod-students.html" class="sidebar-item"><i class="fa-solid fa-user-graduate"></i><span>Students Registry</span></a>
+          <a href="../hod-performance/hod-performance.html" class="sidebar-item"><i class="fa-solid fa-chart-line"></i><span>Academic Performance</span></a>
+
+          <div class="nav-section-title">Department Management</div>
+          <a href="../hod-syllabus/hod-syllabus.html" class="sidebar-item"><i class="fa-solid fa-book-open"></i><span>Syllabus & Audit</span></a>
+          <a href="../hod-timetable/hod-timetable.html" class="sidebar-item"><i class="fa-solid fa-calendar-week"></i><span>Master Timetable</span></a>
+          <a href="../hod-classes/hod-classes.html" class="sidebar-item"><i class="fa-solid fa-chalkboard"></i><span>Class Allocation</span></a>
+          <a href="../hod-announcements/hod-announcements.html" class="sidebar-item"><i class="fa-solid fa-bullhorn"></i><span>Official Bulletins</span></a>
+
+          <div class="nav-section-title">Communication</div>
+          <a href="../hod-messages/hod-messages.html" class="sidebar-item"><i class="fa-solid fa-comments"></i><span>Messages / Chat</span></a>
+
+          <div class="nav-section-title">Reports & System</div>
+          <a href="../hod-analytics/hod-analytics.html" class="sidebar-item"><i class="fa-solid fa-chart-simple"></i><span>Dept Analytics</span></a>
+          <a href="../hod-reports/hod-reports.html" class="sidebar-item"><i class="fa-solid fa-file-invoice"></i><span>Audit Reports</span></a>
+          <a href="../hod-profile/hod-profile.html" class="sidebar-item"><i class="fa-solid fa-id-badge"></i><span>HOD Profile</span></a>
+          <a href="../hod-settings/hod-settings.html" class="sidebar-item"><i class="fa-solid fa-sliders"></i><span>Portal Settings</span></a>
+        </div>
+        <div class="sidebar-footer">
+          <div class="logout-link" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></div>
+        </div>
+      </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+            <!-- Header bar -->
+            <header class="main-portal-header">
+          <div>
+            <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+            <div class="header-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="portalSearchInput" placeholder="Search HOD portal..." autocomplete="off">
+            </div>
+          </div>
+          <div class="header-actions" style="position:relative;">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme"><i class="fa-solid fa-sun icon-sun"></i><i class="fa-solid fa-moon icon-moon"></i></button>
+            <button type="button" class="header-icon-btn" id="notificationBellBtn" title="Notifications" style="background:var(--bg-tertiary); border:1px solid var(--border-color); color:var(--text-secondary); width:38px; height:38px; border-radius:50%; cursor:pointer; position:relative; display:flex; align-items:center; justify-content:center;">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-badge" id="notificationCountBadge" style="position:absolute; top:-2px; right:-2px; background:var(--danger); color:white; font-size:10px; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center;">4</span>
+            </button>
+
+            <!-- Notification Popover -->
+            <div class="notification-popover" id="notificationPopover">
+              <div class="notification-popover-header">
+                <h4>Department Alerts</h4>
+                <button type="button" id="btnMarkNotificationsRead" style="background:none; border:none; color:var(--primary); font-size:11px; font-weight:700; cursor:pointer;">Mark all read</button>
+              </div>
+              <div class="notification-list" id="notificationListContainer">
+                <!-- Dynamic notifications injected by JS -->
+              </div>
+            </div>
+
+            <div class="user-profile-widget" id="portalProfileTrigger" style="position:relative; cursor:pointer;">
+              <div class="details"><strong id="hodUserNameTop">Dr. Rajesh Kumar</strong><span>CSE-EMP-204</span></div>
+              <i class="fa-solid fa-circle-user profile-avatar" style="font-size:24px; color:var(--primary);"></i>
+            </div>
+            <div class="profile-menu" id="profileMenu">
+              <a href="../hod-profile/hod-profile.html"><i class="fa-solid fa-id-badge"></i><span>View Profile</span></a>
+              <a href="../hod-settings/hod-settings.html"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+              <button type="button" class="profile-menu-logout" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+            </div>
+          </div>
+        </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Department Executive Dashboard 🎓</h1>
+                    <span class="breadcrumbs">UnifyEd • HOD Portal • Computer Science & Engineering</span>
+                </div>
+
+                <!-- Hero Executive Card -->
+                <div class="hod-hero-card">
+                    <div class="hod-hero-info">
+                        <h2 id="hodWelcomeHeading">Welcome back, Dr. Rajesh Kumar! 👋</h2>
+                        <p>Department of Computer Science & Engineering • Academic Year 2025-26 (Autumn Semester)</p>
+                    </div>
+                    <div class="hod-hero-actions">
+                        <button type="button" class="btn btn-primary" id="btnPostBulletinTrigger"><i class="fa-solid fa-bullhorn"></i> Post Bulletin</button>
+                        <button type="button" class="btn btn-secondary" id="btnExportReportTrigger"><i class="fa-solid fa-file-pdf"></i> Export Audit Report</button>
+                    </div>
+                </div>
+
+                <!-- KPI Metric Grid -->
+                <div class="kpi-grid">
+                    <div class="kpi-card" style="cursor:pointer;" id="kpiFacultyCard">
+                        <div class="kpi-icon primary">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiFacultyVal">28</div>
+                            <div class="kpi-lbl">Faculty Professors</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +2 this term</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card" style="cursor:pointer;" id="kpiStudentCard">
+                        <div class="kpi-icon success">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiStudentVal">620</div>
+                            <div class="kpi-lbl">Enrolled Students</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +45 new intake</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card" style="cursor:pointer;" id="kpiGpaCard">
+                        <div class="kpi-icon warning">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiGpaVal">8.6 / 10</div>
+                            <div class="kpi-lbl">Average Dept GPA</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-arrow-up"></i> +0.3 vs last yr</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card" style="cursor:pointer;" id="kpiAttendanceCard">
+                        <div class="kpi-icon accent">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                        </div>
+                        <div>
+                            <div class="kpi-val" id="kpiAttendanceVal">94.8%</div>
+                            <div class="kpi-lbl">Attendance Average</div>
+                            <span class="trend-badge positive"><i class="fa-solid fa-check"></i> High Engagement</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two Column Dashboard Grid -->
+                <div class="dashboard-grid-2">
+                    <!-- Left Main Column -->
+                    <div>
+                        <!-- Department Faculty Roster Card -->
+                        <div class="glass-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                                <h3 style="font-size:16px; font-weight:800;"><i class="fa-solid fa-users" style="color:var(--primary); margin-right:8px;"></i> Senior Faculty Roster</h3>
+                                <div>
+                                  <button type="button" class="btn btn-secondary" id="btnAddFacultyTrigger" style="padding:4px 10px; font-size:11px; margin-right:8px;"><i class="fa-solid fa-plus"></i> Add Faculty</button>
+                                  <a href="../hod-teachers/hod-teachers.html" style="color:var(--primary); text-decoration:none; font-size:12px; font-weight:700;">View Roster →</a>
+                                </div>
+                            </div>
+
+                            <table class="hod-table">
+                                <thead>
+                                    <tr>
+                                        <th>Professor Name</th>
+                                        <th>Assigned Classes</th>
+                                        <th>Attendance Rate</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="facultyRosterTbody">
+                                    <!-- Dynamic Faculty Roster -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Syllabus Approval & Audit Progress -->
+                        <div class="glass-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                                <h3 style="font-size:16px; font-weight:800;"><i class="fa-solid fa-book-open" style="color:var(--accent); margin-right:8px;"></i> Curriculum & Syllabus Reviews</h3>
+                                <a href="../hod-syllabus/hod-syllabus.html" style="color:var(--primary); text-decoration:none; font-size:12px; font-weight:700;">Audit Center →</a>
+                            </div>
+
+                            <table class="hod-table">
+                                <thead>
+                                    <tr>
+                                        <th>Subject Name</th>
+                                        <th>Assigned Lead</th>
+                                        <th>Review Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="syllabusReviewTbody">
+                                    <!-- Dynamic Syllabus Items -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <!-- Department Activity Feed -->
+                        <div class="glass-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                              <h3 style="font-size:16px; font-weight:800;"><i class="fa-solid fa-clock-rotate-left" style="color:var(--primary); margin-right:8px;"></i> Department Bulletins</h3>
+                              <button type="button" id="btnQuickPostBulletin" style="background:none; border:none; color:var(--primary); font-size:12px; font-weight:700; cursor:pointer;">+ New</button>
+                            </div>
+                            
+                            <div class="bulletin-timeline" id="bulletinFeedList">
+                                <!-- Dynamic Bulletins -->
+                            </div>
+                        </div>
+
+                        <!-- Quick Executive Actions -->
+                        <div class="glass-card">
+                            <h3 style="font-size:16px; font-weight:800; margin-bottom:16px;"><i class="fa-solid fa-bolt" style="color:var(--warning); margin-right:8px;"></i> Quick Commands</h3>
+                            <div style="display:flex; flex-direction:column; gap:10px;">
+                                <button type="button" class="btn btn-primary" id="cmdPostBulletin" style="justify-content:center;"><i class="fa-solid fa-bullhorn"></i> Post New Bulletin</button>
+                                <button type="button" class="btn btn-secondary" id="cmdAddFaculty" style="justify-content:center;"><i class="fa-solid fa-user-plus"></i> Onboard New Faculty</button>
+                                <a href="../hod-syllabus/hod-syllabus.html" class="btn btn-secondary" style="justify-content:center;"><i class="fa-solid fa-file-signature"></i> Review Syllabi</a>
+                                <a href="../hod-analytics/hod-analytics.html" class="btn btn-secondary" style="justify-content:center;"><i class="fa-solid fa-chart-line"></i> Dept Analytics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         HOD MODAL DIALOGS
+         ========================================================================== -->
+
+    <!-- Post Bulletin Modal -->
+    <div class="hod-modal-overlay" id="bulletinModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-bullhorn" style="color:var(--primary);"></i> Post Department Bulletin</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="bulletinModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="bulletinForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="bulletinTitle">Bulletin Title</label>
+                        <input type="text" id="bulletinTitle" class="hod-form-input" placeholder="e.g. Mid-Term Examination Schedule" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="bulletinCategory">Category</label>
+                        <select id="bulletinCategory" class="hod-form-select">
+                            <option value="academic">Academic Notice</option>
+                            <option value="urgent">Urgent Circular</option>
+                            <option value="meeting">Faculty Meeting</option>
+                            <option value="event">Department Event</option>
+                        </select>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="bulletinDetails">Bulletin Description</label>
+                        <textarea id="bulletinDetails" class="hod-form-textarea" placeholder="Enter detailed announcement message..." required></textarea>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="bulletinModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Publish Bulletin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Syllabus Review & Approval Modal -->
+    <div class="hod-modal-overlay" id="syllabusModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-book-open" style="color:var(--accent);"></i> Syllabus Audit Review</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="syllabusModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="hod-modal-body">
+                <div style="background:var(--bg-tertiary); padding:14px; border-radius:var(--border-radius-sm); margin-bottom:16px;">
+                    <strong style="font-size:15px; color:var(--text-primary);" id="syllabusSubjectName">Database Management Systems</strong>
+                    <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">Lead Professor: <span id="syllabusLeadName">Prof. Meera Patel</span></div>
+                    <div style="font-size:11px; color:var(--text-tertiary); margin-top:2px;">Course Code: CSE-304 • Credits: 4.0</div>
+                </div>
+                <div class="hod-form-group">
+                    <label for="syllabusReviewRemarks">HOD Audit Remarks</label>
+                    <textarea id="syllabusReviewRemarks" class="hod-form-textarea" placeholder="Add optional comments or required modifications..."></textarea>
+                </div>
+            </div>
+            <div class="hod-modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnSyllabusReject" style="border-color:var(--danger); color:var(--danger);"><i class="fa-solid fa-xmark"></i> Request Revision</button>
+                <button type="button" class="btn btn-primary" id="btnSyllabusApprove"><i class="fa-solid fa-check"></i> Approve Syllabus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add / Onboard Faculty Modal -->
+    <div class="hod-modal-overlay" id="facultyModal">
+        <div class="hod-modal-dialog">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-user-plus" style="color:var(--primary);"></i> Onboard Faculty Member</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="facultyModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="facultyForm">
+                <div class="hod-modal-body">
+                    <div class="hod-form-group">
+                        <label for="profName">Faculty Full Name</label>
+                        <input type="text" id="profName" class="hod-form-input" placeholder="e.g. Dr. Ananya Sharma" required>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="profDesignation">Designation</label>
+                        <select id="profDesignation" class="hod-form-select">
+                            <option value="Senior Professor">Senior Professor</option>
+                            <option value="Associate Professor">Associate Professor</option>
+                            <option value="Assistant Professor">Assistant Professor</option>
+                            <option value="Guest Lecturer">Guest Lecturer</option>
+                        </select>
+                    </div>
+                    <div class="hod-form-group">
+                        <label for="profClasses">Assigned Courses / Classes</label>
+                        <input type="text" id="profClasses" class="hod-form-input" placeholder="e.g. CSE-3B, MCA-1A" required>
+                    </div>
+                </div>
+                <div class="hod-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal="facultyModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-user-check"></i> Add to Roster</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Executive Audit Report Modal -->
+    <div class="hod-modal-overlay" id="auditModal">
+        <div class="hod-modal-dialog" style="max-width:680px;">
+            <div class="hod-modal-header">
+                <h3><i class="fa-solid fa-file-invoice" style="color:var(--primary);"></i> Executive Audit Report Summary</h3>
+                <button type="button" class="hod-modal-close" data-close-modal="auditModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="hod-modal-body">
+                <div class="audit-report-sheet">
+                    <div class="report-header-box">
+                        <h2>DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING</h2>
+                        <p style="font-size:12px; color:var(--text-secondary); margin-top:4px;">UnifyEd Academic Executive Summary • Autumn Semester 2025-26</p>
+                    </div>
+                    <div class="report-summary-grid">
+                        <div class="report-summary-box">
+                            <span>Department Head</span>
+                            <strong id="auditHeadName">Dr. Rajesh Kumar</strong>
+                        </div>
+                        <div class="report-summary-box">
+                            <span>Faculty Strength</span>
+                            <strong id="auditFacultyCount">28 Professors</strong>
+                        </div>
+                        <div class="report-summary-box">
+                            <span>Student Body</span>
+                            <strong id="auditStudentCount">620 Enrolled</strong>
+                        </div>
+                        <div class="report-summary-box">
+                            <span>Syllabus Compliance</span>
+                            <strong id="auditSyllabusStatus">100% Audited</strong>
+                        </div>
+                    </div>
+                    <p style="font-size:12px; color:var(--text-secondary); line-height:1.5;">
+                        This audit document reflects official departmental metrics, curriculum compliance logs, and faculty attendance summaries certified by the Head of Department.
+                    </p>
+                </div>
+            </div>
+            <div class="hod-modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal="auditModal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="window.print();"><i class="fa-solid fa-print"></i> Print / Save PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div></main>
+        </div>
+    </div>
+
+    <!-- Script for Theme Toggle & Dynamic HOD State -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Theme toggle
+            const themeBtn = document.getElementById("themeToggleBtn");
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+
+            themeBtn.addEventListener("click", () => {
+                const activeTheme = document.documentElement.getAttribute("data-theme");
+                const nextTheme = activeTheme === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", nextTheme);
+                localStorage.setItem("theme", nextTheme);
+            });
+
+            // Dynamic logged-in HOD info
+            const loggedInUser = localStorage.getItem("loggedInUser") || "Dr. Rajesh Kumar";
+            const hodWelcomeHeading = document.getElementById("hodWelcomeHeading");
+            const hodUserName = document.getElementById("hodUserName");
+            const hodAvatarPic = document.getElementById("hodAvatarPic");
+
+            if (hodWelcomeHeading) hodWelcomeHeading.textContent = `Welcome back, ${loggedInUser}! 👋`;
+            if (hodUserName) hodUserName.textContent = loggedInUser;
+
+            const savedAvatar = localStorage.getItem("faculty_avatar_image");
+            if (savedAvatar && hodAvatarPic) {
+                hodAvatarPic.src = savedAvatar;
+            }
+        });
+    </script>
+    <script src="dashboard-hod.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

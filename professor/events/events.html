@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - College Events Hub</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="events.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../dashboard/dashboard.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+                <a href="../academics/my-classes/my-classes.html" class="sidebar-item">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+                <a href="../academics/timetable/timetable.html" class="sidebar-item">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+                <a href="../academics/attendance/attendance.html" class="sidebar-item">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+                <a href="../academics/marks/marks.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+                <a href="../academics/results/results.html" class="sidebar-item">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+                <a href="../academics/student-performance/student-performance.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+                <a href="../classroom/stream/stream.html" class="sidebar-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+                <a href="../classroom/study-materials/study-materials.html" class="sidebar-item">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+                <a href="../classroom/assignments/assignments.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+                <a href="../classroom/quiz/quiz.html" class="sidebar-item">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Online Quizzes</span>
+                </a>
+        
+                <a href="../classroom/discussion/discussion.html" class="sidebar-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Discussions</span>
+                </a>
+        
+                <a href="../classroom/grades/grades.html" class="sidebar-item">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Gradebook</span>
+                </a>
+
+                <a href="../classroom/resources/resources.html" class="sidebar-item">
+                    <i class="fa-solid fa-folder-tree"></i>
+                    <span>Classroom Resources</span>
+                </a>
+
+                <a href="../classroom/members/members.html" class="sidebar-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Class Members</span>
+                </a>
+        
+                <a href="../live-classes/schedule/schedule.html" class="sidebar-item">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Live Classes</span>
+                </a>
+        
+                <a href="../live-classes/start-class/start-class.html" class="sidebar-item">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Start Studio Class</span>
+                </a>
+
+                <a href="../live-classes/live-attendance/live-attendance.html" class="sidebar-item">
+                    <i class="fa-solid fa-user-clock"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+                <a href="../live-classes/recordings/recordings.html" class="sidebar-item">
+                    <i class="fa-solid fa-film"></i>
+                    <span>Class Recordings</span>
+                </a>
+
+                <a href="../live-classes/polls/polls.html" class="sidebar-item">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Live Audience Polls</span>
+                </a>
+        
+                <a href="../student-management/students/students.html" class="sidebar-item">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Student Management</span>
+                </a>
+        
+                <a href="../student-management/applications/applications.html" class="sidebar-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Mentorship Meetings</span>
+                </a>
+        
+                <a href="../student-management/projects/projects.html" class="sidebar-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Project Submissions</span>
+                </a>
+
+                <a href="../student-management/certificates/certificates.html" class="sidebar-item">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+
+                <a href="../reports/attendance-report/attendance-report.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Attendance Reports</span>
+                </a>
+
+                <a href="../reports/marks-report/marks-report.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-area"></i>
+                    <span>Marks Analytics</span>
+                </a>
+
+                <a href="../reports/assignment-report/assignment-report.html" class="sidebar-item">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+
+                <a href="../reports/analytics/analytics.html" class="sidebar-item">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+
+                <a href="events.html" class="sidebar-item active">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+
+                <a href="../research/research.html" class="sidebar-item">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+
+                <a href="../communication/chat/chat.html" class="sidebar-item">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+
+                <a href="../communication/messages/messages.html" class="sidebar-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+
+                <a href="../communication/notifications/notifications.html" class="sidebar-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+
+                <a href="../profile/profile.html" class="sidebar-item">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+
+                <a href="../settings/settings.html" class="sidebar-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+
+                <!-- Breadcrumbs & Header Block -->
+                <div class="page-header-block">
+                    <div class="header-title-container">
+                        <div class="breadcrumb-trail">
+                            <a href="../dashboard/dashboard.html"><i class="fa-solid fa-house"></i> Home</a>
+                            <i class="fa-solid fa-chevron-right separator"></i>
+                            <span class="active">College Events</span>
+                        </div>
+                        <h1 class="page-title">
+                            <span class="title-icon-badge"><i class="fa-solid fa-calendar-star"></i></span>
+                            <span>UnifyEd Campus Events Hub</span>
+                        </h1>
+                        <p class="page-subtitle">Organize, coordinate, and participate in flagship campus tech fests, workshops, hackathons, and cultural galas.</p>
+                    </div>
+
+                    <div class="header-action-group">
+                        <button onclick="openCreateEventModal()" class="btn btn-primary" title="Host New Event">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Host New Event</span>
+                        </button>
+                        <button onclick="filterMyRegisteredEvents()" class="btn btn-outline" title="My Registered Events">
+                            <i class="fa-solid fa-calendar-check" style="color:#10b981;"></i>
+                            <span>My Registered</span>
+                        </button>
+                        <button onclick="downloadEventSchedulePdf()" class="btn btn-outline" title="Download Event Schedule PDF">
+                            <i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i>
+                            <span>Schedule PDF</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Telemetry KPI Overview Grid -->
+                <div class="events-kpi-grid">
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-icon primary">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <div class="events-kpi-info">
+                            <span class="events-kpi-label">Upcoming Events</span>
+                            <span class="events-kpi-value" id="kpiUpcomingCount">12</span>
+                            <span class="events-kpi-subtext text-success"><i class="fa-solid fa-fire"></i> Active Fest Season</span>
+                        </div>
+                    </div>
+
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-icon success">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <div class="events-kpi-info">
+                            <span class="events-kpi-label">Student RSVPs</span>
+                            <span class="events-kpi-value" id="kpiRsvpCount">1,420</span>
+                            <span class="events-kpi-subtext text-success"><i class="fa-solid fa-user-check"></i> 95% Seat Fill Rate</span>
+                        </div>
+                    </div>
+
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-icon warning">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="events-kpi-info">
+                            <span class="events-kpi-label">Faculty Coordinated</span>
+                            <span class="events-kpi-value" id="kpiCoordinatedCount">4</span>
+                            <span class="events-kpi-subtext"><i class="fa-solid fa-award" style="color:#f59e0b;"></i> Flagship Tech Fests</span>
+                        </div>
+                    </div>
+
+                    <div class="events-kpi-card">
+                        <div class="events-kpi-icon accent">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="events-kpi-info">
+                            <span class="events-kpi-label">Live Today</span>
+                            <span class="events-kpi-value">SIH 2026</span>
+                            <span class="events-kpi-subtext" style="color:#ec4899;"><i class="fa-solid fa-location-dot"></i> Auditorium A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flagship Event Spotlight Hero Card -->
+                <div class="event-spotlight-card">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format&fit=crop&q=80" class="event-spotlight-banner" alt="SIH Hackathon 2026">
+                    <div class="event-spotlight-content">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+                            <div>
+                                <span class="status-pill eligible" style="background:rgba(99, 102, 241, 0.2); color:#ffffff; border-color:rgba(99, 102, 241, 0.5); margin-bottom:8px;">
+                                    <i class="fa-solid fa-star" style="color:#f59e0b;"></i> Featured Flagship Hackathon
+                                </span>
+                                <h2 style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 4px 0 8px 0;">Smart India Hackathon (SIH) 2026 - Internal College Qualifier</h2>
+                                <p style="font-size: 13px; color: rgba(255, 255, 255, 0.85); max-width: 680px; margin: 0 0 14px 0; line-height: 1.5;">
+                                    Join the nation's biggest 36-hour non-stop hackathon. Build AI, IoT, & Web solutions for real Ministry problem statements with ₹1,50,000 cash prizes & direct IIT Delhi nomination!
+                                </p>
+                                <div style="display:flex; align-items:center; gap:20px; font-size:12px; color:rgba(255, 255, 255, 0.9); flex-wrap:wrap;">
+                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> Aug 24-25, 2026</span>
+                                    <span><i class="fa-solid fa-location-dot" style="color:#ef4444;"></i> Main Campus Innovation Center</span>
+                                    <span><i class="fa-solid fa-sack-dollar" style="color:#10b981;"></i> Prize Pool: ₹1,50,000</span>
+                                </div>
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:10px; min-width:180px;">
+                                <button onclick="registerForEvent(1)" id="spotlightRsvpBtn" class="btn btn-primary" style="height:42px; font-size:13px; font-weight:700; width:100%; justify-content:center;">
+                                    <i class="fa-solid fa-ticket"></i> RSVP / Register Now
+                                </button>
+                                <button onclick="viewEventDetails(1)" class="btn btn-secondary" style="height:36px; font-size:12px; width:100%; justify-content:center;">
+                                    <i class="fa-solid fa-circle-info"></i> Event Itinerary
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Layout Grid: Events Showcase & Sidebar -->
+                <div class="events-layout-grid">
+                    
+                    <!-- Left Column: Search & Events Grid / Table -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Search & Filter Chips Toolbar -->
+                        <div class="dashboard-card glassmorphism" style="padding: 18px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 240px;">
+                                    <i class="fa-solid fa-magnifying-glass" style="color: var(--text-tertiary);"></i>
+                                    <input type="text" id="eventsSearchInput" placeholder="Search event title, venue, category, or organizer..." class="form-input" style="height: 36px; font-size: 12px;" autocomplete="off">
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                    <button class="chip-btn active" data-filter="all">All Events</button>
+                                    <button class="chip-btn" data-filter="hackathon">Hackathons</button>
+                                    <button class="chip-btn" data-filter="workshop">Workshops</button>
+                                    <button class="chip-btn" data-filter="cultural">Cultural & Sports</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Master Events Container Card -->
+                        <div class="events-table-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+                                <h3 style="font-size:15px; font-weight:800; color:var(--text-primary); margin:0;">
+                                    <i class="fa-solid fa-masks-theater" style="color:var(--primary); margin-right:6px;"></i> Campus Events Directory
+                                </h3>
+                                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                                    <div style="display:flex; gap:4px; background:var(--bg-tertiary); padding:3px; border-radius:6px; border:1px solid var(--border-color); flex-shrink:0;">
+                                        <button id="eventsViewGridBtn" onclick="switchEventsRosterView('grid')" class="btn btn-secondary btn-sm active" style="height:28px; font-size:11px; padding:0 10px; white-space:nowrap;">
+                                            <i class="fa-solid fa-grip-vertical"></i> Cards
+                                        </button>
+                                        <button id="eventsViewTableBtn" onclick="switchEventsRosterView('table')" class="btn btn-secondary btn-sm" style="height:28px; font-size:11px; padding:0 10px; white-space:nowrap;">
+                                            <i class="fa-solid fa-table-list"></i> Calendar List
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Grid Cards Container -->
+                            <div id="eventsGridView" class="events-cards-grid">
+                                <!-- Loaded dynamically via events.js -->
+                            </div>
+
+                            <!-- Table Calendar View Container -->
+                            <div id="eventsTableView" style="display:none;">
+                                <table class="events-custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Event Details</th>
+                                            <th>Date & Time</th>
+                                            <th>Venue Location</th>
+                                            <th>RSVP Capacity</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="eventsReportTableBody">
+                                        <!-- Loaded dynamically via events.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Keynote Speakers Sidebar & Rules -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- Keynote Guests Card -->
+                        <div class="dashboard-card glassmorphism" style="padding: 22px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--text-primary);">
+                                <i class="fa-solid fa-user-astronaut" style="color: var(--primary); margin-right: 6px;"></i> Keynote Guests & Mentors
+                            </h3>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" style="width:40px; height:40px; border-radius:50%; border:2px solid var(--primary);" alt="Dr. A. P. Sharma">
+                                    <div>
+                                        <strong style="font-size:13px; color:var(--text-primary); display:block;">Dr. A. P. Sharma</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary);">Chief AI Scientist • ISRO Alumni</span>
+                                    </div>
+                                </div>
+
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" style="width:40px; height:40px; border-radius:50%; border:2px solid var(--primary);" alt="Mr. Tarun Saxena">
+                                    <div>
+                                        <strong style="font-size:13px; color:var(--text-primary); display:block;">Mr. Tarun Saxena</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary);">VP Engineering • Google India</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event Coordinator Guidelines Card -->
+                        <div class="dashboard-card glassmorphism" style="padding: 22px;">
+                            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">
+                                <i class="fa-solid fa-building-columns" style="color: var(--primary); margin-right: 6px;"></i> Event Organizing Rules
+                            </h3>
+                            <ul style="font-size: 12px; color: var(--text-secondary); line-height: 1.6; padding-left: 18px; margin: 0;">
+                                <li>Auditorium & Lab reservations require <strong>7 days prior approval</strong>.</li>
+                                <li>Student attendance waivers are automatically issued for registered participants.</li>
+                                <li>Event budget statements must be submitted within 3 days post-event.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Modals Section -->
+                
+                <!-- Host New Event Modal -->
+                <div class="custom-modal-backdrop" id="createEventModal">
+                    <div class="custom-modal-card">
+                        <div class="modal-header">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-plus-circle" style="color: var(--primary);"></i> Host New Campus Event
+                            </h3>
+                            <button onclick="closeCreateEventModal()" class="modal-close-btn" title="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <form id="hostEventForm" onsubmit="submitNewEvent(event)">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label">Event Title <span style="color:#ef4444;">*</span></label>
+                                    <input type="text" id="newEventTitle" class="form-input" placeholder="e.g. National Robotics Championship 2026" required>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Category</label>
+                                        <select id="newEventCategory" class="form-input">
+                                            <option value="hackathon">Hackathon</option>
+                                            <option value="workshop">Workshop / Seminar</option>
+                                            <option value="cultural">Cultural / Sports</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Date & Time</label>
+                                        <input type="text" id="newEventDateTime" class="form-input" placeholder="e.g. Aug 28, 2026 • 10:00 AM" required>
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Venue Location</label>
+                                        <input type="text" id="newEventVenue" class="form-input" placeholder="e.g. Auditorium B" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Max Seat Capacity</label>
+                                        <input type="number" id="newEventCapacity" class="form-input" placeholder="e.g. 250" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Short Description</label>
+                                    <textarea id="newEventDescription" class="form-input" rows="3" placeholder="Enter brief overview of the event..." required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="closeCreateEventModal()" class="btn btn-secondary btn-sm">
+                                    <i class="fa-solid fa-xmark"></i> Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-check"></i> Publish Campus Event
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Event Details & Pass Inspector Modal -->
+                <div class="custom-modal-backdrop" id="eventDetailsModal">
+                    <div class="custom-modal-card">
+                        <div class="modal-header">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Campus Event Details & Itinerary
+                            </h3>
+                            <button onclick="closeEventDetailsModal()" class="modal-close-btn" title="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <strong id="modalEventTitle" style="font-size: 17px; color: var(--text-primary); display: block;">Event Title</strong>
+                                <span id="modalEventCategoryVenue" style="font-size: 12px; color: var(--text-tertiary);">Category • Venue</span>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div style="padding: 12px; background: var(--bg-tertiary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                    <span style="font-size: 10px; text-transform: uppercase; color: var(--text-tertiary); font-weight: 700;">Date & Time</span>
+                                    <strong id="modalEventDateTime" style="display: block; font-size: 13px; color: var(--text-primary);">Date Time</strong>
+                                </div>
+                                <div style="padding: 12px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                                    <span style="font-size: 10px; text-transform: uppercase; color: #10b981; font-weight: 700;">Registration Status</span>
+                                    <strong id="modalEventRsvpStatus" style="display: block; font-size: 13px; color: #10b981;">RSVP Registered</strong>
+                                </div>
+                            </div>
+
+                            <div>
+                                <strong style="font-size: 13px; color: var(--text-primary); display: block; margin-bottom: 6px;">Overview & Agenda:</strong>
+                                <p id="modalEventDesc" style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                                    Event description overview...
+                                </p>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="justify-content: flex-end; gap: 10px;">
+                            <button type="button" id="modalToggleRsvpBtn" onclick="toggleModalRsvp()" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-ticket"></i> Toggle RSVP
+                            </button>
+                            <button type="button" onclick="downloadEntryPass()" class="btn btn-outline btn-sm">
+                                <i class="fa-solid fa-download"></i> Download Entry Pass PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Custom Content Block -->
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="events.js"></script>
+</body>
+</html>

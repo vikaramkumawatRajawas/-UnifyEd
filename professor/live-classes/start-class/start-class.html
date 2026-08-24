@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Start Class Room</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="start-class.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+
+                <a href="../schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+
+                <a href="start-class.html" class="sidebar-item active">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+
+                <a href="../recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+
+                <a href="../live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+
+                <a href="../polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+
+                <a href="../../student-management/students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+
+                <a href="../../student-management/projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+
+                <a href="../../student-management/mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+
+                <a href="../../student-management/applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="../../student-management/certificates/certificates.html" class="sidebar-item ">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="portal-content">
+                <div class="page-header">
+                    <h1>Start Class Room</h1>
+                    <span class="breadcrumbs">UnifyEd • Faculty Portal • Live Classes • Start Class Room</span>
+                </div>
+
+                <!-- Custom Content Block -->
+                
+             <div style="display:grid; grid-template-columns: 1fr 340px; gap:25px; align-items:start;">
+                 <!-- Live Stage (Video Feed & Actions) -->
+                 <div class="dashboard-card glassmorphism" style="padding:22px; border:1px solid rgba(99, 102, 241, 0.15); box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.05); height:auto;">
+                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                         <div style="display:flex; align-items:center; gap:10px;">
+                             <span style="display:inline-block; width:10px; height:10px; background-color:#ef4444; border-radius:50%; animation: pulse-red 1.5s infinite;"></span>
+                             <h3 style="margin:0; font-size:15px; font-weight:800; color:var(--text-primary);">DBMS Lecture: Live Classroom</h3>
+                         </div>
+                         <div style="font-size:11px; color:var(--text-secondary); background:rgba(255,255,255,0.05); padding:4px 10px; border-radius:6px; font-weight:600;">
+                             <i class="fa-solid fa-clock" style="color:var(--primary); margin-right:4px;"></i> Elapsed: <span id="classTimer">00:00:00</span>
+                         </div>
+                     </div>
+
+                     <!-- Video Stream Mock Area -->
+                     <div id="liveStreamArea" style="position:relative; width:100%; height:420px; background:radial-gradient(circle, #1e1b4b 0%, #09090b 100%); border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border:1px solid rgba(255,255,255,0.05);">
+                         
+                         <!-- Video Feed Status Indicator -->
+                         <div id="webcamOverlay" style="text-align:center; transition: all 0.3s ease;">
+                             <div style="width:100px; height:100px; border-radius:50%; background:rgba(99, 102, 241, 0.1); border:2px solid var(--primary); display:flex; align-items:center; justify-content:center; margin:0 auto 15px auto; box-shadow:0 0 25px rgba(99, 102, 241, 0.2);">
+                                 <i class="fa-solid fa-user-tie" style="font-size:42px; color:var(--primary);"></i>
+                             </div>
+                             <h4 style="margin:0; font-size:15px; color:white; font-weight:700;">Dr. Rajesh Kumar</h4>
+                             <p style="margin:4px 0 0 0; font-size:11px; color:var(--text-secondary);">Host • Presenting Screen</p>
+                         </div>
+
+                         <!-- Screen Share mock visualization (hidden by default) -->
+                         <div id="screenShareOverlay" style="display:none; text-align:center; width:100%; height:100%; padding:40px; box-sizing:border-box; background:rgba(15,23,42,0.9); flex-direction:column; align-items:center; justify-content:center;">
+                             <i class="fa-solid fa-desktop" style="font-size:64px; color:var(--accent); margin-bottom:15px; text-shadow:0 0 20px rgba(168,85,247,0.3);"></i>
+                             <h4 style="margin:0; font-size:16px; color:white; font-weight:700;">You are sharing your desktop screen</h4>
+                             <p style="margin:6px 0 0 0; font-size:12px; color:var(--text-secondary); max-width:400px; line-height:1.5;">Students can now view your slides, applications, and browser windows in real time.</p>
+                         </div>
+
+                         <!-- Floating overlay badge -->
+                         <div style="position:absolute; top:15px; left:15px; display:flex; gap:8px;">
+                             <span style="font-size:10px; background:rgba(16,185,129,0.2); color:#10b981; border:1px solid rgba(16,185,129,0.3); padding:4px 8px; border-radius:4px; font-weight:700;"><i class="fa-solid fa-circle-check"></i> STREAM ACTIVE</span>
+                             <span id="recordingBadge" style="font-size:10px; background:rgba(239,68,68,0.2); color:#ef4444; border:1px solid rgba(239,68,68,0.3); padding:4px 8px; border-radius:4px; font-weight:700; display:flex; align-items:center; gap:5px;"><i class="fa-solid fa-circle" style="font-size:6px; animation:blink-red 1s infinite;"></i> REC</span>
+                         </div>
+
+                         <div style="position:absolute; top:15px; right:15px;">
+                             <span style="font-size:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-weight:600;"><i class="fa-solid fa-users"></i> 34 Attendees</span>
+                         </div>
+
+                         <!-- Bottom Media Control Bar -->
+                         <div style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); display:flex; gap:12px; background:rgba(15,23,42,0.85); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); padding:8px 18px; border-radius:30px; border:1px solid rgba(255,255,255,0.08); z-index:10;">
+                             <button onclick="toggleAudio()" id="audioBtn" class="control-circle" style="background:rgba(255,255,255,0.08); color:white;" title="Mute/Unmute Mic"><i class="fa-solid fa-microphone"></i></button>
+                             <button onclick="toggleVideo()" id="videoBtn" class="control-circle" style="background:rgba(255,255,255,0.08); color:white;" title="Start/Stop Video"><i class="fa-solid fa-video"></i></button>
+                             <button onclick="toggleShare()" id="shareBtn" class="control-circle" title="Share Screen"><i class="fa-solid fa-desktop"></i></button>
+                             <button onclick="toggleRecording()" id="recBtn" class="control-circle" style="background:rgba(255,255,255,0.08); color:#ef4444;" title="Pause/Resume Recording"><i class="fa-solid fa-circle-dot"></i></button>
+                             <div style="width:1px; background:rgba(255,255,255,0.15); margin:4px 5px;"></div>
+                             <button onclick="endClass()" class="control-circle" style="background:#ef4444; color:white; border-color:#ef4444;" title="End Meeting"><i class="fa-solid fa-phone-slash"></i></button>
+                         </div>
+                     </div>
+                 </div>
+
+                 <!-- Sidebar widgets (Chat & Polls) -->
+                 <div style="display:flex; flex-direction:column; gap:25px;">
+                     <!-- Live Chat Box -->
+                     <div class="dashboard-card glassmorphism" style="border:1px solid rgba(255,255,255,0.03); height:320px; padding: 18px; display:flex; flex-direction:column; justify-content:space-between;">
+                         <h3 style="margin:0 0 12px 0; font-size:13px; font-weight:800; color:var(--primary); text-transform:uppercase; border-bottom:1px solid var(--border-color); padding-bottom:8px;"><i class="fa-regular fa-comments"></i> Live Classroom Chat</h3>
+                         
+                         <!-- Messages List -->
+                         <div id="liveChatMessages" style="flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:10px; margin-bottom:10px; padding-right:5px;">
+                             <!-- Mock messages -->
+                             <div style="font-size:11px;">
+                                 <strong style="color:var(--primary);">Amit Sharma:</strong> <span style="color:var(--text-primary);">Good morning sir! Ready for Relational Algebra.</span>
+                             </div>
+                             <div style="font-size:11px;">
+                                 <strong style="color:var(--accent);">Priya Sen:</strong> <span style="color:var(--text-primary);">Sir, DBMS normalization slides link open nahi ho raha tha last night.</span>
+                             </div>
+                             <div style="font-size:11px;">
+                                 <strong style="color:var(--text-secondary);">Rahul Kumar:</strong> <span style="color:var(--text-primary);">Open link slide share me tha, Priya. I can share again.</span>
+                             </div>
+                             <div style="font-size:11px;">
+                                 <strong style="color:var(--primary);">Amit Sharma:</strong> <span style="color:var(--text-primary);">Sir, BCNF validation rule clarify please.</span>
+                             </div>
+                         </div>
+
+                         <!-- Chat input -->
+                         <div style="display:flex; gap:8px;">
+                             <input type="text" id="chatInput" class="form-input" style="height:32px; font-size:11px; flex:1;" placeholder="Send chat to all students...">
+                             <button onclick="sendChatMessage()" class="btn btn-primary btn-sm" style="padding:0 12px; height:32px;"><i class="fa-solid fa-paper-plane"></i></button>
+                         </div>
+                     </div>
+
+                     <!-- Quick Controls Widget -->
+                     <div class="dashboard-card glassmorphism" style="border:1px solid rgba(255,255,255,0.03); height:auto; padding: 18px;">
+                         <h3 style="margin:0 0 12px 0; font-size:13px; font-weight:800; color:var(--primary); text-transform:uppercase; border-bottom:1px solid var(--border-color); padding-bottom:8px;"><i class="fa-solid fa-sliders"></i> Moderator Tools</h3>
+                         
+                         <div style="display:flex; flex-direction:column; gap:8px;">
+                             <button onclick="triggerQuickPoll()" class="btn btn-secondary btn-sm" style="justify-content:flex-start; padding:8px 12px; font-size:11px; gap:8px;"><i class="fa-solid fa-square-poll-horizontal" style="color:var(--accent);"></i> Start Classroom Poll</button>
+                             <button onclick="triggerWhiteboard()" class="btn btn-secondary btn-sm" style="justify-content:flex-start; padding:8px 12px; font-size:11px; gap:8px;"><i class="fa-solid fa-chalkboard" style="color:#10b981;"></i> Share Virtual Whiteboard</button>
+                             <button onclick="muteAllStudents()" class="btn btn-secondary btn-sm" style="justify-content:flex-start; padding:8px 12px; font-size:11px; gap:8px; color:#ef4444;"><i class="fa-solid fa-microphone-slash"></i> Mute All Students</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        
+            </main>
+        </div>
+    </div>
+
+    <!-- Shared Portal Script -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page Specific Script -->
+    <script src="start-class.js?v=1786808057735"></script>
+</body>
+</html>

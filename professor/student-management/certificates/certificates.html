@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnifyEd Faculty Portal - Student Certificates</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PDF.js Library for PDF Template Parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- html2canvas Library for High-Res PNG & Image Certificate Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Shared Style System -->
+    <link rel="stylesheet" href="../../professor-shared.css">
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="certificates.css">
+</head>
+<body class="professor-portal-body">
+
+        <!-- Mobile Header -->
+    <header class="mobile-portal-header">
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="portal-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>UnifyEd</h2>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <i class="fa-solid fa-sun icon-sun"></i>
+            <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>UnifyEd</h2>
+            </div>
+            <div class="sidebar-menu">
+                
+                <a href="../../dashboard/dashboard.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Faculty Dashboard</span>
+                </a>
+        
+                <a href="../../academics/my-classes/my-classes.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>My Classes</span>
+                </a>
+        
+                <a href="../../academics/timetable/timetable.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-week"></i>
+                    <span>Weekly Timetable</span>
+                </a>
+        
+                <a href="../../academics/attendance/attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Class Attendance</span>
+                </a>
+        
+                <a href="../../academics/marks/marks.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Upload Marks</span>
+                </a>
+        
+                <a href="../../academics/results/results.html" class="sidebar-item ">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Class Results</span>
+                </a>
+        
+                <a href="../../academics/student-performance/student-performance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Student Performance</span>
+                </a>
+        
+                <a href="../../classroom/stream/stream.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Classroom Stream</span>
+                </a>
+        
+                <a href="../../classroom/study-materials/study-materials.html" class="sidebar-item ">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Study Materials</span>
+                </a>
+        
+                <a href="../../classroom/assignments/assignments.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Assignments</span>
+                </a>
+        
+                <a href="../../classroom/quiz/quiz.html" class="sidebar-item ">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Quizzes & Tests</span>
+                </a>
+        
+                <a href="../../classroom/discussion/discussion.html" class="sidebar-item ">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Class Discussions</span>
+                </a>
+        
+                <a href="../../classroom/grades/grades.html" class="sidebar-item ">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Evaluate Grades</span>
+                </a>
+        
+                <a href="../../classroom/members/members.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-line"></i>
+                    <span>Class Members</span>
+                </a>
+        
+                <a href="../../classroom/resources/resources.html" class="sidebar-item ">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Class Resources</span>
+                </a>
+        
+                <a href="../../live-classes/schedule/schedule.html" class="sidebar-item ">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Schedule Lecture</span>
+                </a>
+        
+                <a href="../../live-classes/start-class/start-class.html" class="sidebar-item ">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Start Class Room</span>
+                </a>
+        
+                <a href="../../live-classes/recordings/recordings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Lecture Recordings</span>
+                </a>
+        
+                <a href="../../live-classes/live-attendance/live-attendance.html" class="sidebar-item ">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <span>Live Attendance Log</span>
+                </a>
+        
+                <a href="../../live-classes/polls/polls.html" class="sidebar-item ">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>Lecture Polls</span>
+                </a>
+        
+                <a href="../students/students.html" class="sidebar-item ">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Students Registry</span>
+                </a>
+        
+                <a href="../projects/projects.html" class="sidebar-item ">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Student Projects</span>
+                </a>
+        
+                <a href="../mentor-meeting/mentor-meeting.html" class="sidebar-item ">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Mentor Meetings</span>
+                </a>
+        
+                <a href="../applications/applications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Leave Applications</span>
+                </a>
+
+                <a href="certificates.html" class="sidebar-item active">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Student Certificates</span>
+                </a>
+        
+                <a href="../../reports/attendance-report/attendance-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Attendance Reports</span>
+                </a>
+        
+                <a href="../../reports/marks-report/marks-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Marks Reports</span>
+                </a>
+        
+                <a href="../../reports/assignment-report/assignment-report.html" class="sidebar-item ">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Assignment Reports</span>
+                </a>
+        
+                <a href="../../reports/analytics/analytics.html" class="sidebar-item ">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Class Analytics</span>
+                </a>
+        
+                <a href="../../events/events.html" class="sidebar-item ">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>College Events</span>
+                </a>
+        
+                <a href="../../research/research.html" class="sidebar-item ">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Research & Patents</span>
+                </a>
+        
+                <a href="../../communication/chat/chat.html" class="sidebar-item ">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messenger Chat</span>
+                </a>
+        
+                <a href="../../communication/messages/messages.html" class="sidebar-item ">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Official Notices</span>
+                </a>
+        
+                <a href="../../communication/notifications/notifications.html" class="sidebar-item ">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>System Alerts</span>
+                </a>
+        
+                <a href="../../profile/profile.html" class="sidebar-item ">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Faculty Profile</span>
+                </a>
+        
+                <a href="../../settings/settings.html" class="sidebar-item ">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Portal Settings</span>
+                </a>
+        
+            </div>
+            <div class="sidebar-footer">
+                <a href="../../../auth/login.html" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Body Wrapper -->
+        <div class="portal-main">
+                        <!-- Header bar -->
+            <header class="main-portal-header">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%; max-width: 480px;">
+                    <button class="sidebar-toggle-btn" id="desktopSidebarToggle" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-search" style="max-width: 100%; position: relative;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="portalSearchInput" placeholder="Search students, classes, reports..." autocomplete="off">
+                        <div class="search-results-dropdown glassmorphism" id="portalSearchResults"></div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="headerThemeToggle" title="Toggle Theme">
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                    </button>
+                    <div class="user-profile-widget" id="portalProfileTrigger" style="position: relative; cursor: pointer;">
+                        <div class="details">
+                            <strong>Dr. Rajesh Kumar</strong>
+                            <span>CSE-EMP-204</span>
+                        </div>
+                        <i class="fa-solid fa-circle-user profile-avatar" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Container -->
+            <div class="portal-content">
+                <!-- Breadcrumbs & Title Block -->
+                <div class="page-header-block">
+                    <div class="header-title-container">
+                        <div class="breadcrumb-trail">
+                            <a href="../../dashboard/dashboard.html"><i class="fa-solid fa-house"></i> Home</a>
+                            <i class="fa-solid fa-chevron-right separator"></i>
+                            <a href="../students/students.html">Student Management</a>
+                            <i class="fa-solid fa-chevron-right separator"></i>
+                            <span class="active">Student Certificates</span>
+                        </div>
+                        <h1 class="page-title">
+                            <span class="title-icon-badge"><i class="fa-solid fa-certificate"></i></span>
+                            <span>Student Certificates & Credentials</span>
+                        </h1>
+                        <p class="page-subtitle">Review certificate applications, issue verified academic credentials, and manage digital badges for your students.</p>
+                    </div>
+
+                    <div class="header-action-group">
+                        <button class="btn btn-outline" id="btnTemplates" title="Browse Certificate Design Templates">
+                            <i class="fa-solid fa-layer-group"></i>
+                            <span>Template Library</span>
+                        </button>
+                        <button class="btn btn-outline" id="btnUploadTemplateHeader" title="Upload Custom Template Background (Image / PDF)">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Upload Template</span>
+                        </button>
+                        <button class="btn btn-primary" id="btnIssueCert" title="Issue New Verified Certificate">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Issue New Certificate</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats KPI Grid -->
+                <div class="cert-stats-grid">
+                    <div class="stat-card pending-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">Pending Requests</span>
+                            <h3 class="stat-value" id="statPendingCount">12</h3>
+                            <span class="stat-subtext"><i class="fa-solid fa-exclamation-circle"></i> Requires professor review</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card approved-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">Certificates Issued</span>
+                            <h3 class="stat-value" id="statIssuedCount">148</h3>
+                            <span class="stat-subtext text-success"><i class="fa-solid fa-arrow-trend-up"></i> +18 this month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card template-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">Active Templates</span>
+                            <h3 class="stat-value">5</h3>
+                            <span class="stat-subtext"><i class="fa-solid fa-layer-group"></i> Gold, Honors, Merit & Project</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card security-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">Verification Rate</span>
+                            <h3 class="stat-value">100%</h3>
+                            <span class="stat-subtext text-info"><i class="fa-solid fa-qrcode"></i> QR & SHA-256 Secured</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="cert-tabs-bar">
+                    <button class="cert-tab-btn active" data-tab="pending">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                        <span>Pending Approvals</span>
+                        <span class="tab-badge" id="tabPendingBadge">12</span>
+                    </button>
+                    <button class="cert-tab-btn" data-tab="issued">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Issued Certificates</span>
+                        <span class="tab-badge secondary" id="tabIssuedBadge">148</span>
+                    </button>
+                    <button class="cert-tab-btn" data-tab="templates">
+                        <i class="fa-solid fa-palette"></i>
+                        <span>Certificate Designs</span>
+                    </button>
+                </div>
+
+                <!-- Main Filter & Control Panel -->
+                <div class="cert-controls-card" id="certControlsCard">
+                    <div class="search-input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="certSearchInput" placeholder="Search student name, roll number, certificate title..." class="ctrl-input">
+                    </div>
+
+                    <div class="controls-group">
+                        <div class="select-wrapper">
+                            <i class="fa-solid fa-calendar-star select-icon"></i>
+                            <select id="certEventFilter" class="ctrl-select">
+                                <option value="all">🎉 All College Events</option>
+                                <option value="convocation-2026">🎓 Academic Convocation 2026</option>
+                                <option value="tech-fest-2026">💻 Tech Fest & Hackathon 2026</option>
+                                <option value="ml-workshop-2026">🤖 AI & ML Specialization Workshop</option>
+                                <option value="annual-sports-2026">🏆 Annual Sports Championship 2026</option>
+                                <option value="research-symposium">🔬 National Research Symposium 2026</option>
+                                <option value="cultural-fest">🎭 Cultural Fest & Arts 2026</option>
+                                <option value="internship-drive">💼 Placement & Internship Drive</option>
+                            </select>
+                        </div>
+
+                        <div class="select-wrapper">
+                            <i class="fa-solid fa-filter select-icon"></i>
+                            <select id="certTypeFilter" class="ctrl-select">
+                                <option value="all">All Certificate Types</option>
+                                <option value="academic">Academic Excellence</option>
+                                <option value="project">Project Completion</option>
+                                <option value="course">Course Mastery</option>
+                                <option value="workshop">Workshop & Seminar</option>
+                                <option value="sports">Sports & Co-curricular</option>
+                                <option value="internship">Internship Recommendation</option>
+                                <option value="bonafide">Conduct & Bonafide</option>
+                            </select>
+                        </div>
+
+                        <div class="select-wrapper">
+                            <i class="fa-solid fa-users-rectangle select-icon"></i>
+                            <select id="certBatchFilter" class="ctrl-select">
+                                <option value="all">All Batches / Classes</option>
+                                <option value="CS-4A">CS-4A (2026)</option>
+                                <option value="CS-6B">CS-6B (2025)</option>
+                                <option value="AI-Lab">AI & ML Specialization</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-secondary btn-icon" id="btnResetFilters" title="Reset Filters">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab 1 & 2: Certificate Table View -->
+                <div class="cert-table-card" id="certTableView">
+                    <div class="table-responsive">
+                        <table class="cert-table">
+                            <thead>
+                                <tr>
+                                    <th>Student & ID</th>
+                                    <th>Certificate Details</th>
+                                    <th>Category</th>
+                                    <th>Requested / Issued Date</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="certTableBody">
+                                <!-- Rendered dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer" id="tableFooter">
+                        <span class="footer-info">Showing <strong id="visibleCount">0</strong> certificates</span>
+                        <div class="pagination-btns">
+                            <button class="page-btn disabled"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn disabled"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Certificate Templates Showcase Grid (Hidden by default) -->
+                <div class="templates-section-wrapper hidden" id="certTemplatesView">
+                    <!-- Template Filter Bar & Header -->
+                    <div class="template-header-bar">
+                        <div class="template-header-left">
+                            <i class="fa-solid fa-layer-group"></i>
+                            <div>
+                                <h3 class="template-header-title">Certificate Design Templates Library</h3>
+                                <p class="template-header-desc">Select an event from the dropdown to view templates, edit any design real-time, or upload custom templates.</p>
+                            </div>
+                        </div>
+                        <div class="template-header-right">
+                            <div class="select-wrapper event-dropdown-wrapper">
+                                <i class="fa-solid fa-masks-theater select-icon"></i>
+                                <select id="templateEventFilter" class="ctrl-select template-select">
+                                    <option value="all">🌟 All Events (Show All Templates)</option>
+                                    <option value="convocation-2026">🎓 Academic Convocation 2026</option>
+                                    <option value="tech-fest-2026">💻 Tech Fest & Hackathon 2026</option>
+                                    <option value="ml-workshop-2026">🤖 AI & ML Specialization Workshop</option>
+                                    <option value="annual-sports-2026">🏆 Annual Sports Championship 2026</option>
+                                    <option value="research-symposium">🔬 National Research Symposium 2026</option>
+                                    <option value="cultural-fest">🎭 Cultural Fest & Arts 2026</option>
+                                    <option value="internship-drive">💼 Placement & Internship Drive</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" id="btnUploadTemplateGrid">
+                                <i class="fa-solid fa-upload"></i> Upload Custom Template
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Grid Container -->
+                    <div class="cert-templates-grid" id="templateCardsContainer">
+                        <!-- Rendered dynamically by JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 1: ISSUE NEW CERTIFICATE -->
+    <div class="modal-overlay hidden" id="issueModal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    <h3>Issue New Certificate</h3>
+                </div>
+                <button class="modal-close-btn" id="closeIssueModal">&times;</button>
+            </div>
+            <form id="issueCertForm">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalStudentName">Student Name & Roll No *</label>
+                            <select id="modalStudentSelect" class="form-control" required>
+                                <option value="">-- Select Student --</option>
+                                <option value="STU-2024-001|Alex Morgan|CS-4A">Alex Morgan (CS-2024-001) - CS-4A</option>
+                                <option value="STU-2024-002|Rohan Verma|CS-4A">Rohan Verma (CS-2024-002) - CS-4A</option>
+                                <option value="STU-2024-003|Sophia Chen|CS-6B">Sophia Chen (CS-2024-003) - CS-6B</option>
+                                <option value="STU-2024-004|Marcus Vance|AI-Lab">Marcus Vance (AI-2024-004) - AI-Lab</option>
+                                <option value="STU-2024-005|Priya Sharma|CS-4A">Priya Sharma (CS-2024-005) - CS-4A</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalCertType">Certificate Category *</label>
+                            <select id="modalCertType" class="form-control" required>
+                                <option value="academic">Academic Excellence Certificate</option>
+                                <option value="project">Project Completion Certificate</option>
+                                <option value="course">Course Mastery Certificate</option>
+                                <option value="internship">Internship Recommendation</option>
+                                <option value="bonafide">Conduct & Bonafide</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalCertTitle">Certificate Title / Subject *</label>
+                            <input type="text" id="modalCertTitle" class="form-control" placeholder="e.g. Advanced AI & Deep Learning Specialization" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalGrade">Grade / Performance Achieved</label>
+                            <input type="text" id="modalGrade" class="form-control" placeholder="e.g. Distinction / Grade A+ / Top 5%">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modalCitation">Citation / Citation Details</label>
+                        <textarea id="modalCitation" class="form-control" rows="3" placeholder="In recognition of outstanding academic diligence, creative problem solving, and successful completion of the coursework..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalIssueDate">Issue Date *</label>
+                            <input type="date" id="modalIssueDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalSignatory">Issuing Professor Signature</label>
+                            <input type="text" id="modalSignatory" class="form-control" value="Dr. Sarah Jenkins, HOD CS" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelIssueModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-paper-plane"></i> Generate & Issue Certificate
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: LIVE DIGITAL CERTIFICATE PREVIEW & PRINT -->
+    <div class="modal-overlay hidden" id="previewModal">
+        <div class="modal-card modal-xl cert-preview-modal">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>Verified Digital Certificate Preview</h3>
+                </div>
+                <div class="modal-actions-top">
+                    <button class="btn btn-primary btn-sm" id="btnDownloadCertImage" title="Download High-Res PNG Image">
+                        <i class="fa-solid fa-download"></i> Download Image (PNG)
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="btnPrintCert" title="Print or Save as PDF">
+                        <i class="fa-solid fa-print"></i> Print / Save PDF
+                    </button>
+                    <button class="modal-close-btn" id="closePreviewModal">&times;</button>
+                </div>
+            </div>
+            
+            <div class="modal-body preview-modal-body">
+                <!-- Authentic Paper Certificate Canvas View -->
+                <div class="certificate-paper-container" id="certPrintArea">
+                    <img class="cert-background-img-layer" id="previewCertBgImg" alt="Template Background" style="display: none;">
+                    <div class="cert-border-outer" id="previewBorderOuter">
+                        <div class="cert-border-inner" id="previewBorderInner">
+                            
+                            <!-- Header Logo & Institution -->
+                            <div class="cert-header">
+                                <div class="cert-logo" id="previewCertLogo">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <h1 class="cert-institution-name" id="previewInstitutionName">UNIFYED INSTITUTE OF TECHNOLOGY</h1>
+                                <p class="cert-subheading" id="previewSubheading">OFFICIAL ACADEMIC CREDENTIAL & CERTIFICATION</p>
+                                <div class="cert-divider-line" id="previewDividerLine"></div>
+                            </div>
+
+                            <!-- Certificate Body Text -->
+                            <div class="cert-body">
+                                <p class="cert-presents" id="previewPresentsText">This certificate is proudly awarded to</p>
+                                <h2 class="cert-student-name" id="previewStudentName">Alex Morgan</h2>
+                                <p class="cert-roll-no" id="previewStudentRoll">Roll No: CS-2024-001 | Dept of Computer Science</p>
+                                
+                                <p class="cert-achievement-text" id="previewAchievementText">
+                                    in recognition of successful completion and outstanding performance in
+                                </p>
+                                
+                                <h3 class="cert-course-title" id="previewCertTitle">Advanced Machine Learning & Deep Neural Networks</h3>
+                                
+                                <p class="cert-citation-text" id="previewCitation">
+                                    Demonstrating exceptional technical competence, innovation in project development, and achieving Grade A with Distinction.
+                                </p>
+                            </div>
+
+                            <!-- Certificate Signatures & Seal Footer -->
+                            <div class="cert-footer">
+                                <div class="cert-sign-block" id="previewSignBlock1">
+                                    <div class="handwritten-sign" id="previewSignHandwriting">Dr. Sarah Jenkins</div>
+                                    <div class="sign-line"></div>
+                                    <span class="sign-title" id="previewSignName">Dr. Sarah Jenkins</span>
+                                    <span class="sign-sub" id="previewSignRole">Professor & Dept HOD</span>
+                                </div>
+
+                                <div class="cert-gold-seal" id="previewSealRing">
+                                    <div class="seal-ring">
+                                        <i class="fa-solid fa-ribbon seal-ribbon"></i>
+                                        <div class="seal-center">
+                                            <i class="fa-solid fa-award"></i>
+                                            <span>VERIFIED</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cert-sign-block" id="previewSignBlock2" style="display: none;">
+                                    <div class="handwritten-sign" id="previewSign2Handwriting">Prof. Alan Turing</div>
+                                    <div class="sign-line"></div>
+                                    <span class="sign-title" id="previewSign2Name">Prof. Alan Turing</span>
+                                    <span class="sign-sub" id="previewSign2Role">Dean of Academics</span>
+                                </div>
+
+                                <div class="cert-qr-block" id="previewQRBlock">
+                                    <div class="qr-box">
+                                        <i class="fa-solid fa-qrcode"></i>
+                                    </div>
+                                    <span class="verify-code" id="previewCertUUID">ID: UNIFY-CERT-884920</span>
+                                    <span class="verify-text"><i class="fa-solid fa-lock"></i> SHA-256 Tamper-Proof</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closePreviewFooter">Close</button>
+                <button class="btn btn-success" id="btnConfirmApproveModal">
+                    <i class="fa-solid fa-check-double"></i> Approve & Sign Certificate
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: LIVE TEMPLATE DESIGN EDITOR -->
+    <div class="modal-overlay hidden" id="templateEditorModal">
+        <div class="modal-card modal-xl template-editor-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    <h3 id="editorModalTitle">Edit Certificate Template</h3>
+                </div>
+                <div class="modal-actions-top">
+                    <button class="btn btn-primary btn-sm" id="btnSaveEditorTemplate">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Template Changes
+                    </button>
+                    <button class="modal-close-btn" id="closeEditorModal">&times;</button>
+                </div>
+            </div>
+            
+            <div class="modal-body editor-modal-body">
+                <div class="editor-split-container">
+                    <!-- Left Column: Controls Form -->
+                    <div class="editor-controls-pane">
+                        <input type="hidden" id="editTemplateId">
+
+                        <!-- SECTION 1: TEMPLATE METADATA -->
+                        <div class="editor-control-card">
+                            <h4 class="editor-section-title"><i class="fa-solid fa-file-signature"></i> 1. Template Information</h4>
+                            <div class="form-group">
+                                <label for="editTemplateName">Template Display Name *</label>
+                                <input type="text" id="editTemplateName" class="form-control" placeholder="e.g. Academic Honors Gold Edition">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editTemplateEvent">Associated Event *</label>
+                                    <select id="editTemplateEvent" class="form-control">
+                                        <option value="convocation-2026">🎓 Academic Convocation 2026</option>
+                                        <option value="tech-fest-2026">💻 Tech Fest & Hackathon 2026</option>
+                                        <option value="ml-workshop-2026">🤖 AI & ML Specialization Workshop</option>
+                                        <option value="annual-sports-2026">🏆 Annual Sports Championship 2026</option>
+                                        <option value="research-symposium">🔬 National Research Symposium 2026</option>
+                                        <option value="cultural-fest">🎭 Cultural Fest & Arts 2026</option>
+                                        <option value="internship-drive">💼 Placement & Internship Drive</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editTemplateCategory">Category *</label>
+                                    <select id="editTemplateCategory" class="form-control">
+                                        <option value="academic">Academic Excellence</option>
+                                        <option value="project">Project Completion</option>
+                                        <option value="course">Course Mastery</option>
+                                        <option value="workshop">Workshop & Seminar</option>
+                                        <option value="sports">Sports & Co-curricular</option>
+                                        <option value="internship">Internship Recommendation</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 2: BACKGROUND & LOGO MEDIA -->
+                        <div class="editor-control-card">
+                            <h4 class="editor-section-title"><i class="fa-solid fa-image"></i> 2. Template Background & Logo</h4>
+                            <div class="form-group">
+                                <label for="editorBgFileInput"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Custom Background (Image / PDF)</label>
+                                <input type="file" id="editorBgFileInput" accept="image/*,.svg,.pdf,application/pdf" class="form-control">
+                                <small class="help-text">Replaces template background with your uploaded PDF page or Image design.</small>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editLogoIcon"><i class="fa-solid fa-icons"></i> Header Emblem / Logo Icon</label>
+                                    <select id="editLogoIcon" class="form-control">
+                                        <option value="fa-graduation-cap">🎓 Graduation Cap</option>
+                                        <option value="fa-award">🎖️ Official Medal Crest</option>
+                                        <option value="fa-laptop-code">💻 Tech Microchip</option>
+                                        <option value="fa-microchip">🤖 AI Network</option>
+                                        <option value="fa-trophy">🏆 Athletics Trophy</option>
+                                        <option value="fa-book-bookmark">🔬 Research Scroll</option>
+                                        <option value="fa-briefcase">💼 Placement & Corporate</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="logoFileInput"><i class="fa-solid fa-image"></i> Custom Logo Image</label>
+                                    <input type="file" id="logoFileInput" accept="image/*" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 3: TYPOGRAPHY & COLORS -->
+                        <div class="editor-control-card">
+                            <h4 class="editor-section-title"><i class="fa-solid fa-palette"></i> 3. Typography & Styling Colors</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editFontStyle"><i class="fa-solid fa-font"></i> Typography / Font Family</label>
+                                    <select id="editFontStyle" class="form-control">
+                                        <option value="cinzel-script">🏛️ Academic Classic (Cinzel & Script)</option>
+                                        <option value="playfair-script">👑 Regal Elegance (Playfair & Calligraphy)</option>
+                                        <option value="outfit-inter">⚡ Modern Tech (Outfit & Inter)</option>
+                                        <option value="georgia-script">📜 Traditional Serif (Georgia & Great Vibes)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editFontSize"><i class="fa-solid fa-text-height"></i> Text Size Scale</label>
+                                    <select id="editFontSize" class="form-control">
+                                        <option value="small">Compact (90%)</option>
+                                        <option value="normal" selected>Standard Regular (100%)</option>
+                                        <option value="large">Prominent (110%)</option>
+                                        <option value="xlarge">Grand Extra Large (120%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editPrimaryTextColor"><i class="fa-solid fa-droplet"></i> Main Text Color</label>
+                                    <input type="color" id="editPrimaryTextColor" class="form-control color-picker-input" value="#0f172a">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editTitleTextColor"><i class="fa-solid fa-droplet"></i> Title & Accent Color</label>
+                                    <input type="color" id="editTitleTextColor" class="form-control color-picker-input" value="#b45309">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editThemeColor">Classic Border Theme</label>
+                                    <select id="editThemeColor" class="form-control">
+                                        <option value="gold">🥇 Gold Classic (Amber)</option>
+                                        <option value="blue">💙 Royal Cobalt Blue</option>
+                                        <option value="purple">💜 Regal Purple</option>
+                                        <option value="emerald">💚 Emerald Gold</option>
+                                        <option value="crimson">❤️ Crimson Academic</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editSealType">Verification Seal Style</label>
+                                    <select id="editSealType" class="form-control">
+                                        <option value="gold-medal">Gold Foil Verified Ribbon</option>
+                                        <option value="blue-badge">Blue Cyber Badge</option>
+                                        <option value="purple-stamp">Purple Academic Crest</option>
+                                        <option value="star-shield">Shield of Honor</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 4: TEXT CONTENT -->
+                        <div class="editor-control-card">
+                            <h4 class="editor-section-title"><i class="fa-solid fa-pen-to-square"></i> 4. Dynamic Text Content</h4>
+                            <div class="form-group">
+                                <label for="editInstitutionName">Institution Header Name</label>
+                                <input type="text" id="editInstitutionName" class="form-control" value="UNIFYED INSTITUTE OF TECHNOLOGY">
+                            </div>
+                            <div class="form-group">
+                                <label for="editSubHeading">Credential Subheading</label>
+                                <input type="text" id="editSubHeading" class="form-control" value="OFFICIAL ACADEMIC CREDENTIAL & CERTIFICATION">
+                            </div>
+                            <div class="form-group">
+                                <label for="editPresentationText">Awarding Lead Text</label>
+                                <input type="text" id="editPresentationText" class="form-control" value="This certificate is proudly awarded to">
+                            </div>
+                            <div class="form-group">
+                                <label for="editSampleRecipient">Sample Recipient Name</label>
+                                <input type="text" id="editSampleRecipient" class="form-control" value="Alex Morgan">
+                            </div>
+                            <div class="form-group">
+                                <label for="editCourseTitle">Certificate Main Title</label>
+                                <input type="text" id="editCourseTitle" class="form-control" value="ADVANCED MACHINE LEARNING SPECIALIZATION">
+                            </div>
+                            <div class="form-group">
+                                <label for="editCitationText">Citation / Body Description</label>
+                                <textarea id="editCitationText" class="form-control" rows="3">In recognition of outstanding academic performance, top score in Deep Neural Networks, and exemplary capstone implementation.</textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editSignatoryName">Signatory 1 Name</label>
+                                    <input type="text" id="editSignatoryName" class="form-control" value="Dr. Sarah Jenkins">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editSignatoryRole">Signatory 1 Role</label>
+                                    <input type="text" id="editSignatoryRole" class="form-control" value="Professor & Dept HOD">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editSignatory2Name">Signatory 2 Name (Optional)</label>
+                                    <input type="text" id="editSignatory2Name" class="form-control" placeholder="e.g. Prof. Alan Turing">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editSignatory2Role">Signatory 2 Role</label>
+                                    <input type="text" id="editSignatory2Role" class="form-control" placeholder="e.g. Dean of Academics">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 5: ELEMENT VISIBILITY TOGGLES -->
+                        <div class="editor-control-card">
+                            <h4 class="editor-section-title"><i class="fa-solid fa-eye-slash"></i> 5. Show / Hide Canvas Elements</h4>
+                            <small class="help-text" style="margin-bottom: 10px;">Uncheck headers or borders if your uploaded PDF background already contains them!</small>
+                            <div class="visibility-toggles-grid">
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowLogo" checked> Logo Icon</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowInstitution" checked> Institution Header</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowSubheading" checked> Subheading Tagline</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowPresents" checked> Awarding Lead</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowStudent" checked> Student Name</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowTitle" checked> Certificate Title</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowCitation" checked> Citation Text</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowSignature" checked> Signatures</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowSeal" checked> Gold Seal</label>
+                                <label class="toggle-chip"><input type="checkbox" id="toggleShowQR" checked> QR Verification</label>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 6: DRAG & POSITION MODE -->
+                        <div class="editor-control-card">
+                            <h4 class="editor-section-title"><i class="fa-solid fa-arrows-up-down-left-right"></i> 6. Canvas Drag & Position Mode</h4>
+                            <div class="form-group">
+                                <label class="toggle-checkbox-label">
+                                    <input type="checkbox" id="editEnableDragMode">
+                                    <span>Enable Drag & Reposition Elements on Canvas</span>
+                                </label>
+                                <small class="help-text">Check this box, then click and drag elements directly on the right preview canvas.</small>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm" id="btnResetElementPositions">
+                                <i class="fa-solid fa-rotate-left"></i> Reset Positions to Default
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Live Certificate Paper Preview -->
+                    <div class="editor-preview-pane">
+                        <div class="editor-preview-header">
+                            <span><i class="fa-solid fa-eye"></i> Live Real-Time Canvas Preview</span>
+                            <span class="badge-live-tag" id="dragStatusTag">Live Dynamic Render</span>
+                        </div>
+
+                        <div class="editor-paper-wrapper">
+                            <div class="certificate-paper-container" id="editorCertPaper">
+                                <img class="cert-background-img-layer" id="editorCertBgImg" alt="Template Background" style="display: none;">
+                                <div class="cert-border-outer" id="editorBorderOuter">
+                                    <div class="cert-border-inner" id="editorBorderInner">
+                                        
+                                        <div class="cert-header canvas-element" id="elemCertHeader">
+                                            <div class="cert-logo" id="editorCertLogo">
+                                                <i class="fa-solid fa-graduation-cap"></i>
+                                            </div>
+                                            <h1 class="cert-institution-name" id="editorPreviewInst">UNIFYED INSTITUTE OF TECHNOLOGY</h1>
+                                            <p class="cert-subheading" id="editorPreviewSub">OFFICIAL ACADEMIC CREDENTIAL & CERTIFICATION</p>
+                                            <div class="cert-divider-line" id="editorPreviewDivider"></div>
+                                        </div>
+
+                                        <div class="cert-body">
+                                            <p class="cert-presents canvas-element" id="editorPreviewPresents">This certificate is proudly awarded to</p>
+                                            <h2 class="cert-student-name canvas-element" id="editorPreviewStudent">Alex Morgan</h2>
+                                            <p class="cert-roll-no canvas-element" id="editorPreviewRoll">Roll No: CS-2024-001 | Dept of Computer Science</p>
+                                            
+                                            <p class="cert-achievement-text canvas-element" id="editorPreviewAchievement">
+                                                in recognition of successful completion and outstanding performance in
+                                            </p>
+                                            
+                                            <h3 class="cert-course-title canvas-element" id="editorPreviewTitle">ADVANCED MACHINE LEARNING SPECIALIZATION</h3>
+                                            
+                                            <p class="cert-citation-text canvas-element" id="editorPreviewCitation">
+                                                For outstanding academic performance and top score in Neural Networks & Deep Learning.
+                                            </p>
+                                        </div>
+
+                                        <div class="cert-footer">
+                                            <div class="cert-sign-block canvas-element" id="elemCertSign">
+                                                <div class="handwritten-sign" id="editorPreviewHandSign">Dr. Sarah Jenkins</div>
+                                                <div class="sign-line"></div>
+                                                <span class="sign-title" id="editorPreviewSignName">Dr. Sarah Jenkins</span>
+                                                <span class="sign-sub" id="editorPreviewSignRole">Professor & Dept HOD</span>
+                                            </div>
+
+                                            <div class="cert-gold-seal canvas-element" id="elemCertSeal">
+                                                <div class="seal-ring" id="editorPreviewSealRing">
+                                                    <i class="fa-solid fa-ribbon seal-ribbon"></i>
+                                                    <div class="seal-center">
+                                                        <i class="fa-solid fa-award"></i>
+                                                        <span>VERIFIED</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="cert-sign-block canvas-element" id="elemCertSign2" style="display: none;">
+                                                <div class="handwritten-sign" id="editorPreviewSign2Hand">Prof. Alan Turing</div>
+                                                <div class="sign-line"></div>
+                                                <span class="sign-title" id="editorPreviewSign2Name">Prof. Alan Turing</span>
+                                                <span class="sign-sub" id="editorPreviewSign2Role">Dean of Academics</span>
+                                            </div>
+
+                                            <div class="cert-qr-block canvas-element" id="elemCertQR">
+                                                <div class="qr-box">
+                                                    <i class="fa-solid fa-qrcode"></i>
+                                                </div>
+                                                <span class="verify-code">ID: UNIFY-CERT-884920</span>
+                                                <span class="verify-text"><i class="fa-solid fa-lock"></i> SHA-256 Tamper-Proof</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelEditorModal">Cancel</button>
+                <button class="btn btn-primary" id="btnSaveEditorFooter">
+                    <i class="fa-solid fa-check"></i> Save & Update Template
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: UPLOAD CUSTOM CERTIFICATE TEMPLATE -->
+    <div class="modal-overlay hidden" id="uploadTemplateModal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <h3>Upload Custom Certificate Template</h3>
+                </div>
+                <button class="modal-close-btn" id="closeUploadModal">&times;</button>
+            </div>
+            
+            <form id="uploadTemplateForm">
+                <div class="modal-body">
+                    <div class="upload-dropzone" id="uploadDropzone">
+                        <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+                        <h4>Drag & Drop Certificate Image/SVG/PDF File Here</h4>
+                        <p>Supports PNG, JPG, WEBP, SVG, or PDF background templates (Max size 10MB)</p>
+                        <input type="file" id="templateFileInput" accept="image/*,.svg,.pdf,application/pdf" class="hidden-file-input">
+                        <button type="button" class="btn btn-outline btn-sm" id="btnBrowseTemplate">Browse File</button>
+                    </div>
+
+                    <div class="upload-file-preview hidden" id="uploadFilePreviewBox">
+                        <div class="uploaded-image-frame">
+                            <img id="uploadedImageDisplay" src="" alt="Template Background Preview">
+                        </div>
+                        <div class="uploaded-file-info">
+                            <span class="file-name" id="uploadedFileName">my_custom_template.png</span>
+                            <span class="file-size" id="uploadedFileSize">1.2 MB</span>
+                            <button type="button" class="btn btn-secondary btn-sm" id="btnRemoveUploadedFile">
+                                <i class="fa-solid fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 20px;">
+                        <div class="form-group">
+                            <label for="uploadTemplateName">Template Name *</label>
+                            <input type="text" id="uploadTemplateName" class="form-control" placeholder="e.g. National Hackathon Winner 2026 Certificate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadEventSelect">Associate with College Event *</label>
+                            <select id="uploadEventSelect" class="form-control" required>
+                                <option value="tech-fest-2026">💻 Tech Fest & Hackathon 2026</option>
+                                <option value="convocation-2026">🎓 Academic Convocation 2026</option>
+                                <option value="ml-workshop-2026">🤖 AI & ML Specialization Workshop</option>
+                                <option value="annual-sports-2026">🏆 Annual Sports Championship 2026</option>
+                                <option value="research-symposium">🔬 National Research Symposium 2026</option>
+                                <option value="cultural-fest">🎭 Cultural Fest & Arts 2026</option>
+                                <option value="internship-drive">💼 Placement & Internship Drive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="uploadCategorySelect">Category *</label>
+                            <select id="uploadCategorySelect" class="form-control" required>
+                                <option value="project">Project & Hackathon</option>
+                                <option value="academic">Academic Honor</option>
+                                <option value="workshop">Workshop Mastery</option>
+                                <option value="sports">Sports & Athletics</option>
+                                <option value="internship">Internship Recommendation</option>
+                                <option value="bonafide">Bonafide & Conduct</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadBadgeText">Badge Label</label>
+                            <input type="text" id="uploadBadgeText" class="form-control" value="Custom Uploaded">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadDescription">Description / Usage Instructions</label>
+                        <textarea id="uploadDescription" class="form-control" rows="2" placeholder="Describe when to use this template..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelUploadModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btnSubmitUploadTemplate">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Save & Add to Template Library
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Shared JS -->
+    <script src="../../professor-shared.js"></script>
+    <!-- Page JS -->
+    <script src="certificates.js"></script>
+</body>
+</html>

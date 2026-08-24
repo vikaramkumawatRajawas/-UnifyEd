@@ -1,0 +1,199 @@
+/* ==========================================================================
+   UNIFYED VICE CHANCELLOR (VC) PORTAL - ANNOUNCEMENTS STYLES
+   ========================================================================== */
+
+/* Hero Banner */
+.announce-hero-card {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(99, 102, 241, 0.18), rgba(168, 85, 247, 0.12)), var(--glass-bg);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: var(--border-radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.announce-hero-card h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.announce-hero-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+/* KPI Cards Grid (4 Columns) */
+.announce-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+@media (max-width: 1380px) {
+    .announce-kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .announce-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.announce-kpi-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 22px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.announce-kpi-card:hover {
+    transform: translateY(-4px);
+}
+
+.announce-kpi-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.announce-kpi-lbl {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.announce-kpi-val {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-top: 4px;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Glass Section Container */
+.announce-section {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 26px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+}
+
+.announce-section-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.announce-section-head h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* Announcement Cards List */
+.circular-card-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--warning);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.circular-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.circular-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 6px;
+}
+
+/* New Broadcast Form Grid */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group-vc {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group-vc label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.form-group-vc input, .form-group-vc select, .form-group-vc textarea {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: 10px 14px;
+    color: var(--text-primary);
+    font-size: 13px;
+    outline: none;
+}
+
+.form-group-vc input:focus, .form-group-vc select:focus, .form-group-vc textarea:focus {
+    border-color: var(--primary);
+}

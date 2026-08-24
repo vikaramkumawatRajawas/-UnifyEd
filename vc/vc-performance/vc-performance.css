@@ -1,0 +1,238 @@
+/* ==========================================================================
+   UNIFYED VICE CHANCELLOR (VC) PORTAL - PERFORMANCE ANALYTICS STYLES
+   ========================================================================== */
+
+/* Hero Banner */
+.perf-hero-card {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.22), rgba(99, 102, 241, 0.18), rgba(6, 182, 212, 0.12)), var(--glass-bg);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    border-radius: var(--border-radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.perf-hero-card h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.perf-hero-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+/* KPI Cards Grid (4 Columns) */
+.perf-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+@media (max-width: 1380px) {
+    .perf-kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .perf-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.perf-kpi-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 22px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.perf-kpi-card:hover {
+    transform: translateY(-4px);
+}
+
+.perf-kpi-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.perf-kpi-lbl {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.perf-kpi-val {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-top: 4px;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 2-Column Performance Modules */
+.perf-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+@media (max-width: 1100px) {
+    .perf-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.perf-glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.perf-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.perf-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.perf-card-title h2 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* Metric Items 2x2 Grid inside Module */
+.metric-box-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 550px) {
+    .metric-box-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metric-box {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.metric-box .m-lbl {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.metric-box .m-val {
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 6px;
+}
+
+.metric-box .m-sub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+/* Departmental Table Styling */
+.perf-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.perf-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.perf-table th {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 8px 16px;
+    text-align: left;
+}
+
+.perf-table td {
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.perf-table tr td:first-child {
+    border-left: 1px solid var(--border-color);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.perf-table tr td:last-child {
+    border-right: 1px solid var(--border-color);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.perf-table tr:hover td {
+    background: rgba(168, 85, 247, 0.08);
+}
