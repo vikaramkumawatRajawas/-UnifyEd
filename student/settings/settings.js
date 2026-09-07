@@ -1,5 +1,10 @@
 
-            document.addEventListener("DOMContentLoaded", () => {
+                // Initialize Interface Mode radio selection
+                const currentPortalMode = localStorage.getItem("portalMode") || "advance";
+                if (typeof window.setPortalMode === "function") {
+                    window.setPortalMode(currentPortalMode);
+                }
+
                 const transportToggle = document.getElementById("settingsTransportToggle");
                 if (transportToggle) {
                     const usesTransport = localStorage.getItem("usesTransport") === "true";

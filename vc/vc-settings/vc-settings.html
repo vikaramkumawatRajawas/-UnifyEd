@@ -4,14 +4,16 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
+            const currentMode = localStorage.getItem("portalMode") || "advance";
+            document.documentElement.setAttribute("data-portal-mode", currentMode);
         })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnifyEd - Vice Chancellor Portal Settings</title>
-    <meta name="description" content="Vice Chancellor Portal Settings - System Preferences, Executive Security Controls & Notification Channels">
+    <title>UnifyEd - Vice Chancellor Executive Portal Settings</title>
+    <meta name="description" content="Vice Chancellor Executive Portal Settings - System Preferences, Executive Security Controls, Governance Automation, & Notification Channels">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +21,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
-    <link rel="stylesheet" href="vc-settings.css">
+    <link rel="stylesheet" href="vc-settings.css?v=3">
 </head>
 
 <body class="vc-portal-body">
@@ -101,22 +103,25 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn" id="vcMenuToggle" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Search portal settings, security preferences...">
+                        <input type="text" id="settingsSearchInput" placeholder="Search portal settings, security controls, or notification preferences...">
                     </div>
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn" id="vcThemeToggle" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -143,26 +148,126 @@
             <div class="portal-content">
                 <!-- Settings Hero Banner -->
                 <section class="settings-hero-card">
-                    <div>
+                    <div class="hero-text-content">
                         <div class="system-badge">
-                            <i class="fa-solid fa-sliders"></i> GOVERNANCE & PORTAL CONFIGURATIONS
+                            <i class="fa-solid fa-sliders"></i> EXECUTIVE SYSTEM CONTROL CENTER
                         </div>
                         <h1>Vice Chancellor Executive Portal Settings</h1>
-                        <p>Configure security protocols, executive notification channels, session timeouts, and display preferences.</p>
+                        <p>Configure security protocols, executive notification channels, governance workflow automation, and portal interface preferences.</p>
+                    </div>
+                    <div class="hero-actions-wrap">
+                        <button class="btn-hero-primary" onclick="showToast('All System Configurations Saved Successfully!', 'success')">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Configurations
+                        </button>
+                        <button class="btn-hero-secondary" onclick="showToast('Backup JSON Exported', 'info')">
+                            <i class="fa-solid fa-download"></i> Export Config Backup
+                        </button>
                     </div>
                 </section>
 
-                <!-- Section 1: Executive Security Controls -->
-                <section class="settings-section">
+                <!-- System Telemetry Bar (4 Status Items) -->
+                <section class="telemetry-bar">
+                    <div class="telem-item">
+                        <i class="fa-solid fa-server" style="color:var(--success);"></i>
+                        <div>
+                            <span class="lbl">System Health Uptime</span>
+                            <strong class="val" style="color:var(--success);">99.98% Operational</strong>
+                        </div>
+                    </div>
+
+                    <div class="telem-item">
+                        <i class="fa-solid fa-shield-check" style="color:var(--primary);"></i>
+                        <div>
+                            <span class="lbl">Cryptographic Security</span>
+                            <strong class="val">TLS 1.3 & AES-256 Active</strong>
+                        </div>
+                    </div>
+
+                    <div class="telem-item">
+                        <i class="fa-solid fa-cloud-arrow-up" style="color:var(--info);"></i>
+                        <div>
+                            <span class="lbl">Last Cloud Sync</span>
+                            <strong class="val">Today at 04:00 AM</strong>
+                        </div>
+                    </div>
+
+                    <div class="telem-item">
+                        <i class="fa-solid fa-user-lock" style="color:var(--warning);"></i>
+                        <div>
+                            <span class="lbl">Active Session ID</span>
+                            <strong class="val" style="font-family:'JetBrains Mono';">SES-2026-9941</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Filter Category Tabs -->
+                <div class="settings-nav-tabs">
+                    <button class="set-tab active" onclick="switchSettingsTab(this, 'setAppearance')"><i class="fa-solid fa-palette"></i> Appearance & View Mode</button>
+                    <button class="set-tab" onclick="switchSettingsTab(this, 'setSecurity')"><i class="fa-solid fa-shield-halved"></i> Executive Security & Access</button>
+                    <button class="set-tab" onclick="switchSettingsTab(this, 'setNotifications')"><i class="fa-solid fa-bell"></i> Notifications & Digests</button>
+                    <button class="set-tab" onclick="switchSettingsTab(this, 'setGovernance')"><i class="fa-solid fa-landmark"></i> Governance Automation</button>
+                    <button class="set-tab" onclick="switchSettingsTab(this, 'setSystem')"><i class="fa-solid fa-database"></i> Backup & Maintenance</button>
+                </div>
+
+                <!-- Module 1: Display, Theme & Portal Mode -->
+                <section class="settings-section set-tab-content active" id="setAppearance">
+                    <div class="settings-section-head">
+                        <i class="fa-solid fa-palette" style="color:var(--primary); font-size:20px;"></i>
+                        <h2>Portal Interface, Theme & Portal Mode Preference</h2>
+                    </div>
+
+                    <div class="settings-form-grid">
+                        <div class="setting-card-box">
+                            <h4><i class="fa-solid fa-moon" style="color:var(--primary);"></i> Interface Theme</h4>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">Choose your preferred visual styling theme across all Vice Chancellor portal pages.</p>
+                            <select id="themeSelect" class="form-select-custom" onchange="handleThemeChange(this.value)">
+                                <option value="dark">Dark Mode (Executive Glassmorphism)</option>
+                                <option value="light">Light Mode (Clean Academic)</option>
+                                <option value="system">System Preference Default</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-card-box">
+                            <h4><i class="fa-solid fa-sliders" style="color:var(--accent);"></i> Portal Mode (Basic vs. Advance)</h4>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">Toggle between Basic (simplified quick actions) and Advance (full executive analytics & Senate controls).</p>
+                            <select id="portalModeSelect" class="form-select-custom" onchange="handlePortalModeChange(this.value)">
+                                <option value="advance">Advance Mode (Full Executive Analytics & Controls)</option>
+                                <option value="basic">Basic Mode (Streamlined Quick Approvals Only)</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-card-box">
+                            <h4><i class="fa-solid fa-text-height" style="color:var(--info);"></i> UI Density & Font Scaling</h4>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">Adjust data table row padding and font scaling for high-density information display.</p>
+                            <select class="form-select-custom" onchange="saveSettingToast('UI Display Density')">
+                                <option value="standard">Standard Executive Density (Recommended)</option>
+                                <option value="compact">Compact High-Density Data Tables</option>
+                                <option value="comfortable">Comfortable Spaced Layout</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-card-box">
+                            <h4><i class="fa-solid fa-bars-staggered" style="color:var(--warning);"></i> Sidebar Default State</h4>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">Select whether the sidebar navigation defaults to expanded or collapsed on login.</p>
+                            <select class="form-select-custom" onchange="saveSettingToast('Sidebar Default Preference')">
+                                <option value="expanded">Expanded Full Sidebar Menu</option>
+                                <option value="collapsed">Collapsed Icon-Only Sidebar</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Module 2: Executive Security Controls -->
+                <section class="settings-section set-tab-content" id="setSecurity">
                     <div class="settings-section-head">
                         <i class="fa-solid fa-shield-halved" style="color:var(--primary); font-size:20px;"></i>
-                        <h2>Executive Security Controls</h2>
+                        <h2>Executive Security Controls & Biometric Protection</h2>
                     </div>
 
                     <div class="setting-toggle-row">
                         <div class="setting-info">
-                            <h4>Two-Factor Authentication (2FA)</h4>
-                            <p>Require SMS / Authenticator app OTP for all Vice Chancellor portal logins.</p>
+                            <h4>Two-Factor Authentication (2FA / TOTP)</h4>
+                            <p>Require 6-digit authenticator passcode verification for Vice Chancellor portal logins.</p>
                         </div>
                         <label class="switch-element">
                             <input type="checkbox" checked onchange="saveSettingToast('2FA Security Mode')">
@@ -172,54 +277,176 @@
 
                     <div class="setting-toggle-row">
                         <div class="setting-info">
-                            <h4>Automatic Inactivity Session Lock</h4>
-                            <p>Automatically lock portal screen after 15 minutes of idle session.</p>
+                            <h4>Hardware Biometric Clearance for High Grants (> ₹5 Lakhs)</h4>
+                            <p>Require hardware security key (YubiKey / Touch ID) before sanctioning financial grants exceeding ₹5,00,000.</p>
                         </div>
                         <label class="switch-element">
-                            <input type="checkbox" checked onchange="saveSettingToast('Automatic Inactivity Lock')">
+                            <input type="checkbox" checked onchange="saveSettingToast('Biometric Financial Authorization')">
                             <span class="slider-round"></span>
                         </label>
                     </div>
 
                     <div class="setting-toggle-row">
                         <div class="setting-info">
-                            <h4>Senate Approval Audit Logging</h4>
-                            <p>Maintain detailed cryptographic timestamp log for every executive budget approval.</p>
+                            <h4>Automatic Session Inactivity Lock</h4>
+                            <p>Automatically lock VC portal screen after 15 minutes of idle session to protect confidential Senate data.</p>
                         </div>
                         <label class="switch-element">
-                            <input type="checkbox" checked onchange="saveSettingToast('Senate Approval Audit Logging')">
+                            <input type="checkbox" checked onchange="saveSettingToast('Automatic Session Inactivity Lock')">
+                            <span class="slider-round"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-toggle-row">
+                        <div class="setting-info">
+                            <h4>Cryptographic Senate Approval Audit Trail</h4>
+                            <p>Maintain detailed tamper-proof cryptographic logs for every executive sanction & Senate resolution.</p>
+                        </div>
+                        <label class="switch-element">
+                            <input type="checkbox" checked onchange="saveSettingToast('Senate Cryptographic Audit Trail')">
+                            <span class="slider-round"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-toggle-row">
+                        <div class="setting-info">
+                            <h4>Strict IP Whitelist Subnet Restriction</h4>
+                            <p>Restrict Vice Chancellor login access strictly to Secretariat Private LAN (`192.168.1.0/24`) and Encrypted VPN.</p>
+                        </div>
+                        <label class="switch-element">
+                            <input type="checkbox" checked onchange="saveSettingToast('IP Subnet Restriction')">
                             <span class="slider-round"></span>
                         </label>
                     </div>
                 </section>
 
-                <!-- Section 2: Executive Notification Channels -->
-                <section class="settings-section">
+                <!-- Module 3: Executive Notification Channels -->
+                <section class="settings-section set-tab-content" id="setNotifications">
                     <div class="settings-section-head">
                         <i class="fa-solid fa-bell" style="color:var(--warning); font-size:20px;"></i>
-                        <h2>Notification & Digest Channels</h2>
+                        <h2>Notification & Executive Digest Channels</h2>
                     </div>
 
                     <div class="setting-toggle-row">
                         <div class="setting-info">
-                            <h4>High-Priority Executive Email Alerts</h4>
-                            <p>Receive immediate email alerts for urgent budget requests exceeding ₹5 Lakhs.</p>
+                            <h4>Urgent High-Value Financial Grant Email Alerts</h4>
+                            <p>Receive instant SMS & Email notifications for urgent event applications and Senate grant applications exceeding ₹5,00,000.</p>
                         </div>
                         <label class="switch-element">
-                            <input type="checkbox" checked onchange="saveSettingToast('Email Alert Preferences')">
+                            <input type="checkbox" checked onchange="saveSettingToast('High-Value Grant Alerts')">
                             <span class="slider-round"></span>
                         </label>
                     </div>
 
                     <div class="setting-toggle-row">
                         <div class="setting-info">
-                            <h4>Daily Morning Institutional Summary</h4>
-                            <p>Receive daily 8:00 AM summary briefing of campus attendance and pending requests.</p>
+                            <h4>Daily 08:00 AM Executive Intelligence Summary Digest</h4>
+                            <p>Receive automated daily morning PDF summary of campus attendance, pending approvals, and faculty research papers.</p>
                         </div>
                         <label class="switch-element">
-                            <input type="checkbox" checked onchange="saveSettingToast('Daily Morning Summary')">
+                            <input type="checkbox" checked onchange="saveSettingToast('Daily Morning Executive Digest')">
                             <span class="slider-round"></span>
                         </label>
+                    </div>
+
+                    <div class="setting-toggle-row">
+                        <div class="setting-info">
+                            <h4>Emergency Campus Incident & Security Alerts</h4>
+                            <p>Receive high-priority push notifications for critical campus security incidents or emergency announcements.</p>
+                        </div>
+                        <label class="switch-element">
+                            <input type="checkbox" checked onchange="saveSettingToast('Emergency Incident Alerts')">
+                            <span class="slider-round"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-toggle-row">
+                        <div class="setting-info">
+                            <h4>Senate Meeting & Resolution Reminders (2 Hours Prior)</h4>
+                            <p>Automated SMS and calendar ping 2 hours prior to scheduled Academic Senate & Syndicate meetings.</p>
+                        </div>
+                        <label class="switch-element">
+                            <input type="checkbox" checked onchange="saveSettingToast('Senate Meeting Reminders')">
+                            <span class="slider-round"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Module 4: Governance & Workflow Automation -->
+                <section class="settings-section set-tab-content" id="setGovernance">
+                    <div class="settings-section-head">
+                        <i class="fa-solid fa-landmark" style="color:var(--info); font-size:20px;"></i>
+                        <h2>Institutional Governance & Automated Approval Workflows</h2>
+                    </div>
+
+                    <div class="setting-toggle-row">
+                        <div class="setting-info">
+                            <h4>Auto-Escalation Protocol for Idle Senate Requests (> 7 Days)</h4>
+                            <p>Automatically escalate pending Senate requests to Executive Secretariat priority queue if un-reviewed after 7 days.</p>
+                        </div>
+                        <label class="switch-element">
+                            <input type="checkbox" checked onchange="saveSettingToast('Auto-Escalation Protocol')">
+                            <span class="slider-round"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-toggle-row">
+                        <div class="setting-info">
+                            <h4>Delegated Acting Vice Chancellor Approval Authority</h4>
+                            <p>Enable temporary delegation of routine approval authority to Pro-Vice Chancellor / Registrar during executive travel.</p>
+                        </div>
+                        <label class="switch-element">
+                            <input type="checkbox" onchange="saveSettingToast('Delegated Authority Mode')">
+                            <span class="slider-round"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-toggle-row">
+                        <div class="setting-info">
+                            <h4>Automatic Academic Calendar Sync with Outlook / Google Workspace</h4>
+                            <p>Sync university convocation dates, Senate meetings, and exam schedules with Vice Chancellor calendar.</p>
+                        </div>
+                        <label class="switch-element">
+                            <input type="checkbox" checked onchange="saveSettingToast('Calendar Sync Integration')">
+                            <span class="slider-round"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Module 5: Backup & System Maintenance -->
+                <section class="settings-section set-tab-content" id="setSystem">
+                    <div class="settings-section-head">
+                        <i class="fa-solid fa-database" style="color:var(--success); font-size:20px;"></i>
+                        <h2>System Backup, Telemetry & Portal Maintenance</h2>
+                    </div>
+
+                    <div class="maintenance-grid">
+                        <div class="maint-box">
+                            <i class="fa-solid fa-cloud-arrow-down" style="color:var(--primary); font-size:28px;"></i>
+                            <h4>Manual System Configuration Backup</h4>
+                            <p>Generate cryptographic JSON snapshot of all portal preferences, security rules, and whitelists.</p>
+                            <button class="btn-maint-act" onclick="showToast('Portal Configuration Backup Downloaded', 'success')">
+                                <i class="fa-solid fa-download"></i> Download Backup JSON
+                            </button>
+                        </div>
+
+                        <div class="maint-box">
+                            <i class="fa-solid fa-broom" style="color:var(--warning); font-size:28px;"></i>
+                            <h4>Clear Portal Local Cache & Reset Tokens</h4>
+                            <p>Purge client-side cached data telemetry and re-authenticate API session tokens.</p>
+                            <button class="btn-maint-act warning" onclick="showToast('Portal Local Cache Cleared Successfully!', 'warning')">
+                                <i class="fa-solid fa-rotate"></i> Clear Local Cache
+                            </button>
+                        </div>
+
+                        <div class="maint-box">
+                            <i class="fa-solid fa-rotate-left" style="color:var(--danger); font-size:28px;"></i>
+                            <h4>Reset Settings to Factory Defaults</h4>
+                            <p>Restore default executive theme, notification thresholds, and security parameters.</p>
+                            <button class="btn-maint-act danger" onclick="showToast('Settings Restored to Factory Defaults', 'danger')">
+                                <i class="fa-solid fa-arrow-rotate-left"></i> Restore Defaults
+                            </button>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -235,7 +462,13 @@
             if (!container) return;
             const toast = document.createElement("div");
             toast.className = `toast-alert ${type}`;
-            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${message}</span>`;
+            const iconMap = {
+                success: 'fa-circle-check',
+                warning: 'fa-triangle-exclamation',
+                info: 'fa-circle-info',
+                danger: 'fa-circle-xmark'
+            };
+            toast.innerHTML = `<i class="fa-solid ${iconMap[type] || 'fa-circle-check'}"></i> <span>${message}</span>`;
             container.appendChild(toast);
             setTimeout(() => {
                 toast.style.opacity = "0";
@@ -248,50 +481,52 @@
             showToast(settingName + " Updated Successfully!", "success");
         }
 
-        // Sidebar Toggle with Memory
-        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
-        const sidebar = document.getElementById("sidebar");
-        const mainPortal = document.querySelector(".portal-main");
+        function switchSettingsTab(tabBtn, targetSecId) {
+            document.querySelectorAll(".set-tab").forEach(tab => tab.classList.remove("active"));
+            tabBtn.classList.add("active");
 
-        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
-            if (sidebar) sidebar.classList.add("collapsed");
-            if (mainPortal) mainPortal.classList.add("expanded");
+            document.querySelectorAll(".set-tab-content").forEach(sec => sec.classList.remove("active"));
+            const targetSec = document.getElementById(targetSecId);
+            if (targetSec) targetSec.classList.add("active");
         }
 
-        if (sidebarToggleBtn && sidebar) {
-            sidebarToggleBtn.addEventListener("click", () => {
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.toggle("active");
-                } else {
-                    const isCollapsed = sidebar.classList.toggle("collapsed");
-                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
-                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
-                }
-            });
+        function handleThemeChange(val) {
+            document.documentElement.setAttribute("data-theme", val);
+            localStorage.setItem("vc-theme", val);
+            localStorage.setItem("theme", val);
+            saveSettingToast("Portal Theme Preference");
         }
 
-        // Theme Toggle
-        const themeBtn = document.getElementById("themeToggleBtn");
-        if (themeBtn) {
-            themeBtn.addEventListener("click", () => {
-                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-                document.documentElement.setAttribute("data-theme", activeTheme);
-                localStorage.setItem("theme", activeTheme);
-            });
+        function handlePortalModeChange(val) {
+            document.documentElement.setAttribute("data-portal-mode", val);
+            localStorage.setItem("portalMode", val);
+            saveSettingToast("Portal Mode set to " + (val === "basic" ? "Basic" : "Advance"));
         }
 
-        // Profile Menu Dropdown
-        const profileTrigger = document.getElementById("portalProfileTrigger");
-        const profileMenu = document.getElementById("profileMenu");
-        if (profileTrigger && profileMenu) {
-            profileTrigger.addEventListener("click", (e) => {
-                e.stopPropagation();
-                profileMenu.classList.toggle("open");
-            });
-            document.addEventListener("click", (e) => {
-                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
-                    profileMenu.classList.remove("open");
-                }
+        // Initialize Selects from LocalStorage
+        const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
+        const themeSelect = document.getElementById("themeSelect");
+        if (themeSelect) themeSelect.value = currentTheme;
+
+        const currentMode = localStorage.getItem("portalMode") || "advance";
+        const portalModeSelect = document.getElementById("portalModeSelect");
+        if (portalModeSelect) portalModeSelect.value = currentMode;
+
+        // Live Search Filter
+        const settingsSearchInput = document.getElementById("settingsSearchInput");
+        if (settingsSearchInput) {
+            settingsSearchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const textNodes = document.querySelectorAll(".settings-section h4, .settings-section p");
+                textNodes.forEach(node => {
+                    const text = node.textContent.toLowerCase();
+                    if (query && text.includes(query)) {
+                        node.style.background = "rgba(99, 102, 241, 0.2)";
+                        node.style.borderRadius = "4px";
+                    } else {
+                        node.style.background = "none";
+                    }
+                });
             });
         }
 
@@ -303,6 +538,8 @@
             });
         });
     </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>

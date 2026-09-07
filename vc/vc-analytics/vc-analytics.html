@@ -4,13 +4,15 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
+            const currentMode = localStorage.getItem("portalMode") || "advance";
+            document.documentElement.setAttribute("data-portal-mode", currentMode);
         })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnifyEd - Institutional Data Analytics</title>
+    <title>UnifyEd - Institutional Data Analytics & Intelligence</title>
     <meta name="description" content="Vice Chancellor Institutional Data Analytics - Platform Adoption, Research Output Trends, & Academic Performance Intelligence">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +21,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
-    <link rel="stylesheet" href="vc-analytics.css">
+    <link rel="stylesheet" href="vc-analytics.css?v=3">
 </head>
 
 <body class="vc-portal-body">
@@ -101,12 +103,15 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn" id="vcMenuToggle" class="toggle-btn sidebar-toggle-btn" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
@@ -116,7 +121,7 @@
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn" id="vcThemeToggle" class="header-icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -143,12 +148,22 @@
             <div class="portal-content">
                 <!-- Analytics Hero Banner -->
                 <section class="analytics-hero-card">
-                    <div>
+                    <div class="hero-text-content">
                         <div class="system-badge">
                             <i class="fa-solid fa-chart-line"></i> INSTITUTIONAL DATA INTELLIGENCE
                         </div>
-                        <h1>Institutional Analytics & Performance Intelligence</h1>
-                        <p>University-wide data metrics, digital portal adoption, research publication impact, and academic growth trends across all faculties.</p>
+                        <h1>University Performance Analytics & Growth Intelligence</h1>
+                        <p>Real-time telemetry on digital ERP portal engagement, Scopus research publication impact, departmental grant distribution, and campus placement metrics.</p>
+                    </div>
+                    <div class="hero-controls-wrap">
+                        <select class="analytics-period-select" id="analyticsPeriodSelect" onchange="showToast('Analytics Period updated to ' + this.value, 'info')">
+                            <option value="Academic Year 2025-26">Academic Year 2025-26</option>
+                            <option value="Semester 6 YTD">Semester 6 YTD</option>
+                            <option value="Last 3 Years Trends">Last 3 Years Trends</option>
+                        </select>
+                        <button class="analytics-period-select" onclick="showToast('Exporting Analytics Executive PDF Summary...', 'success')">
+                            <i class="fa-solid fa-file-pdf"></i> Export Analytics PDF
+                        </button>
                     </div>
                 </section>
 
@@ -165,14 +180,14 @@
                             </div>
                         </div>
                         <div class="kpi-change purple">
-                            <i class="fa-solid fa-circle-check"></i> Active Registered Users
+                            <i class="fa-solid fa-circle-check"></i> 98.4% Active Faculty & Students
                         </div>
                     </div>
 
                     <div class="analytics-kpi-card">
                         <div class="analytics-kpi-top">
                             <div>
-                                <div class="analytics-kpi-lbl">PLATFORM ADOPTION</div>
+                                <div class="analytics-kpi-lbl">ERP DIGITAL ADOPTION</div>
                                 <div class="analytics-kpi-val" style="color:var(--info);">92.0%</div>
                             </div>
                             <div class="kpi-icon icon-cyan">
@@ -180,7 +195,7 @@
                             </div>
                         </div>
                         <div class="kpi-change info">
-                            <i class="fa-solid fa-arrow-trend-up"></i> Daily Active Usage
+                            <i class="fa-solid fa-arrow-trend-up"></i> +4.2% YoY Digital Transition
                         </div>
                     </div>
 
@@ -195,7 +210,7 @@
                             </div>
                         </div>
                         <div class="kpi-change success">
-                            <i class="fa-solid fa-award"></i> University Distinction
+                            <i class="fa-solid fa-award"></i> NAAC A++ Grade Benchmark
                         </div>
                     </div>
 
@@ -210,41 +225,51 @@
                             </div>
                         </div>
                         <div class="kpi-change warning">
-                            <i class="fa-solid fa-briefcase"></i> Corporate Drives
+                            <i class="fa-solid fa-bolt"></i> ₹14.2 LPA Highest Offer
                         </div>
                     </div>
                 </section>
 
-                <!-- Analytics Modules Grid -->
+                <!-- Analytics Category Filter Bar -->
+                <div class="analytics-filter-bar">
+                    <button class="analytics-tab active" onclick="filterAnalyticsModule(this, 'all')">All Metrics</button>
+                    <button class="analytics-tab" onclick="filterAnalyticsModule(this, 'adoption')">Digital Adoption</button>
+                    <button class="analytics-tab" onclick="filterAnalyticsModule(this, 'research')">Research & Grants</button>
+                    <button class="analytics-tab" onclick="filterAnalyticsModule(this, 'faculty')">Faculty Performance</button>
+                    <button class="analytics-tab" onclick="filterAnalyticsModule(this, 'placement')">Placements & CGPA</button>
+                </div>
+
+                <!-- 2-Column Analytics Modules Grid -->
                 <div class="analytics-grid-2">
                     <!-- Module 1: ERP Platform Adoption Progress Meters -->
-                    <div class="analytics-glass-card">
+                    <div class="analytics-glass-card" data-module="adoption">
                         <div class="analytics-card-head">
-                            <h2><i class="fa-solid fa-laptop-code" style="color:var(--primary);"></i> Campus ERP Digital Adoption</h2>
+                            <h2><i class="fa-solid fa-laptop-code" style="color:var(--primary);"></i> Campus ERP Digital Adoption Meters</h2>
+                            <span class="card-badge info">Real-time Telemetry</span>
                         </div>
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>Student Portal Engagement</span><span>94%</span></div>
+                            <div class="b-info"><span>Student Portal Engagement</span><span class="percent-val">94%</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:94%; background:var(--primary);"></div>
                             </div>
                         </div>
 
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>Faculty Attendance & Grading Submission</span><span>96%</span></div>
+                            <div class="b-info"><span>Faculty Attendance & Grading Submission</span><span class="percent-val">96%</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:96%; background:var(--success);"></div>
                             </div>
                         </div>
 
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>HOD Approval Clearance Speed</span><span>91%</span></div>
+                            <div class="b-info"><span>HOD Approval Clearance Speed</span><span class="percent-val">91%</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:91%; background:var(--info);"></div>
                             </div>
                         </div>
 
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>Digital Library Usage & Archives</span><span>88%</span></div>
+                            <div class="b-info"><span>Digital Library & E-Archives Usage</span><span class="percent-val">88%</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:88%; background:var(--warning);"></div>
                             </div>
@@ -252,44 +277,201 @@
                     </div>
 
                     <!-- Module 2: Research & Grant Distribution -->
-                    <div class="analytics-glass-card">
+                    <div class="analytics-glass-card" data-module="research">
                         <div class="analytics-card-head">
-                            <h2><i class="fa-solid fa-sack-dollar" style="color:var(--success);"></i> Research Funding & Impact Share</h2>
+                            <h2><i class="fa-solid fa-sack-dollar" style="color:var(--success);"></i> Departmental Research Grants & Funding</h2>
+                            <span class="card-badge success">DST / UGC Sanctioned</span>
                         </div>
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>Computer Science Research Share</span><span>₹2.4 Cr (41%)</span></div>
+                            <div class="b-info"><span>Computer Science & AI Share</span><span class="amount-val">₹2.4 Cr (41%)</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:41%; background:var(--primary);"></div>
                             </div>
                         </div>
 
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>Mechanical & Robotics Grants</span><span>₹1.8 Cr (31%)</span></div>
+                            <div class="b-info"><span>Mechanical & Robotics Grants</span><span class="amount-val">₹1.8 Cr (31%)</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:31%; background:var(--accent);"></div>
                             </div>
                         </div>
 
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>Electronics & VLSI Research</span><span>₹1.1 Cr (19%)</span></div>
+                            <div class="b-info"><span>Electronics & VLSI Research</span><span class="amount-val">₹1.1 Cr (19%)</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:19%; background:var(--info);"></div>
                             </div>
                         </div>
 
                         <div class="analytics-bar-item">
-                            <div class="b-info"><span>Management & Commerce Grants</span><span>₹0.5 Cr (9%)</span></div>
+                            <div class="b-info"><span>Management & Commerce Grants</span><span class="amount-val">₹0.5 Cr (9%)</span></div>
                             <div class="analytics-bar-track">
                                 <div class="analytics-bar-fill" style="width:9%; background:var(--warning);"></div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Module 3: Scopus Publications & Patent Filings -->
+                    <div class="analytics-glass-card" data-module="faculty">
+                        <div class="analytics-card-head">
+                            <h2><i class="fa-solid fa-book-bookmark" style="color:var(--accent);"></i> Faculty Scopus & IEEE Research Output</h2>
+                            <span class="card-badge purple">YTD 2026</span>
+                        </div>
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Indexed Journal Publications</span><span class="percent-val">245 Papers</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:85%; background:var(--accent);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>International Patent Applications Filed</span><span class="percent-val">18 Patents</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:65%; background:var(--primary);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Ph.D. Doctoral Supervisions Cleared</span><span class="percent-val">42 Candidates</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:72%; background:var(--success);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4: Placement & Career Growth Metrics -->
+                    <div class="analytics-glass-card" data-module="placement">
+                        <div class="analytics-card-head">
+                            <h2><i class="fa-solid fa-briefcase" style="color:var(--warning);"></i> Campus Placement & Graduate Tracking</h2>
+                            <span class="card-badge amber">Batch 2025-26</span>
+                        </div>
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Tier-1 Corporate Placement Clearance</span><span class="percent-val">85% Placed</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:85%; background:var(--warning);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Higher Studies & Competitive Exam Qualifiers</span><span class="percent-val">12% Enrolled</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:12%; background:var(--info);"></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-bar-item">
+                            <div class="b-info"><span>Entrepreneurship & Startup Incubations</span><span class="percent-val">3% Founded</span></div>
+                            <div class="analytics-bar-track">
+                                <div class="analytics-bar-fill" style="width:3%; background:var(--success);"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Section: Comprehensive Departmental Analytics Table -->
+                <section class="analytics-section">
+                    <div class="analytics-section-head">
+                        <div class="head-title-wrap">
+                            <i class="fa-solid fa-table-list" style="color:var(--primary); font-size:22px;"></i>
+                            <div>
+                                <h2>Departmental Performance & Intelligence Matrix</h2>
+                                <p style="font-size:12.5px; color:var(--text-secondary); margin-top:2px;">Consolidated analytics scores across all university academic faculties</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vc-table-wrapper" style="overflow-x: auto;">
+                        <table class="vc-table">
+                            <thead>
+                                <tr>
+                                    <th>Department Name</th>
+                                    <th>Faculty Strength</th>
+                                    <th>Active Students</th>
+                                    <th>Research Grants</th>
+                                    <th>ERP Adoption %</th>
+                                    <th>Performance Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Computer Science & AI</strong></td>
+                                    <td>45 Faculty</td>
+                                    <td>1,200 Students</td>
+                                    <td style="font-family:'JetBrains Mono'; font-weight:700; color:var(--success);">₹2.40 Cr</td>
+                                    <td><span class="percent-pill success">98%</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-star"></i> A++ Exceptional</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mechanical & Robotics</strong></td>
+                                    <td>32 Faculty</td>
+                                    <td>850 Students</td>
+                                    <td style="font-family:'JetBrains Mono'; font-weight:700; color:var(--info);">₹1.80 Cr</td>
+                                    <td><span class="percent-pill info">94%</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-star"></i> A+ Outstanding</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Electronics & VLSI</strong></td>
+                                    <td>28 Faculty</td>
+                                    <td>650 Students</td>
+                                    <td style="font-family:'JetBrains Mono'; font-weight:700; color:var(--accent);">₹1.10 Cr</td>
+                                    <td><span class="percent-pill info">92%</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-star"></i> A Grade</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Management & Commerce</strong></td>
+                                    <td>20 Faculty</td>
+                                    <td>400 Students</td>
+                                    <td style="font-family:'JetBrains Mono'; font-weight:700; color:var(--warning);">₹0.50 Cr</td>
+                                    <td><span class="percent-pill warning">86%</span></td>
+                                    <td><span class="status-pill pill-warning"><i class="fa-solid fa-check"></i> B+ Satisfactory</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
 
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <script>
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toastContainer");
+            if (!container) return;
+            const toast = document.createElement("div");
+            toast.className = `toast-alert ${type}`;
+            const iconMap = {
+                success: 'fa-circle-check',
+                warning: 'fa-triangle-exclamation',
+                info: 'fa-circle-info',
+                danger: 'fa-circle-xmark'
+            };
+            toast.innerHTML = `<i class="fa-solid ${iconMap[type] || 'fa-circle-check'}"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateX(50px)";
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function filterAnalyticsModule(tabBtn, targetModule) {
+            document.querySelectorAll(".analytics-tab").forEach(tab => tab.classList.remove("active"));
+            tabBtn.classList.add("active");
+
+            const cards = document.querySelectorAll(".analytics-glass-card");
+            cards.forEach(card => {
+                const mod = card.getAttribute("data-module");
+                if (targetModule === "all" || mod === targetModule) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
         // Sidebar Toggle with Memory
         const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
         const sidebar = document.getElementById("sidebar");
@@ -345,7 +527,7 @@
                 const bars = document.querySelectorAll(".analytics-bar-item");
                 bars.forEach(bar => {
                     const text = bar.textContent.toLowerCase();
-                    bar.style.display = !query || text.includes(query) ? "" : "none";
+                    bar.style.display = !query || text.includes(query) ? "block" : "none";
                 });
             });
         }
@@ -358,6 +540,8 @@
             });
         });
     </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>

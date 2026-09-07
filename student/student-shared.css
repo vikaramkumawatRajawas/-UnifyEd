@@ -32,6 +32,10 @@
     --accent: #f59e0b;
     --accent-hover: #d97706;
 
+    --scrollbar-track: #0f172a;
+    --scrollbar-thumb: #334155;
+    --scrollbar-thumb-hover: #475569;
+
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     
@@ -58,8 +62,122 @@
     --secondary: #9333ea;
     --secondary-hover: #7e22ce;
 
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb-hover: #94a3b8;
+
     --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.08);
     --card-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
+}
+
+/* Dynamic Scrollbars for Sidebar & Global Page */
+::-webkit-scrollbar,
+.sidebar-menu::-webkit-scrollbar,
+.portal-sidebar::-webkit-scrollbar,
+aside::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track,
+.sidebar-menu::-webkit-scrollbar-track,
+.portal-sidebar::-webkit-scrollbar-track,
+aside::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb,
+.sidebar-menu::-webkit-scrollbar-thumb,
+.portal-sidebar::-webkit-scrollbar-thumb,
+aside::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover,
+.sidebar-menu::-webkit-scrollbar-thumb:hover,
+.portal-sidebar::-webkit-scrollbar-thumb:hover,
+aside::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+*,
+.sidebar-menu,
+.portal-sidebar,
+aside {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* ==========================================
+   PORTAL MODE SWITCHER (BASIC vs ADVANCE)
+   ========================================== */
+.portal-mode-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 6px;
+    gap: 4px;
+    margin-right: 18px;
+    margin-left: 15px;
+}
+
+.portal-mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all var(--transition-fast);
+}
+
+.portal-mode-btn i {
+    font-size: 10px;
+}
+
+.portal-mode-btn:hover {
+    color: var(--text-primary);
+}
+
+.portal-mode-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+}
+
+/* Basic Mode Filtering Styles */
+[data-portal-mode="basic"] .mode-advance-only {
+    display: none !important;
+}
+
+/* Mode badge in header profile widget */
+.portal-mode-badge {
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+[data-portal-mode="basic"] .portal-mode-badge {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+[data-portal-mode="advance"] .portal-mode-badge {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
 }
 
 /* Base Resets */
@@ -314,22 +432,38 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
 }
 
 .user-profile-widget .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    line-height: 1.2;
     text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .user-profile-widget .details strong {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--text-primary);
+    white-space: nowrap;
 }
 
 .user-profile-widget .details span {
     display: block;
     font-size: 11px;
-    color: var(--text-tertiary);
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
 }
 
 .profile-avatar {
@@ -489,19 +623,15 @@ h1, h2, h3, h4, h5, h6 {
         left: 0;
     }
     .main-portal-header {
-        display: none;
-    }
-    .mobile-portal-header {
-        height: 65px;
-        background-color: var(--bg-secondary);
-        border-bottom: 1px solid var(--border-color);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
+        display: flex !important;
         position: sticky;
         top: 0;
-        z-index: 110;
+        z-index: 999;
+        padding: 0 12px !important;
+        gap: 8px !important;
+    }
+    .mobile-portal-header {
+        display: none !important;
     }
     .mobile-portal-header h2 {
         font-size: 18px;
@@ -805,4 +935,32 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(239, 68, 68, 0.08);
     color: #ef4444;
 }
+
+/* Mobile Responsiveness for Student Header & Mode Switcher */
+@media (max-width: 768px) {
+    .user-profile-widget .details {
+        display: none !important;
+    }
+
+    .portal-mode-switcher {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: 34px !important;
+        padding: 2px !important;
+        gap: 2px !important;
+        margin: 0 !important;
+    }
+
+    .portal-mode-btn {
+        height: 28px !important;
+        padding: 0 8px !important;
+        font-size: 11px !important;
+    }
+
+    .portal-mode-btn span {
+        display: inline !important;
+    }
+}
+
 

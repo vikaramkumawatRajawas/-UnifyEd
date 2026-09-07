@@ -4,14 +4,14 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
         })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnifyEd - Executive Event Approvals</title>
-    <meta name="description" content="Vice Chancellor Executive Event Approvals - Campus Fests, Academic Symposia, & Budget Grants Oversight">
+    <title>UnifyEd - Executive Event Approvals & Governance</title>
+    <meta name="description" content="Vice Chancellor Executive Event Approvals - Campus Fests, Academic Symposia, & Budget Grants Governance">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +19,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
-    <link rel="stylesheet" href="vc-event-approvals.css">
+    <link rel="stylesheet" href="vc-event-approvals.css?v=3">
 </head>
 
 <body class="vc-portal-body">
@@ -101,22 +101,25 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn" id="vcMenuToggle" class="toggle-btn sidebar-toggle-btn" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="eventSearchInput" placeholder="Search pending events, organizers, or budget grants...">
+                        <input type="text" id="eventSearchInput" placeholder="Search pending events, organizers, venues, or budget grants...">
                     </div>
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn" id="vcThemeToggle" class="header-icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -143,29 +146,37 @@
             <div class="portal-content">
                 <!-- Event Approvals Hero Banner -->
                 <section class="events-hero-card">
-                    <div>
+                    <div class="hero-text-content">
                         <div class="system-badge">
-                            <i class="fa-solid fa-circle-check"></i> EXECUTIVE EVENT GOVERNANCE
+                            <i class="fa-solid fa-calendar-check"></i> EXECUTIVE EVENT GOVERNANCE & GRANTS
                         </div>
-                        <h1>Executive Event Approvals & Grants</h1>
-                        <p>Review, authorize, or decline university-level tech fests, cultural concerts, national research symposia, and departmental budget requests.</p>
+                        <h1>Institutional Event Approvals & Budget Authorization</h1>
+                        <p>Review, sanction financial grants, or request Senate review for university-wide technology festivals, international symposia, cultural concerts, and sports meets.</p>
+                    </div>
+                    <div class="hero-quick-actions">
+                        <button class="btn-hero-primary" onclick="showToast('Bulk Authorization Console Initialized', 'info')">
+                            <i class="fa-solid fa-layer-group"></i> Batch Sanction Grants
+                        </button>
+                        <button class="btn-hero-primary" onclick="showToast('Event Governance PDF Exported', 'success')">
+                            <i class="fa-solid fa-file-pdf"></i> Download Audit Report
+                        </button>
                     </div>
                 </section>
 
-                <!-- KPI Cards Grid (4 Columns) -->
+                <!-- Executive KPI Grid (4 Columns) -->
                 <section class="events-kpi-grid">
                     <div class="events-kpi-card">
                         <div class="events-kpi-top">
                             <div>
-                                <div class="events-kpi-lbl">PENDING APPROVALS</div>
-                                <div class="events-kpi-val" style="color:var(--warning);">12 Pending</div>
+                                <div class="events-kpi-lbl">PENDING VC AUTHORIZATIONS</div>
+                                <div class="events-kpi-val" style="color:var(--warning);">4 Pending</div>
                             </div>
                             <div class="kpi-icon icon-amber">
                                 <i class="fa-solid fa-hourglass-half"></i>
                             </div>
                         </div>
                         <div class="kpi-change warning">
-                            <i class="fa-solid fa-clock"></i> Requires VC Authorization
+                            <i class="fa-solid fa-clock"></i> Requires VC Sanction
                         </div>
                     </div>
 
@@ -173,7 +184,7 @@
                         <div class="events-kpi-top">
                             <div>
                                 <div class="events-kpi-lbl">APPROVED THIS MONTH</div>
-                                <div class="events-kpi-val" style="color:var(--success);">34 Approved</div>
+                                <div class="events-kpi-val" style="color:var(--success);">18 Events</div>
                             </div>
                             <div class="kpi-icon icon-emerald">
                                 <i class="fa-solid fa-circle-check"></i>
@@ -187,129 +198,441 @@
                     <div class="events-kpi-card">
                         <div class="events-kpi-top">
                             <div>
-                                <div class="events-kpi-lbl">SCHEDULED EVENTS</div>
-                                <div class="events-kpi-val" style="color:var(--primary);">156 Total</div>
+                                <div class="events-kpi-lbl">TOTAL BUDGET SANCTIONED</div>
+                                <div class="events-kpi-val" style="color:var(--primary); font-family:'JetBrains Mono';">₹18.5 Lakh</div>
                             </div>
                             <div class="kpi-icon icon-purple">
-                                <i class="fa-solid fa-calendar-days"></i>
+                                <i class="fa-solid fa-vault"></i>
                             </div>
                         </div>
                         <div class="kpi-change purple">
-                            <i class="fa-solid fa-arrow-trend-up"></i> Academic Calendar 2026
+                            <i class="fa-solid fa-chart-line"></i> Institutional Grants
                         </div>
                     </div>
 
                     <div class="events-kpi-card">
                         <div class="events-kpi-top">
                             <div>
-                                <div class="events-kpi-lbl">TOTAL BUDGET GRANTED</div>
-                                <div class="events-kpi-val" style="color:var(--info); font-family:'JetBrains Mono';">₹12.5 Lakh</div>
+                                <div class="events-kpi-lbl">SCHEDULED ANNUAL EVENTS</div>
+                                <div class="events-kpi-val" style="color:var(--info);">42 Approved</div>
                             </div>
                             <div class="kpi-icon icon-cyan">
-                                <i class="fa-solid fa-wallet"></i>
+                                <i class="fa-solid fa-calendar-days"></i>
                             </div>
                         </div>
                         <div class="kpi-change info">
-                            <i class="fa-solid fa-piggy-bank"></i> Institutional Funds
+                            <i class="fa-solid fa-graduation-cap"></i> Academic Year 2025-26
                         </div>
                     </div>
                 </section>
 
-                <!-- Section 1: Pending Event Requests List -->
+                <!-- Section 1: Pending Event Approvals List -->
                 <section class="events-section">
                     <div class="events-section-head">
-                        <i class="fa-solid fa-hourglass-end" style="color:var(--warning); font-size:20px;"></i>
-                        <h2>Pending Executive Event Requests</h2>
-                    </div>
-
-                    <div id="pendingEventsList">
-                        <div class="event-card-item">
-                            <div class="event-info-main">
-                                <div class="event-title">
-                                    <span>International Tech Fest 2026</span>
-                                    <span class="status-pill pill-warning"><i class="fa-solid fa-clock"></i> Senate Review</span>
-                                </div>
-                                <div class="event-details-meta">
-                                    <span><i class="fa-solid fa-building" style="color:var(--primary);"></i> Organizer: CSE Department</span>
-                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Feb 20-22, 2026</span>
-                                    <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Footfall: 1,500+ Attendees</span>
-                                    <span><i class="fa-solid fa-indian-rupee-sign" style="color:var(--warning);"></i> Budget: ₹5,50,000</span>
-                                </div>
-                            </div>
-                            <div class="event-actions-btns">
-                                <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved Tech Fest 2026 Grant')">
-                                    <i class="fa-solid fa-check"></i> Approve Grant
-                                </button>
-                                <button class="btn-act-reject" onclick="handleEventAction(this, 'Declined Event Request')">
-                                    <i class="fa-solid fa-xmark"></i> Decline
-                                </button>
+                        <div class="head-title-wrap">
+                            <i class="fa-solid fa-clipboard-check" style="color:var(--warning); font-size:22px;"></i>
+                            <div>
+                                <h2>Pending Event Applications & Financial Grant Requests</h2>
+                                <p style="font-size:12.5px; color:var(--text-secondary); margin-top:2px;">Applications endorsed by Deans & HODs awaiting Vice Chancellor final clearance</p>
                             </div>
                         </div>
 
-                        <div class="event-card-item" style="border-left-color: var(--accent);">
-                            <div class="event-info-main">
-                                <div class="event-title">
-                                    <span>University Annual Cultural Fest (Aura 2026)</span>
-                                    <span class="status-pill pill-warning"><i class="fa-solid fa-clock"></i> Senate Review</span>
-                                </div>
-                                <div class="event-details-meta">
-                                    <span><i class="fa-solid fa-masks-theater" style="color:var(--accent);"></i> Organizer: Cultural Committee</span>
-                                    <span><i class="fa-solid fa-calendar-day" style="color:var(--info);"></i> Date: Mar 10-12, 2026</span>
-                                    <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Footfall: 2,000+ Attendees</span>
-                                    <span><i class="fa-solid fa-indian-rupee-sign" style="color:var(--warning);"></i> Budget: ₹4,50,000</span>
+                        <!-- Filter Tabs -->
+                        <div class="event-filter-tabs">
+                            <button class="filter-tab active" onclick="filterEvents(this, 'all')">All Requests (4)</button>
+                            <button class="filter-tab" onclick="filterEvents(this, 'high-budget')">High Grant (> ₹4L)</button>
+                            <button class="filter-tab" onclick="filterEvents(this, 'tech')">Tech & Research</button>
+                            <button class="filter-tab" onclick="filterEvents(this, 'cultural')">Cultural & Sports</button>
+                        </div>
+                    </div>
+
+                    <div id="pendingEventsList" class="pending-events-container">
+                        <!-- Pending Item 1 -->
+                        <div class="event-card-item" data-category="tech" data-budget="550000">
+                            <div class="event-card-header">
+                                <div class="event-badge-tag tech"><i class="fa-solid fa-microchip"></i> Technology & AI</div>
+                                <div class="event-status-pill warning"><i class="fa-solid fa-clock"></i> Senate Financial Clearance</div>
+                            </div>
+                            
+                            <div class="event-card-body">
+                                <h3 class="event-name">International Tech Fest 2026 & Hackathon</h3>
+                                <p class="event-summary">3-day flagship international technical symposium featuring 48-hour AI hackathon, robotics competition, and keynote address by global tech leaders.</p>
+
+                                <div class="event-meta-grid">
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-building-columns" style="color:var(--primary);"></i>
+                                        <div>
+                                            <span class="lbl">Organizing Dept</span>
+                                            <strong class="val">Dept of Computer Science & AI</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-calendar-day" style="color:var(--info);"></i>
+                                        <div>
+                                            <span class="lbl">Event Schedule</span>
+                                            <strong class="val">Feb 20 – Feb 22, 2026</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i>
+                                        <div>
+                                            <span class="lbl">Campus Venue</span>
+                                            <strong class="val">Main Auditorium & Innovation Lab</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-users" style="color:var(--success);"></i>
+                                        <div>
+                                            <span class="lbl">Expected Footfall</span>
+                                            <strong class="val">2,500+ Participants (50+ Colleges)</strong>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="event-actions-btns">
-                                <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved Cultural Fest 2026 Grant')">
-                                    <i class="fa-solid fa-check"></i> Approve Grant
-                                </button>
-                                <button class="btn-act-reject" onclick="handleEventAction(this, 'Declined Event Request')">
-                                    <i class="fa-solid fa-xmark"></i> Decline
-                                </button>
+
+                            <div class="event-card-footer">
+                                <div class="grant-budget-badge">
+                                    <span class="grant-label">Grant Amount Requested</span>
+                                    <strong class="grant-amount">₹5,50,000</strong>
+                                </div>
+
+                                <div class="event-action-buttons">
+                                    <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved', 'International Tech Fest 2026 & Hackathon')">
+                                        <i class="fa-solid fa-check-double"></i> Sanction Grant & Approve
+                                    </button>
+                                    <button class="btn-act-senate" onclick="handleEventAction(this, 'Senate Referred', 'International Tech Fest 2026 & Hackathon')">
+                                        <i class="fa-solid fa-building-flag"></i> Refer to Senate
+                                    </button>
+                                    <button class="btn-act-decline" onclick="handleEventAction(this, 'Declined', 'International Tech Fest 2026 & Hackathon')">
+                                        <i class="fa-solid fa-xmark"></i> Decline Application
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Item 2 -->
+                        <div class="event-card-item" data-category="cultural" data-budget="450000">
+                            <div class="event-card-header">
+                                <div class="event-badge-tag cultural"><i class="fa-solid fa-masks-theater"></i> Cultural & Arts</div>
+                                <div class="event-status-pill warning"><i class="fa-solid fa-clock"></i> Senate Financial Clearance</div>
+                            </div>
+
+                            <div class="event-card-body">
+                                <h3 class="event-name">University Annual Cultural Fest (Aura 2026)</h3>
+                                <p class="event-summary">Inter-college annual cultural extravaganza featuring music concert, classical dance showcase, drama performance, and fine arts exhibition.</p>
+
+                                <div class="event-meta-grid">
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-building-columns" style="color:var(--primary);"></i>
+                                        <div>
+                                            <span class="lbl">Organizing Body</span>
+                                            <strong class="val">Student Welfare & Cultural Council</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-calendar-day" style="color:var(--info);"></i>
+                                        <div>
+                                            <span class="lbl">Event Schedule</span>
+                                            <strong class="val">Mar 10 – Mar 12, 2026</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i>
+                                        <div>
+                                            <span class="lbl">Campus Venue</span>
+                                            <strong class="val">Open Air Stadium & Amphitheatre</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-users" style="color:var(--success);"></i>
+                                        <div>
+                                            <span class="lbl">Expected Footfall</span>
+                                            <strong class="val">4,000+ Students & Guests</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="event-card-footer">
+                                <div class="grant-budget-badge">
+                                    <span class="grant-label">Grant Amount Requested</span>
+                                    <strong class="grant-amount">₹4,50,000</strong>
+                                </div>
+
+                                <div class="event-action-buttons">
+                                    <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved', 'University Annual Cultural Fest (Aura 2026)')">
+                                        <i class="fa-solid fa-check-double"></i> Sanction Grant & Approve
+                                    </button>
+                                    <button class="btn-act-senate" onclick="handleEventAction(this, 'Senate Referred', 'University Annual Cultural Fest (Aura 2026)')">
+                                        <i class="fa-solid fa-building-flag"></i> Refer to Senate
+                                    </button>
+                                    <button class="btn-act-decline" onclick="handleEventAction(this, 'Declined', 'University Annual Cultural Fest (Aura 2026)')">
+                                        <i class="fa-solid fa-xmark"></i> Decline Application
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Item 3 -->
+                        <div class="event-card-item" data-category="tech" data-budget="320000">
+                            <div class="event-card-header">
+                                <div class="event-badge-tag tech"><i class="fa-solid fa-flask"></i> Research & Quantum AI</div>
+                                <div class="event-status-pill info"><i class="fa-solid fa-file-signature"></i> HOD Endorsed</div>
+                            </div>
+
+                            <div class="event-card-body">
+                                <h3 class="event-name">National Quantum Computing & Robotics Summit</h3>
+                                <p class="event-summary">High-level academic conference hosting delegates from DST, ISRO, and IITs to discuss quantum machine learning algorithms and robotics automation.</p>
+
+                                <div class="event-meta-grid">
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-building-columns" style="color:var(--primary);"></i>
+                                        <div>
+                                            <span class="lbl">Organizing Dept</span>
+                                            <strong class="val">Electronics & Robotics Center</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-calendar-day" style="color:var(--info);"></i>
+                                        <div>
+                                            <span class="lbl">Event Schedule</span>
+                                            <strong class="val">Apr 04 – Apr 05, 2026</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i>
+                                        <div>
+                                            <span class="lbl">Campus Venue</span>
+                                            <strong class="val">Senate Executive Seminar Hall</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-users" style="color:var(--success);"></i>
+                                        <div>
+                                            <span class="lbl">Expected Footfall</span>
+                                            <strong class="val">600+ Researchers & Scholars</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="event-card-footer">
+                                <div class="grant-budget-badge">
+                                    <span class="grant-label">Grant Amount Requested</span>
+                                    <strong class="grant-amount">₹3,20,000</strong>
+                                </div>
+
+                                <div class="event-action-buttons">
+                                    <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved', 'National Quantum Computing Summit')">
+                                        <i class="fa-solid fa-check-double"></i> Sanction Grant & Approve
+                                    </button>
+                                    <button class="btn-act-senate" onclick="handleEventAction(this, 'Senate Referred', 'National Quantum Computing Summit')">
+                                        <i class="fa-solid fa-building-flag"></i> Refer to Senate
+                                    </button>
+                                    <button class="btn-act-decline" onclick="handleEventAction(this, 'Declined', 'National Quantum Computing Summit')">
+                                        <i class="fa-solid fa-xmark"></i> Decline Application
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Item 4 -->
+                        <div class="event-card-item" data-category="cultural" data-budget="210000">
+                            <div class="event-card-header">
+                                <div class="event-badge-tag sports"><i class="fa-solid fa-trophy"></i> Sports & Athletics</div>
+                                <div class="event-status-pill success"><i class="fa-solid fa-shield"></i> Dean Recommended</div>
+                            </div>
+
+                            <div class="event-card-body">
+                                <h3 class="event-name">All India Inter-University Athletics Championship 2026</h3>
+                                <p class="event-summary">National level track and field sporting tournament featuring athletes from 35 university contingents across India.</p>
+
+                                <div class="event-meta-grid">
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-building-columns" style="color:var(--primary);"></i>
+                                        <div>
+                                            <span class="lbl">Organizing Dept</span>
+                                            <strong class="val">Directorate of Physical Education</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-calendar-day" style="color:var(--info);"></i>
+                                        <div>
+                                            <span class="lbl">Event Schedule</span>
+                                            <strong class="val">Apr 18 – Apr 21, 2026</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i>
+                                        <div>
+                                            <span class="lbl">Campus Venue</span>
+                                            <strong class="val">University Sports Complex & Track</strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <i class="fa-solid fa-users" style="color:var(--success);"></i>
+                                        <div>
+                                            <span class="lbl">Expected Footfall</span>
+                                            <strong class="val">1,200+ Student Athletes</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="event-card-footer">
+                                <div class="grant-budget-badge">
+                                    <span class="grant-label">Grant Amount Requested</span>
+                                    <strong class="grant-amount">₹2,10,000</strong>
+                                </div>
+
+                                <div class="event-action-buttons">
+                                    <button class="btn-act-approve" onclick="handleEventAction(this, 'Approved', 'All India Inter-University Athletics Championship')">
+                                        <i class="fa-solid fa-check-double"></i> Sanction Grant & Approve
+                                    </button>
+                                    <button class="btn-act-senate" onclick="handleEventAction(this, 'Senate Referred', 'All India Inter-University Athletics Championship')">
+                                        <i class="fa-solid fa-building-flag"></i> Refer to Senate
+                                    </button>
+                                    <button class="btn-act-decline" onclick="handleEventAction(this, 'Declined', 'All India Inter-University Athletics Championship')">
+                                        <i class="fa-solid fa-xmark"></i> Decline Application
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Section 2: Approved & Scheduled Events Grid -->
+                <!-- Section 2: Approved & Scheduled University Events -->
                 <section class="events-section">
                     <div class="events-section-head">
-                        <i class="fa-solid fa-calendar-check" style="color:var(--success); font-size:20px;"></i>
-                        <h2>Approved & Scheduled University Events</h2>
+                        <div class="head-title-wrap">
+                            <i class="fa-solid fa-calendar-check" style="color:var(--success); font-size:22px;"></i>
+                            <div>
+                                <h2>Approved & Officially Scheduled University Calendar Events</h2>
+                                <p style="font-size:12.5px; color:var(--text-secondary); margin-top:2px;">Events sanctioned by Vice Chancellor Secretariat with confirmed venue & budget allocation</p>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="scheduled-events-grid">
                         <div class="sched-event-box">
-                            <div>
-                                <h4>Annual Convocation & Graduation 2026</h4>
-                                <span style="font-size:12px; color:var(--text-tertiary); display:block; margin-top:2px;"><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> Date: Jun 10, 2026</span>
+                            <div class="sched-box-top">
+                                <span class="sched-date-badge"><i class="fa-solid fa-calendar-day"></i> Jun 10, 2026</span>
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Sanctioned</span>
                             </div>
-                            <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
-                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Approved</span>
-                                <span style="font-size:11.5px; color:var(--text-secondary); font-family:'JetBrains Mono';">Budget: ₹8,00,000</span>
-                            </div>
-                        </div>
-
-                        <div class="sched-event-box">
-                            <div>
-                                <h4>National Research & AI Symposium</h4>
-                                <span style="font-size:12px; color:var(--text-tertiary); display:block; margin-top:2px;"><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> Date: May 05, 2026</span>
-                            </div>
-                            <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
-                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Approved</span>
-                                <span style="font-size:11.5px; color:var(--text-secondary); font-family:'JetBrains Mono';">Budget: ₹3,00,000</span>
+                            <h4 class="sched-title">Annual Convocation & Graduation Ceremony 2026</h4>
+                            <p class="sched-meta"><i class="fa-solid fa-building-columns"></i> Office of Registrar | Main Auditorium</p>
+                            <div class="sched-box-footer">
+                                <div>
+                                    <span class="label">Approved Grant</span>
+                                    <strong class="value">₹8,00,000</strong>
+                                </div>
+                                <button class="btn-sched-doc" onclick="showToast('Convocation Sanction Order Downloaded', 'success')">
+                                    <i class="fa-solid fa-file-pdf"></i> View Order
+                                </button>
                             </div>
                         </div>
 
                         <div class="sched-event-box">
-                            <div>
-                                <h4>Inter-University Sports Championship</h4>
-                                <span style="font-size:12px; color:var(--text-tertiary); display:block; margin-top:2px;"><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> Date: Apr 15, 2026</span>
+                            <div class="sched-box-top">
+                                <span class="sched-date-badge"><i class="fa-solid fa-calendar-day"></i> May 05, 2026</span>
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Sanctioned</span>
                             </div>
-                            <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
-                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Approved</span>
-                                <span style="font-size:11.5px; color:var(--text-secondary); font-family:'JetBrains Mono';">Budget: ₹1,50,000</span>
+                            <h4 class="sched-title">National Research & AI Governance Symposium</h4>
+                            <p class="sched-meta"><i class="fa-solid fa-flask"></i> Research R&D Cell | Senate Hall</p>
+                            <div class="sched-box-footer">
+                                <div>
+                                    <span class="label">Approved Grant</span>
+                                    <strong class="value">₹3,00,000</strong>
+                                </div>
+                                <button class="btn-sched-doc" onclick="showToast('Symposium Grant Document Opened', 'info')">
+                                    <i class="fa-solid fa-file-pdf"></i> View Order
+                                </button>
                             </div>
                         </div>
+
+                        <div class="sched-event-box">
+                            <div class="sched-box-top">
+                                <span class="sched-date-badge"><i class="fa-solid fa-calendar-day"></i> Apr 15, 2026</span>
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Sanctioned</span>
+                            </div>
+                            <h4 class="sched-title">Inter-College Youth Parliament & Debate</h4>
+                            <p class="sched-meta"><i class="fa-solid fa-landmark"></i> Political Science Dept | Conference Complex</p>
+                            <div class="sched-box-footer">
+                                <div>
+                                    <span class="label">Approved Grant</span>
+                                    <strong class="value">₹1,50,000</strong>
+                                </div>
+                                <button class="btn-sched-doc" onclick="showToast('Youth Parliament Order Opened', 'info')">
+                                    <i class="fa-solid fa-file-pdf"></i> View Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Executive Governance Audit Log -->
+                <section class="events-section">
+                    <div class="events-section-head">
+                        <div class="head-title-wrap">
+                            <i class="fa-solid fa-clock-rotate-left" style="color:var(--primary); font-size:22px;"></i>
+                            <div>
+                                <h2>Recent Event Clearance Audit Trail</h2>
+                                <p style="font-size:12.5px; color:var(--text-secondary); margin-top:2px;">Logged VC executive decisions and Senate financial clearance receipts</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vc-table-wrapper" style="overflow-x: auto;">
+                        <table class="vc-table">
+                            <thead>
+                                <tr>
+                                    <th>Event Title</th>
+                                    <th>Organizing Unit</th>
+                                    <th>Sanctioned Grant</th>
+                                    <th>Decision Date</th>
+                                    <th>VC Clearance Ref ID</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Global Renewable Energy Expo 2026</strong></td>
+                                    <td>Electrical & Energy Dept</td>
+                                    <td style="font-family:'JetBrains Mono'; font-weight:700; color:var(--success);">₹6,00,000</td>
+                                    <td>Sep 02, 2026</td>
+                                    <td><span class="code-ref">VC-GRANT-2026-801</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Approved</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Faculty Leadership Development Conclave</strong></td>
+                                    <td>Academic Staff College</td>
+                                    <td style="font-family:'JetBrains Mono'; font-weight:700; color:var(--info);">₹2,80,000</td>
+                                    <td>Aug 28, 2026</td>
+                                    <td><span class="code-ref">VC-GRANT-2026-788</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Approved</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Annual Alumni Placement Meet 2026</strong></td>
+                                    <td>Corporate Relations Cell</td>
+                                    <td style="font-family:'JetBrains Mono'; font-weight:700; color:var(--warning);">₹5,00,000</td>
+                                    <td>Aug 24, 2026</td>
+                                    <td><span class="code-ref">VC-GRANT-2026-760</span></td>
+                                    <td><span class="status-pill pill-warning"><i class="fa-solid fa-clock"></i> Senate Referred</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
             </div>
@@ -325,7 +648,13 @@
             if (!container) return;
             const toast = document.createElement("div");
             toast.className = `toast-alert ${type}`;
-            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${message}</span>`;
+            const iconMap = {
+                success: 'fa-circle-check',
+                warning: 'fa-triangle-exclamation',
+                info: 'fa-circle-info',
+                danger: 'fa-circle-xmark'
+            };
+            toast.innerHTML = `<i class="fa-solid ${iconMap[type] || 'fa-circle-check'}"></i> <span>${message}</span>`;
             container.appendChild(toast);
             setTimeout(() => {
                 toast.style.opacity = "0";
@@ -334,14 +663,54 @@
             }, 3500);
         }
 
-        function handleEventAction(btn, msg) {
+        function handleEventAction(btn, actionType, eventTitle) {
             const card = btn.closest(".event-card-item");
             if (card) {
-                card.style.opacity = "0.5";
-                card.style.pointerEvents = "none";
-                setTimeout(() => card.remove(), 400);
-                showToast(msg, "success");
+                card.style.transition = "all 0.4s ease";
+                card.style.opacity = "0";
+                card.style.transform = "scale(0.95)";
+                setTimeout(() => {
+                    card.remove();
+                    updatePendingCount();
+                }, 400);
+
+                let toastType = "success";
+                if (actionType === "Senate Referred") toastType = "warning";
+                if (actionType === "Declined") toastType = "danger";
+
+                showToast(`${actionType}: "${eventTitle}"`, toastType);
             }
+        }
+
+        function updatePendingCount() {
+            const count = document.querySelectorAll(".event-card-item").length;
+            const kpiVal = document.querySelector(".events-kpi-val");
+            if (kpiVal) kpiVal.textContent = `${count} Pending`;
+            const filterAllTab = document.querySelector(".filter-tab.active");
+            if (filterAllTab && filterAllTab.textContent.includes("All Requests")) {
+                filterAllTab.textContent = `All Requests (${count})`;
+            }
+        }
+
+        function filterEvents(tabBtn, category) {
+            document.querySelectorAll(".filter-tab").forEach(tab => tab.classList.remove("active"));
+            tabBtn.classList.add("active");
+
+            const cards = document.querySelectorAll(".event-card-item");
+            cards.forEach(card => {
+                const cardCat = card.getAttribute("data-category");
+                const budget = parseInt(card.getAttribute("data-budget") || "0", 10);
+
+                if (category === "all") {
+                    card.style.display = "flex";
+                } else if (category === "high-budget") {
+                    card.style.display = budget >= 400000 ? "flex" : "none";
+                } else if (category === cardCat) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         }
 
         // Sidebar Toggle with Memory
@@ -399,7 +768,7 @@
                 const eventCards = document.querySelectorAll(".event-card-item");
                 eventCards.forEach(card => {
                     const text = card.textContent.toLowerCase();
-                    card.style.display = !query || text.includes(query) ? "" : "none";
+                    card.style.display = !query || text.includes(query) ? "flex" : "none";
                 });
             });
         }
@@ -412,6 +781,8 @@
             });
         });
     </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>

@@ -20,18 +20,28 @@
                 color: var(--text-primary);
             }
             .recording-video-card {
-                background: rgba(30, 41, 59, 0.45);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 12px;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                transition: transform 0.2s ease, border-color 0.2s ease;
-            }
-            .recording-video-card:hover {
-                transform: translateY(-4px);
-                border-color: rgba(99, 102, 241, 0.25);
-            }
+    background: var(--bg-secondary, rgba(30, 41, 59, 0.45));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.recording-video-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+}
+[data-theme="light"] .recording-video-card {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+[data-theme="light"] .recording-video-card:hover {
+    border-color: #6366f1;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+}
             .video-thumbnail-mock {
                 width: 100%;
                 height: 140px;

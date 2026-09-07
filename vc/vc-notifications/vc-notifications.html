@@ -4,14 +4,14 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
         })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnifyEd - Executive System Notifications</title>
-    <meta name="description" content="Vice Chancellor System Notifications & Institutional Alert Center">
+    <title>UnifyEd - Executive Notifications Center</title>
+    <meta name="description" content="Vice Chancellor System Notifications & Institutional Governance Alerts">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
     <link rel="stylesheet" href="vc-notifications.css">
 </head>
@@ -101,12 +101,15 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn" id="vcMenuToggle" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
@@ -116,10 +119,10 @@
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn" id="vcThemeToggle" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
-                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
+                    <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn active" title="Notifications">
                         <i class="fa-solid fa-bell"></i>
                         <span class="notification-badge" id="hdrNotifBadge">9</span>
                     </a>
@@ -148,69 +151,226 @@
                             <i class="fa-solid fa-bell"></i> EXECUTIVE NOTIFICATION CENTER
                         </div>
                         <h1>System Notifications & Governance Alerts</h1>
-                        <p>Real-time stream of high-priority Senate request notifications, institutional budget approvals, event applications, and security log alerts.</p>
+                        <p>Real-time stream of high-priority Senate request notifications, institutional budget approvals, event applications, and cryptographic security alerts.</p>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-mark-all" onclick="markAllNotificationsRead()">
+                            <i class="fa-solid fa-check-double"></i> Mark All Read
+                        </button>
+                        <button class="btn-mark-all secondary" onclick="filterUnreadOnly()">
+                            <i class="fa-solid fa-filter"></i> Unread Only
+                        </button>
                     </div>
                 </section>
+
+                <!-- Notifications Summary Metric Bar -->
+                <div class="notif-metrics-bar">
+                    <div class="metric-mini-card">
+                        <div class="metric-mini-icon purple">
+                            <i class="fa-solid fa-inbox"></i>
+                        </div>
+                        <div class="metric-mini-info">
+                            <span class="m-label">Total Notifications</span>
+                            <span class="m-value" id="cntTotal">14 Alerts</span>
+                        </div>
+                    </div>
+                    <div class="metric-mini-card">
+                        <div class="metric-mini-icon red">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="metric-mini-info">
+                            <span class="m-label">Action Required</span>
+                            <span class="m-value" id="cntUnread">9 Unread</span>
+                        </div>
+                    </div>
+                    <div class="metric-mini-card">
+                        <div class="metric-mini-icon blue">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div class="metric-mini-info">
+                            <span class="m-label">Senate & Grants</span>
+                            <span class="m-value">5 Requests</span>
+                        </div>
+                    </div>
+                    <div class="metric-mini-card">
+                        <div class="metric-mini-icon emerald">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="metric-mini-info">
+                            <span class="m-label">System Security</span>
+                            <span class="m-value">100% Operational</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Category Tabs -->
+                <div class="notif-tabs-bar">
+                    <button class="notif-tab active" data-category="all">
+                        <i class="fa-solid fa-layer-group"></i> All Alerts (<span id="tabCountAll">9</span>)
+                    </button>
+                    <button class="notif-tab" data-category="senate">
+                        <i class="fa-solid fa-file-signature"></i> Senate & Grants
+                    </button>
+                    <button class="notif-tab" data-category="events">
+                        <i class="fa-solid fa-calendar-check"></i> Event Approvals
+                    </button>
+                    <button class="notif-tab" data-category="academic">
+                        <i class="fa-solid fa-graduation-cap"></i> Academic
+                    </button>
+                    <button class="notif-tab" data-category="security">
+                        <i class="fa-solid fa-shield-cat"></i> System & Security
+                    </button>
+                </div>
 
                 <!-- Section: Notifications List -->
                 <section class="notif-section">
                     <div class="notif-section-head">
-                        <h2><i class="fa-solid fa-inbox" style="color:var(--primary);"></i> Recent Executive Alerts</h2>
-                        <button class="btn-mark-all" onclick="markAllNotificationsRead()">
-                            <i class="fa-solid fa-check-double"></i> Mark All as Read
-                        </button>
+                        <h2><i class="fa-solid fa-inbox" style="color:var(--primary);"></i> Executive Alert Stream</h2>
+                        <span class="stream-status"><i class="status-dot green"></i> Live Stream Active</span>
                     </div>
 
                     <div id="notifList">
-                        <div class="notif-card-item unread">
+                        <!-- Notification 1 -->
+                        <div class="notif-card-item unread" data-category="senate">
                             <div class="notif-icon-wrap icon-purple">
                                 <i class="fa-solid fa-file-signature"></i>
                             </div>
                             <div class="notif-content-wrap">
                                 <div class="notif-title-row">
-                                    <strong>New Senate Request: AI Server Cluster Grant (₹4.5 Lakhs)</strong>
+                                    <div class="title-with-badge">
+                                        <strong>New Senate Request: AI Server Cluster Grant (₹4.5 Lakhs)</strong>
+                                        <span class="tag-priority high">High Priority</span>
+                                    </div>
                                     <span class="notif-time">10 Mins Ago</span>
                                 </div>
-                                <div class="notif-desc">Submitted by Dr. Ananya Sharma (CSE HOD) for high-performance computing lab upgrade.</div>
+                                <div class="notif-desc">Submitted by Dr. Ananya Sharma (CSE HOD) for high-performance GPU cluster lab upgrade. Requires Vice Chancellor authorization.</div>
+                                <div class="notif-actions-row">
+                                    <a href="../vc-requests/vc-requests.html" class="btn-notif-action primary"><i class="fa-solid fa-eye"></i> Review Senate Request</a>
+                                    <button class="btn-notif-action secondary" onclick="markSingleRead(this)"><i class="fa-solid fa-check"></i> Mark as Read</button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="notif-card-item unread" style="border-left-color: var(--accent);">
+                        <!-- Notification 2 -->
+                        <div class="notif-card-item unread" data-category="events" style="border-left-color: var(--accent);">
                             <div class="notif-icon-wrap icon-cyan">
                                 <i class="fa-solid fa-calendar-check"></i>
                             </div>
                             <div class="notif-content-wrap">
                                 <div class="notif-title-row">
-                                    <strong>Event Approval Request: International Tech Fest 2026</strong>
+                                    <div class="title-with-badge">
+                                        <strong>Event Approval Request: International Tech Fest 2026</strong>
+                                        <span class="tag-priority urgent">Urgent</span>
+                                    </div>
                                     <span class="notif-time">45 Mins Ago</span>
                                 </div>
-                                <div class="notif-desc">Event application requiring Vice Chancellor budget authorization (₹5,50,000).</div>
+                                <div class="notif-desc">Event application requiring Vice Chancellor budget authorization (₹5,50,000). Organized by Student Council & Dean of Affairs.</div>
+                                <div class="notif-actions-row">
+                                    <a href="../vc-event-approvals/vc-event-approvals.html" class="btn-notif-action primary"><i class="fa-solid fa-check-circle"></i> Open Approvals Portal</a>
+                                    <button class="btn-notif-action secondary" onclick="markSingleRead(this)"><i class="fa-solid fa-check"></i> Mark as Read</button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="notif-card-item unread" style="border-left-color: var(--success);">
+                        <!-- Notification 3 -->
+                        <div class="notif-card-item unread" data-category="academic" style="border-left-color: var(--success);">
                             <div class="notif-icon-wrap icon-emerald">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
                             <div class="notif-content-wrap">
                                 <div class="notif-title-row">
-                                    <strong>Semester 6 Examination Results Endorsed</strong>
+                                    <div class="title-with-badge">
+                                        <strong>Semester 6 Examination Results Endorsed</strong>
+                                        <span class="tag-priority normal">Academic Governance</span>
+                                    </div>
                                     <span class="notif-time">2 Hours Ago</span>
                                 </div>
-                                <div class="notif-desc">Controller of Examinations submitted final CGPA grade distribution summary.</div>
+                                <div class="notif-desc">Controller of Examinations submitted final CGPA grade distribution summary and re-evaluation reports for Executive Board sign-off.</div>
+                                <div class="notif-actions-row">
+                                    <a href="../vc-academic/vc-academic.html" class="btn-notif-action primary"><i class="fa-solid fa-building-columns"></i> View Academic Dashboard</a>
+                                    <button class="btn-notif-action secondary" onclick="markSingleRead(this)"><i class="fa-solid fa-check"></i> Mark as Read</button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="notif-card-item" style="border-left-color: var(--warning);">
+                        <!-- Notification 4 -->
+                        <div class="notif-card-item unread" data-category="security" style="border-left-color: #f59e0b;">
                             <div class="notif-icon-wrap icon-amber">
                                 <i class="fa-solid fa-shield-halved"></i>
                             </div>
                             <div class="notif-content-wrap">
                                 <div class="notif-title-row">
-                                    <strong>Security Audit Log: Successful 2FA Login</strong>
+                                    <div class="title-with-badge">
+                                        <strong>Security Audit Log: Successful 2FA Hardware Clear</strong>
+                                        <span class="tag-priority info">Security Log</span>
+                                    </div>
                                     <span class="notif-time">Yesterday at 09:30 AM</span>
                                 </div>
-                                <div class="notif-desc">Authenticated Vice Chancellor session from Secretariat IP 192.168.1.10.</div>
+                                <div class="notif-desc">Authenticated Vice Chancellor biometric & YubiKey session from Secretariat IP 192.168.1.10. TLS 1.3 encrypted connection established.</div>
+                                <div class="notif-actions-row">
+                                    <button class="btn-notif-action secondary" onclick="markSingleRead(this)"><i class="fa-solid fa-check"></i> Mark as Read</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notification 5 -->
+                        <div class="notif-card-item unread" data-category="senate">
+                            <div class="notif-icon-wrap icon-purple">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                            </div>
+                            <div class="notif-content-wrap">
+                                <div class="notif-title-row">
+                                    <div class="title-with-badge">
+                                        <strong>Research Infrastructure Grant Approved (₹18.0 Lakhs)</strong>
+                                        <span class="tag-priority high">Grant Sanctioned</span>
+                                    </div>
+                                    <span class="notif-time">1 Day Ago</span>
+                                </div>
+                                <div class="notif-desc">State Council for Science & Tech sanctioned ₹18.0 Lakhs matching fund for Advanced Physics Quantum Computing Laboratory.</div>
+                                <div class="notif-actions-row">
+                                    <a href="../vc-analytics/vc-analytics.html" class="btn-notif-action primary"><i class="fa-solid fa-chart-line"></i> View Financial Intelligence</a>
+                                    <button class="btn-notif-action secondary" onclick="markSingleRead(this)"><i class="fa-solid fa-check"></i> Mark as Read</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notification 6 -->
+                        <div class="notif-card-item" data-category="academic">
+                            <div class="notif-icon-wrap icon-emerald">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div class="notif-content-wrap">
+                                <div class="notif-title-row">
+                                    <div class="title-with-badge">
+                                        <strong>Annual Convocation 2026 Chief Guest Confirmation</strong>
+                                        <span class="tag-priority normal">Confirmed</span>
+                                    </div>
+                                    <span class="notif-time">2 Days Ago</span>
+                                </div>
+                                <div class="notif-desc">Ministry of Education confirmed attendance for the 35th Annual Convocation ceremony. Protocol briefcase prepared.</div>
+                                <div class="notif-actions-row">
+                                    <button class="btn-notif-action secondary" onclick="markSingleRead(this)"><i class="fa-solid fa-check"></i> Mark Read</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notification 7 -->
+                        <div class="notif-card-item" data-category="security">
+                            <div class="notif-icon-wrap icon-amber">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                            </div>
+                            <div class="notif-content-wrap">
+                                <div class="notif-title-row">
+                                    <div class="title-with-badge">
+                                        <strong>Automated Database Cloud Backup Completed</strong>
+                                        <span class="tag-priority info">System Maintenance</span>
+                                    </div>
+                                    <span class="notif-time">3 Days Ago</span>
+                                </div>
+                                <div class="notif-desc">Nightly AES-256 cloud snapshot of UnifyED ERP core databases verified with 0 checksum errors.</div>
+                                <div class="notif-actions-row">
+                                    <button class="btn-notif-action secondary" onclick="markSingleRead(this)"><i class="fa-solid fa-check"></i> Mark Read</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -237,59 +397,58 @@
             }, 3500);
         }
 
+        function updateUnreadCount() {
+            const unreadCount = document.querySelectorAll(".notif-card-item.unread").length;
+            const badge = document.getElementById("hdrNotifBadge");
+            const tabAllCount = document.getElementById("tabCountAll");
+            const cntUnread = document.getElementById("cntUnread");
+
+            if (badge) badge.textContent = unreadCount;
+            if (tabAllCount) tabAllCount.textContent = unreadCount;
+            if (cntUnread) cntUnread.textContent = `${unreadCount} Unread`;
+        }
+
+        function markSingleRead(btn) {
+            const card = btn.closest(".notif-card-item");
+            if (card) {
+                card.classList.remove("unread");
+                updateUnreadCount();
+                showToast("Notification Marked as Read", "success");
+            }
+        }
+
         function markAllNotificationsRead() {
             document.querySelectorAll(".notif-card-item").forEach(item => item.classList.remove("unread"));
-            const badge = document.getElementById("hdrNotifBadge");
-            if (badge) badge.textContent = "0";
+            updateUnreadCount();
             showToast("All Notifications Marked as Read!", "success");
         }
 
-        // Sidebar Toggle with Memory
-        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
-        const sidebar = document.getElementById("sidebar");
-        const mainPortal = document.querySelector(".portal-main");
-
-        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
-            if (sidebar) sidebar.classList.add("collapsed");
-            if (mainPortal) mainPortal.classList.add("expanded");
+        function filterUnreadOnly() {
+            const cards = document.querySelectorAll(".notif-card-item");
+            cards.forEach(card => {
+                card.style.display = card.classList.contains("unread") ? "flex" : "none";
+            });
+            showToast("Showing Unread Notifications Only", "info");
         }
 
-        if (sidebarToggleBtn && sidebar) {
-            sidebarToggleBtn.addEventListener("click", () => {
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.toggle("active");
-                } else {
-                    const isCollapsed = sidebar.classList.toggle("collapsed");
-                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
-                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
-                }
-            });
-        }
+        // Category Tab Filtering
+        document.querySelectorAll(".notif-tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                document.querySelectorAll(".notif-tab").forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
 
-        // Theme Toggle
-        const themeBtn = document.getElementById("themeToggleBtn");
-        if (themeBtn) {
-            themeBtn.addEventListener("click", () => {
-                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-                document.documentElement.setAttribute("data-theme", activeTheme);
-                localStorage.setItem("theme", activeTheme);
-            });
-        }
+                const cat = tab.getAttribute("data-category");
+                const cards = document.querySelectorAll(".notif-card-item");
 
-        // Profile Menu Dropdown
-        const profileTrigger = document.getElementById("portalProfileTrigger");
-        const profileMenu = document.getElementById("profileMenu");
-        if (profileTrigger && profileMenu) {
-            profileTrigger.addEventListener("click", (e) => {
-                e.stopPropagation();
-                profileMenu.classList.toggle("open");
+                cards.forEach(card => {
+                    if (cat === "all" || card.getAttribute("data-category") === cat) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
             });
-            document.addEventListener("click", (e) => {
-                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
-                    profileMenu.classList.remove("open");
-                }
-            });
-        }
+        });
 
         // Search Filter
         const notifSearchInput = document.getElementById("notifSearchInput");
@@ -312,6 +471,8 @@
             });
         });
     </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>

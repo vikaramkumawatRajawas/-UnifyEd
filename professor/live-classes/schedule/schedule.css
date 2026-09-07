@@ -1,45 +1,61 @@
+.lecture-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--bg-tertiary, rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-            .lecture-item-row {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 16px 20px;
-                background: rgba(30, 41, 59, 0.45);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 12px;
-                transition: transform 0.2s ease, border-color 0.2s ease;
-                gap: 15px;
-                flex-wrap: wrap;
-            }
-            .lecture-item-row:hover {
-                transform: translateY(-2px);
-                border-color: rgba(99, 102, 241, 0.25);
-            }
-            .lecture-badge {
-                font-size: 9px;
-                padding: 3px 8px;
-                border-radius: 12px;
-                font-weight: 700;
-                text-transform: uppercase;
-                border: 1px solid rgba(255, 255, 255, 0.08);
-            }
-            .lecture-delete-btn {
-                background: transparent;
-                border: none;
-                color: var(--text-tertiary);
-                cursor: pointer;
-                font-size: 13px;
-                padding: 6px;
-                border-radius: 50%;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.2s ease;
-            }
-            .lecture-delete-btn:hover {
-                color: #ef4444;
-                background: rgba(239, 68, 68, 0.1);
-            }
+.lecture-item-row:hover {
+    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.08);
+}
+
+[data-theme="light"] .lecture-item-row {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+[data-theme="light"] .lecture-item-row:hover {
+    background: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
+}
+
+.lecture-badge {
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+}
+
+.lecture-delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 6px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.lecture-delete-btn:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
         

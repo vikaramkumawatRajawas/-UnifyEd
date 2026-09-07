@@ -4,8 +4,10 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
+            const currentMode = localStorage.getItem("portalMode") || "advance";
+            document.documentElement.setAttribute("data-portal-mode", currentMode);
         })();
     </script>
     <meta charset="UTF-8">
@@ -19,7 +21,7 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
     <link rel="stylesheet" href="vc-announcements.css">
 </head>
@@ -101,12 +103,15 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn" id="vcMenuToggle" class="toggle-btn sidebar-toggle-btn" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
@@ -116,7 +121,7 @@
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn" id="vcThemeToggle" class="header-icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -408,6 +413,10 @@
             });
         });
     </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>
+
+

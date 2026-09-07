@@ -4,8 +4,10 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
+            const currentMode = localStorage.getItem("portalMode") || "advance";
+            document.documentElement.setAttribute("data-portal-mode", currentMode);
         })();
     </script>
     <meta charset="UTF-8">
@@ -19,9 +21,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
-    <link rel="stylesheet" href="dashboard-vc.css">
+    <link rel="stylesheet" href="dashboard-vc.css?v=2">
 </head>
 
 <body class="vc-portal-body">
@@ -101,12 +103,15 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn sidebar-toggle-btn" id="vcMenuToggle" title="Toggle Sidebar Navigation" aria-label="Open VC navigation" aria-expanded="false">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
@@ -116,7 +121,7 @@
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn theme-toggle-btn" id="vcThemeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -147,7 +152,7 @@
                         <div class="system-badge">
                             <i class="fa-solid fa-crown"></i> VICE CHANCELLOR EXECUTIVE CONSOLE
                         </div>
-                        <h1>Welcome Back, Prof. Vice Chancellor 👋</h1>
+                        <h1>Welcome Back, Vice Chancellor 👋</h1>
                         <p>Institutional Governance, Strategic Accreditation, Academic Quality Oversight & Campus Executive Dashboard.</p>
                         <div class="hero-metrics">
                             <div class="h-metric">
@@ -164,7 +169,7 @@
                             </div>
                             <div class="h-metric">
                                 <span class="lbl">STATUS</span>
-                                <span class="val" style="color:var(--success);">🟢 University Active</span>
+                                <span class="val" style="color:var(--success);"><i class="fa-solid fa-circle" style="font-size:10px; margin-right:4px;"></i> University Active</span>
                             </div>
                         </div>
                     </div>
@@ -270,7 +275,7 @@
                                 <i class="fa-solid fa-hourglass-half" style="color:var(--warning); font-size:18px;"></i>
                                 <h2>Pending Senate & Budget Approvals</h2>
                             </div>
-                            <a href="../vc-requests/vc-requests.html" style="color:var(--primary); font-size:12px; font-weight:700; text-decoration:none;">View All →</a>
+                            <a href="../vc-requests/vc-requests.html" style="color:var(--primary); font-size:12px; font-weight:700; text-decoration:none;">View All <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                         <div class="vc-table-wrapper">
                             <table class="vc-table">
@@ -325,7 +330,7 @@
                                 <i class="fa-solid fa-user-tie" style="color:var(--primary); font-size:18px;"></i>
                                 <h2>Department Heads (HOD) Performance</h2>
                             </div>
-                            <a href="../vc-performance/vc-performance.html" style="color:var(--primary); font-size:12px; font-weight:700; text-decoration:none;">Details →</a>
+                            <a href="../vc-performance/vc-performance.html" style="color:var(--primary); font-size:12px; font-weight:700; text-decoration:none;">Details <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                         <div class="vc-table-wrapper">
                             <table class="vc-table">
@@ -342,19 +347,19 @@
                                         <td><strong>Computer Science</strong></td>
                                         <td>Dr. Ananya Sharma</td>
                                         <td><span style="color:var(--success); font-weight:700;">98%</span></td>
-                                        <td><span style="color:var(--warning);">⭐⭐⭐⭐⭐</span></td>
+                                        <td><span style="color:var(--warning);"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Mechanical Engg</strong></td>
                                         <td>Prof. Rajesh Gupta</td>
                                         <td><span style="color:var(--success); font-weight:700;">96%</span></td>
-                                        <td><span style="color:var(--warning);">⭐⭐⭐⭐</span></td>
+                                        <td><span style="color:var(--warning);"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Electronics & Comm</strong></td>
                                         <td>Dr. Vikram Singh</td>
                                         <td><span style="color:var(--info); font-weight:700;">94%</span></td>
-                                        <td><span style="color:var(--warning);">⭐⭐⭐⭐⭐</span></td>
+                                        <td><span style="color:var(--warning);"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -434,8 +439,10 @@
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
     <!-- Page JavaScript Controller -->
-    <script src="dashboard-vc.js"></script>
+    <script src="dashboard-vc.js?v=2"></script>
 </body>
 
 </html>

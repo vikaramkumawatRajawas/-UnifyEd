@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
   <head>
-    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');})();</script>
+    <script>(function(){document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');document.documentElement.setAttribute('data-portal-mode', localStorage.getItem('portalMode') || 'advance');})();</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnifyEd HOD Portal - Syllabus & Audit Control</title>
@@ -308,6 +308,7 @@
 
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toastContainer"></div>
+    <script src="../hod-shared.js"></script>
     <script src="hod-syllabus.js"></script>
   </body>
 </html>

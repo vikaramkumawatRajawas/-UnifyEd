@@ -5,25 +5,54 @@
                 gap: 6px;
                 text-align: left;
             }
-            .filter-btn {
-                border: 1px solid var(--border-color);
-                background: var(--bg-tertiary);
-                color: var(--text-secondary);
-                transition: all 0.3s ease;
-            }
-            .filter-btn.active {
-                background: var(--primary) !important;
-                color: #fff !important;
-                border-color: var(--primary) !important;
-            }
-            .id-card-front label, .id-card-back label {
-                color: #fcd34d !important;
-                font-weight: 600;
-            }
-            .id-card-front span, .id-card-back span {
-                color: #ffffff !important;
-            }
-            .id-card-back p {
-                color: #ffffff !important;
-            }
+.filter-btn {
+    border: 1px solid var(--border-color) !important;
+    background: var(--bg-tertiary) !important;
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+}
+.filter-btn.active {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border-color: var(--primary) !important;
+}
+/* ID Card Theme Dynamic Styles */
+.id-card-front, .id-card-back {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--glass-shadow) !important;
+    color: var(--text-primary) !important;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark theme card background gradient */
+[data-theme="dark"] .id-card-front,
+[data-theme="dark"] .id-card-back,
+:root:not([data-theme="light"]) .id-card-front,
+:root:not([data-theme="light"]) .id-card-back {
+    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Light theme card background gradient */
+[data-theme="light"] .id-card-front,
+[data-theme="light"] .id-card-back {
+    background: linear-gradient(135deg, #ffffff, #f1f5f9) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
+}
+
+.id-card-front label, .id-card-back label {
+    color: var(--accent) !important;
+    font-weight: 600;
+}
+.id-card-front span, .id-card-back span {
+    color: var(--text-secondary) !important;
+}
+.id-card-front strong, .id-card-back strong, .id-card-back h4 {
+    color: var(--text-primary) !important;
+}
+.id-card-back p {
+    color: var(--text-secondary) !important;
+}
         

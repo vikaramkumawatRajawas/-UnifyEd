@@ -4,8 +4,10 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
+            const currentMode = localStorage.getItem("portalMode") || "advance";
+            document.documentElement.setAttribute("data-portal-mode", currentMode);
         })();
     </script>
     <meta charset="UTF-8">
@@ -19,9 +21,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
-    <link rel="stylesheet" href="vc-overview.css">
+    <link rel="stylesheet" href="vc-overview.css?v=2">
 </head>
 
 <body class="vc-portal-body">
@@ -101,22 +103,25 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn sidebar-toggle-btn" id="vcMenuToggle" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Search campus facilities, accreditation status, or departments...">
+                        <input type="text" id="vcSearchInput" placeholder="Search campus facilities, accreditation status, or departments...">
                     </div>
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn theme-toggle-btn" id="vcThemeToggle" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -147,20 +152,20 @@
                         <div class="system-badge">
                             <i class="fa-solid fa-building-columns"></i> INSTITUTIONAL OVERVIEW
                         </div>
-                        <h1>EduTech State University Executive Briefing</h1>
-                        <p>Comprehensive overview of university infrastructure, NIRF ranking standing, NAAC Grade A++ accreditation, faculty ratio, placement records, and campus facilities.</p>
+                        <h1>University Institutional Executive Briefing</h1>
+                        <p>Comprehensive governance briefing on campus infrastructure, NIRF ranking standing, NAAC Grade A++ accreditation status, faculty-to-student ratios, placement benchmarks, and research facilities.</p>
                         <div class="nav-pills-bar">
-                            <a href="#basic-info" class="nav-pill-link"><i class="fa-solid fa-circle-info"></i> Basic Info</a>
+                            <a href="#basic-info" class="nav-pill-link"><i class="fa-solid fa-circle-info"></i> Key Metrics</a>
                             <a href="#infrastructure" class="nav-pill-link"><i class="fa-solid fa-landmark"></i> Infrastructure</a>
-                            <a href="#academic" class="nav-pill-link"><i class="fa-solid fa-graduation-cap"></i> Academics</a>
+                            <a href="#departments" class="nav-pill-link"><i class="fa-solid fa-sitemap"></i> Departments</a>
                             <a href="#placements" class="nav-pill-link"><i class="fa-solid fa-briefcase"></i> Placements</a>
-                            <a href="#contact" class="nav-pill-link"><i class="fa-solid fa-location-dot"></i> Location</a>
+                            <a href="#contact" class="nav-pill-link"><i class="fa-solid fa-location-dot"></i> Executive Desk</a>
                         </div>
                     </div>
                 </section>
 
                 <!-- Quick Institutional Facts Grid -->
-                <section class="facts-grid">
+                <section class="facts-grid" id="basic-info">
                     <div class="fact-card">
                         <div class="fact-icon icon-purple">
                             <i class="fa-solid fa-building-columns"></i>
@@ -176,7 +181,7 @@
                             <i class="fa-solid fa-certificate"></i>
                         </div>
                         <div class="fact-info">
-                            <div class="fact-label">NAAC GRADE</div>
+                            <div class="fact-label">NAAC ACCREDITATION</div>
                             <div class="fact-val" style="color:var(--success);">Grade A++ (3.84 CGPA)</div>
                         </div>
                     </div>
@@ -186,8 +191,8 @@
                             <i class="fa-solid fa-ranking-star"></i>
                         </div>
                         <div class="fact-info">
-                            <div class="fact-label">NIRF RANKING</div>
-                            <div class="fact-val" style="color:var(--info);">National Rank #24</div>
+                            <div class="fact-label">NIRF NATIONAL RANK</div>
+                            <div class="fact-val" style="color:var(--info);">Ranked #24 Overall</div>
                         </div>
                     </div>
 
@@ -196,47 +201,253 @@
                             <i class="fa-solid fa-user-group"></i>
                         </div>
                         <div class="fact-info">
-                            <div class="fact-label">STUDENT:TEACHER</div>
-                            <div class="fact-val">12 : 1 Ratio</div>
+                            <div class="fact-label">FACULTY : STUDENT</div>
+                            <div class="fact-val">1 : 12 Ratio</div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Campus Infrastructure Section -->
+                <!-- Campus Infrastructure Section (Rich 6-Card Grid) -->
                 <section class="overview-section" id="infrastructure">
                     <div class="section-head-bar">
                         <i class="fa-solid fa-landmark" style="color:var(--primary); font-size:20px;"></i>
-                        <h2>Campus Infrastructure & Facilities</h2>
+                        <h2>Campus Infrastructure & Facilities Overview</h2>
                     </div>
                     <div class="infra-grid">
+                        <!-- Card 1: Academic Facilities -->
                         <div class="infra-card">
-                            <h3><i class="fa-solid fa-book-open-reader" style="color:var(--primary);"></i> Academic Infrastructure</h3>
+                            <div class="infra-card-header">
+                                <h3><i class="fa-solid fa-book-open-reader" style="color:var(--primary);"></i> Academic & Research Infrastructure</h3>
+                                <span class="status-pill pill-success" style="font-size:10px;"><i class="fa-solid fa-circle-check"></i> OPERATIONAL</span>
+                            </div>
                             <div class="infra-list">
-                                <div class="infra-item"><span>Academic Departments</span><strong>18 Departments</strong></div>
-                                <div class="infra-item"><span>Smart Classrooms</span><strong>90 Multimedia Rooms</strong></div>
-                                <div class="infra-item"><span>Research & Tech Labs</span><strong>36 Advanced Labs</strong></div>
-                                <div class="infra-item"><span>Auditoriums</span><strong>2 Convention Halls</strong></div>
+                                <div class="infra-item"><span>Academic Departments</span><strong>18 Specialized Schools</strong></div>
+                                <div class="infra-item"><span>Smart Classrooms</span><strong>90 Interactive 4K Panels</strong></div>
+                                <div class="infra-item"><span>Research & Tech Labs</span><strong>36 Advanced Labs (AI, IoT, Bio)</strong></div>
+                                <div class="infra-item"><span>Auditoriums & Halls</span><strong>2 Convention Halls (1,500 Seats)</strong></div>
                             </div>
                         </div>
 
+                        <!-- Card 2: Central Library -->
                         <div class="infra-card">
-                            <h3><i class="fa-solid fa-shield-halved" style="color:var(--accent);"></i> Support Services</h3>
+                            <div class="infra-card-header">
+                                <h3><i class="fa-solid fa-book-bookmark" style="color:var(--accent);"></i> Central Library & E-Knowledge Hub</h3>
+                                <span class="status-pill pill-info" style="font-size:10px;"><i class="fa-solid fa-database"></i> 120K VOLUMES</span>
+                            </div>
                             <div class="infra-list">
-                                <div class="infra-item"><span>Central Digital Library</span><strong>85,000+ Volumes</strong></div>
-                                <div class="infra-item"><span>Hostel Accommodation</span><strong>1,200 Capacity</strong></div>
-                                <div class="infra-item"><span>High-Speed Wi-Fi</span><strong>10 Gbps Campus-Wide</strong></div>
-                                <div class="infra-item"><span>Medical Center</span><strong>24/7 Campus Hospital</strong></div>
+                                <div class="infra-item"><span>Physical & E-Books</span><strong>120,000+ Titles & Volumes</strong></div>
+                                <div class="infra-item"><span>E-Journal Subscriptions</span><strong>50,000+ (IEEE, Springer, ScienceDirect)</strong></div>
+                                <div class="infra-item"><span>Reading Halls</span><strong>24/7 Air-Conditioned Silent Zones</strong></div>
+                                <div class="infra-item"><span>Circulation Kiosks</span><strong>RFID Automated Book Issue/Return</strong></div>
                             </div>
                         </div>
 
+                        <!-- Card 3: Student Housing & Residences -->
                         <div class="infra-card">
-                            <h3><i class="fa-solid fa-volleyball" style="color:var(--warning);"></i> Sports & Recreation</h3>
-                            <div class="infra-list">
-                                <div class="infra-item"><span>Sports Complex</span><strong>Multi-Court Facility</strong></div>
-                                <div class="infra-item"><span>Athletic Grounds</span><strong>Cricket & Football</strong></div>
-                                <div class="infra-item"><span>Gymnasium</span><strong>State-of-Art Fitness Center</strong></div>
-                                <div class="infra-item"><span>Student Activity Center</span><strong>Cultural Hub</strong></div>
+                            <div class="infra-card-header">
+                                <h3><i class="fa-solid fa-house-user" style="color:var(--secondary);"></i> Student Housing & Hostels</h3>
+                                <span class="status-pill pill-purple" style="font-size:10px;"><i class="fa-solid fa-bed"></i> 2,400 CAPACITY</span>
                             </div>
+                            <div class="infra-list">
+                                <div class="infra-item"><span>Residential Blocks</span><strong>6 Hostel Buildings (3 Boys, 3 Girls)</strong></div>
+                                <div class="infra-item"><span>Room Amenities</span><strong>Wi-Fi, Solar Water Heating & Study Desks</strong></div>
+                                <div class="infra-item"><span>Dining Infrastructure</span><strong>Air-Conditioned Mess (Hygiene Certified)</strong></div>
+                                <div class="infra-item"><span>Residential Security</span><strong>24/7 Wardens & Biometric Entry</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: IT Infrastructure & Fiber -->
+                        <div class="infra-card">
+                            <div class="infra-card-header">
+                                <h3><i class="fa-solid fa-network-wired" style="color:var(--info);"></i> IT Infrastructure & Connectivity</h3>
+                                <span class="status-pill pill-info" style="font-size:10px;"><i class="fa-solid fa-wifi"></i> 10 GBPS FIBER</span>
+                            </div>
+                            <div class="infra-list">
+                                <div class="infra-item"><span>Internet Backbone</span><strong>10 Gbps Leased Fiber Line</strong></div>
+                                <div class="infra-item"><span>Wireless Network</span><strong>100% Wi-Fi 6 Mesh Across 85 Acres</strong></div>
+                                <div class="infra-item"><span>Data Center</span><strong>On-Premise Server Farm & Cloud Backup</strong></div>
+                                <div class="infra-item"><span>Cyber Operations</span><strong>24/7 Security Operations Center (SOC)</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Health & Emergency Services -->
+                        <div class="infra-card">
+                            <div class="infra-card-header">
+                                <h3><i class="fa-solid fa-kit-medical" style="color:#ef4444;"></i> Health, Safety & Emergency Center</h3>
+                                <span class="status-pill pill-danger" style="font-size:10px;"><i class="fa-solid fa-heart-pulse"></i> 24/7 ACTIVE</span>
+                            </div>
+                            <div class="infra-list">
+                                <div class="infra-item"><span>Campus Clinic</span><strong>24/7 Multi-Specialty Health Hospital</strong></div>
+                                <div class="infra-item"><span>Ambulance Services</span><strong>4 Advanced Life Support Ambulances</strong></div>
+                                <div class="infra-item"><span>Security Surveillance</span><strong>350+ AI CCTV Cameras with Motion Alert</strong></div>
+                                <div class="infra-item"><span>Fire Safety</span><strong>Automated Smoke & Sprinkler Systems</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Sports & Activity Center -->
+                        <div class="infra-card">
+                            <div class="infra-card-header">
+                                <h3><i class="fa-solid fa-volleyball" style="color:var(--warning);"></i> Sports & Student Activity Complex</h3>
+                                <span class="status-pill pill-warning" style="font-size:10px;"><i class="fa-solid fa-trophy"></i> OLYMPIC GRADE</span>
+                            </div>
+                            <div class="infra-list">
+                                <div class="infra-item"><span>Indoor Sports Complex</span><strong>Badminton, Basketball & Table Tennis</strong></div>
+                                <div class="infra-item"><span>Athletic Grounds</span><strong>400m Track, Football & Cricket Grounds</strong></div>
+                                <div class="infra-item"><span>Aquatics Center</span><strong>Olympic-Size Heated Swimming Pool</strong></div>
+                                <div class="infra-item"><span>Fitness Gym</span><strong>Modern Fitness Center & Yoga Studio</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Departmental Distribution Section & Data Table -->
+                <section class="overview-section" id="departments">
+                    <div class="section-head-bar">
+                        <i class="fa-solid fa-sitemap" style="color:var(--secondary); font-size:20px;"></i>
+                        <h2>School & Departmental Distribution</h2>
+                    </div>
+                    <div class="dept-distribution-grid" style="margin-bottom: 24px;">
+                        <div class="dept-summary-card">
+                            <div class="dept-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <h4>School of Engineering</h4>
+                            <p>CSE, IT, ECE, Mechanical, Civil & AI/ML</p>
+                            <div class="dept-badge">8 Departments • 1,200 Students</div>
+                        </div>
+                        <div class="dept-summary-card">
+                            <div class="dept-icon"><i class="fa-solid fa-briefcase"></i></div>
+                            <h4>School of Business</h4>
+                            <p>MBA, BBA, Finance, Marketing & Analytics</p>
+                            <div class="dept-badge">4 Departments • 650 Students</div>
+                        </div>
+                        <div class="dept-summary-card">
+                            <div class="dept-icon"><i class="fa-solid fa-atom"></i></div>
+                            <h4>School of Applied Sciences</h4>
+                            <p>Physics, Chemistry, BioTech & Mathematics</p>
+                            <div class="dept-badge">4 Departments • 450 Students</div>
+                        </div>
+                        <div class="dept-summary-card">
+                            <div class="dept-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <h4>School of Law & Humanities</h4>
+                            <p>BA-LLB, BBA-LLB, Liberal Arts & Journalism</p>
+                            <div class="dept-badge">2 Departments • 200 Students</div>
+                        </div>
+                    </div>
+
+                    <!-- Department Standing & Accreditation Data Table -->
+                    <div style="margin-top: 20px;">
+                        <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-table-list" style="color: var(--primary);"></i> Departmental Standing & Accreditation Catalog
+                        </h3>
+                        <div class="vc-table-wrapper">
+                            <table class="vc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Department & School</th>
+                                        <th>Head of Department (HOD)</th>
+                                        <th>Accreditation & Approval</th>
+                                        <th>Active Enrollment</th>
+                                        <th>Academic Pass Rate</th>
+                                        <th>Governance Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <i class="fa-solid fa-laptop-code" style="color:var(--primary); font-size:16px;"></i>
+                                                <div>
+                                                    <strong>Computer Science & Engg.</strong>
+                                                    <span style="font-size:11px; color:var(--text-tertiary); display:block;">School of Engineering</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <strong>Dr. Ananya Sharma</strong>
+                                            <span style="font-size:11px; color:var(--text-tertiary); display:block;">CSE-EMP-102</span>
+                                        </td>
+                                        <td><span class="status-pill pill-success"><i class="fa-solid fa-certificate"></i> NBA Accredited (A++)</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700;">480 Students</span></td>
+                                        <td><span style="color:var(--success); font-weight:700;">98.4%</span></td>
+                                        <td><span class="status-pill pill-info"><i class="fa-solid fa-circle-check"></i> Active & Verified</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <i class="fa-solid fa-gears" style="color:var(--accent); font-size:16px;"></i>
+                                                <div>
+                                                    <strong>Mechanical Engineering</strong>
+                                                    <span style="font-size:11px; color:var(--text-tertiary); display:block;">School of Engineering</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <strong>Prof. Rajesh Gupta</strong>
+                                            <span style="font-size:11px; color:var(--text-tertiary); display:block;">ME-EMP-204</span>
+                                        </td>
+                                        <td><span class="status-pill pill-success"><i class="fa-solid fa-certificate"></i> NBA Accredited (A+)</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700;">360 Students</span></td>
+                                        <td><span style="color:var(--success); font-weight:700;">96.2%</span></td>
+                                        <td><span class="status-pill pill-info"><i class="fa-solid fa-circle-check"></i> Active & Verified</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <i class="fa-solid fa-bolt" style="color:var(--warning); font-size:16px;"></i>
+                                                <div>
+                                                    <strong>Electrical & Electronics</strong>
+                                                    <span style="font-size:11px; color:var(--text-tertiary); display:block;">School of Engineering</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <strong>Dr. Vikram Singh</strong>
+                                            <span style="font-size:11px; color:var(--text-tertiary); display:block;">EEE-EMP-309</span>
+                                        </td>
+                                        <td><span class="status-pill pill-success"><i class="fa-solid fa-certificate"></i> NBA Accredited (A++)</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700;">300 Students</span></td>
+                                        <td><span style="color:var(--info); font-weight:700;">94.8%</span></td>
+                                        <td><span class="status-pill pill-info"><i class="fa-solid fa-circle-check"></i> Active & Verified</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <i class="fa-solid fa-chart-line" style="color:var(--secondary); font-size:16px;"></i>
+                                                <div>
+                                                    <strong>School of Business (MBA)</strong>
+                                                    <span style="font-size:11px; color:var(--text-tertiary); display:block;">School of Management</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <strong>Dr. Meera Verma</strong>
+                                            <span style="font-size:11px; color:var(--text-tertiary); display:block;">SOM-EMP-412</span>
+                                        </td>
+                                        <td><span class="status-pill pill-purple"><i class="fa-solid fa-building-columns"></i> AICTE & UGC Approved</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700;">450 Students</span></td>
+                                        <td><span style="color:var(--success); font-weight:700;">95.5%</span></td>
+                                        <td><span class="status-pill pill-info"><i class="fa-solid fa-circle-check"></i> Active & Verified</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <i class="fa-solid fa-microscope" style="color:var(--info); font-size:16px;"></i>
+                                                <div>
+                                                    <strong>Biotechnology & Sciences</strong>
+                                                    <span style="font-size:11px; color:var(--text-tertiary); display:block;">School of Applied Sciences</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <strong>Dr. Sanjay Sen</strong>
+                                            <span style="font-size:11px; color:var(--text-tertiary); display:block;">BIO-EMP-518</span>
+                                        </td>
+                                        <td><span class="status-pill pill-purple"><i class="fa-solid fa-flask"></i> DST & UGC Recognized</span></td>
+                                        <td><span style="font-family:'JetBrains Mono'; font-weight:700;">220 Students</span></td>
+                                        <td><span style="color:var(--success); font-weight:700;">97.1%</span></td>
+                                        <td><span class="status-pill pill-info"><i class="fa-solid fa-circle-check"></i> Active & Verified</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </section>
@@ -251,17 +462,17 @@
                         <div class="placement-box">
                             <div class="big-num" style="color:var(--success);">85%</div>
                             <strong style="font-size:14px; color:var(--text-primary);">Overall Placement Rate</strong>
-                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">Across UG, PG & PhD Streams</p>
+                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">Across UG, PG & Doctoral Programs</p>
                         </div>
                         <div class="placement-box">
                             <div class="big-num" style="color:var(--amber); font-family:'JetBrains Mono';">₹24.5 LPA</div>
                             <strong style="font-size:14px; color:var(--text-primary);">Highest Package Offered</strong>
-                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">International Tech Placement</p>
+                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">International Technology Placement</p>
                         </div>
                         <div class="placement-box">
                             <div class="big-num" style="color:var(--info);">120+</div>
-                            <strong style="font-size:14px; color:var(--text-primary);">Recruiting Partners</strong>
-                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">Google, Microsoft, TCS, Infosys</p>
+                            <strong style="font-size:14px; color:var(--text-primary);">Corporate Recruiting Partners</strong>
+                            <p style="font-size:12px; color:var(--text-tertiary); margin-top:4px;">Google, Microsoft, TCS, Infosys, IBM</p>
                         </div>
                     </div>
                 </section>
@@ -270,7 +481,7 @@
                 <section class="overview-section" id="contact">
                     <div class="section-head-bar">
                         <i class="fa-solid fa-location-dot" style="color:#ef4444; font-size:20px;"></i>
-                        <h2>Location & Executive Contact Details</h2>
+                        <h2>Campus Location & Executive Desk Contact</h2>
                     </div>
                     <div class="contact-cards-grid">
                         <div class="contact-card">
@@ -284,7 +495,7 @@
                         <div class="contact-card">
                             <i class="fa-solid fa-phone icon-cyan"></i>
                             <div>
-                                <strong style="font-size:14px; display:block;">VC Executive Desk</strong>
+                                <strong style="font-size:14px; display:block;">VC Executive Office Desk</strong>
                                 <span style="font-size:12px; color:var(--text-secondary);">+91 98765 43210 / 011-2345678</span>
                             </div>
                         </div>
@@ -292,7 +503,7 @@
                         <div class="contact-card">
                             <i class="fa-solid fa-envelope icon-purple"></i>
                             <div>
-                                <strong style="font-size:14px; display:block;">Official Email</strong>
+                                <strong style="font-size:14px; display:block;">Official Secretariat Email</strong>
                                 <span style="font-size:12px; color:var(--text-secondary);">vc@edutech.edu.in</span>
                             </div>
                         </div>
@@ -302,62 +513,11 @@
         </main>
     </div>
 
-    <script>
-        // Sidebar Toggle with Memory
-        const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
-        const sidebar = document.getElementById("sidebar");
-        const mainPortal = document.querySelector(".portal-main");
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
 
-        if (localStorage.getItem("vcSidebarCollapsed") === "true") {
-            if (sidebar) sidebar.classList.add("collapsed");
-            if (mainPortal) mainPortal.classList.add("expanded");
-        }
-
-        if (sidebarToggleBtn && sidebar) {
-            sidebarToggleBtn.addEventListener("click", () => {
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.toggle("active");
-                } else {
-                    const isCollapsed = sidebar.classList.toggle("collapsed");
-                    if (mainPortal) mainPortal.classList.toggle("expanded", isCollapsed);
-                    localStorage.setItem("vcSidebarCollapsed", isCollapsed ? "true" : "false");
-                }
-            });
-        }
-
-        // Theme Toggle
-        const themeBtn = document.getElementById("themeToggleBtn");
-        if (themeBtn) {
-            themeBtn.addEventListener("click", () => {
-                const activeTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-                document.documentElement.setAttribute("data-theme", activeTheme);
-                localStorage.setItem("theme", activeTheme);
-            });
-        }
-
-        // Profile Menu Dropdown
-        const profileTrigger = document.getElementById("portalProfileTrigger");
-        const profileMenu = document.getElementById("profileMenu");
-        if (profileTrigger && profileMenu) {
-            profileTrigger.addEventListener("click", (e) => {
-                e.stopPropagation();
-                profileMenu.classList.toggle("open");
-            });
-            document.addEventListener("click", (e) => {
-                if (!profileMenu.contains(e.target) && e.target !== profileTrigger) {
-                    profileMenu.classList.remove("open");
-                }
-            });
-        }
-
-        // Logout
-        document.querySelectorAll("[data-logout]").forEach(btn => {
-            btn.addEventListener("click", () => {
-                localStorage.removeItem("loggedInUser");
-                window.location.href = "../../auth/login.html";
-            });
-        });
-    </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>

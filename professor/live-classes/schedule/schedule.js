@@ -73,7 +73,7 @@
 
                         return '<div class="lecture-item-row">' +
                             '<div style="display:flex; align-items:center; gap:16px; flex:1; min-width: 250px;">' +
-                                '<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center;">' +
+                                '<div style="background:var(--bg-secondary); border:1px solid var(--border-color); width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center;">' +
                                     '<i class="fa-solid fa-headset" style="font-size:18px; color:var(--primary);"></i>' +
                                 '</div>' +
                                 '<div>' +

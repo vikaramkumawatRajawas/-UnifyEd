@@ -37,6 +37,10 @@
     --accent: #f59e0b;
     --accent-hover: #d97706;
 
+    --scrollbar-track: #0f172a;
+    --scrollbar-thumb: #334155;
+    --scrollbar-thumb-hover: #475569;
+
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     
@@ -68,8 +72,76 @@
     --secondary: #9333ea;
     --secondary-hover: #7e22ce;
 
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb-hover: #94a3b8;
+
     --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.08);
     --card-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
+}
+
+/* ==========================================
+   PORTAL MODE SWITCHER (EXACT UI SPEC)
+   ========================================== */
+.portal-mode-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: #eef2ff;
+    border: 1px solid #e0e7ff;
+    border-radius: 30px;
+    padding: 3px 5px;
+    gap: 4px;
+    margin-right: 18px;
+    margin-left: 15px;
+}
+
+.portal-mode-btn {
+    border: none;
+    background: transparent;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portal-mode-btn i {
+    font-size: 11px;
+}
+
+.portal-mode-btn:hover {
+    color: #1e293b;
+}
+
+.portal-mode-btn.active {
+    background: #4f46e5;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}
+
+[data-theme="dark"] .portal-mode-switcher {
+    background: rgba(30, 41, 59, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .portal-mode-btn {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .portal-mode-btn.active {
+    background: #6366f1;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Basic Mode Filtering Styles for Professor Portal */
+[data-portal-mode="basic"] .mode-advance-only {
+    display: none !important;
 }
 
 /* Light Theme Component Overrides */
@@ -529,27 +601,44 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
 }
 
 .user-profile-widget .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    line-height: 1.2;
     text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .user-profile-widget .details strong {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--text-primary);
+    white-space: nowrap;
 }
 
 .user-profile-widget .details span {
     display: block;
     font-size: 11px;
-    color: var(--text-tertiary);
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
 }
 
 .profile-avatar {
-    font-size: 32px;
+    font-size: 28px;
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 /* Content Area */
@@ -720,19 +809,15 @@ h1, h2, h3, h4, h5, h6 {
         left: 0;
     }
     .main-portal-header {
-        display: none;
-    }
-    .mobile-portal-header {
-        height: 65px;
-        background-color: var(--bg-secondary);
-        border-bottom: 1px solid var(--border-color);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
+        display: flex !important;
         position: sticky;
         top: 0;
-        z-index: 110;
+        z-index: 999;
+        padding: 0 12px !important;
+        gap: 8px !important;
+    }
+    .mobile-portal-header {
+        display: none !important;
     }
     .mobile-portal-header h2 {
         font-size: 18px;
@@ -1064,4 +1149,32 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     pointer-events: auto;
 }
+
+/* Mobile Responsiveness for Professor Header & Mode Switcher */
+@media (max-width: 768px) {
+    .user-profile-widget .details {
+        display: none !important;
+    }
+
+    .portal-mode-switcher {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: 34px !important;
+        padding: 2px !important;
+        gap: 2px !important;
+        margin: 0 !important;
+    }
+
+    .portal-mode-btn {
+        height: 28px !important;
+        padding: 0 8px !important;
+        font-size: 11px !important;
+    }
+
+    .portal-mode-btn span {
+        display: inline !important;
+    }
+}
+
 

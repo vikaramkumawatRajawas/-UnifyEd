@@ -23,17 +23,28 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 14px 18px;
-                background: rgba(30, 41, 59, 0.45);
+                padding: 16px 20px;
+                background: var(--bg-tertiary, rgba(255, 255, 255, 0.03));
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
+                border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
                 border-radius: 12px;
-                transition: transform 0.2s ease, border-color 0.2s ease;
+                margin-bottom: 12px;
+                transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             }
             .resource-item-row:hover {
                 transform: translateY(-2px);
-                border-color: rgba(99, 102, 241, 0.25);
+                border-color: rgba(99, 102, 241, 0.3);
+                box-shadow: 0 4px 14px rgba(99, 102, 241, 0.08);
+            }
+            [data-theme="light"] .resource-item-row {
+                background: #f8fafc;
+                border-color: #e2e8f0;
+            }
+            [data-theme="light"] .resource-item-row:hover {
+                background: #ffffff;
+                border-color: #6366f1;
+                box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
             }
             .resource-delete-btn {
                 background: transparent;

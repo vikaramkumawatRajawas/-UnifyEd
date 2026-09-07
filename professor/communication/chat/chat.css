@@ -638,3 +638,47 @@
         display: flex;
     }
 }
+
+/* Light Mode Overrides for Campus Messenger */
+[data-theme="light"] .chat-container-wrapper {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .chat-sidebar {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+[data-theme="light"] .chat-main-area {
+    background: #ffffff;
+}
+
+[data-theme="light"] .chat-item {
+    background: transparent;
+}
+
+[data-theme="light"] .chat-item:hover {
+    background: #f1f5f9;
+}
+
+[data-theme="light"] .chat-item.active {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="light"] .message-row.incoming .message-bubble {
+    background: #f1f5f9;
+    color: #1e293b;
+    border-color: #e2e8f0;
+}
+
+[data-theme="light"] .chat-input-box {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+[data-theme="light"] .chat-details-drawer {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}

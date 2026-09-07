@@ -143,18 +143,6 @@
                 </a>
             </div>
 
-            <!-- Direct Dashboard Quick Launch Bar -->
-            <div style="margin-top:20px; padding-top:16px; border-top:1px dashed rgba(255,255,255,0.15); text-align:center;">
-                <span style="font-size:11px; font-weight:800; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.8px; display:block; margin-bottom:10px;">⚡ Instant Direct Dashboard Access</span>
-                <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
-                    <a href="../student/dashboard/dashboard.html" class="btn btn-secondary" onclick="setQuickRole('student', 'Student User', 'STU-2026-101')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-user-graduate" style="color:#6366f1;"></i> Student</a>
-                    <a href="../professor/dashboard/dashboard.html" class="btn btn-secondary" onclick="setQuickRole('professor', 'Dr. Rajesh Kumar', 'EMP-2026-204')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-chalkboard-user" style="color:#10b981;"></i> Professor</a>
-                    <a href="../hod/dashboard-hod/dashboard-hod.html" class="btn btn-secondary" onclick="setQuickRole('hod', 'Dr. Ananya Sharma', 'HOD-CSE-01')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-user-tie" style="color:#a855f7;"></i> HOD</a>
-                    <a href="../vc/dashboard-vc/dashboard-vc.html" class="btn btn-secondary" onclick="setQuickRole('vc', 'Prof. Vice Chancellor', 'VC-2026-001')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-user-tie" style="color:#22d3ee;"></i> VC</a>
-                    <a href="../fees/dashboard-fees/dashboard-fees.html" class="btn btn-secondary" onclick="setQuickRole('fees-manager', 'Vikram Kumawat', 'FIN-EMP-108')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-credit-card" style="color:#f59e0b;"></i> Fees Manager</a>
-                    <a href="../admin/dashboard-admin/dashboard-admin.html" class="btn btn-secondary" onclick="setQuickRole('admin', 'System Admin', 'ADM-001')" style="padding:6px 12px; font-size:12px; border-radius:14px;"><i class="fa-solid fa-shield-halved" style="color:#ef4444;"></i> Admin</a>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -313,6 +301,12 @@
                     }
                 }
 
+                if (displayName.includes("@")) {
+                    const userPart = displayName.split("@")[0];
+                    displayName = userPart.replace(/[._-]/g, ' ').replace(/[0-9]/g, '').trim().split(/\s+/).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+                }
+                if (!displayName || displayName.trim() === "") displayName = "Vikram Kumawat";
+
                 if (role === "professor" && (usernameInput.toLowerCase().includes("rajesh") || studentIdInput.toLowerCase().includes("emp-204")) && !matchedUser && !isSingleRegUser) {
                     displayName = "Dr. Rajesh Kumar";
                 }
@@ -322,6 +316,7 @@
 
                 localStorage.setItem("userRole", role);
                 localStorage.setItem("loggedInUser", displayName);
+                localStorage.setItem("loggedInUserEmail", usernameInput.includes("@") ? usernameInput : `${usernameInput.toLowerCase()}@unifyed.edu`);
                 localStorage.setItem("loggedInStudentId", studentIdInput);
                 localStorage.setItem("currentUser", JSON.stringify({
                     name: displayName,

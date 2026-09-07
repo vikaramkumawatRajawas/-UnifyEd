@@ -3,6 +3,12 @@
 // ==========================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+    // 0. Initialize Interface Mode (Basic vs Advance) radio selection
+    const currentPortalMode = localStorage.getItem("portalMode") || "advance";
+    if (typeof window.setPortalMode === "function") {
+        window.setPortalMode(currentPortalMode);
+    }
+
     // 1. Dynamic User Info Rendering in Hero Card
     const loggedInUser = localStorage.getItem("loggedInUser") || "Dr. Rajesh Kumar";
     const loggedInStudentId = localStorage.getItem("loggedInStudentId") || "CSE-EMP-204";

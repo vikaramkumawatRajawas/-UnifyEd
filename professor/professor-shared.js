@@ -42,6 +42,102 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", toggleTheme);
     });
 
+    // 2.5 Portal Mode (Basic vs Advance) Logic for Professor
+    const currentMode = localStorage.getItem("portalMode") || "advance";
+    document.documentElement.setAttribute("data-portal-mode", currentMode);
+
+    window.setPortalMode = function(mode) {
+        const currentActiveMode = localStorage.getItem("portalMode") || "advance";
+        const targetMode = (mode === "basic") ? "basic" : "advance";
+
+        // Alert confirmation when switching from Basic to Advance mode
+        if (targetMode === "advance" && currentActiveMode === "basic") {
+            const confirmed = confirm("🚀 Switch to Advance Mode?\n\nThis will unlock research metrics, advanced grade reports, mentor meeting tools, and full faculty suite. Click OK to proceed.");
+            if (!confirmed) return;
+        }
+
+        document.documentElement.setAttribute("data-portal-mode", targetMode);
+        localStorage.setItem("portalMode", targetMode);
+
+        const btnBasic = document.getElementById("modeBtnBasic");
+        const btnAdvance = document.getElementById("modeBtnAdvance");
+        if (btnBasic && btnAdvance) {
+            if (targetMode === "basic") {
+                btnBasic.classList.add("active");
+                btnAdvance.classList.remove("active");
+            } else {
+                btnAdvance.classList.add("active");
+                btnBasic.classList.remove("active");
+            }
+        }
+        applyProfModeToSidebar();
+    };
+
+    function applyProfModeToSidebar() {
+        const activeMode = localStorage.getItem("portalMode") || "advance";
+        const sidebarItems = document.querySelectorAll(".sidebar-menu .sidebar-item");
+        
+        sidebarItems.forEach(item => {
+            const href = (item.getAttribute("href") || "").toLowerCase();
+            const text = (item.textContent || "").toLowerCase();
+
+            // Professor Essential items in Basic Mode:
+            // Dashboard, Students Registry, Attendance Reports, Marks Reports, Assignment Reports, Profile, Settings
+            const isEssential = href.includes("dashboard.html") || 
+                                href.includes("students.html") || 
+                                href.includes("attendance-report.html") || 
+                                href.includes("marks-report.html") || 
+                                href.includes("assignment-report.html") || 
+                                href.includes("profile.html") ||
+                                href.includes("settings.html") ||
+                                text.includes("dashboard") ||
+                                text.includes("student") ||
+                                text.includes("attendance report") ||
+                                text.includes("marks report") ||
+                                text.includes("assignment report") ||
+                                text.includes("profile") ||
+                                text.includes("settings");
+                                
+            if (!isEssential) {
+                item.classList.add("mode-advance-only");
+            } else {
+                item.classList.remove("mode-advance-only");
+            }
+        });
+    }
+
+    function initProfHeaderModeSwitcher() {
+        const headerActions = document.querySelector(".header-actions") || document.querySelector(".main-portal-header");
+        if (!headerActions || document.getElementById("portalModeSwitcher")) return;
+
+        const switcher = document.createElement("div");
+        switcher.className = "portal-mode-switcher";
+        switcher.id = "portalModeSwitcher";
+        
+        const activeMode = localStorage.getItem("portalMode") || "advance";
+
+        switcher.innerHTML = `
+            <button type="button" class="portal-mode-btn ${activeMode === 'basic' ? 'active' : ''}" id="modeBtnBasic" title="Switch to Basic Minimal Mode">
+                <i class="fa-solid fa-bolt"></i> Basic
+            </button>
+            <button type="button" class="portal-mode-btn ${activeMode === 'advance' ? 'active' : ''}" id="modeBtnAdvance" title="Switch to Full Advance Mode">
+                <i class="fa-solid fa-rocket"></i> Advance
+            </button>
+        `;
+
+        if (headerActions.classList.contains("header-actions")) {
+            headerActions.insertBefore(switcher, headerActions.firstChild);
+        } else {
+            headerActions.appendChild(switcher);
+        }
+
+        document.getElementById("modeBtnBasic").addEventListener("click", () => window.setPortalMode("basic"));
+        document.getElementById("modeBtnAdvance").addEventListener("click", () => window.setPortalMode("advance"));
+    }
+
+    initProfHeaderModeSwitcher();
+    applyProfModeToSidebar();
+
     // 3. Dynamic Profile & Name Syncing from localStorage
     const loggedInUser = localStorage.getItem("loggedInUser") || "Dr. Rajesh Kumar";
     const loggedInStudentId = localStorage.getItem("loggedInStudentId") || "CSE-EMP-204";

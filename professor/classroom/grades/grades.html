@@ -308,56 +308,78 @@
 
                 <!-- Custom Content Block -->
                 
-             <div class="dashboard-card glassmorphism" style="margin-bottom:25px; border:1px solid rgba(99, 102, 241, 0.15); box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.05);">
-                 <h3 style="font-size:18px; font-weight:800; display:flex; align-items:center; gap:8px; color:var(--primary);">
-                     <i class="fa-solid fa-percent" style="background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i> Course Grading & Evaluation
-                 </h3>
-                 <p style="color:var(--text-secondary); font-size:13px; margin-top:5px; margin-bottom:20px;">
-                     Evaluate final student grades based on attendance ratio, assignment submissions, quiz evaluations, and classroom participation.
-                 </p>
+             <!-- Main Content Card -->
+             <div class="dashboard-card glassmorphism" style="margin-bottom:30px; padding:28px; border-radius:16px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                 <!-- Header Title & Badges -->
+                 <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid var(--border-color); padding-bottom:18px; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+                     <div style="display:flex; align-items:center; gap:16px;">
+                         <div style="width:48px; height:48px; border-radius:12px; background:var(--primary-glow); border:1px solid rgba(99, 102, 241, 0.25); display:flex; align-items:center; justify-content:center;">
+                             <i class="fa-solid fa-percent" style="font-size:22px; color:var(--primary);"></i>
+                         </div>
+                         <div>
+                             <h3 style="margin:0; font-size:18px; font-weight:800; color:var(--text-primary); border-bottom:none; padding-bottom:0;">
+                                 Course Grading & Evaluation
+                             </h3>
+                             <p style="color:var(--text-secondary); font-size:12px; margin:4px 0 0 0; line-height:1.4;">
+                                 Evaluate final student grades based on attendance ratio, assignment submissions, quiz evaluations, and classroom participation.
+                             </p>
+                         </div>
+                     </div>
+                     <span style="padding:6px 12px; background:rgba(16, 185, 129, 0.1); color:#10b981; font-size:11px; font-weight:700; border-radius:20px; border:1px solid rgba(16, 185, 129, 0.25); display:inline-flex; align-items:center; gap:6px;">
+                         <i class="fa-solid fa-circle" style="font-size:7px; color:#10b981;"></i> Evaluation Active
+                     </span>
+                 </div>
 
-                 <!-- Overall statistics panel -->
-                 <div class="stats-row" style="margin-bottom:25px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px;">
-                     <div class="stat-card glassmorphism" style="padding:15px 20px; display:flex; align-items:center; gap:15px; border:1px solid rgba(99, 102, 241, 0.1); border-radius:8px;">
-                         <i class="fa-solid fa-calculator" style="font-size:24px; color:var(--primary);"></i>
+                 <!-- Overall statistics panel (3 Stats Grid) -->
+                 <div class="stats-row" style="margin-bottom:25px; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+                     <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:16px; background:var(--primary-glow); border:1px solid rgba(99, 102, 241, 0.2); border-radius:12px;">
+                         <div style="width:42px; height:42px; border-radius:10px; background:rgba(99, 102, 241, 0.15); display:flex; align-items:center; justify-content:center;">
+                             <i class="fa-solid fa-calculator" style="font-size:20px; color:var(--primary);"></i>
+                         </div>
                          <div>
-                             <h3 id="gradeClassAvg" style="font-size:18px; font-weight:800; margin:0;">8.42</h3>
-                             <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Class Avg Grade Point</p>
+                             <h3 id="gradeClassAvg" style="font-size:20px; font-weight:800; margin:0; color:var(--text-primary);">8.00</h3>
+                             <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary); font-weight:600;">Class Avg Grade Point</p>
                          </div>
                      </div>
-                     <div class="stat-card glassmorphism" style="padding:15px 20px; display:flex; align-items:center; gap:15px; border:1px solid rgba(16, 185, 129, 0.1); border-radius:8px;">
-                         <i class="fa-solid fa-user-check" style="font-size:24px; color:#10b981;"></i>
+
+                     <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:16px; background:rgba(16, 185, 129, 0.06); border:1px solid rgba(16, 185, 129, 0.2); border-radius:12px;">
+                         <div style="width:42px; height:42px; border-radius:10px; background:rgba(16, 185, 129, 0.15); display:flex; align-items:center; justify-content:center;">
+                             <i class="fa-solid fa-user-check" style="font-size:20px; color:#10b981;"></i>
+                         </div>
                          <div>
-                             <h3 id="gradeEvaluated" style="font-size:18px; font-weight:800; margin:0;">5 / 5</h3>
-                             <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Graded Cohort</p>
+                             <h3 id="gradeEvaluated" style="font-size:20px; font-weight:800; margin:0; color:#10b981;">5 / 5</h3>
+                             <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary); font-weight:600;">Graded Cohort</p>
                          </div>
                      </div>
-                     <div class="stat-card glassmorphism" style="padding:15px 20px; display:flex; align-items:center; gap:15px; border:1px solid rgba(245, 158, 11, 0.1); border-radius:8px;">
-                         <i class="fa-solid fa-clock-rotate-left" style="font-size:24px; color:#f59e0b;"></i>
+
+                     <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:16px; background:rgba(245, 158, 11, 0.06); border:1px solid rgba(245, 158, 11, 0.2); border-radius:12px;">
+                         <div style="width:42px; height:42px; border-radius:10px; background:rgba(245, 158, 11, 0.15); display:flex; align-items:center; justify-content:center;">
+                             <i class="fa-solid fa-clock-rotate-left" style="font-size:20px; color:#f59e0b;"></i>
+                         </div>
                          <div>
-                             <h3 id="gradePending" style="font-size:18px; font-weight:800; margin:0;">0</h3>
-                             <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Pending Approvals</p>
+                             <h3 id="gradePending" style="font-size:20px; font-weight:800; margin:0; color:#f59e0b;">0</h3>
+                             <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary); font-weight:600;">Pending Approvals</p>
                          </div>
                      </div>
                  </div>
 
                  <!-- Spreadsheet Evaluation grid -->
-                 <div class="glassmorphism" style="border:1px solid var(--border-color); border-radius:var(--border-radius-sm); overflow:hidden; background:rgba(255,255,255,0.01); margin-bottom:20px;">
-                     <div style="padding:15px 20px; border-bottom:1px solid var(--border-color); background:rgba(255,255,255,0.02); display:flex; justify-content:space-between; align-items:center;">
-                         <strong style="font-size:13px; color:var(--text-primary);"><i class="fa-solid fa-table-list" style="color:var(--primary); margin-right:5px;"></i> Final Evaluation Sheet</strong>
-                         <span style="font-size:11px; color:var(--text-tertiary);">Edit participation marks to adjust final calculated grades.</span>
+                 <div class="glassmorphism" style="border:1px solid var(--border-color); border-radius:12px; overflow:hidden; background:var(--bg-tertiary); margin-bottom:20px;">
+                     <div style="padding:16px 20px; border-bottom:1px solid var(--border-color); background:var(--bg-primary); display:flex; justify-content:space-between; align-items:center;">
+                         <strong style="font-size:13px; color:var(--text-primary);"><i class="fa-solid fa-table-list" style="color:var(--primary); margin-right:6px;"></i> Final Evaluation Sheet</strong>
+                         <span style="font-size:11px; color:var(--text-secondary);">Edit participation marks to adjust final calculated grades.</span>
                      </div>
                      <div class="table-responsive">
                          <table class="excel-table" style="width:100%; border-collapse:collapse; text-align:left; font-size:12px;">
                              <thead>
-                                 <tr>
-                                     <th style="width:200px; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color);">Student Name</th>
-                                     <th style="text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:120px;">Attendance (10)</th>
-                                     <th style="text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:120px;">Assignments (30)</th>
-                                     <th style="text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:120px;">Quizzes (20)</th>
-                                     <th style="text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:130px;">Class Participation (40)</th>
-                                     <th style="text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:110px;">Total (100)</th>
-                                     <th style="text-align:center; border-bottom:1px solid var(--border-color); width:100px;">Final Grade</th>
+                                 <tr style="background:var(--bg-tertiary);">
+                                     <th style="padding:12px 16px; font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-secondary); width:200px; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color);">Student Name</th>
+                                     <th style="padding:12px 16px; font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-secondary); text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:120px;">Attendance (10)</th>
+                                     <th style="padding:12px 16px; font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-secondary); text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:120px;">Assignments (30)</th>
+                                     <th style="padding:12px 16px; font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-secondary); text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:120px;">Quizzes (20)</th>
+                                     <th style="padding:12px 16px; font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-secondary); text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:140px;">Class Participation (40)</th>
+                                     <th style="padding:12px 16px; font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-secondary); text-align:center; border-bottom:1px solid var(--border-color); border-right:1px solid var(--border-color); width:110px;">Total (100)</th>
+                                     <th style="padding:12px 16px; font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-secondary); text-align:center; border-bottom:1px solid var(--border-color); width:100px;">Final Grade</th>
                                  </tr>
                              </thead>
                              <tbody id="evaluationGridBody">
@@ -368,9 +390,9 @@
                  </div>
 
                  <!-- Publish Actions -->
-                 <div style="display:flex; justify-content:flex-end; gap:15px; margin-top:20px;">
-                     <button type="button" class="btn" id="saveGradesDraftBtn" style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); padding:10px 20px; font-weight:600; font-size:12px; border-radius:6px; color:var(--text-secondary);"><i class="fa-solid fa-floppy-disk"></i> Save Draft</button>
-                     <button type="button" class="btn btn-primary" id="publishGradesBtn" style="background-image:linear-gradient(135deg, var(--primary), var(--accent)); padding:10px 20px; font-weight:600; font-size:12px; border-radius:6px;"><i class="fa-solid fa-paper-plane"></i> Publish Final Grades</button>
+                 <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:20px;">
+                     <button type="button" class="btn" id="saveGradesDraftBtn" style="background:var(--bg-tertiary); border:1px solid var(--border-color); padding:10px 20px; font-weight:600; font-size:12px; border-radius:8px; color:var(--text-primary);"><i class="fa-solid fa-floppy-disk"></i> Save Draft</button>
+                     <button type="button" class="btn btn-primary" id="publishGradesBtn" style="background-image:linear-gradient(135deg, #4f46e5, #9333ea); padding:10px 22px; font-weight:700; font-size:12px; border-radius:8px; box-shadow:0 4px 14px rgba(79, 70, 229, 0.35);"><i class="fa-solid fa-paper-plane"></i> Publish Final Grades</button>
                  </div>
              </div>
         

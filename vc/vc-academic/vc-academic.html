@@ -4,8 +4,10 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
+            const currentMode = localStorage.getItem("portalMode") || "advance";
+            document.documentElement.setAttribute("data-portal-mode", currentMode);
         })();
     </script>
     <meta charset="UTF-8">
@@ -19,9 +21,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
-    <link rel="stylesheet" href="vc-academic.css">
+    <link rel="stylesheet" href="vc-academic.css?v=2">
 </head>
 
 <body class="vc-portal-body">
@@ -101,12 +103,15 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn" id="vcMenuToggle" class="toggle-btn sidebar-toggle-btn" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
@@ -116,7 +121,7 @@
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn" id="vcThemeToggle" class="header-icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -227,7 +232,7 @@
                             <div class="prog-meta">
                                 <span><i class="fa-solid fa-layer-group" style="color:var(--primary);"></i> Semesters: 8 Semesters</span>
                                 <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Students: 520 Candidates</span>
-                                <span style="color:var(--primary); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Credits: 160</span>
+                                <span style="color:var(--primary); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Program Credits: 160</span>
                             </div>
                         </div>
 
@@ -236,7 +241,7 @@
                             <div class="prog-meta">
                                 <span><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i> Semesters: 8 Semesters</span>
                                 <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Students: 420 Candidates</span>
-                                <span style="color:var(--accent); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Credits: 160</span>
+                                <span style="color:var(--accent); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Program Credits: 160</span>
                             </div>
                         </div>
 
@@ -245,7 +250,7 @@
                             <div class="prog-meta">
                                 <span><i class="fa-solid fa-layer-group" style="color:var(--info);"></i> Semesters: 8 Semesters</span>
                                 <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Students: 380 Candidates</span>
-                                <span style="color:var(--info); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Credits: 160</span>
+                                <span style="color:var(--info); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Program Credits: 160</span>
                             </div>
                         </div>
 
@@ -254,7 +259,7 @@
                             <div class="prog-meta">
                                 <span><i class="fa-solid fa-layer-group" style="color:var(--warning);"></i> Semesters: 4 Semesters</span>
                                 <span><i class="fa-solid fa-users" style="color:var(--success);"></i> Students: 180 Masters Candidates</span>
-                                <span style="color:var(--warning); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Credits: 80</span>
+                                <span style="color:var(--warning); font-weight:700; margin-top:4px;"><i class="fa-solid fa-certificate"></i> Total Program Credits: 80</span>
                             </div>
                         </div>
                     </div>
@@ -262,53 +267,127 @@
 
                 <!-- Section 2: Current Semester Course Catalog Matrix Table -->
                 <section class="acad-section">
-                    <div class="acad-section-head">
-                        <i class="fa-solid fa-book-open" style="color:var(--success); font-size:20px;"></i>
-                        <h2>Current Semester Active Course Catalog (Jan - May 2026)</h2>
+                    <div class="acad-section-head" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <i class="fa-solid fa-book-open" style="color:var(--success); font-size:20px;"></i>
+                            <div>
+                                <h2>Current Semester Active Course Catalog (Jan - May 2026)</h2>
+                                <p style="font-size:12.5px; color:var(--text-secondary); margin-top:2px;">Official UGC & AICTE accredited credit distribution, L-T-P structure, and faculty assignment</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <span class="status-pill pill-purple" style="font-size:12px; padding:6px 14px;"><i class="fa-solid fa-graduation-cap"></i> Total Catalog Credits: 29 Credits</span>
+                        </div>
                     </div>
+
                     <div class="acad-table-wrapper">
                         <table class="acad-table">
                             <thead>
                                 <tr>
                                     <th>Course Code</th>
-                                    <th>Course Name</th>
+                                    <th>Course Name & Category</th>
+                                    <th>Department</th>
                                     <th>Faculty Instructor</th>
                                     <th>Enrolled Students</th>
-                                    <th>Credits</th>
+                                    <th>Academic Credits & Structure</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><strong style="color:var(--primary); font-family:'JetBrains Mono';">CS-601</strong></td>
-                                    <td><strong>Data Structures & Advanced Algorithms</strong></td>
+                                    <td>
+                                        <strong>Data Structures & Advanced Algorithms</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Core Professional Theory & Lab</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:var(--primary);">Computer Science</span></td>
                                     <td>Dr. Ananya Sharma</td>
                                     <td><span style="font-weight:700; color:var(--text-primary);">68 Students</span></td>
-                                    <td><span class="status-pill pill-purple">4 Credits</span></td>
+                                    <td><span class="status-pill pill-purple" style="font-family:'JetBrains Mono'; font-weight:700;">4 Credits (L-T-P: 3-0-2)</span></td>
                                     <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
                                 </tr>
                                 <tr>
                                     <td><strong style="color:var(--accent); font-family:'JetBrains Mono';">CS-602</strong></td>
-                                    <td><strong>Database Management Systems & SQL</strong></td>
+                                    <td>
+                                        <strong>Database Management Systems & SQL Architecture</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Core Professional Theory</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:var(--primary);">Computer Science</span></td>
                                     <td>Prof. Rajesh Gupta</td>
                                     <td><span style="font-weight:700; color:var(--text-primary);">70 Students</span></td>
-                                    <td><span class="status-pill pill-purple">4 Credits</span></td>
+                                    <td><span class="status-pill pill-purple" style="font-family:'JetBrains Mono'; font-weight:700;">4 Credits (L-T-P: 3-1-0)</span></td>
                                     <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
                                 </tr>
                                 <tr>
                                     <td><strong style="color:var(--info); font-family:'JetBrains Mono';">CS-603</strong></td>
-                                    <td><strong>Web Application Development & Security</strong></td>
+                                    <td>
+                                        <strong>Web Security & Cloud Computing Lab</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Practical Hands-On Lab</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:var(--primary);">Computer Science</span></td>
                                     <td>Dr. Vikram Verma</td>
                                     <td><span style="font-weight:700; color:var(--text-primary);">65 Students</span></td>
-                                    <td><span class="status-pill pill-purple">4 Credits</span></td>
+                                    <td><span class="status-pill pill-cyan" style="font-family:'JetBrains Mono'; font-weight:700;">2 Credits (L-T-P: 0-0-4)</span></td>
                                     <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
                                 </tr>
                                 <tr>
                                     <td><strong style="color:var(--warning); font-family:'JetBrains Mono';">CS-604</strong></td>
-                                    <td><strong>Machine Learning & Artificial Intelligence</strong></td>
+                                    <td>
+                                        <strong>Machine Learning & Artificial Intelligence</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Departmental Elective</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:var(--primary);">Computer Science</span></td>
                                     <td>Dr. Neha Patel</td>
                                     <td><span style="font-weight:700; color:var(--text-primary);">72 Students</span></td>
-                                    <td><span class="status-pill pill-purple">4 Credits</span></td>
+                                    <td><span class="status-pill pill-purple" style="font-family:'JetBrains Mono'; font-weight:700;">4 Credits (L-T-P: 3-1-0)</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:var(--success); font-family:'JetBrains Mono';">CS-605</strong></td>
+                                    <td>
+                                        <strong>Major Capstone Research Project & Internship</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Major Capstone Thesis</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:var(--primary);">Computer Science</span></td>
+                                    <td>Prof. Executive Dean</td>
+                                    <td><span style="font-weight:700; color:var(--text-primary);">120 Students</span></td>
+                                    <td><span class="status-pill pill-success" style="font-family:'JetBrains Mono'; font-weight:700; background:rgba(16,185,129,0.18); color:var(--success);">6 Credits (L-T-P: 0-0-12)</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:#a855f7; font-family:'JetBrains Mono';">EC-601</strong></td>
+                                    <td>
+                                        <strong>Embedded Systems & VLSI Architecture</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Core Electronics Theory & Lab</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:#a855f7;">Electronics (ECE)</span></td>
+                                    <td>Dr. S. K. Raman</td>
+                                    <td><span style="font-weight:700; color:var(--text-primary);">55 Students</span></td>
+                                    <td><span class="status-pill pill-purple" style="font-family:'JetBrains Mono'; font-weight:700;">4 Credits (L-T-P: 3-0-2)</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:#f59e0b; font-family:'JetBrains Mono';">ME-601</strong></td>
+                                    <td>
+                                        <strong>Robotics & Industrial Automation</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Inter-disciplinary Elective</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:#f59e0b;">Mechanical Engg</span></td>
+                                    <td>Prof. Amit Malhotra</td>
+                                    <td><span style="font-weight:700; color:var(--text-primary);">48 Students</span></td>
+                                    <td><span class="status-pill pill-warning" style="font-family:'JetBrains Mono'; font-weight:700;">3 Credits (L-T-P: 3-0-0)</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:#ec4899; font-family:'JetBrains Mono';">HU-601</strong></td>
+                                    <td>
+                                        <strong>Professional Ethics, IPR & Patent Law</strong>
+                                        <span style="font-size:11px; color:var(--text-tertiary); display:block; margin-top:2px;">Mandatory Humanities Audit</span>
+                                    </td>
+                                    <td><span style="font-size:12px; font-weight:700; color:#ec4899;">Humanities & Law</span></td>
+                                    <td>Dr. Meenakshi Sundaram</td>
+                                    <td><span style="font-weight:700; color:var(--text-primary);">180 Students</span></td>
+                                    <td><span class="status-pill pill-cyan" style="font-family:'JetBrains Mono'; font-weight:700;">2 Credits (L-T-P: 2-0-0)</span></td>
                                     <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active</span></td>
                                 </tr>
                             </tbody>
@@ -388,6 +467,8 @@
             });
         });
     </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>

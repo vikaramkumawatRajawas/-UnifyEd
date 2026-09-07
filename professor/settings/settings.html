@@ -401,6 +401,25 @@
                                         <span>Bright, high-contrast light theme</span>
                                     </div>
                                 </div>
+                            <div class="settings-group" style="margin-top:20px;">
+                                <label>Interface Complexity Mode (Basic vs Advance)</label>
+                                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:8px;">
+                                    <label id="modeCardBasic" onclick="setPortalMode('basic')" style="padding:15px; border-radius:10px; border:2px solid var(--border-color); cursor:pointer; display:flex; gap:12px; align-items:flex-start; background:var(--bg-tertiary);">
+                                        <input type="radio" name="portalModeRadio" id="radioModeBasic" style="margin-top:3px; cursor:pointer;">
+                                        <div>
+                                            <strong style="font-size:14px; color:var(--text-primary); display:block; margin-bottom:3px;"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Basic Mode (Minimal ERP)</strong>
+                                            <p style="font-size:11px; color:var(--text-secondary); margin:0;">Clean, focused view for faculty: Dashboard, Students Directory, Attendance Reports, Marks Reports, Assignment Submissions, Profile, and Settings.</p>
+                                        </div>
+                                    </label>
+
+                                    <label id="modeCardAdvance" onclick="setPortalMode('advance')" style="padding:15px; border-radius:10px; border:2px solid var(--border-color); cursor:pointer; display:flex; gap:12px; align-items:flex-start; background:var(--bg-tertiary);">
+                                        <input type="radio" name="portalModeRadio" id="radioModeAdvance" style="margin-top:3px; cursor:pointer;">
+                                        <div>
+                                            <strong style="font-size:14px; color:var(--text-primary); display:block; margin-bottom:3px;"><i class="fa-solid fa-rocket" style="color:#10b981;"></i> Advance Mode (Full ERP)</strong>
+                                            <p style="font-size:11px; color:var(--text-secondary); margin:0;">Full-featured experience including live classroom streams, lecture polls, research & patents hub, student leave approvals, and class analytics.</p>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="option-toggle-box">

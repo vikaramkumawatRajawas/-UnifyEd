@@ -269,6 +269,30 @@
                 <!-- Custom Content Block -->
                 
             <div class="settings-container" style="display:flex; flex-direction:column; gap:25px;">
+                <!-- Interface Mode Configuration -->
+                <div class="settings-card glassmorphism" style="padding:30px; border-radius:12px; border:1px solid var(--border-color);">
+                    <h3 style="margin:0 0 5px 0; font-size:16px; font-weight:800; color:var(--accent);"><i class="fa-solid fa-layer-group"></i> Interface Mode (Basic vs Advance)</h3>
+                    <p style="margin:0 0 20px 0; font-size:11px; color:var(--text-secondary);">Choose your preferred portal complexity and feature density.</p>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                        <label id="modeCardBasic" onclick="setPortalMode('basic')" style="padding:15px; border-radius:10px; border:2px solid var(--border-color); cursor:pointer; display:flex; gap:12px; align-items:flex-start; transition:all var(--transition-fast);">
+                            <input type="radio" name="portalModeRadio" id="radioModeBasic" style="margin-top:3px; cursor:pointer;">
+                            <div>
+                                <strong style="font-size:14px; color:var(--text-primary); display:block; margin-bottom:3px;"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Basic Mode (Minimal ERP)</strong>
+                                <p style="font-size:11px; color:var(--text-secondary); margin:0;">Clean, distraction-free view showing essential modules: Dashboard, Timetable, Attendance, Results, Assignments, Profile, and Settings.</p>
+                            </div>
+                        </label>
+
+                        <label id="modeCardAdvance" onclick="setPortalMode('advance')" style="padding:15px; border-radius:10px; border:2px solid var(--border-color); cursor:pointer; display:flex; gap:12px; align-items:flex-start; transition:all var(--transition-fast);">
+                            <input type="radio" name="portalModeRadio" id="radioModeAdvance" style="margin-top:3px; cursor:pointer;">
+                            <div>
+                                <strong style="font-size:14px; color:var(--text-primary); display:block; margin-bottom:3px;"><i class="fa-solid fa-rocket" style="color:#10b981;"></i> Advance Mode (Full ERP)</strong>
+                                <p style="font-size:11px; color:var(--text-secondary); margin:0;">Full-featured experience with all modules, live classroom streams, research, AI assistant, and advanced analytics tools.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
                 <!-- System Configuration -->
                 <div class="settings-card glassmorphism" style="padding:30px; border-radius:12px; border:1px solid var(--border-color);">
                     <h3 style="margin:0 0 5px 0; font-size:16px; font-weight:800; color:var(--accent);"><i class="fa-solid fa-sliders"></i> Portal Preference Configurations</h3>

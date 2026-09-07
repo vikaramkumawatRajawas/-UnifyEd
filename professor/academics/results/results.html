@@ -308,22 +308,38 @@
 
                 <!-- Custom Content Block -->
                 
-            <div class="dashboard-card glassmorphism" style="margin-bottom:30px; height:auto; border:1px solid rgba(99, 102, 241, 0.15); box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.05); transition: all 0.3s ease;">
-                <h3 style="font-size:18px; font-weight:800; display:flex; align-items:center; gap:8px; color:var(--primary);">
-                    <i class="fa-solid fa-award" style="background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i> Class Semester Results Dashboard
-                </h3>
-                <p style="color:var(--text-secondary); font-size:13px; margin-top:5px; margin-bottom:20px;">
-                    Monitor student academic performance, final grades, passing rates, and grade sheets filtered by Year, Semester, and assigned Course records.
-                </p>
+            <!-- Main Content Card -->
+            <div class="dashboard-card glassmorphism" style="margin-bottom:30px; padding:28px; border-radius:16px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                <!-- Header Title & Badges -->
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid var(--border-color); padding-bottom:18px; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+                    <div style="display:flex; align-items:center; gap:16px;">
+                        <div style="width:48px; height:48px; border-radius:12px; background:var(--primary-glow); border:1px solid rgba(99, 102, 241, 0.25); display:flex; align-items:center; justify-content:center;">
+                            <i class="fa-solid fa-award" style="font-size:22px; color:var(--primary);"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin:0; font-size:18px; font-weight:800; color:var(--text-primary); border-bottom:none; padding-bottom:0;">
+                                Class Semester Results Dashboard
+                            </h3>
+                            <p style="color:var(--text-secondary); font-size:12px; margin:4px 0 0 0; line-height:1.4;">
+                                Monitor student academic performance, final grades, passing rates, and grade sheets filtered by Year, Semester, and assigned Course records.
+                            </p>
+                        </div>
+                    </div>
+                    <span style="padding:6px 12px; background:rgba(16, 185, 129, 0.1); color:#10b981; font-size:11px; font-weight:700; border-radius:20px; border:1px solid rgba(16, 185, 129, 0.25); display:inline-flex; align-items:center; gap:6px;">
+                        <i class="fa-solid fa-circle" style="font-size:7px; color:#10b981;"></i> ERP Audit Verified
+                    </span>
+                </div>
 
                 <!-- Dynamic Results Filters Card -->
-                <div class="glassmorphism" style="padding:22px; border:1px solid var(--border-color); border-radius:var(--border-radius-sm); margin-bottom:25px; background: rgba(255,255,255,0.01);">
-                    <h4 style="font-size:13px; margin-bottom:15px; color:var(--primary); font-weight:700; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-filter"></i> Result Queries & Filters</h4>
+                <div class="glassmorphism" style="padding:20px; border:1px solid var(--border-color); border-radius:12px; margin-bottom:22px; background:var(--bg-tertiary);">
+                    <h4 style="font-size:12px; margin-bottom:14px; color:var(--primary); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-filter"></i> Result Queries & Filters
+                    </h4>
                     
-                    <div style="display:grid; grid-template-columns:1fr 1fr 1.2fr 0.8fr; gap:15px;">
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1.2fr 0.8fr; gap:12px;">
                         <div>
-                            <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Select Academic Year</label>
-                            <select id="resYearSelect" class="form-input" style="height:38px; font-size:12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                            <label style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Select Academic Year</label>
+                            <select id="resYearSelect" class="form-input" style="height:38px; font-size:12px; border-radius:8px;">
                                 <option value="1">1st Year (BCA / B.Tech)</option>
                                 <option value="2" selected>2nd Year (BCA / B.Tech)</option>
                                 <option value="3">3rd Year (BCA / B.Tech)</option>
@@ -331,52 +347,63 @@
                             </select>
                         </div>
                         <div>
-                            <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Select Semester</label>
-                            <select id="resSemSelect" class="form-input" style="height:38px; font-size:12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                            <label style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Select Semester</label>
+                            <select id="resSemSelect" class="form-input" style="height:38px; font-size:12px; border-radius:8px;">
                                 <!-- Populated dynamically -->
                             </select>
                         </div>
                         <div>
-                            <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Assigned Subject Taught</label>
-                            <select id="resSubjectSelect" class="form-input" style="height:38px; font-size:12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary);">
+                            <label style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Assigned Subject Taught</label>
+                            <select id="resSubjectSelect" class="form-input" style="height:38px; font-size:12px; border-radius:8px;">
                                 <!-- Populated dynamically -->
                             </select>
                         </div>
                         <div>
-                            <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:6px; font-weight:600;">Subject Code</label>
-                            <input type="text" id="resSubjectCodeDisplay" class="form-input" style="height:38px; font-size:12px; background:rgba(99, 102, 241, 0.05); border:1px solid var(--border-color); color:var(--primary); font-weight:700; text-align:center; border-radius:6px;" readonly value="">
+                            <label style="font-size:10px; color:var(--text-secondary); text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Subject Code</label>
+                            <input type="text" id="resSubjectCodeDisplay" class="form-input" style="height:38px; font-size:12px; background:var(--primary-glow); border:1px solid rgba(99,102,241,0.25); color:var(--primary); font-weight:800; text-align:center; border-radius:8px;" readonly value="DBMS-301">
                         </div>
                     </div>
                 </div>
 
                 <!-- Overall Class Performance Stats Cards -->
-                <div class="stats-row" style="margin-bottom:25px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px;">
-                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:15px; background:rgba(99, 102, 241, 0.03); border:1px solid rgba(99, 102, 241, 0.1); border-radius:8px;">
-                        <i class="fa-solid fa-square-poll-vertical" style="font-size:24px; color:var(--primary);"></i>
+                <div class="stats-row" style="margin-bottom:25px; display:grid; grid-template-columns:repeat(4, 1fr); gap:15px;">
+                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:16px; background:var(--primary-glow); border:1px solid rgba(99, 102, 241, 0.2); border-radius:12px;">
+                        <div style="width:42px; height:42px; border-radius:10px; background:rgba(99, 102, 241, 0.15); display:flex; align-items:center; justify-content:center;">
+                            <i class="fa-solid fa-chart-column" style="font-size:20px; color:var(--primary);"></i>
+                        </div>
                         <div>
-                            <h3 id="resClassAverage" style="font-size:18px; font-weight:800; margin:0; color:var(--text-primary);">84.5%</h3>
-                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Class Average Score</p>
+                            <h3 id="resClassAverage" style="font-size:20px; font-weight:800; margin:0; color:var(--text-primary);">80.3%</h3>
+                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary); font-weight:600;">Class Average Score</p>
                         </div>
                     </div>
-                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:15px; background:rgba(16, 185, 129, 0.03); border:1px solid rgba(16, 185, 129, 0.1); border-radius:8px;">
-                        <i class="fa-solid fa-graduation-cap" style="font-size:24px; color:#10b981;"></i>
+
+                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:16px; background:rgba(16, 185, 129, 0.06); border:1px solid rgba(16, 185, 129, 0.2); border-radius:12px;">
+                        <div style="width:42px; height:42px; border-radius:10px; background:rgba(16, 185, 129, 0.15); display:flex; align-items:center; justify-content:center;">
+                            <i class="fa-solid fa-graduation-cap" style="font-size:20px; color:#10b981;"></i>
+                        </div>
                         <div>
-                            <h3 id="resPassRate" style="font-size:18px; font-weight:800; margin:0; color:#10b981;">100%</h3>
-                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Passing Rate</p>
+                            <h3 id="resPassRate" style="font-size:20px; font-weight:800; margin:0; color:#10b981;">100%</h3>
+                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary); font-weight:600;">Passing Rate</p>
                         </div>
                     </div>
-                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:15px; background:rgba(245, 158, 11, 0.03); border:1px solid rgba(245, 158, 11, 0.1); border-radius:8px;">
-                        <i class="fa-solid fa-users" style="font-size:24px; color:#f59e0b;"></i>
+
+                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:16px; background:rgba(245, 158, 11, 0.06); border:1px solid rgba(245, 158, 11, 0.2); border-radius:12px;">
+                        <div style="width:42px; height:42px; border-radius:10px; background:rgba(245, 158, 11, 0.15); display:flex; align-items:center; justify-content:center;">
+                            <i class="fa-solid fa-users" style="font-size:20px; color:#f59e0b;"></i>
+                        </div>
                         <div>
-                            <h3 id="resTotalStudents" style="font-size:18px; font-weight:800; margin:0; color:#f59e0b;">5 Students</h3>
-                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Cohort Size</p>
+                            <h3 id="resTotalStudents" style="font-size:20px; font-weight:800; margin:0; color:#f59e0b;">5 Students</h3>
+                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary); font-weight:600;">Cohort Size</p>
                         </div>
                     </div>
-                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:15px; background:rgba(168, 85, 247, 0.03); border:1px solid rgba(168, 85, 247, 0.1); border-radius:8px;">
-                        <i class="fa-solid fa-star" style="font-size:24px; color:var(--accent);"></i>
+
+                    <div class="stat-card glassmorphism" style="padding:18px 20px; display:flex; align-items:center; gap:16px; background:rgba(168, 85, 247, 0.06); border:1px solid rgba(168, 85, 247, 0.2); border-radius:12px;">
+                        <div style="width:42px; height:42px; border-radius:10px; background:rgba(168, 85, 247, 0.15); display:flex; align-items:center; justify-content:center;">
+                            <i class="fa-solid fa-star" style="font-size:20px; color:var(--accent);"></i>
+                        </div>
                         <div>
-                            <h3 id="resClassCredits" style="font-size:18px; font-weight:800; margin:0; color:var(--accent);">4.0</h3>
-                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary);">Subject Credits</p>
+                            <h3 id="resClassCredits" style="font-size:20px; font-weight:800; margin:0; color:var(--accent);">4.0</h3>
+                            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-secondary); font-weight:600;">Subject Credits</p>
                         </div>
                     </div>
                 </div>

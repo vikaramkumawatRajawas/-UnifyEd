@@ -1,5 +1,28 @@
 
             document.addEventListener("DOMContentLoaded", () => {
+                // Helper to clean raw/email usernames into beautiful Full Name
+                function formatCleanName(rawName) {
+                    if (!rawName) return "Vikram Kumawat";
+                    let nameStr = String(rawName).trim();
+                    
+                    const regFirst = localStorage.getItem("registeredFirstName");
+                    const regLast = localStorage.getItem("registeredLastName");
+                    const regEmail = localStorage.getItem("registeredEmail");
+                    const regUser = localStorage.getItem("registeredUsername");
+                    if (regFirst && (nameStr === regUser || nameStr === regEmail || nameStr.includes("@"))) {
+                        return `${regFirst} ${regLast}`.trim();
+                    }
+                    
+                    if (nameStr.includes("@")) {
+                        nameStr = nameStr.split("@")[0];
+                    }
+                    
+                    nameStr = nameStr.replace(/[._-]/g, ' ').replace(/[0-9]/g, '').trim();
+                    if (!nameStr) return "Vikram Kumawat";
+                    
+                    return nameStr.split(/\s+/).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+                }
+
                 // Fallback default configurations
                 const defaultPhone = "**********";
                 const defaultGuardian = "+91 94140 XXXXX";
@@ -7,7 +30,8 @@
                 
                 // Set headers
                 function updateHeaders() {
-                    const loggedInName = localStorage.getItem("loggedInUser") || "Vikram Kumawat";
+                    const rawName = localStorage.getItem("loggedInUser") || "Vikram Kumawat";
+                    const loggedInName = formatCleanName(rawName);
                     const loggedInId = localStorage.getItem("loggedInStudentId") || "ST20260001";
                     
                     const nameHeader = document.getElementById("profileStudentName");
@@ -26,7 +50,9 @@
                     updateHeaders();
 
                     // Personal details
-                    const name = localStorage.getItem("loggedInUser") || "Vikram Kumawat";
+                    const rawName = localStorage.getItem("loggedInUser") || "Vikram Kumawat";
+                    const name = formatCleanName(rawName);
+                    const email = localStorage.getItem("loggedInUserEmail") || localStorage.getItem("registeredEmail") || "vikram.kumawat@unifyed.edu";
                     const phone = localStorage.getItem("prof_phone") || defaultPhone;
                     const dob = localStorage.getItem("prof_dob") || "15-08-2004";
                     const blood = localStorage.getItem("prof_blood") || "O+";
@@ -48,6 +74,7 @@
 
                     // Bind inputs
                     const nameInput = document.getElementById("profileNameInput");
+                    const emailInput = document.getElementById("profileEmailInput");
                     const phoneInput = document.getElementById("profilePhoneInput");
                     const dobInput = document.getElementById("profileDobInput");
                     const bloodSelect = document.getElementById("profileBloodSelect");
@@ -67,6 +94,7 @@
                     const allergyInput = document.getElementById("profileAllergyInput");
 
                     if (nameInput) nameInput.value = name;
+                    if (emailInput) emailInput.value = email;
                     if (phoneInput) phoneInput.value = phone;
                     if (dobInput) dobInput.value = dob;
                     if (bloodSelect) bloodSelect.value = blood;
@@ -250,6 +278,39 @@
                     canvas.height = 1754;
                     const ctx = canvas.getContext('2d');
 
+                    // Helper to truncate single line text to prevent overflow/cutting off
+                    function drawTruncatedText(strText, valX, curY, maxW) {
+                        let str = String(strText || '');
+                        if (ctx.measureText(str).width <= maxW) {
+                            ctx.fillText(str, valX, curY);
+                            return;
+                        }
+                        while (str.length > 3 && ctx.measureText(str + '...').width > maxW) {
+                            str = str.slice(0, -1);
+                        }
+                        ctx.fillText(str + '...', valX, curY);
+                    }
+
+                    // Helper to wrap long multi-line text (e.g. Address)
+                    function drawWrappedText(strText, valX, curY, maxW, lineH) {
+                        const words = String(strText || '').split(' ');
+                        let line = '';
+                        let lineY = curY;
+                        for (let n = 0; n < words.length; n++) {
+                            let testLine = line + words[n] + ' ';
+                            let metrics = ctx.measureText(testLine);
+                            if (metrics.width > maxW && n > 0) {
+                                ctx.fillText(line.trim(), valX, lineY);
+                                line = words[n] + ' ';
+                                lineY += lineH;
+                            } else {
+                                line = testLine;
+                            }
+                        }
+                        ctx.fillText(line.trim(), valX, lineY);
+                        return lineY;
+                    }
+
                     // Draw clean white background
                     ctx.fillStyle = '#ffffff';
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -274,10 +335,12 @@
                     // Draw Front Label
                     ctx.fillStyle = '#0f172a';
                     ctx.font = 'bold 20px sans-serif';
-                    ctx.fillText('[ CARD FRONT SIDE ]', canvas.width / 2, 190);
+                    ctx.textAlign = 'center';
+                    ctx.fillText('[ CARD FRONT SIDE ]', canvas.width / 2, 185);
 
                     // Function to draw card face
                     function drawCardFace(x, y, w, h, isBack) {
+                        ctx.save();
                         const grad = ctx.createLinearGradient(x, y, x + w, y + h);
                         if (isBack) {
                             grad.addColorStop(0, '#0f172a');
@@ -290,32 +353,33 @@
                         ctx.beginPath();
                         ctx.roundRect(x, y, w, h, 20);
                         ctx.fill();
-                        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                        ctx.strokeStyle = 'rgba(255,255,255,0.12)';
                         ctx.lineWidth = 2;
                         ctx.stroke();
 
                         if (!isBack) {
+                            ctx.textAlign = 'center';
                             ctx.fillStyle = '#ffffff';
                             ctx.font = 'bold 16px sans-serif';
-                            ctx.fillText('UNIVERSITY OF ENGINEERING & MANAGEMENT', x + w / 2, y + 45);
+                            ctx.fillText('UNIVERSITY OF ENGINEERING & MANAGEMENT', x + w / 2, y + 42);
                             ctx.fillStyle = '#10b981';
                             ctx.font = 'bold 12px sans-serif';
-                            ctx.fillText('STUDENT ID CARD', x + w / 2, y + 65);
+                            ctx.fillText('STUDENT ID CARD', x + w / 2, y + 62);
 
-                            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
                             ctx.lineWidth = 1;
                             ctx.beginPath();
-                            ctx.moveTo(x + 20, y + 80);
-                            ctx.lineTo(x + w - 20, y + 80);
+                            ctx.moveTo(x + 25, y + 74);
+                            ctx.lineTo(x + w - 25, y + 74);
                             ctx.stroke();
 
-                            const photoX = x + w / 2 - 60;
-                            const photoY = y + 100;
-                            const photoW = 120;
-                            const photoH = 130;
+                            const photoX = x + w / 2 - 50;
+                            const photoY = y + 85;
+                            const photoW = 100;
+                            const photoH = 110;
                             ctx.fillStyle = 'rgba(255,255,255,0.05)';
                             ctx.fillRect(photoX, photoY, photoW, photoH);
-                            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
                             ctx.strokeRect(photoX, photoY, photoW, photoH);
 
                             const photo = localStorage.getItem("studentPhoto");
@@ -332,8 +396,8 @@
                             }
 
                             ctx.textAlign = 'left';
-                            let gridY = y + 270;
-                            const rowGap = 30;
+                            let gridY = y + 225;
+                            const rowGap = 27;
 
                             const frontFields = [
                                 { label: 'Name', val: name },
@@ -348,23 +412,26 @@
 
                             frontFields.forEach(f => {
                                 ctx.fillStyle = '#fcd34d';
-                                ctx.font = 'bold 14px sans-serif';
+                                ctx.font = 'bold 12.5px sans-serif';
                                 ctx.fillText(f.label, x + 30, gridY);
                                 ctx.fillStyle = '#ffffff';
-                                ctx.fillText(':', x + 160, gridY);
-                                ctx.fillText(f.val, x + 185, gridY);
+                                ctx.fillText(':', x + 150, gridY);
+                                ctx.font = f.label === 'Name' ? 'bold 13px sans-serif' : '12.5px sans-serif';
+                                drawTruncatedText(f.val, x + 165, gridY, w - 195);
                                 gridY += rowGap;
                             });
 
                             const qrCanvas = document.getElementById('idCardQrCanvas');
                             if (qrCanvas) {
-                                ctx.drawImage(qrCanvas, x + 30, y + h - 100, 75, 75);
+                                ctx.drawImage(qrCanvas, x + 30, y + h - 85, 65, 65);
                             }
 
+                            const sigCenterX = x + w - 105;
                             const firstWord = name.split(' ')[0];
+                            ctx.textAlign = 'center';
                             ctx.fillStyle = '#ffffff';
-                            ctx.font = 'italic 18px Georgia';
-                            ctx.fillText(firstWord, x + w - 150, y + h - 55);
+                            ctx.font = 'italic 16px Georgia';
+                            ctx.fillText(firstWord, sigCenterX, y + h - 55);
                             ctx.strokeStyle = 'rgba(255,255,255,0.3)';
                             ctx.beginPath();
                             ctx.moveTo(x + w - 180, y + h - 45);
@@ -372,21 +439,24 @@
                             ctx.stroke();
                             ctx.font = '10px sans-serif';
                             ctx.fillStyle = '#94a3b8';
-                            ctx.fillText('Student Signature', x + w - 145, y + h - 30);
+                            ctx.fillText('Student Signature', sigCenterX, y + h - 30);
 
                         } else {
+                            ctx.textAlign = 'center';
                             ctx.fillStyle = '#ffffff';
                             ctx.font = 'bold 14px sans-serif';
-                            ctx.fillText('STUDENT ID CARD (BACK)', x + w / 2, y + 35);
-                            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                            ctx.fillText('STUDENT ID CARD (BACK)', x + w / 2, y + 40);
+                            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
                             ctx.beginPath();
-                            ctx.moveTo(x + 20, y + 45);
-                            ctx.lineTo(x + w - 20, y + 45);
+                            ctx.moveTo(x + 25, y + 52);
+                            ctx.lineTo(x + w - 25, y + 52);
                             ctx.stroke();
 
+                            ctx.textAlign = 'left';
                             ctx.fillStyle = '#ffffff';
-                            ctx.font = 'bold 12px sans-serif';
-                            ctx.fillText('Emergency Contact', x + 30, y + 75);
+                            ctx.font = 'bold 12.5px sans-serif';
+                            ctx.fillText('EMERGENCY CONTACT', x + 30, y + 80);
+                            
                             let subY = y + 105;
                             const backFields1 = [
                                 { label: 'Father Name', val: father },
@@ -395,40 +465,58 @@
                             ];
                             backFields1.forEach(f => {
                                 ctx.fillStyle = '#fcd34d';
-                                ctx.font = 'bold 11px sans-serif';
+                                ctx.font = 'bold 11.5px sans-serif';
                                 ctx.fillText(f.label, x + 40, subY);
                                 ctx.fillStyle = '#ffffff';
-                                ctx.fillText(': ' + f.val, x + 160, subY);
-                                subY += 22;
+                                ctx.fillText(':', x + 150, subY);
+                                ctx.font = '11.5px sans-serif';
+                                drawTruncatedText(f.val, x + 165, subY, w - 195);
+                                subY += 24;
                             });
 
-                            ctx.fillStyle = '#ffffff';
-                            ctx.font = 'bold 12px sans-serif';
-                            ctx.fillText('Address', x + 30, y + 200);
-                            ctx.font = '11px sans-serif';
-                            ctx.fillText(address, x + 40, y + 225);
+                            ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                            ctx.beginPath();
+                            ctx.moveTo(x + 30, y + 185);
+                            ctx.lineTo(x + w - 30, y + 185);
+                            ctx.stroke();
 
                             ctx.fillStyle = '#ffffff';
-                            ctx.font = 'bold 12px sans-serif';
-                            ctx.fillText('College Contact', x + 30, y + 275);
-                            ctx.font = '11px sans-serif';
-                            ctx.fillStyle = '#ffffff';
-                            ctx.fillText('Website : www.unifyed.edu', x + 40, y + 300);
-                            ctx.fillText('Email : admissions@unifyed.edu', x + 40, y + 320);
-                            ctx.fillText('Phone : +91 141 2345678', x + 40, y + 340);
+                            ctx.font = 'bold 12.5px sans-serif';
+                            ctx.fillText('ADDRESS', x + 30, y + 215);
+                            ctx.font = '11.5px sans-serif';
+                            ctx.fillStyle = '#e2e8f0';
+                            drawWrappedText(address, x + 40, y + 238, w - 80, 20);
 
+                            ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                            ctx.beginPath();
+                            ctx.moveTo(x + 30, y + 315);
+                            ctx.lineTo(x + w - 30, y + 315);
+                            ctx.stroke();
+
+                            ctx.fillStyle = '#ffffff';
+                            ctx.font = 'bold 12.5px sans-serif';
+                            ctx.fillText('COLLEGE CONTACT', x + 30, y + 345);
+                            ctx.font = '11.5px sans-serif';
+                            ctx.fillStyle = '#e2e8f0';
+                            ctx.fillText('Website : www.unifyed.edu', x + 40, y + 370);
+                            ctx.fillText('Email : admissions@unifyed.edu', x + 40, y + 392);
+                            ctx.fillText('Phone : +91 141 2345678', x + 40, y + 414);
+
+                            const sigCenterX = x + w - 105;
+                            ctx.textAlign = 'center';
                             ctx.fillStyle = '#ffffff';
                             ctx.font = 'italic 16px Georgia';
-                            ctx.fillText('UnifyEd Registrar', x + w - 160, y + h - 65);
+                            ctx.fillText('UnifyEd Registrar', sigCenterX, y + h - 65);
                             ctx.strokeStyle = 'rgba(255,255,255,0.3)';
                             ctx.beginPath();
-                            ctx.moveTo(x + w - 180, y + h - 55);
-                            ctx.lineTo(x + w - 30, y + h - 55);
+                            ctx.moveTo(x + w - 180, y + h - 50);
+                            ctx.lineTo(x + w - 30, y + h - 50);
                             ctx.stroke();
                             ctx.font = '10px sans-serif';
                             ctx.fillStyle = '#94a3b8';
-                            ctx.fillText('Authorized Signature', x + w - 150, y + h - 40);
+                            ctx.fillText('Authorized Signature', sigCenterX, y + h - 35);
                         }
+                        ctx.restore();
                     }
 
                     function drawUserIcon(c, cx, cy) {
@@ -441,12 +529,18 @@
                         c.fill();
                     }
 
-                    drawCardFace(370, 220, 500, 750, false);
+                    const cardW = 520;
+                    const cardH = 680;
+                    const cardX = (canvas.width - cardW) / 2; // 360
+
+                    drawCardFace(cardX, 210, cardW, cardH, false);
+
                     ctx.fillStyle = '#0f172a';
                     ctx.font = 'bold 20px sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText('[ CARD BACK SIDE ]', canvas.width / 2, 1020);
-                    drawCardFace(370, 1050, 500, 630, true);
+                    ctx.fillText('[ CARD BACK SIDE ]', canvas.width / 2, 940);
+
+                    drawCardFace(cardX, 970, cardW, cardH, true);
 
                     setTimeout(() => {
                         const link = document.createElement('a');
@@ -458,7 +552,10 @@
 
                 window.saveProfileChanges = function() {
                     // Extract fields
-                    const name = document.getElementById("profileNameInput").value.trim();
+                    const rawName = document.getElementById("profileNameInput").value.trim();
+                    const name = formatCleanName(rawName);
+                    const emailEl = document.getElementById("profileEmailInput");
+                    const email = emailEl ? emailEl.value.trim() : "";
                     const phone = document.getElementById("profilePhoneInput").value.trim();
                     const dob = document.getElementById("profileDobInput").value.trim();
                     const blood = document.getElementById("profileBloodSelect").value;
@@ -484,6 +581,10 @@
 
                     // Save Personal
                     localStorage.setItem("loggedInUser", name);
+                    if (email) {
+                        localStorage.setItem("loggedInUserEmail", email);
+                        localStorage.setItem("registeredEmail", email);
+                    }
                     localStorage.setItem("prof_phone", phone);
                     localStorage.setItem("prof_dob", dob);
                     localStorage.setItem("prof_blood", blood);
@@ -509,7 +610,7 @@
                     const headerStrong = document.querySelector(".user-profile-widget .details strong");
                     if (headerStrong) headerStrong.textContent = name;
 
-                    alert("All profile details & card registry updated successfully!");
+                    alert("Personal profile parameters updated successfully!");
                 };
 
                 // Photo upload handlers

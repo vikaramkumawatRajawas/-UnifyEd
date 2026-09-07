@@ -4,14 +4,16 @@
 <head>
     <script>
         (function () {
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("vc-theme") || localStorage.getItem("theme") || "dark";
             document.documentElement.setAttribute("data-theme", currentTheme);
+            const currentMode = localStorage.getItem("portalMode") || "advance";
+            document.documentElement.setAttribute("data-portal-mode", currentMode);
         })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnifyEd - Vice Chancellor Executive Profile</title>
-    <meta name="description" content="Vice Chancellor Executive Profile - Credentials, Contact Details, & Portal Account Security">
+    <title>UnifyEd - Vice Chancellor Executive Profile & Credentials</title>
+    <meta name="description" content="Vice Chancellor Executive Profile - Academic Credentials, Contact Details, Research Leadership, & Account Security">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +21,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Shared VC Stylesheet -->
-    <link rel="stylesheet" href="../vc-sidebar.css">
+    <link rel="stylesheet" href="../vc-shared.css?v=2">
     <!-- Page Specific Stylesheet -->
-    <link rel="stylesheet" href="vc-profile.css">
+    <link rel="stylesheet" href="vc-profile.css?v=3">
 </head>
 
 <body class="vc-portal-body">
@@ -101,22 +103,25 @@
             </div>
         </aside>
 
+        <!-- Sidebar Mobile Backdrop -->
+        <div class="sidebar-backdrop"></div>
+
         <!-- Main Portal Container -->
         <main class="portal-main">
             <!-- Top Header Bar -->
             <header class="main-portal-header">
                 <div class="header-left">
-                    <button class="toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar Navigation">
+                    <button class="toggle-btn" id="vcMenuToggle" class="toggle-btn sidebar-toggle-btn" aria-label="Open VC navigation" aria-expanded="false" title="Toggle Sidebar Navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="header-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Search profile settings, credentials...">
+                        <input type="text" id="profSearchInput" placeholder="Search VC credentials, research publications, or secretariat details...">
                     </div>
                 </div>
 
                 <div class="header-right">
-                    <button class="header-icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                    <button class="header-icon-btn" id="vcThemeToggle" class="header-icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <a href="../vc-notifications/vc-notifications.html" class="header-icon-btn" title="Notifications">
@@ -143,53 +148,215 @@
             <div class="portal-content">
                 <!-- Profile Identity Hero Banner -->
                 <section class="profile-hero-card">
-                    <div class="profile-avatar-large">
-                        VC
+                    <div class="hero-avatar-wrap">
+                        <div class="profile-avatar-large">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <span class="avatar-verified-badge" title="2FA & Biometric Authenticated Session"><i class="fa-solid fa-circle-check"></i></span>
                     </div>
+
                     <div class="profile-hero-details">
-                        <h1>Prof. Vice Chancellor</h1>
-                        <p><i class="fa-solid fa-id-badge" style="color:var(--primary);"></i> ID: VC-2026-001 | Vice Chancellor & Academic Senate Chairman</p>
-                        <p style="margin-top:4px;"><i class="fa-solid fa-envelope" style="color:var(--info);"></i> vc.office@unifyed.edu.in | <i class="fa-solid fa-shield-check" style="color:var(--success);"></i> Biometric & 2FA Verified</p>
+                        <div class="badge-row">
+                            <span class="hero-pill-badge primary"><i class="fa-solid fa-crown"></i> Chief Academic Officer</span>
+                            <span class="hero-pill-badge success"><i class="fa-solid fa-shield-halved"></i> Senate Chairman</span>
+                            <span class="hero-pill-badge info"><i class="fa-solid fa-award"></i> NAAC A++ Council</span>
+                        </div>
+
+                        <h1 class="hero-name">Prof. Vice Chancellor, Ph.D., D.Sc. (Hon.)</h1>
+                        <p class="hero-subtext">
+                            <span><i class="fa-solid fa-id-badge" style="color:var(--primary);"></i> Ref ID: <strong>VC-2026-001</strong></span>
+                            <span><i class="fa-solid fa-building-columns" style="color:var(--info);"></i> Secretariat: <strong>VC Executive Office, Admin Block</strong></span>
+                            <span><i class="fa-solid fa-envelope" style="color:var(--accent);"></i> <strong>vc.office@unifyed.edu.in</strong></span>
+                        </p>
+                        <p class="hero-subtext-2">
+                            <span><i class="fa-solid fa-phone" style="color:var(--success);"></i> +91 (0141) 2770-101</span>
+                            <span><i class="fa-solid fa-clock" style="color:var(--warning);"></i> Tenure: <strong>2023 – 2028 (5-Year Term)</strong></span>
+                            <span><i class="fa-solid fa-shield-check" style="color:var(--success);"></i> Level-5 Security Clearance</span>
+                        </p>
+                    </div>
+
+                    <div class="profile-hero-actions">
+                        <button class="btn-prof-primary" onclick="showToast('Executive Profile Credentials Exported to PDF', 'success')">
+                            <i class="fa-solid fa-file-pdf"></i> Download Credentials PDF
+                        </button>
+                        <button class="btn-prof-secondary" onclick="document.getElementById('secDetails').scrollIntoView({behavior:'smooth'})">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit Contact Info
+                        </button>
                     </div>
                 </section>
 
-                <!-- Section 1: Executive Personal & Contact Info Form -->
-                <section class="profile-section">
+                <!-- Executive Stats Quick Bar (4 Columns) -->
+                <section class="profile-stats-grid">
+                    <div class="prof-stat-card">
+                        <div class="stat-icon icon-purple"><i class="fa-solid fa-briefcase"></i></div>
+                        <div>
+                            <div class="stat-lbl">ACADEMIC EXPERIENCE</div>
+                            <div class="stat-val">26+ Years</div>
+                            <span class="stat-sub">12 Years as Vice Chancellor</span>
+                        </div>
+                    </div>
+
+                    <div class="prof-stat-card">
+                        <div class="stat-icon icon-emerald"><i class="fa-solid fa-book-journal-whills"></i></div>
+                        <div>
+                            <div class="stat-lbl">SCOPUS PUBLICATIONS</div>
+                            <div class="stat-val">184 Papers</div>
+                            <span class="stat-sub">h-index: 42 | Citations: 6,800+</span>
+                        </div>
+                    </div>
+
+                    <div class="prof-stat-card">
+                        <div class="stat-icon icon-cyan"><i class="fa-solid fa-vault"></i></div>
+                        <div>
+                            <div class="stat-lbl">RESEARCH GRANTS MOBILIZED</div>
+                            <div class="stat-val">₹18.5 Cr</div>
+                            <span class="stat-sub">DST, ISRO & UGC Funded</span>
+                        </div>
+                    </div>
+
+                    <div class="prof-stat-card">
+                        <div class="stat-icon icon-amber"><i class="fa-solid fa-award"></i></div>
+                        <div>
+                            <div class="stat-lbl">INSTITUTIONAL RANKING</div>
+                            <div class="stat-val">NIRF Top 15</div>
+                            <span class="stat-sub">NAAC A++ Accredited</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Navigation Tabs Bar -->
+                <div class="profile-nav-tabs">
+                    <button class="prof-tab active" onclick="switchProfTab(this, 'secBio')"><i class="fa-solid fa-user-tie"></i> Executive Bio & Vision</button>
+                    <button class="prof-tab" onclick="switchProfTab(this, 'secDetails')"><i class="fa-solid fa-address-card"></i> Personal & Contact Info</button>
+                    <button class="prof-tab" onclick="switchProfTab(this, 'secAcad')"><i class="fa-solid fa-graduation-cap"></i> Academic Qualifications</button>
+                    <button class="prof-tab" onclick="switchProfTab(this, 'secSecurity')"><i class="fa-solid fa-shield-halved"></i> Account Security & 2FA</button>
+                    <button class="prof-tab" onclick="switchProfTab(this, 'secAudit')"><i class="fa-solid fa-history"></i> Session Audit Logs</button>
+                </div>
+
+                <!-- Tab Section 1: Executive Bio & Vision -->
+                <section class="profile-section prof-tab-content active" id="secBio">
+                    <div class="profile-section-head">
+                        <i class="fa-solid fa-quote-left" style="color:var(--primary); font-size:20px;"></i>
+                        <h2>Vice Chancellor Executive Vision & Leadership Statement</h2>
+                    </div>
+                    
+                    <div class="bio-container">
+                        <div class="bio-quote-box">
+                            <p class="quote-text">"Empowering the next generation of engineers, researchers, and global leaders through interdisciplinary research, digital ERP governance, and relentless academic excellence."</p>
+                            <span class="quote-author">— Prof. Vice Chancellor, Chairman of Senate & Executive Academic Council</span>
+                        </div>
+
+                        <div class="bio-grid">
+                            <div class="bio-card">
+                                <h4><i class="fa-solid fa-bullseye" style="color:var(--primary);"></i> Strategic Institutional Goals (2026 – 2030)</h4>
+                                <ul>
+                                    <li>Establishment of 500-Teraflop AI & Quantum Computing Lab for advanced research.</li>
+                                    <li>100% paperless digital ERP governance transition across all 18 academic departments.</li>
+                                    <li>Enhancement of campus placement tier-1 corporate recruitment to 90%+.</li>
+                                    <li>Expansion of international university exchange programs with MIT, Stanford, and NUS.</li>
+                                </ul>
+                            </div>
+
+                            <div class="bio-card">
+                                <h4><i class="fa-solid fa-scale-balanced" style="color:var(--success);"></i> Key Statutory Powers & Governance Roles</h4>
+                                <ul>
+                                    <li>Chairman of the Academic Senate, Syndicate, and Finance Committee.</li>
+                                    <li>Chief Executive Officer responsible for overall university administration & policy sanction.</li>
+                                    <li>Appointing & Endorsing Authority for Deans, HODs, and Senior Research Fellows.</li>
+                                    <li>Executive Sanctioning Officer for university grants exceeding ₹5.0 Lakhs.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tab Section 2: Executive Personal & Contact Info Form -->
+                <section class="profile-section prof-tab-content" id="secDetails">
                     <div class="profile-section-head">
                         <i class="fa-solid fa-user-gear" style="color:var(--primary); font-size:20px;"></i>
-                        <h2>Personal & Contact Information</h2>
+                        <h2>Personal, Secretariat & Contact Information</h2>
                     </div>
 
                     <form onsubmit="handleProfileUpdate(event)">
                         <div class="profile-form-grid">
                             <div class="form-group-prof">
-                                <label>Full Designation Name</label>
+                                <label>Full Name & Salutation *</label>
                                 <input type="text" value="Prof. Vice Chancellor" required>
                             </div>
                             <div class="form-group-prof">
-                                <label>Official Email Address</label>
+                                <label>Academic Degrees & Post-Nominals</label>
+                                <input type="text" value="Ph.D. (Computer Science, IIT Delhi), D.Sc. (Hon.)" required>
+                            </div>
+                            <div class="form-group-prof">
+                                <label>Official Vice Chancellor Email *</label>
                                 <input type="email" value="vc.office@unifyed.edu.in" required>
                             </div>
                             <div class="form-group-prof">
-                                <label>Direct Contact Phone</label>
-                                <input type="text" value="+91 98765 43210" required>
+                                <label>Direct Secretariat Contact Phone *</label>
+                                <input type="text" value="+91 (0141) 2770-101" required>
                             </div>
                             <div class="form-group-prof">
-                                <label>Executive Secretariat Office</label>
-                                <input type="text" value="Vice Chancellor Secretariat, Administrative Block" required>
+                                <label>Executive Secretariat Office Location *</label>
+                                <input type="text" value="Suite 101, Executive Floor, Administrative Building" required>
+                            </div>
+                            <div class="form-group-prof">
+                                <label>Executive Assistant / Private Secretary Contact</label>
+                                <input type="text" value="Dr. Rajesh Nair (EA to VC) | +91 98765 43210" required>
+                            </div>
+                            <div class="form-group-prof">
+                                <label>Office Consultation Hours</label>
+                                <input type="text" value="Mon - Fri: 10:00 AM - 01:00 PM (By Prior Appointment)">
+                            </div>
+                            <div class="form-group-prof">
+                                <label>Permanent Residential Address</label>
+                                <input type="text" value="Vice Chancellor Lodge, University North Campus Grounds">
                             </div>
                         </div>
                         <button type="submit" class="btn-save-profile">
-                            <i class="fa-solid fa-floppy-disk"></i> Update Profile Details
+                            <i class="fa-solid fa-floppy-disk"></i> Save Executive Profile Details
                         </button>
                     </form>
                 </section>
 
-                <!-- Section 2: Account Security & Authentication Form -->
-                <section class="profile-section">
+                <!-- Tab Section 3: Academic Qualifications & Leadership -->
+                <section class="profile-section prof-tab-content" id="secAcad">
+                    <div class="profile-section-head">
+                        <i class="fa-solid fa-graduation-cap" style="color:var(--accent); font-size:20px;"></i>
+                        <h2>Academic Credentials, Doctoral Supervision & Publications</h2>
+                    </div>
+
+                    <div class="acad-credentials-grid">
+                        <div class="acad-cred-box">
+                            <div class="cred-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                            <div>
+                                <h4>Ph.D. in Computer Science & Artificial Intelligence</h4>
+                                <p>Indian Institute of Technology (IIT Delhi) — Specialization in High-Performance Computing & Machine Learning Algorithms (1998 – 2002).</p>
+                            </div>
+                        </div>
+
+                        <div class="acad-cred-box">
+                            <div class="cred-icon"><i class="fa-solid fa-award"></i></div>
+                            <div>
+                                <h4>Doctor of Science (D.Sc. Honoris Causa)</h4>
+                                <p>Conferred for Pioneering Contributions to University ERP Digitalization & National Academic Policy (2020).</p>
+                            </div>
+                        </div>
+
+                        <div class="acad-cred-box">
+                            <div class="cred-icon"><i class="fa-solid fa-microchip"></i></div>
+                            <div>
+                                <h4>M.Tech. in Computer Engineering & VLSI Design</h4>
+                                <p>National Institute of Technology (NIT) — Graduated with Gold Medal Distinction & Institute Best Thesis Award (1995 – 1997).</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tab Section 4: Account Security & Authentication Form -->
+                <section class="profile-section prof-tab-content" id="secSecurity">
                     <div class="profile-section-head">
                         <i class="fa-solid fa-lock" style="color:var(--warning); font-size:20px;"></i>
-                        <h2>Account Security & Password Authentication</h2>
+                        <h2>Account Security, Password & 2FA Authentication</h2>
                     </div>
 
                     <form onsubmit="handlePasswordUpdate(event)">
@@ -199,14 +366,90 @@
                                 <input type="password" placeholder="••••••••" required>
                             </div>
                             <div class="form-group-prof">
-                                <label>New Security Password *</label>
-                                <input type="password" placeholder="Enter new strong password" required>
+                                <label>New Strong Security Password *</label>
+                                <input type="password" placeholder="Enter minimum 12-char mixed password" required>
+                            </div>
+                            <div class="form-group-prof">
+                                <label>Confirm New Password *</label>
+                                <input type="password" placeholder="Re-enter new password" required>
+                            </div>
+                            <div class="form-group-prof">
+                                <label>Secretariat Approved Whitelisted IP</label>
+                                <input type="text" value="192.168.1.10 (VC Secretariat Private Network)" readonly style="opacity:0.8;">
                             </div>
                         </div>
-                        <button type="submit" class="btn-save-profile" style="background:var(--warning);">
-                            <i class="fa-solid fa-shield-halved"></i> Update Password & Re-authenticate
+
+                        <div class="security-toggles-box">
+                            <div class="toggle-row">
+                                <div>
+                                    <strong><i class="fa-solid fa-fingerprint" style="color:var(--success);"></i> Biometric Hardware Security Key (YubiKey / WebAuthn)</strong>
+                                    <p style="font-size:12px; color:var(--text-secondary); margin-top:2px;">Require hardware security key verification for financial sanction approvals above ₹5.0 Lakhs.</p>
+                                </div>
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Enabled</span>
+                            </div>
+
+                            <div class="toggle-row" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border-color);">
+                                <div>
+                                    <strong><i class="fa-solid fa-mobile-screen-button" style="color:var(--info);"></i> Two-Factor Authenticator App (TOTP)</strong>
+                                    <p style="font-size:12px; color:var(--text-secondary); margin-top:2px;">Authenticator app time-based 6-digit passcode required at login.</p>
+                                </div>
+                                <span class="status-pill pill-success"><i class="fa-solid fa-check"></i> Enabled</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-save-profile" style="background:var(--warning); margin-top:20px;">
+                            <i class="fa-solid fa-shield-halved"></i> Update Password & Re-authenticate Account
                         </button>
                     </form>
+                </section>
+
+                <!-- Tab Section 5: Session Audit Logs Table -->
+                <section class="profile-section prof-tab-content" id="secAudit">
+                    <div class="profile-section-head">
+                        <i class="fa-solid fa-clock-rotate-left" style="color:var(--info); font-size:20px;"></i>
+                        <h2>Recent Executive Portal Access & Login Audit Trail</h2>
+                    </div>
+
+                    <div class="vc-table-wrapper" style="overflow-x: auto;">
+                        <table class="vc-table">
+                            <thead>
+                                <tr>
+                                    <th>Access Timestamp</th>
+                                    <th>IP Address & Network</th>
+                                    <th>Device / Browser</th>
+                                    <th>Location</th>
+                                    <th>Authentication Type</th>
+                                    <th>Session Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Sep 06, 2026 | 08:30 PM</strong></td>
+                                    <td><span class="code-ref">192.168.1.10</span> (Secretariat LAN)</td>
+                                    <td>Chrome 128 / Windows 11</td>
+                                    <td>VC Secretariat, Admin Block</td>
+                                    <td><span class="status-pill pill-purple">2FA + Biometric</span></td>
+                                    <td><span class="status-pill pill-success"><i class="fa-solid fa-circle-check"></i> Active Current Session</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sep 05, 2026 | 09:15 AM</strong></td>
+                                    <td><span class="code-ref">192.168.1.10</span> (Secretariat LAN)</td>
+                                    <td>Chrome 128 / Windows 11</td>
+                                    <td>VC Secretariat, Admin Block</td>
+                                    <td><span class="status-pill pill-purple">2FA + Password</span></td>
+                                    <td><span class="status-pill pill-info">Ended Normally</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sep 04, 2026 | 06:45 PM</strong></td>
+                                    <td><span class="code-ref">10.0.42.88</span> (Campus Wi-Fi Secure)</td>
+                                    <td>Safari / iPad Pro</td>
+                                    <td>Senate Executive Conference Hall</td>
+                                    <td><span class="status-pill pill-purple">2FA Mobile App</span></td>
+                                    <td><span class="status-pill pill-info">Ended Normally</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </div>
         </main>
@@ -221,7 +464,13 @@
             if (!container) return;
             const toast = document.createElement("div");
             toast.className = `toast-alert ${type}`;
-            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${message}</span>`;
+            const iconMap = {
+                success: 'fa-circle-check',
+                warning: 'fa-triangle-exclamation',
+                info: 'fa-circle-info',
+                danger: 'fa-circle-xmark'
+            };
+            toast.innerHTML = `<i class="fa-solid ${iconMap[type] || 'fa-circle-check'}"></i> <span>${message}</span>`;
             container.appendChild(toast);
             setTimeout(() => {
                 toast.style.opacity = "0";
@@ -230,14 +479,23 @@
             }, 3500);
         }
 
+        function switchProfTab(tabBtn, targetSecId) {
+            document.querySelectorAll(".prof-tab").forEach(tab => tab.classList.remove("active"));
+            tabBtn.classList.add("active");
+
+            document.querySelectorAll(".prof-tab-content").forEach(sec => sec.classList.remove("active"));
+            const targetSec = document.getElementById(targetSecId);
+            if (targetSec) targetSec.classList.add("active");
+        }
+
         function handleProfileUpdate(e) {
             e.preventDefault();
-            showToast("Executive Profile Details Updated Successfully!", "success");
+            showToast("Executive Profile & Secretariat Contact Information Saved!", "success");
         }
 
         function handlePasswordUpdate(e) {
             e.preventDefault();
-            showToast("Account Security Password Changed Successfully!", "success");
+            showToast("Account Security Password & 2FA Credentials Updated!", "warning");
         }
 
         // Sidebar Toggle with Memory
@@ -287,6 +545,24 @@
             });
         }
 
+        // Live Search Filter
+        const profSearchInput = document.getElementById("profSearchInput");
+        if (profSearchInput) {
+            profSearchInput.addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const textNodes = document.querySelectorAll(".profile-section p, .profile-section h4, .profile-section td, .profile-section label");
+                textNodes.forEach(node => {
+                    const text = node.textContent.toLowerCase();
+                    if (query && text.includes(query)) {
+                        node.style.background = "rgba(99, 102, 241, 0.2)";
+                        node.style.borderRadius = "4px";
+                    } else {
+                        node.style.background = "none";
+                    }
+                });
+            });
+        }
+
         // Logout
         document.querySelectorAll("[data-logout]").forEach(btn => {
             btn.addEventListener("click", () => {
@@ -295,6 +571,8 @@
             });
         });
     </script>
+    <!-- Shared VC Controller JavaScript -->
+    <script src="../vc-shared.js?v=2"></script>
 </body>
 
 </html>

@@ -132,6 +132,10 @@
                     allStudentsRoster.innerHTML = filtered.map(s => {
                         let menteeBadge = s.isMentee ? '<span style="font-size:8px; background:rgba(99,102,241,0.15); color:var(--primary); padding:2px 6px; border-radius:4px; font-weight:700; margin-left:8px;">MENTEE</span>' : "";
 
+                        let menteeActionBtn = s.isMentee 
+                            ? '<button type="button" onclick="toggleMenteeStatus(\'' + s.id + '\')" class="btn" style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); color:#10b981; font-size:10px; padding:5px 8px; border-radius:4px; font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Click to remove from Mentees"><i class="fa-solid fa-user-check"></i> Mentee</button>'
+                            : '<button type="button" onclick="toggleMenteeStatus(\'' + s.id + '\')" class="btn btn-primary" style="background-image:linear-gradient(135deg, var(--primary), var(--accent)); font-size:10px; padding:5px 10px; border-radius:4px; font-weight:600; border:none; display:inline-flex; align-items:center; gap:4px; white-space:nowrap;" title="Add student to My Mentees group"><i class="fa-solid fa-user-plus"></i> Add to Mentees</button>';
+
                         return '<div class="student-row-card glassmorphism">' +
                             '<div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:10px;">' +
                                 '<div style="display:flex; align-items:center; gap:10px;">' +
@@ -149,14 +153,53 @@
                                 '<span style="font-size:10px; color:var(--text-secondary);">CGPA: <strong>' + s.cgpa + '</strong></span>' +
                                 '<span style="font-size:10px; color:var(--text-secondary);">Attendance: <strong>' + s.attendance + '</strong></span>' +
                             '</div>' +
-                            '<div style="display:flex; gap:8px; margin-top:10px;">' +
+                            '<div style="display:flex; gap:8px; margin-top:10px; align-items:center;">' +
                                 '<button type="button" onclick="viewStudentPerformance(\'' + s.id + '\')" class="btn" style="flex:1; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); font-size:10px; padding:5px; border-radius:4px; color:var(--text-primary); font-weight:600; border:none; gap:4px;"><i class="fa-solid fa-chart-line"></i> Performance</button>' +
                                 '<button type="button" onclick="openEditForm(\'' + s.id + '\')" class="btn" style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); font-size:10px; padding:5px 8px; border-radius:4px; color:var(--text-secondary);" title="Edit details"><i class="fa-solid fa-pen-to-square"></i></button>' +
                                 '<a href="mailto:' + s.email + '" class="btn" style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); font-size:10px; padding:5px 8px; border-radius:4px; color:var(--text-secondary);"><i class="fa-regular fa-envelope"></i></a>' +
+                                menteeActionBtn +
                             '</div>' +
                             '</div>';
                     }).join("");
                 }
+
+                // Toggle Mentee status for a student from Directory
+                window.toggleMenteeStatus = function(studentId) {
+                    let mentees = getMentees();
+                    let allStudents = getAllStudents();
+
+                    const studIndex = allStudents.findIndex(s => s.id === studentId);
+                    if (studIndex === -1) return;
+
+                    const student = allStudents[studIndex];
+                    student.isMentee = !student.isMentee;
+
+                    if (student.isMentee) {
+                        if (!mentees.some(m => m.id === studentId)) {
+                            mentees.push({
+                                id: student.id,
+                                name: student.name,
+                                course: student.course,
+                                cgpa: student.cgpa,
+                                attendance: student.attendance,
+                                status: (parseFloat(student.attendance) < 75 || parseFloat(student.cgpa) < 7.0) ? "alert" : "ontrack",
+                                email: student.email
+                            });
+                        }
+                        if (typeof window.showToast === "function") {
+                            window.showToast(`${student.name} added to My Mentees group!`, "success");
+                        }
+                    } else {
+                        mentees = mentees.filter(m => m.id !== studentId);
+                        if (typeof window.showToast === "function") {
+                            window.showToast(`${student.name} removed from Mentees group`, "info");
+                        }
+                    }
+
+                    saveLists(mentees, allStudents);
+                    renderMentees();
+                    renderAllStudents();
+                };
 
                 // Global handlers for opening Form
                 window.openAddForm = function() {

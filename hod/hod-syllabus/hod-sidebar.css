@@ -344,7 +344,16 @@
     }
 
     .main-portal-header {
-        display: none;
+        display: flex !important;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        padding: 0 12px !important;
+        gap: 8px !important;
+    }
+
+    .mobile-portal-header {
+        display: none !important;
     }
 
     .mobile-portal-header {

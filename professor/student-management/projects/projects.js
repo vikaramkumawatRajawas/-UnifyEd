@@ -205,10 +205,10 @@ function renderProjects() {
                     </div>
 
                     <div class="project-card-footer">
-                        <a href="${p.githubUrl}" target="_blank" class="btn btn-secondary btn-sm" title="View Source Code">
+                        <a href="${p.githubUrl}" target="_blank" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 12px; gap:6px; border-radius:8px;" title="View Source Code">
                             <i class="fa-brands fa-github"></i> Code Repo
                         </a>
-                        <button onclick="openEvaluateModal(${p.id})" class="btn btn-primary btn-sm">
+                        <button onclick="openEvaluateModal(${p.id})" class="btn btn-primary btn-sm" style="background-image:linear-gradient(135deg, var(--primary), var(--accent)); font-size:11px; padding:6px 14px; gap:6px; border-radius:8px; border:none; box-shadow:0 4px 12px rgba(99, 102, 241, 0.25);">
                             <i class="fa-solid fa-pen-to-square"></i> Evaluate
                         </button>
                     </div>
